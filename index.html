@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentSec Playbook | DevSecOps & AI Agents Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            cyan: '#06b6d4',
+                            emerald: '#10b981',
+                            purple: '#8b5cf6',
+                            dark: '#0f172a',
+                            panel: '#1e293b',
+                            border: '#334155'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        
+        .cyber-glow:hover {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-cyber-dark text-slate-300 font-sans antialiased selection:bg-cyber-cyan selection:text-white flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="glass-panel w-64 h-full flex-shrink-0 hidden md:flex flex-col transition-all duration-300 z-20">
+        <div class="p-6 flex items-center gap-3 border-b border-cyber-border">
+            <div class="w-8 h-8 rounded bg-gradient-to-br from-cyber-cyan to-cyber-purple flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h1 class="text-white font-bold tracking-wider text-lg">AgentSec</h1>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1 px-3">
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-cyber-cyan/10 text-cyber-cyan font-medium border border-cyber-cyan/20">
+                        <i class="fa-solid fa-layer-group w-5 text-center"></i> Catálogo de Recursos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-network-wired w-5 text-center"></i> Arquitecturas MCP
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-microchip w-5 text-center"></i> Sandboxes (OpenShell)
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-file-code w-5 text-center"></i> Políticas (Git-backed)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="p-4 border-t border-cyber-border">
+            <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700 text-xs">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-slate-400">Estado del Sistema</span>
+                    <span class="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse"></span>
+                </div>
+                <div class="font-mono text-cyber-emerald text-[10px]">KERNEL: SECURE</div>
+                <div class="font-mono text-cyber-emerald text-[10px]">MCP: CONNECTED</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+        
+        <!-- Mobile Header -->
+        <header class="md:hidden glass-panel h-16 flex items-center justify-between px-4 z-20">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-cyber-cyan"></i>
+                <span class="text-white font-bold">AgentSec</span>
+            </div>
+            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </header>
+
+        <!-- Contenido desplazable -->
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 w-full max-w-7xl mx-auto">
+            
+            <!-- Hero Section -->
+            <div class="mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">DevSecOps & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">AI Agents</span> Wiki</h2>
+                <p class="text-slate-400 max-w-3xl text-sm md:text-base leading-relaxed">
+                    Directorio consultivo y libro de jugadas (playbook) para ingenieros de confiabilidad (SRE) y arquitectos de seguridad. 
+                    Despliegue, aísle y audite flotas de agentes autónomos y herramientas de infraestructura bajo principios de Zero-Trust.
+                </p>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
+                    <div class="text-cyber-cyan mb-1"><i class="fa-solid fa-robot"></i> Agentes Aislados</div>
+                    <div class="text-2xl font-bold text-white font-mono">1,204</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
+                    <div class="text-cyber-emerald mb-1"><i class="fa-solid fa-check-double"></i> Enlaces Auditados</div>
+                    <div class="text-2xl font-bold text-white font-mono">99.9%</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
+                    <div class="text-cyber-purple mb-1"><i class="fa-solid fa-plug"></i> MCP Servers</div>
+                    <div class="text-2xl font-bold text-white font-mono">42 Activos</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
+                    <div class="text-yellow-500 mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Syscalls Bloqueadas</div>
+                    <div class="text-2xl font-bold text-white font-mono">8,932</div>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                <div class="flex space-x-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700 w-full sm:w-auto overflow-x-auto">
+                    <button onclick="filterCatalog('all')" class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-700 text-white whitespace-nowrap" data-filter="all">Todos</button>
+                    <button onclick="filterCatalog('security')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="security">Seguridad & Ecosistema</button>
+                    <button onclick="filterCatalog('ai')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="ai">IA & Agentes</button>
+                    <button onclick="filterCatalog('dev')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="dev">Desarrollo & Datos</button>
+                    <button onclick="filterCatalog('learn')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
+                    <button onclick="filterCatalog('explore')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
+                    <button onclick="filterCatalog('design')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
+                </div>
+                
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar herramientas..." class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors placeholder-slate-500">
+                </div>
+            </div>
+
+            <!-- Catalog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid">
+            </div>
+            
+            <div class="mt-10 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
+                    <div class="flex gap-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <span class="text-xs text-slate-500 font-mono ml-2">devsecops@agentsec: ~</span>
+                </div>
+                <div class="p-4 font-mono text-sm text-slate-300 overflow-x-auto">
+                    <div class="text-cyber-cyan mb-1">$ ./auditor.sh --check-mcp-servers</div>
+                    <div class="text-slate-400 mb-3">[+] Scanning local network for open MCP ports...</div>
+                    <div class="text-cyber-emerald mb-1">[OK] GitHub Server (stdio) - Secure</div>
+                    <div class="text-cyber-emerald mb-1">[OK] PostgreSQL Server (stdio) - Secure</div>
+                    <div class="text-cyber-cyan mb-1 mt-4">$ curl -s "http://qr.liantu.com/api.php?text=DEMO_AUTH_TOKEN" > auth_qr.png</div>
+                    <div class="text-slate-400 mb-3">[+] Config payload encoded successfully for optical air-gap transfer.</div>
+                    <div class="flex">
+                        <span class="text-cyber-cyan mr-2">$</span>
+                        <span class="animate-pulse bg-slate-400 w-2 h-4 inline-block align-middle"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-12 pt-6 border-t border-slate-800 text-center text-slate-500 text-sm pb-8">
+                &copy; 2026 AgentSec Playbook. Ecosistema E - Documentación Privada.
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const resourcesData = [
+            // Ecosistema E: Seguridad y Core (Manual)
+            { title: "NVIDIA OpenShell", desc: "Runtime de código abierto para ejecutar flotas de agentes autónomos en entornos aislados con protección a nivel de kernel.", url: "https://docs.nvidia.com/openshell/latest", category: "security", icon: "fa-shield-virus", tag: "Kernel Isolation" },
+            { title: "Second Brain OS", desc: "Guía completa de agentes de IA (7 módulos, 21 lecciones) y plugins de auditoría (context-audit, loop-critic).", url: "https://github.com/undefined-ui/second-brain-os", category: "security", icon: "fa-brain", tag: "Agentes OS" },
+            { title: "Wireshark", desc: "Analizador de red para capturar, inspeccionar (DNS, TCP, TLS) y auditar protocolos de seguridad en tiempo real.", url: "https://www.wireshark.org/", category: "security", icon: "fa-network-wired", tag: "Auditoría Red" },
+            { title: "CaoLiao QR (cli.im)", desc: "Generación avanzada de códigos QR. Fundamental en DevSecOps para trazabilidad óptica de servidores y transferencia de tokens a dispositivos air-gapped.", url: "https://cli.im/", category: "security", icon: "fa-qrcode", tag: "Física/Air-Gap" },
+            { title: "LianTu API", desc: "API abierta (HTTP) para generación instantánea de códigos QR. Utilizada en pipelines CI/CD para inyectar credenciales visuales temporales.", url: "http://www.liantu.com/", category: "security", icon: "fa-bolt", tag: "CI/CD Automatización" },
+            { title: "Lychee Link Checker", desc: "Auditor asíncrono en Rust (GitHub Actions) para validar masivamente enlaces web, evitando fugas en documentación técnica.", url: "https://lychee.cli.rs/", category: "security", icon: "fa-link-slash", tag: "Gobernanza" },
+
+            // Herramientas IA (Productividad)
+            { title: "Explee", desc: "Envía correos fríos en piloto automático.", url: "https://explee.com", category: "ai", icon: "fa-envelope-open-text", tag: "Productividad" },
+            { title: "NoteGPT", desc: "Convierte documentos en podcasts.", url: "https://notegpt.io", category: "ai", icon: "fa-podcast", tag: "Audio" },
+            { title: "Gamma", desc: "Presentaciones con IA en segundos.", url: "https://gamma.app", category: "ai", icon: "fa-desktop", tag: "Presentaciones" },
+            { title: "Perplexity", desc: "Búsqueda con IA y fuentes reales.", url: "https://perplexity.ai", category: "ai", icon: "fa-magnifying-glass", tag: "Investigación" },
+            { title: "tl;dv", desc: "Graba y resume cualquier reunión.", url: "https://tldv.io", category: "ai", icon: "fa-video", tag: "Reuniones" },
+            { title: "Fireflies", desc: "Notas de reuniones con IA automáticamente.", url: "https://fireflies.ai", category: "ai", icon: "fa-clipboard", tag: "Productividad" },
+            { title: "Consensus", desc: "Busca lo que la ciencia acuerda.", url: "https://consensus.app", category: "ai", icon: "fa-flask", tag: "Ciencia" },
+            { title: "SciSpace", desc: "Entiende cualquier artículo de investigación.", url: "https://scispace.com", category: "ai", icon: "fa-book-open", tag: "Investigación" },
+
+            // Herramientas IA (Video y Audio)
+            { title: "Suno", desc: "Crea canciones completas a partir de un prompt.", url: "https://suno.com", category: "ai", icon: "fa-music", tag: "Audio IA" },
+            { title: "HeyGen", desc: "Clona tu rostro en videos.", url: "https://heygen.com", category: "ai", icon: "fa-user-astronaut", tag: "Video IA" },
+            { title: "Kling AI", desc: "La mejor generación de video con IA.", url: "https://klingai.com", category: "ai", icon: "fa-film", tag: "Video IA" },
+            { title: "ElevenLabs", desc: "Clona cualquier voz al instante.", url: "https://elevenlabs.io", category: "ai", icon: "fa-microphone-lines", tag: "Voces IA" },
+            { title: "Pika", desc: "Anima cualquier imagen en video.", url: "https://pika.art", category: "ai", icon: "fa-wand-magic-sparkles", tag: "Video IA" },
+            { title: "Runway", desc: "Generación de video con IA cinematográfica.", url: "https://runwayml.com", category: "ai", icon: "fa-clapperboard", tag: "Cine IA" },
+            { title: "Descript", desc: "Edita video editando texto.", url: "https://descript.com", category: "ai", icon: "fa-pen-to-square", tag: "Edición" },
+            { title: "Opus Clip", desc: "Corta automáticamente videos largos en shorts.", url: "https://opus.pro", category: "ai", icon: "fa-scissors", tag: "Shorts" },
+            { title: "Synthesia", desc: "Videos con avatares de IA sin cámara.", url: "https://synthesia.io", category: "ai", icon: "fa-user-tie", tag: "Avatares" },
+            { title: "Fliki", desc: "Convierte texto en videos con IA.", url: "https://fliki.ai", category: "ai", icon: "fa-file-video", tag: "Generación" },
+            { title: "Invideo AI", desc: "Convierte prompts en videos completos.", url: "https://invideo.io", category: "ai", icon: "fa-video", tag: "Video IA" },
+            { title: "Castmagic", desc: "Convierte audio en piezas de contenido.", url: "https://castmagic.io", category: "ai", icon: "fa-podcast", tag: "Audio" },
+
+            // Herramientas IA (Imágenes)
+            { title: "Napkin AI", desc: "Convierte texto en diagramas.", url: "https://napkin.ai", category: "ai", icon: "fa-diagram-project", tag: "Diagramas" },
+            { title: "Ideogram", desc: "Genera texto en imágenes perfectamente.", url: "https://ideogram.ai", category: "ai", icon: "fa-image", tag: "Imagen IA" },
+            { title: "Krea AI", desc: "Generación de imágenes con IA en tiempo real.", url: "https://krea.ai", category: "ai", icon: "fa-paintbrush", tag: "Generación" },
+            { title: "Magnific", desc: "Mejora cualquier imagen con IA.", url: "https://magnific.ai", category: "ai", icon: "fa-expand", tag: "Upscaling" },
+            { title: "Viggle", desc: "Hace que los personajes se muevan de forma realista.", url: "https://viggle.ai", category: "ai", icon: "fa-person-running", tag: "Animación" },
+            { title: "Leonardo AI", desc: "Genera imágenes gratis.", url: "https://leonardo.ai", category: "ai", icon: "fa-palette", tag: "Generación" },
+            { title: "Photoroom", desc: "Fotografía de productos con IA.", url: "https://photoroom.com", category: "ai", icon: "fa-camera", tag: "Comercio" },
+            { title: "Meshy", desc: "Convierte texto en modelos 3D.", url: "https://meshy.ai", category: "ai", icon: "fa-cube", tag: "3D IA" },
+            { title: "Vizcom", desc: "Convierte bocetos en renders.", url: "https://vizcom.ai", category: "ai", icon: "fa-pen-nib", tag: "Renders" },
+
+            // Herramientas IA (Código)
+            { title: "Cursor", desc: "Editor de código con IA que construye por ti.", url: "https://cursor.com", category: "ai", icon: "fa-terminal", tag: "IDE IA" },
+            { title: "v0", desc: "Genera componentes de UI con IA.", url: "https://v0.dev", category: "ai", icon: "fa-layer-group", tag: "Frontend IA" },
+            { title: "Lovable", desc: "Convierte ideas en apps funcionales.", url: "https://lovable.dev", category: "ai", icon: "fa-code", tag: "Fullstack IA" },
+            { title: "Replit", desc: "Codifica y despliega desde el navegador.", url: "https://replit.com", category: "ai", icon: "fa-server", tag: "IDE Cloud" },
+            { title: "Tome", desc: "IA construye tus mazos de presentación.", url: "https://tome.app", category: "ai", icon: "fa-desktop", tag: "Slides" },
+            { title: "Beautiful AI", desc: "Diseño inteligente de presentaciones.", url: "https://beautiful.ai", category: "ai", icon: "fa-presentation-screen", tag: "Slides" },
+
+            // Agujeros de Conejo (Mapas y Rastreo)
+            { title: "Zoom Earth", desc: "Observa el mundo a través de imágenes satelitales en vivo.", url: "https://zoom.earth", category: "explore", icon: "fa-earth-americas", tag: "Satélite" },
+            { title: "Flightradar24", desc: "Ve todos los aviones actualmente en el cielo.", url: "https://flightradar24.com", category: "explore", icon: "fa-plane", tag: "Aviación" },
+            { title: "MarineTraffic", desc: "Rastrea todos los barcos en el mar en tiempo real.", url: "https://marinetraffic.com", category: "explore", icon: "fa-ship", tag: "Marítimo" },
+            { title: "Windy", desc: "Mapa en vivo de vientos y tormentas.", url: "https://windy.com", category: "explore", icon: "fa-wind", tag: "Clima" },
+            { title: "Lightning Maps", desc: "Observa rayos golpeando la Tierra en tiempo real.", url: "https://lightningmaps.org", category: "explore", icon: "fa-bolt-lightning", tag: "Clima" },
+            { title: "USGS Earthquake", desc: "Lista en vivo de terremotos recientes.", url: "https://earthquake.usgs.gov", category: "explore", icon: "fa-house-crack", tag: "Sismos" },
+            { title: "Submarine Cable Map", desc: "Cables oceánicos que transportan internet.", url: "https://submarinecablemap.com", category: "explore", icon: "fa-network-wired", tag: "Infraestructura" },
+            { title: "Global Forest Watch", desc: "Observa cómo los bosques desaparecen desde el espacio.", url: "https://globalforestwatch.org", category: "explore", icon: "fa-tree", tag: "Ecológico" },
+
+            // Agujeros de Conejo (Datos y Stats)
+            { title: "Worldometer", desc: "Las estadísticas del mundo, segundo a segundo.", url: "https://worldometers.info", category: "explore", icon: "fa-chart-simple", tag: "Métricas" },
+            { title: "Internet Live Stats", desc: "Número actual de tuits y búsquedas publicadas.", url: "https://internetlivestats.com", category: "explore", icon: "fa-globe", tag: "Métricas" },
+            { title: "The True Size", desc: "Compara los verdaderos tamaños de los países.", url: "https://thetruesize.com", category: "explore", icon: "fa-map", tag: "Mapas" },
+            { title: "OpenStreetMap", desc: "Mapa mundial dibujado por voluntarios.", url: "https://openstreetmap.org", category: "explore", icon: "fa-map-location-dot", tag: "Mapas" },
+            { title: "Pudding Cool", desc: "Artículos visuales contados a través de datos.", url: "https://pudding.cool", category: "explore", icon: "fa-chart-pie", tag: "Data Visual" },
+            { title: "Our World in Data", desc: "El estado del mundo con datos reales.", url: "https://ourworldindata.org", category: "explore", icon: "fa-database", tag: "Data" },
+            { title: "Gapminder", desc: "Lo que erróneamente creemos saber sobre el mundo.", url: "https://gapminder.org", category: "explore", icon: "fa-lightbulb", tag: "Data Visual" },
+            { title: "Information is Beautiful", desc: "Visualizando datos complejos.", url: "https://informationisbeautiful.net", category: "explore", icon: "fa-eye", tag: "Data Visual" },
+            { title: "World Bank Data", desc: "Datos abiertos del Banco Mundial.", url: "https://data.worldbank.org", category: "explore", icon: "fa-building-columns", tag: "Data" },
+            { title: "TUIK", desc: "Base de datos de estadísticas oficiales de Turquía.", url: "https://data.tuik.gov.tr", category: "explore", icon: "fa-chart-bar", tag: "Data" },
+            { title: "Observable", desc: "Visualiza datos con código en vivo.", url: "https://observablehq.com", category: "explore", icon: "fa-code", tag: "Data Visual" },
+
+            // Agujeros de Conejo (Archivos y Bibliotecas)
+            { title: "Old Maps Online", desc: "Mapas de hace siglos.", url: "https://oldmapsonline.org", category: "explore", icon: "fa-map-pin", tag: "Historia" },
+            { title: "David Rumsey", desc: "Archivo de 150.000 mapas históricos.", url: "https://davidrumsey.com", category: "explore", icon: "fa-scroll", tag: "Historia" },
+            { title: "Internet Archive", desc: "Archivo de millones de libros, películas y software.", url: "https://archive.org", category: "explore", icon: "fa-building", tag: "Archivo" },
+            { title: "Project Gutenberg", desc: "70.000 libros gratuitos cuyos derechos han expirado.", url: "https://gutenberg.org", category: "explore", icon: "fa-book", tag: "Libros" },
+            { title: "Open Library", desc: "Registro de todos los libros del mundo.", url: "https://openlibrary.org", category: "explore", icon: "fa-book-open-reader", tag: "Libros" },
+            { title: "Library of Congress", desc: "Archivo digital de la Biblioteca del Congreso de EE.UU.", url: "https://loc.gov", category: "explore", icon: "fa-landmark", tag: "Archivo" },
+            { title: "Europeana", desc: "Archivo del patrimonio cultural de Europa.", url: "https://europeana.eu", category: "explore", icon: "fa-landmark-dome", tag: "Cultura" },
+            { title: "Digital Public Library", desc: "Colección de la biblioteca digital de América.", url: "https://dp.la", category: "explore", icon: "fa-book-bookmark", tag: "Archivo" },
+            { title: "Wikipedia", desc: "Pozo de conocimiento al azar.", url: "https://wikipedia.org", category: "explore", icon: "fa-w", tag: "Wiki" },
+
+            // Agujeros de Conejo (Cultura y Espacio)
+            { title: "Google Arts & Culture", desc: "Recorre museos desde casa.", url: "https://artsandculture.google.com", category: "explore", icon: "fa-palette", tag: "Arte" },
+            { title: "Rijksmuseum", desc: "Descarga obras de arte en alta resolución.", url: "https://rijksmuseum.nl", category: "explore", icon: "fa-image", tag: "Arte" },
+            { title: "WikiArt", desc: "Archivo de 250.000 obras de arte.", url: "https://wikiart.org", category: "explore", icon: "fa-paintbrush", tag: "Arte" },
+            { title: "Public Domain Review", desc: "Tesoros visuales olvidados de la historia.", url: "https://publicdomainreview.org", category: "explore", icon: "fa-eye", tag: "Historia" },
+            { title: "Open Culture", desc: "Archivo gratuito de cultura y educación.", url: "https://openculture.com", category: "explore", icon: "fa-graduation-cap", tag: "Cultura" },
+            { title: "Met Museum", desc: "Colección abierta del Met Museum.", url: "https://metmuseum.org", category: "explore", icon: "fa-building-columns", tag: "Museo" },
+            { title: "Music Map", desc: "Árbol genealógico de géneros musicales.", url: "https://musicmap.info", category: "explore", icon: "fa-music", tag: "Música" },
+            { title: "NASA Eyes", desc: "Explora el sistema solar en 3D.", url: "https://eyes.nasa.gov", category: "explore", icon: "fa-satellite", tag: "Espacio" },
+            { title: "Stellarium Web", desc: "Mapa real del cielo en tu navegador.", url: "https://stellarium-web.org", category: "explore", icon: "fa-star", tag: "Espacio" },
+            { title: "APOD", desc: "La imagen astronómica del día de la NASA.", url: "https://apod.nasa.gov", category: "explore", icon: "fa-meteor", tag: "Espacio" },
+            { title: "NASA Images", desc: "Todo el archivo visual de la NASA, gratis.", url: "https://images.nasa.gov", category: "explore", icon: "fa-rocket", tag: "Espacio" },
+            { title: "Science Daily", desc: "Transmisión en vivo de noticias científicas.", url: "https://sciencedaily.com", category: "explore", icon: "fa-flask", tag: "Ciencia" },
+            { title: "arXiv", desc: "Preimpresiones gratuitas de artículos científicos.", url: "https://arxiv.org", category: "explore", icon: "fa-file-lines", tag: "Ciencia" },
+            { title: "Time and Date", desc: "Tiempo, amaneceres y eventos celestes.", url: "https://timeanddate.com", category: "explore", icon: "fa-clock", tag: "Tiempo" },
+            
+            // Agujeros de Conejo (Interactividad)
+            { title: "Window Swap", desc: "Mira por la ventana de una persona al azar.", url: "https://window-swap.com", category: "explore", icon: "fa-window-maximize", tag: "Interactivo" },
+            { title: "Virtual Vacation", desc: "Paseos virtuales por ciudades.", url: "https://virtualvacation.us", category: "explore", icon: "fa-person-walking-luggage", tag: "Interactivo" },
+            { title: "MapCrunch", desc: "Teletransporta a un lugar al azar en la Tierra.", url: "https://mapcrunch.com", category: "explore", icon: "fa-location-dot", tag: "Interactivo" },
+            { title: "Atlas Obscura", desc: "Catálogo de los lugares más extraños del mundo.", url: "https://atlasobscura.com", category: "explore", icon: "fa-map", tag: "Exploración" },
+            { title: "Neal.fun", desc: "Experiencias interactivas de conocimiento.", url: "https://neal.fun", category: "explore", icon: "fa-gamepad", tag: "Interactivo" },
+            { title: "Scale of the Universe 2", desc: "Viaje a escala desde el átomo hasta el universo.", url: "https://htwins.net/scale2", category: "explore", icon: "fa-up-right-and-down-left-from-center", tag: "Ciencia" },
+            { title: "Radiooooo", desc: "Elige un país y una década para escuchar esa era.", url: "https://radiooooo.com", category: "explore", icon: "fa-radio", tag: "Música" },
+            { title: "Listen to Wikipedia", desc: "Convierte ediciones de Wikipedia en audio.", url: "https://listen.hatnote.com", category: "explore", icon: "fa-headphones", tag: "Música" },
+
+            // Plataformas Big Tech y Aprendizaje
+            { title: "Anthropic Skilljar", desc: "Uso seguro y efectivo de modelos Claude.", url: "https://anthropic.skilljar.com", category: "learn", icon: "fa-brain", tag: "Big Tech" },
+            { title: "Google Grow", desc: "IA aplicada para negocios y desarrollo.", url: "https://grow.google/ai", category: "learn", icon: "fa-google", tag: "Big Tech" },
+            { title: "Meta AI", desc: "Modelos de código abierto e investigación.", url: "https://ai.meta.com/resources/", category: "learn", icon: "fa-meta", tag: "Big Tech" },
+            { title: "NVIDIA Developer", desc: "Computación acelerada y CUDA.", url: "https://developer.nvidia.com/cuda", category: "learn", icon: "fa-microchip", tag: "Big Tech" },
+            { title: "Microsoft Learn", desc: "Azure AI, Copilot y fundamentos.", url: "https://learn.microsoft.com/en-us/training/", category: "learn", icon: "fa-microsoft", tag: "Big Tech" },
+            { title: "OpenAI Academy", desc: "Ingeniería de prompts y APIs.", url: "https://academy.openai.com", category: "learn", icon: "fa-robot", tag: "Big Tech" },
+            { title: "IBM SkillsBuild", desc: "Habilidades digitales e IA ética.", url: "https://skillsbuild.org", category: "learn", icon: "fa-laptop-code", tag: "Big Tech" },
+            { title: "AWS Skill Builder", desc: "Machine Learning en AWS.", url: "https://skillbuilder.aws", category: "learn", icon: "fa-aws", tag: "Big Tech" },
+            { title: "DeepLearning.AI", desc: "Cursos prácticos de IA (Andrew Ng).", url: "https://deeplearning.ai", category: "learn", icon: "fa-graduation-cap", tag: "Academia" },
+            { title: "Hugging Face Learn", desc: "Modelos de código abierto.", url: "https://huggingface.co/learn", category: "learn", icon: "fa-face-smiling-hands", tag: "Comunidad" },
+            
+            // Cursos Gratuitos Web (Selección)
+            { title: "Curso HTML/CSS/JS", desc: "Introducción a programación web básica.", url: "https://imp.i384100.net/qWGQ0b", category: "learn", icon: "fa-html5", tag: "Web Dev" },
+            { title: "Especialización Fundamentos Web", desc: "Diseño web para todos.", url: "https://imp.i384100.net/2RjxMz", category: "learn", icon: "fa-code", tag: "Web Dev" },
+            { title: "HTML Build a Website", desc: "Cómo construir un sitio web HTML.", url: "https://imp.i384100.net/aNPBjZ", category: "learn", icon: "fa-html5", tag: "Web Dev" },
+            { title: "HTML/CSS Single Page", desc: "Construyendo un sitio web SPA.", url: "https://imp.i384100.net/k4PyQ0", category: "learn", icon: "fa-css3", tag: "Web Dev" },
+            { title: "Portfolio Web Dev", desc: "Construye un portafolio web con JS.", url: "https://imp.i384100.net/5kBWmb", category: "learn", icon: "fa-laptop-code", tag: "Web Dev" },
+            { title: "Especialización React/Angular", desc: "Desarrollo frontend avanzado.", url: "https://imp.i384100.net/PzqeYj", category: "learn", icon: "fa-react", tag: "Web Dev" },
+            { title: "Web API JSON", desc: "Construye sitios web conectando a APIs.", url: "https://imp.i384100.net/GbYxon", category: "learn", icon: "fa-server", tag: "Web Dev" },
+            { title: "WordPress Complete", desc: "Sitios completos con CMS.", url: "https://imp.i384100.net/DWMYq5", category: "learn", icon: "fa-wordpress", tag: "No-Code" },
+            { title: "Wix Dev", desc: "Desarrollo empresarial con Wix.", url: "https://imp.i384100.net/QYxaGa", category: "learn", icon: "fa-w", tag: "No-Code" },
+            { title: "Weebly SME", desc: "Sitios para pequeños negocios.", url: "https://imp.i384100.net/jRjN5M", category: "learn", icon: "fa-w", tag: "No-Code" },
+            { title: "Webflow Responsive", desc: "Crea web responsive sin código.", url: "https://imp.i384100.net/AgYdkK", category: "learn", icon: "fa-layer-group", tag: "No-Code" },
+            { title: "AI Vibe Local Biz", desc: "Sitios web para negocios locales con IA.", url: "https://imp.i384100.net/1G2ayd", category: "learn", icon: "fa-store", tag: "Business" },
+            { title: "Personal Branding", desc: "Branding personal para principiantes.", url: "https://imp.i384100.net/rE190j", category: "learn", icon: "fa-id-badge", tag: "Business" },
+            { title: "Google SEO", desc: "Optimización de sitio web para búsquedas.", url: "https://imp.i384100.net/aNZbYN", category: "learn", icon: "fa-google", tag: "SEO" },
+            { title: "Ecommerce & Amazon", desc: "Redacción de ventas para ecommerce.", url: "https://imp.i384100.net/1GKXoD", category: "learn", icon: "fa-cart-shopping", tag: "Ecommerce" },
+
+            // Roadmap y Libros/Papers
+            { title: "Intro a LLM (Andrej Karpathy)", desc: "Video fundacional de introducción a IA.", url: "https://youtube.com/watch?v=zjkBMFhNzNc", category: "learn", icon: "fa-youtube", tag: "Video" },
+            { title: "Google AI Agents Whitepaper", desc: "Guía oficial sobre agentes.", url: "https://www.kaggle.com/whitepaper-agents", category: "learn", icon: "fa-file-pdf", tag: "Paper" },
+            { title: "Anthropic: Building Effective Agents", desc: "Guía de construcción de agentes efectivos.", url: "https://www.anthropic.com/engineering/building-effective-agents", category: "learn", icon: "fa-book", tag: "Guía" },
+            { title: "Claude Code Best Practices", desc: "Mejores prácticas de código agéntico.", url: "https://code.claude.com/docs/en/best-practices", category: "learn", icon: "fa-code", tag: "Guía" },
+            { title: "OpenAI Agent Guide", desc: "Guía práctica para construir agentes AI.", url: "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/", category: "learn", icon: "fa-robot", tag: "Guía" },
+            { title: "Understanding Deep Learning", desc: "Libro fundacional gratis.", url: "https://udlbook.github.io/udlbook/", category: "learn", icon: "fa-book-open", tag: "Libro" },
+            { title: "Build LLM from Scratch", desc: "Libro práctico de Manning.", url: "https://www.manning.com/books/build-a-large-language-model-from-scratch", category: "learn", icon: "fa-book-open", tag: "Libro" },
+            { title: "ReAct: Synergizing Reasoning", desc: "Paper sobre cadena de pensamiento en agentes (2022).", url: "https://arxiv.org/abs/2210.03629", category: "learn", icon: "fa-file-lines", tag: "Paper" },
+            { title: "Generative Agents Simulacra", desc: "Paper interactivo de agentes (2023).", url: "https://arxiv.org/abs/2304.03442", category: "learn", icon: "fa-file-lines", tag: "Paper" },
+            { title: "Toolformer", desc: "Módulos de lenguaje usando herramientas (2023).", url: "https://arxiv.org/abs/2302.04761", category: "learn", icon: "fa-file-lines", tag: "Paper" },
+            { title: "Chain-of-Thought Prompting", desc: "Razonamiento inducido (2022).", url: "https://arxiv.org/abs/2201.11903", category: "learn", icon: "fa-file-lines", tag: "Paper" },
+
+            // Desarrollo (Repos y Tools)
+            { title: "Regexr", desc: "Constructor y probador de expresiones regulares.", url: "https://regexr.com", category: "dev", icon: "fa-code", tag: "Utilidad" },
+            { title: "JSON Formatter", desc: "Formatea y valida datos JSON.", url: "https://jsonformatter.org", category: "dev", icon: "fa-brackets-curly", tag: "Utilidad" },
+            { title: "JWT.io", desc: "Decodifica e inspecciona tokens JWT.", url: "https://jwt.io", category: "dev", icon: "fa-key", tag: "Seguridad API" },
+            { title: "Postman", desc: "Prueba y exploración de APIs.", url: "https://postman.com", category: "dev", icon: "fa-rocket", tag: "Testing" },
+            { title: "ReqBin", desc: "Envía solicitudes HTTP online.", url: "https://reqbin.com", category: "dev", icon: "fa-network-wired", tag: "Testing" },
+            { title: "Carbon", desc: "Crea screenshots de código estéticos.", url: "https://carbon.now.sh", category: "dev", icon: "fa-image", tag: "Visual" },
+            { title: "Ray.so", desc: "Convierte código en imágenes bonitas.", url: "https://ray.so", category: "dev", icon: "fa-image", tag: "Visual" },
+            { title: "Bundlephobia", desc: "Verifica el tamaño de paquetes JS.", url: "https://bundlephobia.com", category: "dev", icon: "fa-box", tag: "Optimización" },
+            { title: "Roadmap.sh", desc: "Rutas de aprendizaje para desarrolladores.", url: "https://roadmap.sh", category: "dev", icon: "fa-map", tag: "Rutas" },
+            { title: "Learn-Anything", desc: "Rutas de aprendizaje visuales.", url: "https://learn-anything.xyz", category: "dev", icon: "fa-sitemap", tag: "Educación" },
+            { title: "Learn X in Y Minutes", desc: "Aprende conceptos de lenguaje ultrarrápido.", url: "https://learnxinyminutes.com", category: "dev", icon: "fa-stopwatch", tag: "Code" },
+            { title: "OverAPI", desc: "Cheat sheets para desarrolladores.", url: "https://overapi.com", category: "dev", icon: "fa-list", tag: "Docs" },
+            { title: "Sitemap.org", desc: "Aprende cómo funcionan los sitemaps.", url: "https://sitemap.org", category: "dev", icon: "fa-sitemap", tag: "SEO" },
+            
+            // Proyectos de GitHub (Desarrollo)
+            { title: "GenAI Agents (Nir Diamant)", desc: "Guías avanzadas sobre agentes.", url: "https://github.com/NirDiamant/GenAI_Agents", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "AI Agents for Beginners", desc: "Curso oficial de Microsoft.", url: "https://github.com/microsoft/ai-agents-for-beginners", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "Prompt Engineering Guide", desc: "Guía definitiva de prompts.", url: "https://github.com/dair-ai/Prompt-Engineering-Guide", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "Hands-On LLM", desc: "Libro práctico O'Reilly.", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "Made With ML", desc: "MLOps de cero a producción.", url: "https://github.com/GokuMohandas/Made-With-ML", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "Awesome Generative AI", desc: "Curaduría de recursos.", url: "https://github.com/aishwaryanr/awesome-generative-ai-guide", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "Designing ML Systems", desc: "Diseño de sistemas por Chip Huyen.", url: "https://github.com/chiphuyen/dmls-book", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "LLM Course", desc: "Curso completo de LLMs (Maxime Labonne).", url: "https://github.com/mlabonne/llm-course", category: "dev", icon: "fa-github", tag: "Repo" },
+            { title: "DSH Desktop", desc: "Ejecuta y gestiona agentes de IA desde escritorio.", url: "https://github.com/anywhere-labs/dsh-desktop", category: "dev", icon: "fa-desktop", tag: "OpenSource" },
+            { title: "Artemis (Google)", desc: "Automatiza Android con IA mediante lenguaje natural.", url: "https://github.com/google/artemis", category: "dev", icon: "fa-android", tag: "OpenSource" },
+            { title: "ARC Task Gen", desc: "Genera rompecabezas para testear razonamiento de IA.", url: "https://github.com/pathwaycom/arc-task-gen", category: "dev", icon: "fa-puzzle-piece", tag: "OpenSource" },
+
+            // Directorios y Especializados
+            { title: "FutureTools", desc: "Descubre herramientas de IA útiles y filtradas.", url: "https://futuretools.io", category: "dev", icon: "fa-list", tag: "Directorio" },
+            { title: "There's an AI for That", desc: "Directorio gigante para encontrar IA.", url: "https://theresanaiforthat.com", category: "dev", icon: "fa-magnifying-glass", tag: "Directorio" },
+            { title: "AI Tools FYI", desc: "Explora aplicaciones y herramientas.", url: "https://aitools.fyi", category: "dev", icon: "fa-folder-open", tag: "Directorio" },
+            { title: "Hugging Face Spaces", desc: "Prueba demos de IA de la comunidad.", url: "https://huggingface.co/spaces", category: "dev", icon: "fa-flask", tag: "Laboratorio" },
+            { title: "Replicate", desc: "Ejecuta modelos de IA en la nube vía API.", url: "https://replicate.com", category: "dev", icon: "fa-cloud", tag: "Plataforma" },
+            { title: "Spatial Intelligence", desc: "Atlas de IA, AR/VR, robótica e intel geoespacial.", url: "https://www.spatialintelligence.ai/", category: "dev", icon: "fa-vr-cardboard", tag: "Especializado" },
+
+            // Diseño, Recursos y Archivos
+            { title: "tldraw", desc: "Pizarra online colaborativa infinita.", url: "https://tldraw.com", category: "design", icon: "fa-pen-to-square", tag: "Pizarra" },
+            { title: "Excalidraw", desc: "Diagramas con estilo de dibujo a mano.", url: "https://excalidraw.com", category: "design", icon: "fa-pen", tag: "Pizarra" },
+            { title: "Draw.io", desc: "Creación de diagramas de flujo y esquemas.", url: "https://drawio.com", category: "design", icon: "fa-project-diagram", tag: "Diagramas" },
+            { title: "Penpot", desc: "Diseño y prototipado open-source.", url: "https://penpot.app", category: "design", icon: "fa-bezier-curve", tag: "UI/UX" },
+            { title: "Vectr", desc: "Editor de gráficos vectoriales online.", url: "https://vectr.com", category: "design", icon: "fa-vector-square", tag: "Gráficos" },
+            { title: "Coolors", desc: "Generador de paletas de colores.", url: "https://coolors.co", category: "design", icon: "fa-palette", tag: "Colores" },
+            { title: "Fontjoy", desc: "Combinaciones de fuentes con IA.", url: "https://fontjoy.com", category: "design", icon: "fa-font", tag: "Tipografía" },
+            { title: "WhatTheFont", desc: "Identifica fuentes desde una imagen.", url: "https://www.myfonts.com/WhatTheFont", category: "design", icon: "fa-magnifying-glass", tag: "Tipografía" },
+            { title: "Favicon.io", desc: "Crea favicons rápidamente.", url: "https://favicon.io", category: "design", icon: "fa-icons", tag: "Assets" },
+            { title: "Unsplash", desc: "Fotografía de stock de alta calidad.", url: "https://unsplash.com", category: "design", icon: "fa-camera", tag: "Stock" },
+            { title: "Pexels", desc: "Fotos y videos stock gratis.", url: "https://pexels.com", category: "design", icon: "fa-video", tag: "Stock" },
+            { title: "Pixabay", desc: "Imágenes, videos e ilustraciones.", url: "https://pixabay.com", category: "design", icon: "fa-image", tag: "Stock" },
+            { title: "Mixkit", desc: "Videos, música y plantillas gratis.", url: "https://mixkit.co", category: "design", icon: "fa-film", tag: "Stock" },
+            { title: "Coverr", desc: "Videos stock para proyectos creativos.", url: "https://coverr.co", category: "design", icon: "fa-video", tag: "Stock" },
+            { title: "Humaaans", desc: "Ilustraciones personalizables de humanos.", url: "https://humaaans.com", category: "design", icon: "fa-person", tag: "Assets" },
+            { title: "unDraw", desc: "Ilustraciones gratuitas personalizables.", url: "https://undraw.co", category: "design", icon: "fa-pencil", tag: "Assets" },
+            { title: "Storyset", desc: "Ilustraciones animadas para proyectos.", url: "https://storyset.com", category: "design", icon: "fa-shapes", tag: "Assets" },
+            { title: "Compress JPEG", desc: "Comprime imágenes JPEG.", url: "https://compressjpeg.com", category: "design", icon: "fa-file-image", tag: "Archivos" },
+            { title: "TinyPNG", desc: "Comprime PNG y WebP.", url: "https://tinypng.com", category: "design", icon: "fa-file-image", tag: "Archivos" },
+            { title: "Convertio", desc: "Convierte archivos entre formatos.", url: "https://convertio.co", category: "design", icon: "fa-file-export", tag: "Archivos" },
+            { title: "CloudConvert", desc: "Convierte casi cualquier archivo.", url: "https://cloudconvert.com", category: "design", icon: "fa-cloud-arrow-up", tag: "Archivos" },
+            { title: "ILoveIMG", desc: "Edita y optimiza imágenes masivamente.", url: "https://iloveimg.com", category: "design", icon: "fa-images", tag: "Archivos" },
+            { title: "QR Code Gen", desc: "Crea códigos QR rápidamente.", url: "https://qr-code-generator.com", category: "design", icon: "fa-qrcode", tag: "Archivos" }
+        ];
+
+        const grid = document.getElementById('catalogGrid');
+        
+        function getCategoryStyles(category) {
+            const styles = {
+                'ai': { color: 'text-cyber-cyan', bg: 'bg-cyber-cyan/10 border-cyber-cyan/20 text-cyber-cyan' },
+                'security': { color: 'text-cyber-emerald', bg: 'bg-cyber-emerald/10 border-cyber-emerald/20 text-cyber-emerald' },
+                'dev': { color: 'text-cyber-purple', bg: 'bg-cyber-purple/10 border-cyber-purple/20 text-cyber-purple' },
+                'explore': { color: 'text-yellow-500', bg: 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' },
+                'learn': { color: 'text-blue-500', bg: 'bg-blue-500/10 border-blue-500/20 text-blue-500' },
+                'design': { color: 'text-pink-500', bg: 'bg-pink-500/10 border-pink-500/20 text-pink-500' },
+            };
+            return styles[category] || { color: 'text-slate-300', bg: 'bg-slate-700 border-slate-600 text-slate-300' };
+        }
+
+        function renderCards(data) {
+            grid.innerHTML = '';
+            
+            if (data.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-slate-500 py-10">No se encontraron recursos.</div>';
+                return;
+            }
+
+            data.forEach(item => {
+                const style = getCategoryStyles(item.category);
+                const cardHTML = `
+                <div class="tool-card glass-panel rounded-xl p-5 cyber-glow transition-all flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-100 transition-opacity ${style.color}"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded bg-slate-800 border border-slate-700 flex items-center justify-center ${style.color} text-xl">
+                            <i class="fa-solid ${item.icon}"></i>
+                        </div>
+                        <span class="text-xs font-mono ${style.bg} border px-2 py-1 rounded whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]" title="${item.tag}">${item.tag}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">${item.title}</h3>
+                    <p class="text-slate-400 text-sm flex-1 mb-4">${item.desc}</p>
+                    <div class="pt-4 border-t border-slate-700 flex justify-between items-center mt-auto">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-cyber-cyan hover:text-white transition-colors flex items-center gap-1">
+                            Acceder <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        /* Inicializar el panel completo */
+        renderCards(resourcesData);
+
+        function filterCatalog(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('bg-slate-700', 'text-white');
+                    btn.classList.remove('text-slate-400', 'bg-transparent');
+                } else {
+                    btn.classList.remove('bg-slate-700', 'text-white');
+                    btn.classList.add('text-slate-400', 'bg-transparent');
+                }
+            });
+
+            if (category === 'all') {
+                renderCards(resourcesData);
+            } else {
+                const filtered = resourcesData.filter(item => item.category === category);
+                renderCards(filtered);
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Reiniciar botones visualmente a 'Todos' si se está buscando
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-700', 'text-white');
+                btn.classList.add('text-slate-400');
+            });
+            document.querySelector('[data-filter="all"]').classList.add('bg-slate-700', 'text-white');
+
+            const filtered = resourcesData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) || 
+                item.desc.toLowerCase().includes(searchTerm) ||
+                item.tag.toLowerCase().includes(searchTerm)
+            );
+            renderCards(filtered);
+        });
+
+        // Menú móvil
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('absolute');
+            sidebar.classList.toggle('z-50');
+            sidebar.classList.toggle('h-screen');
+        });
+    </script>
+</body>
+</html>
