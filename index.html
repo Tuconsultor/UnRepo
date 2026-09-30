@@ -46,6 +46,44 @@
             box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
             border-color: rgba(6, 182, 212, 0.5);
         }
+
+        .sidebar-nav {
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+        .sidebar-nav::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            bottom: 9px;
+            width: 2px;
+            border-radius: 999px;
+            background: transparent;
+        }
+        .sidebar-nav.is-active {
+            background: rgba(6, 182, 212, 0.10);
+            color: #06b6d4;
+            border-color: rgba(6, 182, 212, 0.22);
+        }
+        .sidebar-nav.is-active::before { background: #06b6d4; }
+        .sidebar-nav:focus-visible,
+        .filter-btn:focus-visible,
+        .tool-card a:focus-visible {
+            outline: 2px solid #06b6d4;
+            outline-offset: 2px;
+        }
+        .view-context {
+            background:
+                radial-gradient(circle at 100% 0%, rgba(139,92,246,.10), transparent 35%),
+                linear-gradient(135deg, rgba(15,23,42,.92), rgba(30,41,59,.70));
+        }
+        .tool-card { transform: translateY(0); }
+        .tool-card:hover { transform: translateY(-2px); }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
 <body class="bg-cyber-dark text-slate-300 font-sans antialiased selection:bg-cyber-cyan selection:text-white flex h-screen overflow-hidden">
@@ -59,27 +97,35 @@
             <h1 class="text-white font-bold tracking-wider text-lg">AgentSec</h1>
         </div>
 
-        <nav class="flex-1 overflow-y-auto py-4">
+        <nav class="flex-1 overflow-y-auto py-4" aria-label="Secciones de AgentSec">
+            <div class="px-4 pb-2 text-[10px] uppercase tracking-[0.18em] text-slate-600 font-semibold">Explorar</div>
             <ul class="space-y-1 px-3">
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-cyber-cyan/10 text-cyber-cyan font-medium border border-cyber-cyan/20">
-                        <i class="fa-solid fa-layer-group w-5 text-center"></i> Catálogo de Recursos
-                    </a>
+                    <button type="button" class="sidebar-nav is-active flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="catalog" aria-current="page">
+                        <i class="fa-solid fa-layer-group w-5 text-center"></i>
+                        <span class="flex-1">Catálogo de Recursos</span>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
-                        <i class="fa-solid fa-network-wired w-5 text-center"></i> Arquitecturas MCP
-                    </a>
+                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="mcp">
+                        <i class="fa-solid fa-network-wired w-5 text-center"></i>
+                        <span class="flex-1">Arquitecturas MCP</span>
+                        <span id="navCountMcp" class="text-[10px] font-mono text-slate-600"></span>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
-                        <i class="fa-solid fa-microchip w-5 text-center"></i> Sandboxes (OpenShell)
-                    </a>
+                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="sandbox">
+                        <i class="fa-solid fa-microchip w-5 text-center"></i>
+                        <span class="flex-1">Sandboxes</span>
+                        <span id="navCountSandbox" class="text-[10px] font-mono text-slate-600"></span>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
-                        <i class="fa-solid fa-file-code w-5 text-center"></i> Políticas (Git-backed)
-                    </a>
+                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="policy">
+                        <i class="fa-solid fa-file-shield w-5 text-center"></i>
+                        <span class="flex-1">Políticas & Gobierno</span>
+                        <span id="navCountPolicy" class="text-[10px] font-mono text-slate-600"></span>
+                    </button>
                 </li>
             </ul>
         </nav>
@@ -90,8 +136,8 @@
                     <span class="text-slate-400">Estado del Sistema</span>
                     <span class="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse"></span>
                 </div>
-                <div class="font-mono text-cyber-emerald text-[10px]">KERNEL: SECURE</div>
-                <div class="font-mono text-cyber-emerald text-[10px]">MCP: CONNECTED</div>
+                <div class="font-mono text-cyber-emerald text-[10px]">CATÁLOGO: READY</div>
+                <div class="font-mono text-slate-500 text-[10px]">SOURCE: LOCAL DATA</div>
             </div>
         </div>
     </aside>
@@ -115,48 +161,64 @@
             
             <!-- Hero Section -->
             <div class="mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">DevSecOps & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">AI Agents</span> Wiki</h2>
-                <p class="text-slate-400 max-w-3xl text-sm md:text-base leading-relaxed">
-                    Directorio consultivo y libro de jugadas (playbook) para ingenieros de confiabilidad (SRE) y arquitectos de seguridad. 
-                    Despliegue, aísle y audite flotas de agentes autónomos y herramientas de infraestructura bajo principios de Zero-Trust.
+                <h2 id="pageTitle" class="text-3xl md:text-4xl font-bold text-white mb-3">DevSecOps & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">AI Agents</span> Wiki</h2>
+                <p id="pageDescription" class="text-slate-400 max-w-3xl text-sm md:text-base leading-relaxed">
+                    Directorio consultivo y playbook para descubrir, comparar y operar herramientas de agentes, seguridad, datos y automatización.
                 </p>
             </div>
 
-            <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <!-- Stats Row: calculadas desde resourcesData -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-cyan mb-1"><i class="fa-solid fa-robot"></i> Agentes Aislados</div>
-                    <div class="text-2xl font-bold text-white font-mono">1,204</div>
+                    <div class="text-cyber-cyan mb-1 text-sm"><i class="fa-solid fa-layer-group"></i> Recursos catalogados</div>
+                    <div id="statResources" class="text-2xl font-bold text-white font-mono">—</div>
                 </div>
                 <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-emerald mb-1"><i class="fa-solid fa-check-double"></i> Enlaces Auditados</div>
-                    <div class="text-2xl font-bold text-white font-mono">99.9%</div>
+                    <div class="text-cyber-emerald mb-1 text-sm"><i class="fa-brands fa-github"></i> Repos GitHub</div>
+                    <div id="statGithub" class="text-2xl font-bold text-white font-mono">—</div>
                 </div>
                 <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-purple mb-1"><i class="fa-solid fa-plug"></i> MCP Servers</div>
-                    <div class="text-2xl font-bold text-white font-mono">42 Activos</div>
+                    <div class="text-cyber-purple mb-1 text-sm"><i class="fa-solid fa-plug"></i> Recursos MCP</div>
+                    <div id="statMcp" class="text-2xl font-bold text-white font-mono">—</div>
                 </div>
                 <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-yellow-500 mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Syscalls Bloqueadas</div>
-                    <div class="text-2xl font-bold text-white font-mono">8,932</div>
+                    <div class="text-yellow-500 mb-1 text-sm"><i class="fa-solid fa-magnifying-glass-chart"></i> Research / Web Data</div>
+                    <div id="statResearch" class="text-2xl font-bold text-white font-mono">—</div>
                 </div>
             </div>
+
+            <!-- Contexto de la vista -->
+            <section id="viewContext" class="view-context border border-slate-700/80 rounded-xl p-4 md:p-5 mb-6 flex flex-col md:flex-row md:items-center gap-4" aria-live="polite">
+                <div id="viewIcon" class="w-11 h-11 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyber-cyan flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 id="viewTitle" class="text-white font-semibold">Catálogo completo</h3>
+                        <span id="viewResultCount" class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-slate-700 text-slate-400">0 recursos</span>
+                    </div>
+                    <p id="viewDescription" class="text-sm text-slate-400 leading-relaxed">Explora todo el inventario y usa categorías o búsqueda para reducir resultados.</p>
+                </div>
+                <button id="clearViewBtn" type="button" class="hidden text-xs font-medium text-cyber-cyan hover:text-white transition-colors whitespace-nowrap">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver al catálogo
+                </button>
+            </section>
 
             <!-- Filter Bar -->
             <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                 <div class="flex space-x-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700 w-full sm:w-auto overflow-x-auto">
-                    <button onclick="filterCatalog('all')" class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-700 text-white whitespace-nowrap" data-filter="all">Todos</button>
-                    <button onclick="filterCatalog('security')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="security">Seguridad & Ecosistema</button>
-                    <button onclick="filterCatalog('ai')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="ai">IA & Agentes</button>
-                    <button onclick="filterCatalog('dev')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="dev">Desarrollo & Datos</button>
-                    <button onclick="filterCatalog('learn')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
-                    <button onclick="filterCatalog('explore')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
-                    <button onclick="filterCatalog('design')" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
+                    <button onclick="filterCatalog('all')" aria-pressed="true" class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-700 text-white whitespace-nowrap" data-filter="all">Todos</button>
+                    <button onclick="filterCatalog('security')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="security">Seguridad & Ecosistema</button>
+                    <button onclick="filterCatalog('ai')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="ai">IA & Agentes</button>
+                    <button onclick="filterCatalog('dev')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="dev">Desarrollo & Datos</button>
+                    <button onclick="filterCatalog('learn')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
+                    <button onclick="filterCatalog('explore')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
+                    <button onclick="filterCatalog('design')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
                 </div>
                 
                 <div class="relative w-full sm:w-64">
                     <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar herramientas..." class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors placeholder-slate-500">
+                    <input type="search" id="searchInput" placeholder="Buscar en el catálogo..." autocomplete="off" aria-label="Buscar recursos" class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30 transition-colors placeholder-slate-500">
                 </div>
             </div>
 
@@ -171,11 +233,11 @@
                         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
-                    <span class="text-xs text-slate-500 font-mono ml-2">devsecops@agentsec: ~</span>
+                    <span class="text-xs text-slate-500 font-mono ml-2">playbook-demo@agentsec: ~ · EJEMPLO</span>
                 </div>
                 <div class="p-4 font-mono text-sm text-slate-300 overflow-x-auto">
                     <div class="text-cyber-cyan mb-1">$ ./auditor.sh --check-mcp-servers</div>
-                    <div class="text-slate-400 mb-3">[+] Scanning local network for open MCP ports...</div>
+                    <div class="text-slate-400 mb-3">[demo] Flujo ilustrativo; no representa telemetría en vivo.</div>
                     <div class="text-cyber-emerald mb-1">[OK] GitHub Server (stdio) - Secure</div>
                     <div class="text-cyber-emerald mb-1">[OK] PostgreSQL Server (stdio) - Secure</div>
                     <div class="text-cyber-cyan mb-1 mt-4">$ curl -s "http://qr.liantu.com/api.php?text=DEMO_AUTH_TOKEN" > auth_qr.png</div>
@@ -364,6 +426,11 @@
             { title: "OverAPI", desc: "Cheat sheets para desarrolladores.", url: "https://overapi.com", category: "dev", icon: "fa-list", tag: "Docs" },
             { title: "Sitemap.org", desc: "Aprende cómo funcionan los sitemaps.", url: "https://sitemap.org", category: "dev", icon: "fa-sitemap", tag: "SEO" },
             
+            // Research / Web Data (Repos verificados)
+            { title: "Agent-Reach", desc: "CLI para dar a agentes acceso unificado de lectura y búsqueda en X/Twitter, Reddit, YouTube, GitHub y otras plataformas, sin depender de una API de pago única.", url: "https://github.com/Panniantong/Agent-Reach", category: "dev", icon: "fa-magnifying-glass-chart", tag: "Research / Web Data" },
+            { title: "Patchright Enhanced", desc: "Framework de automatización de navegador basado en Patchright, orientado a sesiones Chrome con técnicas stealth para QA, monitoring y scraping.", url: "https://github.com/whaleyxbt/patchright-enhanced", category: "dev", icon: "fa-globe", tag: "Browser Automation" },
+            { title: "Scrapling", desc: "Framework adaptativo de web scraping y crawling en Python: extracción, fetchers, spiders, rotación de proxies, CLI y soporte MCP para flujos con agentes.", url: "https://github.com/D4Vinci/Scrapling", category: "dev", icon: "fa-spider", tag: "Scraping / MCP" },
+
             // Proyectos de GitHub (Desarrollo)
             { title: "GenAI Agents (Nir Diamant)", desc: "Guías avanzadas sobre agentes.", url: "https://github.com/NirDiamant/GenAI_Agents", category: "dev", icon: "fa-github", tag: "Repo" },
             { title: "AI Agents for Beginners", desc: "Curso oficial de Microsoft.", url: "https://github.com/microsoft/ai-agents-for-beginners", category: "dev", icon: "fa-github", tag: "Repo" },
@@ -429,7 +496,7 @@
             grid.innerHTML = '';
             
             if (data.length === 0) {
-                grid.innerHTML = '<div class="col-span-full text-center text-slate-500 py-10">No se encontraron recursos.</div>';
+                grid.innerHTML = '<div class="col-span-full glass-panel rounded-xl p-10 text-center"><div class="w-12 h-12 mx-auto mb-3 rounded-full bg-slate-800 flex items-center justify-center text-slate-500"><i class="fa-solid fa-magnifying-glass"></i></div><h3 class="text-white font-semibold mb-1">Sin resultados</h3><p class="text-slate-500 text-sm">Prueba otra búsqueda, categoría o vuelve al catálogo completo.</p></div>';
                 return;
             }
 
@@ -457,44 +524,147 @@
             });
         }
 
-        /* Inicializar el panel completo */
-        renderCards(resourcesData);
-
-        function filterCatalog(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                if (btn.dataset.filter === category) {
-                    btn.classList.add('bg-slate-700', 'text-white');
-                    btn.classList.remove('text-slate-400', 'bg-transparent');
-                } else {
-                    btn.classList.remove('bg-slate-700', 'text-white');
-                    btn.classList.add('text-slate-400', 'bg-transparent');
-                }
-            });
-
-            if (category === 'all') {
-                renderCards(resourcesData);
-            } else {
-                const filtered = resourcesData.filter(item => item.category === category);
-                renderCards(filtered);
+        const viewDefinitions = {
+            catalog: {
+                title: 'Catálogo completo',
+                description: 'Explora todo el inventario y usa categorías o búsqueda para reducir resultados.',
+                icon: 'fa-layer-group',
+                keywords: []
+            },
+            mcp: {
+                title: 'Arquitecturas MCP',
+                description: 'Servidores, clientes, herramientas y referencias relacionadas con Model Context Protocol y conectividad de agentes.',
+                icon: 'fa-network-wired',
+                keywords: ['mcp', 'model context protocol', 'server', 'servidor', 'stdio']
+            },
+            sandbox: {
+                title: 'Sandboxes & ejecución aislada',
+                description: 'Herramientas para aislar agentes, automatizar navegadores y ejecutar código con menor superficie de riesgo.',
+                icon: 'fa-microchip',
+                keywords: ['sandbox', 'openshell', 'isolation', 'aislad', 'kernel', 'container', 'browser automation', 'patchright', 'playwright']
+            },
+            policy: {
+                title: 'Políticas & gobierno',
+                description: 'Recursos para auditoría, permisos, guardrails, secretos, policy-as-code y controles de seguridad en flujos agénticos.',
+                icon: 'fa-file-shield',
+                keywords: ['policy', 'política', 'audit', 'auditor', 'guardrail', 'permission', 'permiso', 'secret', 'zero-trust', 'security', 'seguridad', 'ci/cd', 'gobernanza']
             }
+        };
+
+        let currentView = 'catalog';
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        function normalizeText(value) {
+            return (value || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            // Reiniciar botones visualmente a 'Todos' si se está buscando
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-slate-700', 'text-white');
-                btn.classList.add('text-slate-400');
-            });
-            document.querySelector('[data-filter="all"]').classList.add('bg-slate-700', 'text-white');
+        function matchesView(item, viewKey) {
+            if (viewKey === 'catalog') return true;
+            const view = viewDefinitions[viewKey];
+            const haystack = normalizeText([item.title, item.desc, item.tag, item.category].join(' '));
+            return view.keywords.some(keyword => haystack.includes(normalizeText(keyword)));
+        }
 
-            const filtered = resourcesData.filter(item => 
-                item.title.toLowerCase().includes(searchTerm) || 
-                item.desc.toLowerCase().includes(searchTerm) ||
-                item.tag.toLowerCase().includes(searchTerm)
-            );
-            renderCards(filtered);
+        function dataForView(viewKey) {
+            return resourcesData.filter(item => matchesView(item, viewKey));
+        }
+
+        function getVisibleData() {
+            return resourcesData.filter(item => {
+                if (!matchesView(item, currentView)) return false;
+                if (currentCategory !== 'all' && item.category !== currentCategory) return false;
+                if (!currentSearch) return true;
+                const haystack = normalizeText([item.title, item.desc, item.tag].join(' '));
+                return haystack.includes(normalizeText(currentSearch));
+            });
+        }
+
+        function setActiveFilter(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const active = btn.dataset.filter === category;
+                btn.classList.toggle('bg-slate-700', active);
+                btn.classList.toggle('text-white', active);
+                btn.classList.toggle('text-slate-400', !active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
+
+        function updateSidebar() {
+            document.querySelectorAll('.sidebar-nav').forEach(btn => {
+                const active = btn.dataset.view === currentView;
+                btn.classList.toggle('is-active', active);
+                if (active) btn.setAttribute('aria-current', 'page');
+                else btn.removeAttribute('aria-current');
+            });
+        }
+
+        function updateViewContext(visibleCount) {
+            const view = viewDefinitions[currentView];
+            document.getElementById('viewTitle').textContent = view.title;
+            document.getElementById('viewDescription').textContent = view.description;
+            document.getElementById('viewResultCount').textContent = visibleCount + (visibleCount === 1 ? ' recurso' : ' recursos');
+            document.getElementById('viewIcon').innerHTML = '<i class="fa-solid ' + view.icon + '"></i>';
+            document.getElementById('clearViewBtn').classList.toggle('hidden', currentView === 'catalog');
+            document.getElementById('searchInput').placeholder = currentView === 'catalog'
+                ? 'Buscar en el catálogo...'
+                : 'Buscar en ' + view.title.toLowerCase() + '...';
+        }
+
+        function updateStats() {
+            const githubCount = resourcesData.filter(item => item.url.includes('github.com/')).length;
+            const mcpCount = dataForView('mcp').length;
+            const researchCount = resourcesData.filter(item => {
+                const text = normalizeText([item.title, item.desc, item.tag].join(' '));
+                return ['research', 'web data', 'scrap', 'crawler', 'reddit', 'youtube', 'twitter', 'x/twitter'].some(k => text.includes(k));
+            }).length;
+            document.getElementById('statResources').textContent = resourcesData.length.toLocaleString('es-MX');
+            document.getElementById('statGithub').textContent = githubCount.toLocaleString('es-MX');
+            document.getElementById('statMcp').textContent = mcpCount.toLocaleString('es-MX');
+            document.getElementById('statResearch').textContent = researchCount.toLocaleString('es-MX');
+            document.getElementById('navCountMcp').textContent = mcpCount;
+            document.getElementById('navCountSandbox').textContent = dataForView('sandbox').length;
+            document.getElementById('navCountPolicy').textContent = dataForView('policy').length;
+        }
+
+        function renderCurrentState() {
+            const visible = getVisibleData();
+            renderCards(visible);
+            updateSidebar();
+            updateViewContext(visible.length);
+            setActiveFilter(currentCategory);
+        }
+
+        function setView(viewKey) {
+            if (!viewDefinitions[viewKey]) return;
+            currentView = viewKey;
+            currentCategory = 'all';
+            currentSearch = '';
+            document.getElementById('searchInput').value = '';
+            renderCurrentState();
+
+            if (window.innerWidth < 768 && !sidebar.classList.contains('hidden')) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('absolute', 'z-50', 'h-screen');
+            }
+
+            document.getElementById('viewContext').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function filterCatalog(category) {
+            currentCategory = category;
+            renderCurrentState();
+        }
+
+        document.querySelectorAll('.sidebar-nav').forEach(btn => {
+            btn.addEventListener('click', () => setView(btn.dataset.view));
+        });
+
+        document.getElementById('clearViewBtn').addEventListener('click', () => setView('catalog'));
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearch = e.target.value.trim();
+            renderCurrentState();
         });
 
         // Menú móvil
@@ -507,6 +677,9 @@
             sidebar.classList.toggle('z-50');
             sidebar.classList.toggle('h-screen');
         });
+
+        updateStats();
+        renderCurrentState();
     </script>
 </body>
 </html>
