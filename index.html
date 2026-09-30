@@ -81,6 +81,60 @@
         }
         .tool-card { transform: translateY(0); }
         .tool-card:hover { transform: translateY(-2px); }
+        .mcp-architecture {
+            background:
+                radial-gradient(circle at 20% 0%, rgba(6,182,212,.09), transparent 28%),
+                radial-gradient(circle at 85% 100%, rgba(139,92,246,.10), transparent 30%),
+                rgba(15,23,42,.72);
+        }
+        .arch-node {
+            background: rgba(30,41,59,.72);
+            border: 1px solid rgba(71,85,105,.78);
+            min-height: 132px;
+        }
+        .arch-node:hover {
+            border-color: rgba(6,182,212,.45);
+            box-shadow: 0 0 20px rgba(6,182,212,.08);
+        }
+        .arch-connector {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(6,182,212,.25), rgba(6,182,212,.9));
+        }
+        .arch-connector::after {
+            content: "";
+            position: absolute;
+            right: -1px;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #06b6d4;
+            border-right: 2px solid #06b6d4;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .trust-chip {
+            background: rgba(15,23,42,.76);
+            border: 1px solid rgba(71,85,105,.72);
+        }
+        .mcp-mode-btn[aria-pressed="true"] {
+            background: rgba(6,182,212,.12);
+            border-color: rgba(6,182,212,.32);
+            color: #67e8f9;
+        }
+        @media (max-width: 1023px) {
+            .arch-connector {
+                width: 2px !important;
+                height: 24px;
+                margin: 0 auto;
+                background: linear-gradient(180deg, rgba(6,182,212,.25), rgba(6,182,212,.9));
+            }
+            .arch-connector::after {
+                right: 50%;
+                top: auto;
+                bottom: -1px;
+                transform: translateX(50%) rotate(135deg);
+            }
+        }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
         }
@@ -204,6 +258,139 @@
                 </button>
             </section>
 
+            <!-- MCP Architecture View -->
+            <section id="mcpArchitecturePanel" class="hidden mcp-architecture border border-slate-700/80 rounded-2xl p-4 md:p-6 mb-6 shadow-2xl" aria-labelledby="mcpArchitectureTitle">
+                <div class="flex flex-col xl:flex-row xl:items-start justify-between gap-4 mb-6">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-cyber-cyan border border-cyber-cyan/20 bg-cyber-cyan/10 px-2 py-1 rounded">Reference Architecture</span>
+                            <span class="text-[10px] font-mono text-slate-500">MCP · 2026</span>
+                        </div>
+                        <h3 id="mcpArchitectureTitle" class="text-xl md:text-2xl font-bold text-white">Cómo fluye una conexión MCP</h3>
+                        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                            Un host de IA crea un cliente MCP que se comunica con un servidor mediante un transporte. El servidor expone capacidades controladas —como tools, resources y prompts— hacia sistemas y datos concretos.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2" role="group" aria-label="Modo de arquitectura MCP">
+                        <button type="button" class="mcp-mode-btn text-xs px-3 py-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white transition-colors" data-mcp-mode="remote" aria-pressed="true">
+                            <i class="fa-solid fa-cloud mr-1.5"></i>Remoto HTTP
+                        </button>
+                        <button type="button" class="mcp-mode-btn text-xs px-3 py-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white transition-colors" data-mcp-mode="local" aria-pressed="false">
+                            <i class="fa-solid fa-terminal mr-1.5"></i>Local stdio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-[1fr_38px_1fr_38px_1fr_38px_1fr] items-stretch gap-3 lg:gap-0" aria-label="Diagrama de arquitectura MCP">
+                    <article class="arch-node rounded-xl p-4 transition-all">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-cyber-purple/10 border border-cyber-purple/20 text-cyber-purple flex items-center justify-center">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-600">01</span>
+                        </div>
+                        <h4 class="text-white font-semibold mt-4">Host / Agente</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Aplicación de IA que decide cuándo necesita contexto o una acción externa.</p>
+                    </article>
+                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
+
+                    <article class="arch-node rounded-xl p-4 transition-all">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyber-cyan flex items-center justify-center">
+                                <i class="fa-solid fa-plug"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-600">02</span>
+                        </div>
+                        <h4 class="text-white font-semibold mt-4">MCP Client</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Mantiene la conexión lógica y envía solicitudes al servidor MCP autorizado.</p>
+                    </article>
+                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
+
+                    <article class="arch-node rounded-xl p-4 transition-all border-cyber-cyan/20">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 flex items-center justify-center">
+                                <i id="mcpTransportIcon" class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-600">03</span>
+                        </div>
+                        <h4 id="mcpTransportTitle" class="text-white font-semibold mt-4">Streamable HTTP</h4>
+                        <p id="mcpTransportDescription" class="text-xs text-slate-500 mt-1 leading-relaxed">Transporte recomendado para un servidor MCP remoto. La autorización se aplica en este límite de confianza.</p>
+                    </article>
+                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
+
+                    <article class="arch-node rounded-xl p-4 transition-all">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-cyber-emerald/10 border border-cyber-emerald/20 text-cyber-emerald flex items-center justify-center">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-600">04</span>
+                        </div>
+                        <h4 class="text-white font-semibold mt-4">MCP Server</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Expone únicamente las capacidades que el host puede descubrir y utilizar.</p>
+                    </article>
+                </div>
+
+                <div class="mt-4 grid md:grid-cols-3 gap-3">
+                    <div class="trust-chip rounded-xl p-4">
+                        <div class="flex items-center gap-2 text-cyber-cyan text-sm font-semibold">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Tools
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">Acciones ejecutables con esquema de entrada definido y validación del servidor.</p>
+                    </div>
+                    <div class="trust-chip rounded-xl p-4">
+                        <div class="flex items-center gap-2 text-cyber-purple text-sm font-semibold">
+                            <i class="fa-solid fa-database"></i> Resources
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">Datos y contenido que el servidor hace accesibles mediante interfaces MCP.</p>
+                    </div>
+                    <div class="trust-chip rounded-xl p-4">
+                        <div class="flex items-center gap-2 text-cyber-emerald text-sm font-semibold">
+                            <i class="fa-solid fa-message"></i> Prompts
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2">Plantillas y flujos de interacción expuestos por el servidor cuando aplica.</p>
+                    </div>
+                </div>
+
+                <div class="mt-5 border-t border-slate-800 pt-5">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <h4 class="text-sm font-semibold text-white"><i class="fa-solid fa-shield-halved text-cyber-emerald mr-2"></i>Límites de confianza</h4>
+                        <span id="mcpTrustLabel" class="text-[10px] font-mono text-cyber-emerald border border-cyber-emerald/20 bg-cyber-emerald/10 px-2 py-1 rounded">REMOTE BOUNDARY</span>
+                    </div>
+                    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-2">
+                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
+                            <div class="text-xs text-white font-medium">Autorización</div>
+                            <div id="mcpAuthText" class="text-[11px] text-slate-500 mt-1">OAuth / credenciales verificadas para servidores remotos.</div>
+                        </div>
+                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
+                            <div class="text-xs text-white font-medium">Mínimo privilegio</div>
+                            <div class="text-[11px] text-slate-500 mt-1">Expón solo tools y datos necesarios para el caso de uso.</div>
+                        </div>
+                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
+                            <div class="text-xs text-white font-medium">Validación</div>
+                            <div class="text-[11px] text-slate-500 mt-1">Valida argumentos, identidad, origen y límites antes de ejecutar.</div>
+                        </div>
+                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
+                            <div class="text-xs text-white font-medium">Auditoría</div>
+                            <div class="text-[11px] text-slate-500 mt-1">Registra llamadas sensibles sin volcar secretos ni tokens en logs.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <p class="text-[11px] text-slate-600 max-w-2xl">
+                        Arquitectura de referencia: adapta autenticación, aislamiento y permisos al riesgo real de cada servidor.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://ts.sdk.modelcontextprotocol.io/v2/" target="_blank" rel="noopener noreferrer" class="text-xs text-cyber-cyan hover:text-white transition-colors">
+                            SDK oficial MCP <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                        <a href="https://registry.modelcontextprotocol.io/docs" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-400 hover:text-white transition-colors">
+                            Registry oficial <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             <!-- Filter Bar -->
             <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                 <div class="flex space-x-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700 w-full sm:w-auto overflow-x-auto">
@@ -259,6 +446,8 @@
     <script>
         const resourcesData = [
             // Ecosistema E: Seguridad y Core (Manual)
+            { title: "MCP TypeScript SDK v2", desc: "Documentación oficial de la línea estable del SDK MCP: clientes, servidores, transports, tools, resources, prompts y versiones del protocolo.", url: "https://ts.sdk.modelcontextprotocol.io/v2/", category: "learn", icon: "fa-plug", tag: "MCP Oficial" },
+            { title: "Official MCP Registry", desc: "Registro oficial para descubrir y consultar servidores publicados del ecosistema Model Context Protocol.", url: "https://registry.modelcontextprotocol.io/docs", category: "dev", icon: "fa-server", tag: "MCP Registry" },
             { title: "NVIDIA OpenShell", desc: "Runtime de código abierto para ejecutar flotas de agentes autónomos en entornos aislados con protección a nivel de kernel.", url: "https://docs.nvidia.com/openshell/latest", category: "security", icon: "fa-shield-virus", tag: "Kernel Isolation" },
             { title: "Second Brain OS", desc: "Guía completa de agentes de IA (7 módulos, 21 lecciones) y plugins de auditoría (context-audit, loop-critic).", url: "https://github.com/undefined-ui/second-brain-os", category: "security", icon: "fa-brain", tag: "Agentes OS" },
             { title: "Wireshark", desc: "Analizador de red para capturar, inspeccionar (DNS, TCP, TLS) y auditar protocolos de seguridad en tiempo real.", url: "https://www.wireshark.org/", category: "security", icon: "fa-network-wired", tag: "Auditoría Red" },
@@ -535,7 +724,7 @@
                 title: 'Arquitecturas MCP',
                 description: 'Servidores, clientes, herramientas y referencias relacionadas con Model Context Protocol y conectividad de agentes.',
                 icon: 'fa-network-wired',
-                keywords: ['mcp', 'model context protocol', 'server', 'servidor', 'stdio']
+                keywords: ['mcp', 'model context protocol', 'stdio', 'streamable http']
             },
             sandbox: {
                 title: 'Sandboxes & ejecución aislada',
@@ -633,6 +822,7 @@
             updateSidebar();
             updateViewContext(visible.length);
             setActiveFilter(currentCategory);
+            document.getElementById('mcpArchitecturePanel').classList.toggle('hidden', currentView !== 'mcp');
         }
 
         function setView(viewKey) {
@@ -665,6 +855,28 @@
         document.getElementById('searchInput').addEventListener('input', (e) => {
             currentSearch = e.target.value.trim();
             renderCurrentState();
+        });
+
+        function setMcpArchitectureMode(mode) {
+            const isRemote = mode === 'remote';
+            document.querySelectorAll('.mcp-mode-btn').forEach(btn => {
+                btn.setAttribute('aria-pressed', btn.dataset.mcpMode === mode ? 'true' : 'false');
+            });
+            document.getElementById('mcpTransportTitle').textContent = isRemote ? 'Streamable HTTP' : 'stdio';
+            document.getElementById('mcpTransportDescription').textContent = isRemote
+                ? 'Transporte para un servidor MCP remoto. La autorización y la seguridad HTTP viven en este límite de confianza.'
+                : 'El cliente inicia un servidor MCP como subproceso local y se comunica por stdin/stdout.';
+            document.getElementById('mcpTransportIcon').className = isRemote
+                ? 'fa-solid fa-cloud-arrow-up'
+                : 'fa-solid fa-terminal';
+            document.getElementById('mcpTrustLabel').textContent = isRemote ? 'REMOTE BOUNDARY' : 'LOCAL PROCESS';
+            document.getElementById('mcpAuthText').textContent = isRemote
+                ? 'OAuth / credenciales verificadas para servidores remotos.'
+                : 'Controla binario, argumentos, entorno heredado y permisos del subproceso.';
+        }
+
+        document.querySelectorAll('.mcp-mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => setMcpArchitectureMode(btn.dataset.mcpMode));
         });
 
         // Menú móvil
