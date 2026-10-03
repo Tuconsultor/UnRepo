@@ -401,6 +401,7 @@
                     <button onclick="filterCatalog('learn')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
                     <button onclick="filterCatalog('explore')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
                     <button onclick="filterCatalog('design')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
+                    <button onclick="filterCatalog('evals')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap border border-cyber-purple/20" data-filter="evals"><i class="fa-solid fa-flask-vial mr-1.5 text-cyber-purple"></i>AI Evals & Observability</button>
                 </div>
                 
                 <div class="relative w-full sm:w-64">
@@ -409,7 +410,17 @@
                 </div>
             </div>
 
-            <!-- Catalog Grid -->
+            <div id="evalSubfilters" class="hidden mb-6 flex flex-wrap items-center gap-2" aria-label="Filtros de AI Evaluation">
+                <span class="text-[10px] uppercase tracking-[0.16em] text-slate-600 font-semibold mr-1">Especialidad</span>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-cyber-purple/30 bg-cyber-purple/10 text-purple-200" data-eval="all" aria-pressed="true">Todos</button>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="testing" aria-pressed="false">Testing</button>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="redteam" aria-pressed="false">Red Team</button>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="rag" aria-pressed="false">RAG</button>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="tracing" aria-pressed="false">Tracing</button>
+                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="monitoring" aria-pressed="false">Monitoring</button>
+            </div>
+
+                        <!-- Catalog Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid">
             </div>
             
@@ -779,6 +790,15 @@
         let currentView = 'catalog';
         let currentCategory = 'all';
         let currentSearch = '';
+        let currentEval = 'all';
+        const evalTitles = new Set(['DeepEval','Promptfoo','Ragas','Opik','Arize Phoenix','Inspect AI','TruLens','OpenAI Evals','Giskard','Evidently']);
+        const evalGroups = {
+            testing: new Set(['DeepEval','Promptfoo','Ragas','Inspect AI','TruLens','OpenAI Evals','Giskard','Evidently']),
+            redteam: new Set(['Promptfoo','Giskard','Inspect AI']),
+            rag: new Set(['DeepEval','Ragas','TruLens','Giskard']),
+            tracing: new Set(['Opik','Arize Phoenix','TruLens']),
+            monitoring: new Set(['Opik','Arize Phoenix','TruLens','Evidently'])
+        };
 
         function normalizeText(value) {
             return (value || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -798,7 +818,9 @@
         function getVisibleData() {
             return resourcesData.filter(item => {
                 if (!matchesView(item, currentView)) return false;
-                if (currentCategory !== 'all' && item.category !== currentCategory) return false;
+                if (currentCategory === 'evals' && !evalTitles.has(item.title)) return false;
+                if (currentCategory !== 'all' && currentCategory !== 'evals' && item.category !== currentCategory) return false;
+                if (currentCategory === 'evals' && currentEval !== 'all' && !evalGroups[currentEval].has(item.title)) return false;
                 if (!currentSearch) return true;
                 const haystack = normalizeText([item.title, item.desc, item.tag].join(' '));
                 return haystack.includes(normalizeText(currentSearch));
@@ -879,8 +901,24 @@
 
         function filterCatalog(category) {
             currentCategory = category;
+            currentEval = 'all';
+            document.getElementById('evalSubfilters').classList.toggle('hidden', category !== 'evals');
             renderCurrentState();
         }
+
+        document.querySelectorAll('.eval-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentEval = btn.dataset.eval;
+                document.querySelectorAll('.eval-chip').forEach(chip => {
+                    const active = chip === btn;
+                    chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+                    chip.classList.toggle('bg-cyber-purple/10', active);
+                    chip.classList.toggle('text-purple-200', active);
+                    chip.classList.toggle('text-slate-400', !active);
+                });
+                renderCurrentState();
+            });
+        });
 
         document.querySelectorAll('.sidebar-nav').forEach(btn => {
             btn.addEventListener('click', () => setView(btn.dataset.view));
