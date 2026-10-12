@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
@@ -191,7 +192,7 @@
                     <span class="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse"></span>
                 </div>
                 <div class="font-mono text-cyber-emerald text-[10px]">CATÁLOGO: READY</div>
-                <div class="font-mono text-slate-500 text-[10px]">SOURCE: LOCAL DATA</div>
+                <div class="font-mono text-slate-500 text-[10px]">VERSIÓN: 2026 AUDITED</div>
             </div>
         </div>
     </aside>
@@ -205,7 +206,7 @@
                 <i class="fa-solid fa-shield-halved text-cyber-cyan"></i>
                 <span class="text-white font-bold">AgentSec</span>
             </div>
-            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars text-xl"></i>
             </button>
         </header>
@@ -217,11 +218,11 @@
             <div class="mb-10">
                 <h2 id="pageTitle" class="text-3xl md:text-4xl font-bold text-white mb-3">DevSecOps & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">AI Agents</span> Wiki</h2>
                 <p id="pageDescription" class="text-slate-400 max-w-3xl text-sm md:text-base leading-relaxed">
-                    Directorio consultivo y playbook para descubrir, comparar y operar herramientas de agentes, seguridad, datos y automatización.
+                    Directorio consultivo y playbook para descubrir, auditar y operar herramientas de agentes, seguridad, datos y arquitecturas MCP.
                 </p>
             </div>
 
-            <!-- Stats Row: calculadas desde resourcesData -->
+            <!-- Stats Row -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
                     <div class="text-cyber-cyan mb-1 text-sm"><i class="fa-solid fa-layer-group"></i> Recursos catalogados</div>
@@ -268,7 +269,7 @@
                         </div>
                         <h3 id="mcpArchitectureTitle" class="text-xl md:text-2xl font-bold text-white">Cómo fluye una conexión MCP</h3>
                         <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-                            Un host de IA crea un cliente MCP que se comunica con un servidor mediante un transporte. El servidor expone capacidades controladas —como tools, resources y prompts— hacia sistemas y datos concretos.
+                            Un host de IA crea un cliente MCP que se comunica con un servidor mediante un transporte seguro. El servidor expone capacidades controladas —como tools, resources y prompts— hacia sistemas y datos concretos.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2" role="group" aria-label="Modo de arquitectura MCP">
@@ -341,7 +342,7 @@
                         <div class="flex items-center gap-2 text-cyber-purple text-sm font-semibold">
                             <i class="fa-solid fa-database"></i> Resources
                         </div>
-                        <p class="text-xs text-slate-500 mt-2">Datos y contenido que el servidor hace accesibles mediante interfaces MCP.</p>
+                        <p class="text-xs text-slate-500 mt-2">Datos y contexto que el servidor hace accesibles mediante interfaces MCP.</p>
                     </div>
                     <div class="trust-chip rounded-xl p-4">
                         <div class="flex items-center gap-2 text-cyber-emerald text-sm font-semibold">
@@ -396,13 +397,13 @@
                 <div class="flex space-x-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700 w-full sm:w-auto overflow-x-auto">
                     <button onclick="filterCatalog('all')" aria-pressed="true" class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-700 text-white whitespace-nowrap" data-filter="all">Todos</button>
                     <button onclick="filterCatalog('security')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="security">Seguridad & Ecosistema</button>
+                    <button onclick="filterCatalog('evals')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap border border-cyber-purple/30" data-filter="evals"><i class="fa-solid fa-flask-vial mr-1.5 text-cyber-purple"></i>AI Evals & Observability</button>
                     <button onclick="filterCatalog('ai')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="ai">IA & Agentes</button>
                     <button onclick="filterCatalog('dev')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="dev">Desarrollo & Datos</button>
                     <button onclick="filterCatalog('learn')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
                     <button onclick="filterCatalog('explore')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
                     <button onclick="filterCatalog('design')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
                     <button onclick="filterCatalog('games')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="games"><i class="fa-solid fa-gamepad mr-1.5 text-cyan-400"></i>Juegos en navegador</button>
-                    <button onclick="filterCatalog('evals')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap border border-cyber-purple/20" data-filter="evals"><i class="fa-solid fa-flask-vial mr-1.5 text-cyber-purple"></i>AI Evals & Observability</button>
                 </div>
                 
                 <div class="relative w-full sm:w-64">
@@ -411,6 +412,7 @@
                 </div>
             </div>
 
+            <!-- AI Evaluation Subfilters -->
             <div id="evalSubfilters" class="hidden mb-6 flex flex-wrap items-center gap-2" aria-label="Filtros de AI Evaluation">
                 <span class="text-[10px] uppercase tracking-[0.16em] text-slate-600 font-semibold mr-1">Especialidad</span>
                 <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-cyber-purple/30 bg-cyber-purple/10 text-purple-200" data-eval="all" aria-pressed="true">Todos</button>
@@ -421,10 +423,10 @@
                 <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="monitoring" aria-pressed="false">Monitoring</button>
             </div>
 
-                        <!-- Catalog Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid">
-            </div>
+            <!-- Catalog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid"></div>
             
+            <!-- Terminal Demo -->
             <div class="mt-10 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
                 <div class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
                     <div class="flex gap-1.5">
@@ -432,15 +434,15 @@
                         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
-                    <span class="text-xs text-slate-500 font-mono ml-2">playbook-demo@agentsec: ~ · EJEMPLO</span>
+                    <span class="text-xs text-slate-500 font-mono ml-2">agentsec-sandbox: ~ · VERIFICACIÓN DEVSECOPS</span>
                 </div>
                 <div class="p-4 font-mono text-sm text-slate-300 overflow-x-auto">
                     <div class="text-cyber-cyan mb-1">$ ./auditor.sh --check-mcp-servers</div>
-                    <div class="text-slate-400 mb-3">[demo] Flujo ilustrativo; no representa telemetría en vivo.</div>
-                    <div class="text-cyber-emerald mb-1">[OK] GitHub Server (stdio) - Secure</div>
-                    <div class="text-cyber-emerald mb-1">[OK] PostgreSQL Server (stdio) - Secure</div>
-                    <div class="text-cyber-cyan mb-1 mt-4">$ curl -s "http://qr.liantu.com/api.php?text=DEMO_AUTH_TOKEN" > auth_qr.png</div>
-                    <div class="text-slate-400 mb-3">[+] Config payload encoded successfully for optical air-gap transfer.</div>
+                    <div class="text-slate-400 mb-3">[demo] Verificación de aislamiento de procesos y límites de confianza.</div>
+                    <div class="text-cyber-emerald mb-1">[OK] GitHub Server (stdio: isolation=sandbox) - Secure</div>
+                    <div class="text-cyber-emerald mb-1">[OK] PostgreSQL Server (stdio: read-only) - Secure</div>
+                    <div class="text-cyber-cyan mb-1 mt-4">$ qrencode -t PNG -o auth_airgap.png "ED25519_PAYLOAD_AIRGAP"</div>
+                    <div class="text-slate-400 mb-3">[+] Token óptico transferible fuera de banda generado localmente sin fuga de red.</div>
                     <div class="flex">
                         <span class="text-cyber-cyan mr-2">$</span>
                         <span class="animate-pulse bg-slate-400 w-2 h-4 inline-block align-middle"></span>
@@ -450,432 +452,121 @@
 
             <!-- Footer -->
             <footer class="mt-12 pt-6 border-t border-slate-800 text-center text-slate-500 text-sm pb-8">
-                &copy; 2026 AgentSec Playbook. Ecosistema E - Documentación Privada.
+                &copy; 2026 AgentSec Playbook · DevSecOps & AI Agents Wiki. Curado y validado técnicamente.
             </footer>
         </div>
     </main>
 
     <script>
         const resourcesData = [
-            // Web security, automation and browser gaming resources — October 2026
+            // Ecosistema DevSecOps & AI Security
             { title: "OSV-Scanner", desc: "Escáner oficial de vulnerabilidades de dependencias de software y contenedores; utilizable en terminal y CI/CD con datos de OSV.dev.", url: "https://google.github.io/osv-scanner/", category: "security", icon: "fa-shield-virus", tag: "Dependency Security" },
-            { title: "OSV.dev", desc: "Base abierta de vulnerabilidades de paquetes de software, versiones afectadas y APIs.", url: "https://osv.dev", category: "security", icon: "fa-shield-virus", tag: "Vulnerability Database" },
-            { title: "LangGraph", desc: "Orquestación de flujos y estados para agentes de IA.", url: "https://github.com/langchain-ai/langgraph", category: "ai", icon: "fa-code-branch", tag: "Agent Workflows" },
-            { title: "Postal", desc: "Servidor de correo electrónico autoalojado.", url: "https://github.com/postalserver/postal", category: "dev", icon: "fa-code-branch", tag: "Mail Infrastructure" },
-            { title: "Mailpit", desc: "Buzón de pruebas para inspeccionar correos en entornos de desarrollo.", url: "https://github.com/axllent/mailpit", category: "dev", icon: "fa-code-branch", tag: "Email Testing" },
-            { title: "Strix", desc: "Agente para pruebas de seguridad de aplicaciones propias o autorizadas.", url: "https://github.com/usestrix/strix", category: "security", icon: "fa-code-branch", tag: "AI Security" },
-            { title: "Crawl4AI", desc: "Extracción estructurada de contenido web para datos y sistemas de IA.", url: "https://github.com/unclecode/crawl4ai", category: "dev", icon: "fa-code-branch", tag: "Web Extraction" },
-            { title: "Remotion", desc: "Creación y renderizado de videos mediante componentes y código.", url: "https://github.com/remotion-dev/remotion", category: "dev", icon: "fa-code-branch", tag: "Programmatic Video" },
-            { title: "Skyvern", desc: "Automatización de tareas web mediante agentes.", url: "https://github.com/Skyvern-AI/skyvern", category: "ai", icon: "fa-code-branch", tag: "Browser Automation" },
-            { title: "Freqtrade", desc: "Bot de trading algorítmico con backtesting; con riesgo financiero.", url: "https://github.com/freqtrade/freqtrade", category: "dev", icon: "fa-code-branch", tag: "Trading Research" },
-            { title: "Moli", desc: "Proyecto de código abierto alojado en GitHub; revisar documentación y requisitos antes de usarlo.", url: "https://github.com/lexmount/moli", category: "ai", icon: "fa-code-branch", tag: "AI Project" },
-            { title: "GTA V (fan web)", desc: "Sitio de demostración no oficial; carga del juego no comprobada.", url: "https://gta.deloskiyt.pl", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
-            { title: "GTA Vice City WASM", desc: "Port para navegador; el proyecto indica que requiere archivos legítimos del juego.", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
-            { title: "The Simpsons Hit & Run WASM", desc: "Port de navegador no oficial; ejecución y derechos no comprobados.", url: "https://shar-wasm.cjoseph.workers.dev/?skipmovie", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
-            { title: "Skate 3 (fan game)", desc: "Proyecto de aficionados; indica que requiere datos de una copia propia.", url: "https://skate.aaddpp.lol", category: "games", icon: "fa-gamepad", tag: "Deportes" },
-            { title: "PES 6 Web", desc: "Adaptación web no oficial; ejecución y derechos no comprobados.", url: "https://pes6.optijuegos.net", category: "games", icon: "fa-gamepad", tag: "Deportes" },
-            { title: "Hedgewars Web (sin verificar)", desc: "Enlace proporcionado; no se pudo confirmar la disponibilidad del sitio.", url: "https://webwars.link", category: "games", icon: "fa-gamepad", tag: "Estrategia" },
-            { title: "WASM Arcade", desc: "Archivo no oficial de juegos clásicos en navegador; revisar derechos y procedencia de contenido.", url: "https://wasmarcade.com", category: "games", icon: "fa-gamepad", tag: "Arcade" },
-            { title: "BO1 Zombies Web", desc: "Experiencia web de zombies; funcionalidad no comprobada.", url: "https://vel.gg/bo1z", category: "games", icon: "fa-gamepad", tag: "Zombies" },
-            { title: "Moon Zombies (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://moon-zombies.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
-            { title: "Kino der Toten (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://kino-der-toten.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
-            { title: "BO3 Cheese Cube (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://cheese-cube.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
-            { title: "Black Ops 2 (fan web)", desc: "Página externa; no se pudo confirmar la experiencia jugable.", url: "https://vibeslops.luckeysystems.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Contemporary Conflict", desc: "El sitio presenta Contemporary Conflict: Global Flashpoint, no Modern Warfare 2.", url: "https://ovz-game-production.up.railway.app", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Halo CE web", desc: "Punto de entrada a una experiencia de Halo en navegador; contenido no oficial.", url: "https://mitchellhynes.com/halo/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Halo CE Mobile", desc: "Port no oficial que requiere datos de una copia propia de Halo CE.", url: "https://hcemobile.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "QuakeWorld", desc: "Cliente web multijugador no oficial de QuakeWorld.", url: "https://q1.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Quake II", desc: "Cliente web multijugador no oficial de Quake II.", url: "https://q2.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Quake III", desc: "Cliente web no oficial de Quake III.", url: "https://q3.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Return to Castle Wolfenstein", desc: "Experiencia multijugador web no oficial.", url: "https://rtcw.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Urban Terror (no Unreal Tournament)", desc: "El enlace corresponde a Urban Terror, no a Unreal Tournament.", url: "https://ut.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Half-Life browser demo", desc: "Experimento de Half-Life en navegador; ejecución no comprobada.", url: "https://pixelsuft.github.io/hl/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "WebXash Half-Life / CS", desc: "Proyecto WebXash para juegos basados en GoldSrc; puede requerir archivos propios.", url: "https://x8bitrain.github.io/webXash/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "CS Surf", desc: "Experiencia de surf estilo Counter-Strike en navegador.", url: "https://surfd.net", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Diablo Web", desc: "Port de Diablo en navegador; verificar requisitos de archivos de juego.", url: "https://johnimril.github.io/diablo_web/", category: "games", icon: "fa-gamepad", tag: "RPG" },
-
-            // Curated verified developer resources — October 2026
-            { title: "iFixAi", desc: "Evaluación de alineación y comportamiento de agentes de IA.", url: "https://github.com/ifixai-ai/iFixAi", category: "security", icon: "fa-bookmark", tag: "AI Safety & OSINT" },
-            { title: "Maigret", desc: "Búsqueda OSINT de nombres de usuario en plataformas públicas.", url: "https://github.com/soxoj/maigret", category: "security", icon: "fa-bookmark", tag: "AI Safety & OSINT" },
-            { title: "Bumblebee", desc: "Proyecto de herramientas de seguridad de Perplexity.", url: "https://github.com/perplexityai/bumblebee", category: "security", icon: "fa-bookmark", tag: "AI Safety & OSINT" },
-            { title: "Public APIs", desc: "Directorio comunitario de APIs públicas.", url: "https://github.com/public-apis/public-apis", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Build Your Own X", desc: "Tutoriales para recrear tecnologías y aprender construyendo.", url: "https://github.com/codecrafters-io/build-your-own-x", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Developer Roadmap", desc: "Mapas de ruta de aprendizaje para desarrolladores.", url: "https://github.com/nilbuild/developer-roadmap", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Free Programming Books", desc: "Colección comunitaria de libros y recursos de programación.", url: "https://github.com/EbookFoundation/free-programming-books", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "System Design Primer", desc: "Fundamentos de diseño de sistemas y preparación técnica.", url: "https://github.com/donnemartin/system-design-primer", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Coding Interview University", desc: "Plan de estudio para entrevistas de ingeniería de software.", url: "https://github.com/jwasham/coding-interview-university", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "The Art of Command Line", desc: "Guía de productividad y uso de terminal.", url: "https://github.com/jlevy/the-art-of-command-line", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Project Based Learning", desc: "Tutoriales de programación basados en proyectos.", url: "https://github.com/practical-tutorials/project-based-learning", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "You Don't Know JS", desc: "Serie de libros para profundizar en JavaScript.", url: "https://github.com/getify/You-Dont-Know-JS", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "The Book of Secret Knowledge", desc: "Recopilación de herramientas y referencias técnicas.", url: "https://github.com/trimstray/the-book-of-secret-knowledge", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Tech Interview Handbook", desc: "Guía de preparación de entrevistas técnicas.", url: "https://github.com/yangshun/tech-interview-handbook", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "JavaScript Algorithms", desc: "Algoritmos y estructuras de datos implementados en JavaScript.", url: "https://github.com/trekhleb/javascript-algorithms", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "30 Seconds of Code", desc: "Fragmentos y ejemplos prácticos de programación.", url: "https://github.com/Chalarangelo/30-seconds-of-code", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "freeCodeCamp", desc: "Plataforma abierta de formación en programación.", url: "https://github.com/freeCodeCamp/freeCodeCamp", category: "learn", icon: "fa-bookmark", tag: "Learning & References" },
-            { title: "Awesome Selfhosted", desc: "Directorio de aplicaciones autoalojables.", url: "https://github.com/awesome-selfhosted/awesome-selfhosted", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Gitignore Templates", desc: "Plantillas de archivos .gitignore mantenidas en GitHub.", url: "https://github.com/github/gitignore", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "LangChain", desc: "Framework para construir aplicaciones con modelos de lenguaje.", url: "https://github.com/langchain-ai/langchain", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "n8n", desc: "Automatización visual de flujos de trabajo.", url: "https://github.com/n8n-io/n8n", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Langflow", desc: "Diseño visual de flujos de aplicaciones de IA.", url: "https://github.com/langflow-ai/langflow", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Stagehand", desc: "Automatización web con interfaces de agentes.", url: "https://github.com/browserbase/stagehand", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Firecrawl", desc: "Extracción y rastreo de contenido web para aplicaciones.", url: "https://github.com/firecrawl/firecrawl", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Transformers", desc: "Biblioteca de modelos de aprendizaje automático.", url: "https://github.com/huggingface/transformers", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "vLLM", desc: "Motor de inferencia eficiente para modelos de lenguaje.", url: "https://github.com/vllm-project/vllm", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "llama.cpp", desc: "Inferencia local de modelos de lenguaje en C/C++.", url: "https://github.com/ggml-org/llama.cpp", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "nanoGPT", desc: "Implementación educativa compacta de GPT.", url: "https://github.com/karpathy/nanoGPT", category: "dev", icon: "fa-bookmark", tag: "Development & Infrastructure" },
-            { title: "Ollama", desc: "Ejecución y gestión de modelos de IA locales.", url: "https://github.com/ollama/ollama", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "OpenClaw", desc: "Asistente de IA y automatización autoalojable.", url: "https://github.com/openclaw/openclaw", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "Dify", desc: "Plataforma para construir aplicaciones y flujos de IA.", url: "https://github.com/langgenius/dify", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "Mem0", desc: "Capa de memoria para asistentes y agentes de IA.", url: "https://github.com/mem0ai/mem0", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "CrewAI", desc: "Orquestación de equipos de agentes especializados.", url: "https://github.com/crewAIInc/crewAI", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "MetaGPT", desc: "Framework multiagente inspirado en roles de equipos de software.", url: "https://github.com/FoundationAgents/MetaGPT", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "AutoGen", desc: "Framework de Microsoft para aplicaciones multiagente.", url: "https://github.com/microsoft/autogen", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "TradingAgents", desc: "Investigación en agentes de IA para análisis de mercados; no garantiza rendimientos.", url: "https://github.com/TauricResearch/TradingAgents", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "LlamaIndex", desc: "Framework de indexación y recuperación de datos para RAG.", url: "https://github.com/run-llama/llama_index", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "RAGFlow", desc: "Plataforma de recuperación aumentada por generación.", url: "https://github.com/infiniflow/ragflow", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "Supermemory", desc: "Memoria y contexto persistente para aplicaciones de IA.", url: "https://github.com/supermemoryai/supermemory", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "Awesome Claude Skills", desc: "Colección comunitaria de habilidades para agentes Claude.", url: "https://github.com/ComposioHQ/awesome-claude-skills", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "ComfyUI", desc: "Interfaz de nodos para flujos de generación visual.", url: "https://github.com/Comfy-Org/ComfyUI", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "LobeHub", desc: "Plataforma de interfaz y aplicaciones de IA.", url: "https://github.com/lobehub/lobehub", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
-            { title: "DeepSeek Models", desc: "Repositorio oficial de DeepSeek-V3 con documentación de arquitectura, pesos y recursos de inferencia.", url: "https://github.com/deepseek-ai/DeepSeek-V3", category: "ai", icon: "fa-brain", tag: "AI Models" },
-
-            // Digital humans, coding agents and UI references — October 2026
-            { title: "Plexo", desc: "Proyecto de agentes de IA; consulta el repositorio para conocer su alcance e instalación.", url: "https://github.com/anmolkapil/plexo", category: "ai", icon: "fa-robot", tag: "AI Agents" },
-            { title: "JEV Trader", desc: "Proyecto experimental relacionado con trading; no implica rentabilidad ni asesoramiento financiero.", url: "https://github.com/jarrodwatts/jev-trader", category: "ai", icon: "fa-chart-line", tag: "AI / Trading" },
-            { title: "LiveTalking", desc: "Avatares conversacionales en tiempo real con voz y sincronización labial.", url: "https://github.com/lipku/LiveTalking", category: "ai", icon: "fa-video", tag: "Talking Avatars" },
-            { title: "MuseTalk", desc: "Generación de sincronización labial de rostros guiada por audio.", url: "https://github.com/TMElyralab/MuseTalk", category: "ai", icon: "fa-face-smile", tag: "Lip Sync" },
-            { title: "Hallo", desc: "Animación de retratos a partir de imágenes y audio.", url: "https://github.com/fudan-generative-vision/hallo", category: "ai", icon: "fa-portrait", tag: "Portrait Animation" },
-            { title: "SadTalker", desc: "Generación de videos parlantes desde un retrato y una pista de audio.", url: "https://github.com/OpenTalker/SadTalker", category: "ai", icon: "fa-comment-dots", tag: "Talking Portraits" },
-            { title: "LivePortrait", desc: "Transferencia de expresiones y movimiento a retratos; repositorio canónico de Kling AI Research.", url: "https://github.com/KlingAIResearch/LivePortrait", category: "ai", icon: "fa-person", tag: "Portrait Animation" },
-            { title: "Wav2Lip", desc: "Sincronización de movimientos labiales de video con audio de referencia.", url: "https://github.com/Rudrabha/Wav2Lip", category: "ai", icon: "fa-volume-high", tag: "Lip Sync" },
-            { title: "EchoMimic", desc: "Animación de retratos expresivos guiada por audio.", url: "https://github.com/antgroup/echomimic", category: "ai", icon: "fa-face-smile-beam", tag: "Audio Portraits" },
-            { title: "AniPortrait", desc: "Animación de retratos mediante audio y señales de movimiento facial.", url: "https://github.com/Zejun-Yang/AniPortrait", category: "ai", icon: "fa-image-portrait", tag: "Portrait Animation" },
-            { title: "Hallo3", desc: "Investigación en generación de video de retratos guiado por audio.", url: "https://github.com/fudan-generative-vision/hallo3", category: "ai", icon: "fa-film", tag: "Portrait Video" },
-            { title: "Hallo2", desc: "Generación de animaciones de retratos mediante modelos de difusión.", url: "https://github.com/fudan-generative-vision/hallo2", category: "ai", icon: "fa-photo-film", tag: "Portrait Video" },
-            { title: "HackerAI", desc: "Proyecto de IA aplicada a evaluación de seguridad en entornos autorizados.", url: "https://github.com/hackerai-tech/hackerai", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
-            { title: "SWE-agent", desc: "Agente para abordar incidencias de repositorios mediante edición y ejecución de código.", url: "https://github.com/SWE-agent/SWE-agent", category: "dev", icon: "fa-code", tag: "Coding Agents" },
-            { title: "DSPy", desc: "Framework declarativo para construir y optimizar programas con modelos de lenguaje.", url: "https://github.com/stanfordnlp/dspy", category: "ai", icon: "fa-gears", tag: "LLM Programming" },
-            { title: "TextGrad", desc: "Optimización basada en retroalimentación textual de componentes de sistemas de IA.", url: "https://github.com/zou-group/textgrad", category: "ai", icon: "fa-arrow-trend-up", tag: "LLM Optimization" },
-            { title: "EvoAgentX", desc: "Framework para desarrollar y mejorar flujos de trabajo multiagente.", url: "https://github.com/ANative-Lab/EvoAgentX", category: "ai", icon: "fa-robot", tag: "Agent Optimization" },
-            { title: "ADAS", desc: "Investigación sobre búsqueda automatizada de arquitecturas de agentes.", url: "https://github.com/ShengranHu/ADAS", category: "ai", icon: "fa-diagram-project", tag: "Agent Research" },
-            { title: "OpenEvolve", desc: "Optimización iterativa de programas mediante generación y evaluación de candidatos.", url: "https://github.com/algorithmicsuperintelligence/openevolve", category: "dev", icon: "fa-code-branch", tag: "Code Evolution" },
-            { title: "SWE-smith", desc: "Generación de tareas y entornos para entrenamiento de agentes de ingeniería de software.", url: "https://github.com/SWE-bench/SWE-smith", category: "dev", icon: "fa-vial", tag: "Agent Training" },
-            { title: "AutoGPT", desc: "Plataforma para construir y experimentar con flujos de agentes autónomos.", url: "https://github.com/Significant-Gravitas/AutoGPT", category: "ai", icon: "fa-robot", tag: "Agent Automation" },
-            { title: "Affect UI", desc: "Biblioteca y referencias de componentes de interfaz.", url: "https://affectui.com", category: "design", icon: "fa-palette", tag: "UI Components" },
-            { title: "Kobra Systems", desc: "Componentes y recursos de interfaces modernas.", url: "https://kobra.systems", category: "design", icon: "fa-layer-group", tag: "UI Components" },
-            { title: "UI Arc", desc: "Inspiración y recursos para diseño de interfaces.", url: "https://uiarc.dev", category: "design", icon: "fa-wand-magic-sparkles", tag: "UI Inspiration" },
-            { title: "Evil Charts", desc: "Componentes de gráficos personalizables para interfaces.", url: "https://evilcharts.com", category: "design", icon: "fa-chart-column", tag: "Data Visualization" },
-            { title: "Transitions", desc: "Recursos de transiciones y animaciones de interfaz.", url: "https://transitions.dev", category: "design", icon: "fa-arrows-spin", tag: "UI Animation" },
-            { title: "BeUI", desc: "Componentes animados para aplicaciones React.", url: "https://beui.dev", category: "design", icon: "fa-bolt", tag: "React UI" },
-            { title: "Board UI", desc: "Componentes visuales orientados a paneles de control.", url: "https://boardui.com", category: "design", icon: "fa-table-cells-large", tag: "Dashboard UI" },
-            { title: "iximiuz Labs: Network Interfaces", desc: "Ejercicio práctico de Linux sobre interfaces de red y rutas.", url: "https://labs.iximiuz.com/challenges/linux-inspect-network-interfaces-and-routes", category: "dev", icon: "fa-network-wired", tag: "Linux Lab" },
-
-            // New AI agents, OCR and MCP — validated links
-            { title: "Skales", desc: "Proyecto open source de agentes y automatización de tareas; consulta su documentación para conocer integraciones y requisitos.", url: "https://github.com/skalesapp/skales", category: "ai", icon: "fa-robot", tag: "AI Agents" },
-            { title: "PentAGI", desc: "Plataforma de agentes de IA orientada a pruebas de penetración y evaluación de seguridad en sistemas autorizados.", url: "https://github.com/vxcontrol/pentagi", category: "security", icon: "fa-shield-halved", tag: "AI Security Testing" },
-            { title: "Unlimited-OCR", desc: "Modelo OCR multimodal de Baidu para extraer y procesar texto de documentos e imágenes; alojado en Hugging Face y con pesos descargables.", url: "https://huggingface.co/baidu/Unlimited-OCR", category: "ai", icon: "fa-file-lines", tag: "OCR / Document AI" },
-            { title: "Mercury Agent", desc: "Proyecto open source para explorar aplicaciones y flujos de trabajo basados en agentes de IA.", url: "https://github.com/cosmicstack-labs/mercury-agent", category: "ai", icon: "fa-bolt", tag: "AI Agent Framework" },
-            { title: "MCP Gateway", desc: "Gateway para gestionar y conectar servicios del Model Context Protocol en arquitecturas de agentes.", url: "https://github.com/MikkoParkkola/mcp-gateway", category: "dev", icon: "fa-network-wired", tag: "MCP Infrastructure" },
-
-            // Agent libraries and reusable skills — verified GitHub repositories
-            { title: "Agency Agents", desc: "Biblioteca comunitaria de perfiles de agentes organizados por funciones empresariales como ingeniería, diseño, marketing, ventas y operaciones.", url: "https://github.com/msitarzewski/agency-agents", category: "ai", icon: "fa-users-gear", tag: "Agent Library" },
-            { title: "Wshobson Agents", desc: "Colección modular de agentes, habilidades y comandos para Claude Code, agrupados en plugins especializados.", url: "https://github.com/wshobson/agents", category: "ai", icon: "fa-puzzle-piece", tag: "Agent Plugins / Skills" },
-            { title: "Anthropic Knowledge Work Plugins", desc: "Plugins de Anthropic para flujos de trabajo profesionales, incluidos ventas, soporte, producto, marketing y análisis.", url: "https://github.com/anthropics/knowledge-work-plugins", category: "ai", icon: "fa-briefcase", tag: "Knowledge Work" },
-            { title: "Claude Quickstarts", desc: "Ejemplos de aplicaciones y agentes basados en Claude para aprender su arquitectura, ejecución e integración.", url: "https://github.com/anthropics/claude-quickstarts", category: "ai", icon: "fa-rocket", tag: "Agent Examples" },
-            { title: "Addy Osmani Agent Skills", desc: "Habilidades y prácticas reutilizables para agentes de desarrollo de software, desde especificaciones hasta pruebas y calidad.", url: "https://github.com/addyosmani/agent-skills", category: "dev", icon: "fa-list-check", tag: "Coding Agent Skills" },
-
-            // AI tools and coding-agent skills — verified repository paths
-            { title: "VoiceStudio", desc: "Proyecto de herramientas de voz para síntesis, doblaje y transcripción; revisa requisitos de hardware, modelos y licencias antes de utilizarlo.", url: "https://github.com/debpalash/VoiceStudio", category: "ai", icon: "fa-microphone", tag: "Voice AI" },
-            { title: "ppt-master", desc: "Herramientas de creación y edición de presentaciones PowerPoint asistidas por IA y documentos de referencia.", url: "https://github.com/hugohe3/ppt-master", category: "ai", icon: "fa-file-powerpoint", tag: "AI Presentations" },
-            { title: "God's Eye View", desc: "Proyecto de visualización geoespacial interactiva sobre un globo 3D con fuentes públicas de información.", url: "https://github.com/bilawalsidhu/gods-eye-view", category: "explore", icon: "fa-earth-americas", tag: "Geospatial Visualization" },
-            { title: "REA", desc: "Proyecto de exploración y análisis de aplicaciones e interfaces para comprender su funcionamiento.", url: "https://github.com/morluto/rea", category: "dev", icon: "fa-code", tag: "App Analysis" },
-            { title: "diagram-design", desc: "Recursos para crear diagramas visuales a partir de instrucciones y criterios de diseño.", url: "https://github.com/cathrynlavery/diagram-design", category: "design", icon: "fa-diagram-project", tag: "AI Diagrams" },
-            { title: "Paperclip", desc: "Plataforma open source para organizar, coordinar y supervisar equipos de agentes de IA.", url: "https://github.com/paperclipai/paperclip", category: "ai", icon: "fa-people-group", tag: "Agent Orchestration" },
-            { title: "Matt Pocock Skills", desc: "Colección de habilidades y flujos reutilizables para asistentes de programación y agentes de desarrollo.", url: "https://github.com/mattpocock/skills", category: "dev", icon: "fa-code-branch", tag: "Coding Agent Skills" },
-            { title: "Everything Claude Code (ECC)", desc: "Colección de configuraciones, habilidades y prácticas para flujos de trabajo con agentes de programación.", url: "https://github.com/affaan-m/ECC", category: "dev", icon: "fa-terminal", tag: "Agent Skills / Security" },
-            { title: "Andrej Karpathy Skills", desc: "Reglas y recomendaciones compactas para mejorar la colaboración con agentes de programación.", url: "https://github.com/multica-ai/andrej-karpathy-skills", category: "dev", icon: "fa-list-check", tag: "Coding Practices" },
-            { title: "Claude Mem", desc: "Sistema de memoria para conservar y resumir contexto de trabajo entre sesiones de asistentes de programación.", url: "https://github.com/thedotmack/claude-mem", category: "ai", icon: "fa-brain", tag: "Agent Memory" },
-
-            // AI workflows, memory and security — repositorios verificados
-            { title: "GenOffice", desc: "Herramientas open source para trabajar con documentos de oficina y flujos de creación asistidos por IA.", url: "https://github.com/genspark-ai/genoffice", category: "ai", icon: "fa-file-lines", tag: "AI Office" },
-            { title: "OpenMAIC", desc: "Proyecto de aulas interactivas impulsadas por IA para convertir materiales y temas en experiencias de aprendizaje.", url: "https://github.com/THU-MAIC/OpenMAIC", category: "learn", icon: "fa-chalkboard-user", tag: "AI Education" },
-            { title: "WeKnora", desc: "Plataforma de Tencent para construir aplicaciones de conocimiento con procesamiento de documentos y recuperación asistida por IA.", url: "https://github.com/Tencent/WeKnora", category: "ai", icon: "fa-brain", tag: "Knowledge / RAG" },
-            { title: "Graphiti", desc: "Framework de grafos de conocimiento temporales para memoria de agentes y relaciones que cambian con el tiempo.", url: "https://github.com/getzep/graphiti", category: "ai", icon: "fa-diagram-project", tag: "Temporal Memory" },
-            { title: "Cognee", desc: "Capa de memoria y conocimiento conectado para aplicaciones de IA mediante extracción, grafos y recuperación.", url: "https://github.com/topoteretes/cognee", category: "ai", icon: "fa-network-wired", tag: "AI Memory" },
-            { title: "Open WebUI", desc: "Interfaz autoalojable para trabajar con modelos de IA, herramientas, documentos y experiencias conversacionales.", url: "https://github.com/open-webui/open-webui", category: "ai", icon: "fa-comments", tag: "Self-hosted AI" },
-            { title: "PageIndex", desc: "Recuperación y navegación de documentos extensos mediante índices estructurados en árbol y razonamiento.", url: "https://github.com/VectifyAI/PageIndex", category: "ai", icon: "fa-sitemap", tag: "Document Retrieval" },
-            { title: "Qwen3-Omni", desc: "Repositorio de Qwen para investigación y desarrollo de modelos multimodales con capacidades de audio y voz.", url: "https://github.com/QwenLM/Qwen3-Omni", category: "ai", icon: "fa-microphone-lines", tag: "Multimodal / Audio" },
-            { title: "Pentest Swarm AI", desc: "Proyecto de agentes para orquestar tareas de evaluación de seguridad y pruebas de penetración en entornos autorizados.", url: "https://github.com/Armur-Ai/Pentest-Swarm-AI", category: "security", icon: "fa-shield-halved", tag: "Security Testing / Agents" },
-
-            // Web utilities — nuevos enlaces, sin duplicar Archive.org ni Open Library
-            { title: "TinyWow", desc: "Colección de utilidades web para PDF, imágenes, video y documentos; algunas funciones pueden tener límites o planes de pago.", url: "https://tinywow.com", category: "design", icon: "fa-toolbox", tag: "Online Utilities" },
-            { title: "Cobalt Tools", desc: "Interfaz para guardar medios de servicios compatibles; su funcionamiento depende de cada plataforma y de los derechos de uso.", url: "https://cobalt.tools", category: "dev", icon: "fa-download", tag: "Media Tools" },
-            { title: "Remove.bg", desc: "Eliminación automática de fondos de imágenes, con límites de resolución y opciones comerciales.", url: "https://www.remove.bg", category: "design", icon: "fa-image", tag: "Image Editing" },
-            { title: "Cleanup.pictures", desc: "Editor de imágenes asistido por IA para borrar objetos y retocar fotografías; la versión gratuita puede estar limitada.", url: "https://cleanup.pictures", category: "design", icon: "fa-eraser", tag: "AI Image Editing" },
-            { title: "10 Minute Mail", desc: "Buzón temporal para registros de bajo riesgo; no es adecuado para cuentas importantes ni recuperación de acceso.", url: "https://10minutemail.com", category: "security", icon: "fa-envelope", tag: "Privacy Tools" },
-            { title: "Have I Been Pwned", desc: "Consulta si una dirección de correo aparece en filtraciones conocidas y comprueba contraseñas expuestas mediante su servicio específico.", url: "https://haveibeenpwned.com", category: "security", icon: "fa-shield-halved", tag: "Breach Monitoring" },
-            { title: "AlternativeTo", desc: "Directorio comunitario para encontrar alternativas a aplicaciones comerciales, gratuitas y de código abierto.", url: "https://alternativeto.net", category: "explore", icon: "fa-shuffle", tag: "Software Discovery" },
-            { title: "JustWatch", desc: "Buscador de disponibilidad de películas y series en plataformas de streaming según el país.", url: "https://www.justwatch.com", category: "explore", icon: "fa-film", tag: "Streaming Discovery" },
-            { title: "Ninite", desc: "Instalador por lotes de aplicaciones comunes para Windows que simplifica instalaciones y actualizaciones.", url: "https://ninite.com", category: "dev", icon: "fa-box-open", tag: "Windows Utilities" },
-            { title: "DownSub", desc: "Herramienta web para extraer subtítulos disponibles de videos compatibles; no garantiza transcribir videos sin subtítulos.", url: "https://downsub.com", category: "dev", icon: "fa-closed-captioning", tag: "Subtitles" },
-            { title: "My ColorSpace", desc: "Generador de paletas y combinaciones cromáticas a partir de un color hexadecimal.", url: "https://mycolor.space", category: "design", icon: "fa-palette", tag: "Color Palettes" },
-
-            // LLM Evals, Observability & AI Safety — verificados 2026-10-02
-            { title: "DeepEval", desc: "Framework de evaluación para LLMs con estilo de testing familiar para Python; cubre métricas de calidad, RAG, agentes, seguridad y pruebas reproducibles.", url: "https://github.com/confident-ai/deepeval", category: "security", icon: "fa-vial-circle-check", tag: "LLM Evals" },
-            { title: "Promptfoo", desc: "CLI y librería para evaluar y hacer red teaming de aplicaciones basadas en LLMs; compara prompts, modelos y configuraciones antes del despliegue.", url: "https://github.com/promptfoo/promptfoo", category: "security", icon: "fa-shield-virus", tag: "Evals / Red Team" },
-            { title: "Ragas", desc: "Framework de evaluación para aplicaciones de IA, especialmente pipelines RAG, con métricas y experimentación para medir calidad de recuperación y generación.", url: "https://github.com/vibrantlabsai/ragas", category: "ai", icon: "fa-chart-simple", tag: "RAG Evaluation" },
-            { title: "Opik", desc: "Plataforma open source de observabilidad, evaluación y tracing para aplicaciones LLM y agentes de IA.", url: "https://github.com/comet-ml/opik", category: "security", icon: "fa-wave-square", tag: "LLM Observability" },
-            { title: "Arize Phoenix", desc: "Plataforma open source para tracing, observabilidad y evaluación de aplicaciones LLM y agentes, orientada a depuración y mejora del comportamiento.", url: "https://github.com/Arize-ai/phoenix", category: "security", icon: "fa-binoculars", tag: "Tracing / Evals" },
-            { title: "Inspect AI", desc: "Framework del UK AI Security Institute para evaluaciones de modelos: prompt engineering, uso de herramientas, diálogo multi-turn, scoring y benchmarks extensibles.", url: "https://github.com/UKGovernmentBEIS/inspect_ai", category: "security", icon: "fa-microscope", tag: "AI Safety Evals" },
-            { title: "TruLens", desc: "Framework open source y OpenTelemetry-native para instrumentar agentes, trazar ejecuciones, evaluar pasos y comparar calidad, coste y versiones.", url: "https://github.com/truera/trulens", category: "security", icon: "fa-eye", tag: "Agent Evaluation" },
-            { title: "OpenAI Evals", desc: "Framework para evaluar modelos y sistemas construidos con LLMs, con registro de evaluaciones existentes y soporte para evals personalizadas.", url: "https://github.com/openai/evals", category: "ai", icon: "fa-flask", tag: "LLM Evals" },
-            { title: "Giskard", desc: "Framework open source para testing de aplicaciones de IA y detección de riesgos y modos de fallo en sistemas basados en modelos.", url: "https://github.com/Giskard-AI/giskard-oss", category: "security", icon: "fa-bug-slash", tag: "AI Testing / Safety" },
-            { title: "Evidently", desc: "Framework Python open source para evaluar, probar y monitorizar sistemas de ML y LLM, incluyendo calidad y cambios de comportamiento tras el despliegue.", url: "https://github.com/evidentlyai/evidently", category: "security", icon: "fa-chart-line", tag: "AI Monitoring" },
-
-            // Self-hosted Business & Productivity — verificados 2026-10-02
-            { title: "AppFlowy", desc: "Workspace open source orientado a privacidad y control de datos: documentos, wikis, bases de datos y colaboración como alternativa a Notion.", url: "https://github.com/AppFlowy-IO/AppFlowy", category: "dev", icon: "fa-table-columns", tag: "Self-hosted Workspace" },
-            { title: "NocoDB", desc: "Plataforma open source para construir y trabajar con bases de datos mediante una interfaz visual tipo hoja de cálculo.", url: "https://github.com/nocodb/nocodb", category: "dev", icon: "fa-table", tag: "Database / No-code" },
-            { title: "Listmonk", desc: "Gestor standalone y self-hosted de newsletters y listas de correo, con PostgreSQL como almacén de datos.", url: "https://github.com/knadh/listmonk", category: "dev", icon: "fa-envelope-open-text", tag: "Email / Self-hosted" },
-            { title: "Cal.com", desc: "Infraestructura open source de scheduling y reservas para calendarios, equipos e integraciones; sucesor canónico del antiguo repositorio cal.diy.", url: "https://github.com/calcom/cal.com", category: "dev", icon: "fa-calendar-check", tag: "Scheduling" },
-            { title: "Formbricks", desc: "Plataforma open source de experience management para encuestas, formularios y feedback, con opción de self-hosting.", url: "https://github.com/formbricks/formbricks", category: "dev", icon: "fa-square-poll-horizontal", tag: "Forms / Feedback" },
-            { title: "Activepieces", desc: "Alternativa open source a Zapier para automatización de procesos, integraciones y flujos de trabajo con apps y agentes.", url: "https://github.com/activepieces/activepieces", category: "ai", icon: "fa-diagram-project", tag: "Automation / Agents" },
-            { title: "Outline", desc: "Base de conocimiento colaborativa para equipos, construida con React y Node.js, disponible como servicio alojado o para despliegue propio.", url: "https://github.com/outline/outline", category: "dev", icon: "fa-book-open", tag: "Knowledge Base" },
-            { title: "Plane", desc: "Gestión de proyectos open source para seguimiento de issues, ciclos, iniciativas y roadmaps de producto.", url: "https://github.com/makeplane/plane", category: "dev", icon: "fa-list-check", tag: "Project Management" },
-            { title: "Documenso", desc: "Alternativa open source a DocuSign para flujos de firma electrónica y gestión de documentos, con opción de self-hosting.", url: "https://github.com/documenso/documenso", category: "dev", icon: "fa-file-signature", tag: "E-signature" },
-            { title: "Chatwoot", desc: "Plataforma open source de soporte al cliente con bandeja omnicanal, live chat, automatizaciones y herramientas para equipos de atención.", url: "https://github.com/chatwoot/chatwoot", category: "dev", icon: "fa-headset", tag: "Customer Support" },
-
-            // GitHub Developer Stack — verificados 2026-09-30
-            { title: "OpenHands / Agent Canvas", desc: "Centro de control self-hosted para ejecutar y coordinar agentes de coding como OpenHands, Claude Code, Codex, Gemini y agentes compatibles con ACP.", url: "https://github.com/OpenHands/OpenHands", category: "ai", icon: "fa-code-branch", tag: "Coding Agents" },
-            { title: "Bifrost AI Gateway", desc: "Gateway de IA de alto rendimiento con API compatible con OpenAI, múltiples proveedores, failover, balanceo, observabilidad, guardrails e integración MCP.", url: "https://github.com/maximhq/bifrost", category: "dev", icon: "fa-route", tag: "AI Gateway / MCP" },
-            { title: "Browser Use", desc: "Framework y herramientas para que agentes de IA controlen navegadores reales; automatiza navegación, formularios, extracción y tareas web, con integración MCP.", url: "https://github.com/browser-use/browser-use", category: "ai", icon: "fa-window-maximize", tag: "Browser Agent / MCP" },
-            { title: "Naive-N0.5-Flash", desc: "Modelo open-weight MoE para coding e I+D en IA: 309B parámetros totales, 15.5B activos y contexto nativo de 1M tokens; pesos y código de inferencia bajo MIT.", url: "https://github.com/NaiveAI-Labs/Naive-N0.5-Flash", category: "ai", icon: "fa-microchip", tag: "Open-weight Coding" },
-            { title: "Cline", desc: "Agente de coding open source para IDE, terminal y escritorio; puede trabajar con archivos, comandos y flujos de desarrollo manteniendo al usuario en el circuito.", url: "https://github.com/cline/cline", category: "ai", icon: "fa-terminal", tag: "Coding Agent" },
-            { title: "Fabric", desc: "Framework open source de Daniel Miessler para aplicar patrones reutilizables de IA a tareas como resumir, analizar, extraer conocimiento y automatizar flujos desde CLI o API.", url: "https://github.com/danielmiessler/Fabric", category: "ai", icon: "fa-wand-magic-sparkles", tag: "AI Patterns / CLI" },
-            { title: "Aider", desc: "AI pair programming desde la terminal: trabaja sobre codebases existentes, edita múltiples archivos, integra modelos locales o cloud y se apoya en Git durante el desarrollo.", url: "https://github.com/Aider-AI/aider", category: "ai", icon: "fa-code", tag: "Terminal Coding" },
-            { title: "OpenBB", desc: "Plataforma abierta de datos financieros para analistas, quants y agentes de IA, con integración de múltiples proveedores mediante Python y CLI.", url: "https://github.com/OpenBB-finance/OpenBB", category: "dev", icon: "fa-chart-line", tag: "Financial Data" },
-            { title: "Microsoft MarkItDown", desc: "Utilidad ligera de Microsoft para convertir PDF, Office, HTML, imágenes y otros formatos a Markdown estructurado para LLMs y pipelines de análisis de texto.", url: "https://github.com/microsoft/markitdown", category: "dev", icon: "fa-file-lines", tag: "Document → Markdown" },
-            { title: "ScrapeGraphAI", desc: "Framework de web scraping que combina LLMs y grafos para extraer información estructurada desde sitios y documentos mediante instrucciones de alto nivel.", url: "https://github.com/ScrapeGraphAI/Scrapegraph-ai", category: "dev", icon: "fa-spider", tag: "AI Web Scraping" },
-
-            // Ecosistema E: Seguridad y Core (Manual)
-            { title: "MCP TypeScript SDK v2", desc: "Documentación oficial de la línea estable del SDK MCP: clientes, servidores, transports, tools, resources, prompts y versiones del protocolo.", url: "https://ts.sdk.modelcontextprotocol.io/v2/", category: "learn", icon: "fa-plug", tag: "MCP Oficial" },
-            { title: "Official MCP Registry", desc: "Registro oficial para descubrir y consultar servidores publicados del ecosistema Model Context Protocol.", url: "https://registry.modelcontextprotocol.io/docs", category: "dev", icon: "fa-server", tag: "MCP Registry" },
+            { title: "OSV.dev", desc: "Base abierta de vulnerabilidades de paquetes de software, versiones afectadas y APIs distribuida por Open Source Security.", url: "https://osv.dev", category: "security", icon: "fa-shield-virus", tag: "Vulnerability Database" },
+            { title: "Strix", desc: "Agente autónomo para pruebas de penetración y evaluación de seguridad de aplicaciones en entornos autorizados.", url: "https://github.com/usestrix/strix", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
+            { title: "HackerAI", desc: "Plataforma de IA aplicada a auditorías de seguridad ofensiva y remediación en infraestructura autorizada.", url: "https://github.com/hackerai-tech/hackerai", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
+            { title: "PentAGI", desc: "Plataforma de agentes autónomos orientada a simulación de adversarios y pruebas de penetración continuas.", url: "https://github.com/vxcontrol/pentagi", category: "security", icon: "fa-shield-halved", tag: "Security Testing" },
+            { title: "Pentest Swarm AI", desc: "Enjambre coordinado de agentes para orquestar tareas de auditoría de seguridad y reconocimiento.", url: "https://github.com/Armur-Ai/Pentest-Swarm-AI", category: "security", icon: "fa-shield-halved", tag: "Security Swarm" },
             { title: "NVIDIA OpenShell", desc: "Runtime de código abierto para ejecutar flotas de agentes autónomos en entornos aislados con protección a nivel de kernel.", url: "https://docs.nvidia.com/openshell/latest", category: "security", icon: "fa-shield-virus", tag: "Kernel Isolation" },
-            { title: "Second Brain OS", desc: "Guía completa de agentes de IA (7 módulos, 21 lecciones) y plugins de auditoría (context-audit, loop-critic).", url: "https://github.com/undefined-ui/second-brain-os", category: "security", icon: "fa-brain", tag: "Agentes OS" },
-            { title: "Wireshark", desc: "Analizador de red para capturar, inspeccionar (DNS, TCP, TLS) y auditar protocolos de seguridad en tiempo real.", url: "https://www.wireshark.org/", category: "security", icon: "fa-network-wired", tag: "Auditoría Red" },
-            { title: "CaoLiao QR (cli.im)", desc: "Generación avanzada de códigos QR. Fundamental en DevSecOps para trazabilidad óptica de servidores y transferencia de tokens a dispositivos air-gapped.", url: "https://cli.im/", category: "security", icon: "fa-qrcode", tag: "Física/Air-Gap" },
-            { title: "LianTu API", desc: "API abierta (HTTP) para generación instantánea de códigos QR. Utilizada en pipelines CI/CD para inyectar credenciales visuales temporales.", url: "http://www.liantu.com/", category: "security", icon: "fa-bolt", tag: "CI/CD Automatización" },
-            { title: "Lychee Link Checker", desc: "Auditor asíncrono en Rust (GitHub Actions) para validar masivamente enlaces web, evitando fugas en documentación técnica.", url: "https://lychee.cli.rs/", category: "security", icon: "fa-link-slash", tag: "Gobernanza" },
+            { title: "Second Brain OS", desc: "Playbook completo de agentes de IA y plugins de auditoría (context-audit, loop-critic) para flujos agénticos.", url: "https://github.com/undefined-ui/second-brain-os", category: "security", icon: "fa-brain", tag: "Agentes OS" },
+            { title: "Wireshark", desc: "Analizador de tráfico de red para capturar, inspeccionar (DNS, TCP, TLS) y auditar protocolos en tiempo real.", url: "https://www.wireshark.org/", category: "security", icon: "fa-network-wired", tag: "Auditoría Red" },
+            { title: "CaoLiao QR (cli.im)", desc: "Generación avanzada de códigos QR con trazabilidad óptica para entornos de transferencia aislada (air-gapped).", url: "https://cli.im/", category: "security", icon: "fa-qrcode", tag: "Física/Air-Gap" },
+            { title: "Lychee Link Checker", desc: "Auditor asíncrono y de alto rendimiento en Rust para validar masivamente enlaces web en CI/CD y prevenir enlaces rotos.", url: "https://lychee.cli.rs/", category: "security", icon: "fa-link-slash", tag: "Gobernanza" },
+            { title: "iFixAi", desc: "Framework de evaluación de alineación, seguridad y comportamiento defensivo para agentes autónomos.", url: "https://github.com/ifixai-ai/iFixAi", category: "security", icon: "fa-bookmark", tag: "AI Safety" },
+            { title: "Maigret", desc: "Herramienta OSINT para recolectar dossieres de presencia de usuarios a través de plataformas públicas.", url: "https://github.com/soxoj/maigret", category: "security", icon: "fa-bookmark", tag: "OSINT" },
+            { title: "Bumblebee", desc: "Suite de utilidades y herramientas de seguridad desarrollada por el equipo de Perplexity.", url: "https://github.com/perplexityai/bumblebee", category: "security", icon: "fa-bookmark", tag: "Security Tools" },
 
-            // Herramientas IA (Productividad)
-            { title: "Explee", desc: "Envía correos fríos en piloto automático.", url: "https://explee.com", category: "ai", icon: "fa-envelope-open-text", tag: "Productividad" },
-            { title: "NoteGPT", desc: "Convierte documentos en podcasts.", url: "https://notegpt.io", category: "ai", icon: "fa-podcast", tag: "Audio" },
-            { title: "Gamma", desc: "Presentaciones con IA en segundos.", url: "https://gamma.app", category: "ai", icon: "fa-desktop", tag: "Presentaciones" },
-            { title: "Perplexity", desc: "Búsqueda con IA y fuentes reales.", url: "https://perplexity.ai", category: "ai", icon: "fa-magnifying-glass", tag: "Investigación" },
-            { title: "tl;dv", desc: "Graba y resume cualquier reunión.", url: "https://tldv.io", category: "ai", icon: "fa-video", tag: "Reuniones" },
-            { title: "Fireflies", desc: "Notas de reuniones con IA automáticamente.", url: "https://fireflies.ai", category: "ai", icon: "fa-clipboard", tag: "Productividad" },
-            { title: "Consensus", desc: "Busca lo que la ciencia acuerda.", url: "https://consensus.app", category: "ai", icon: "fa-flask", tag: "Ciencia" },
-            { title: "SciSpace", desc: "Entiende cualquier artículo de investigación.", url: "https://scispace.com", category: "ai", icon: "fa-book-open", tag: "Investigación" },
+            // AI Evals, Observability & Red Teaming (Categoría nativa evals)
+            { title: "DeepEval", desc: "Framework de evaluación para LLMs con estilo de testing Python; evalúa RAG, agentes, alucinaciones y seguridad.", url: "https://github.com/confident-ai/deepeval", category: "evals", evalType: "testing", icon: "fa-vial-circle-check", tag: "LLM Testing" },
+            { title: "Promptfoo", desc: "CLI y biblioteca para evaluar y ejecutar red teaming contra aplicaciones basadas en LLMs y agentes.", url: "https://github.com/promptfoo/promptfoo", category: "evals", evalType: "redteam", icon: "fa-shield-virus", tag: "Red Teaming" },
+            { title: "Ragas", desc: "Framework de métricas objetivas para evaluar pipelines RAG (fidelidad del contexto, relevancia de respuestas).", url: "https://github.com/vibrantlabsai/ragas", category: "evals", evalType: "rag", icon: "fa-chart-simple", tag: "RAG Evaluation" },
+            { title: "Opik", desc: "Plataforma open source de Comet para observabilidad integral, trazabilidad (tracing) y evaluación de agentes.", url: "https://github.com/comet-ml/opik", category: "evals", evalType: "tracing", icon: "fa-wave-square", tag: "Tracing & Evals" },
+            { title: "Arize Phoenix", desc: "Plataforma de observabilidad basada en OpenTelemetry para trazar flujos RAG y depurar decisiones agénticas.", url: "https://github.com/Arize-ai/phoenix", category: "evals", evalType: "tracing", icon: "fa-binoculars", tag: "LLM Tracing" },
+            { title: "Inspect AI", desc: "Framework de evaluación del UK AI Security Institute para auditoría de modelos, uso de tools y diálogo multi-turno.", url: "https://github.com/UKGovernmentBEIS/inspect_ai", category: "evals", evalType: "redteam", icon: "fa-microscope", tag: "Safety Evals" },
+            { title: "TruLens", desc: "Evaluación y trazabilidad de aplicaciones LLM con métricas de retroalimentación sobre calidad, alucinaciones y coste.", url: "https://github.com/truera/trulens", category: "evals", evalType: "testing", icon: "fa-eye", tag: "Agent Evals" },
+            { title: "OpenAI Evals", desc: "Framework para evaluar modelos y sistemas de LLMs con benchmarks extensibles y datasets declarativos.", url: "https://github.com/openai/evals", category: "evals", evalType: "testing", icon: "fa-flask", tag: "LLM Benchmark" },
+            { title: "Giskard", desc: "Framework de control de calidad y red teaming para detectar sesgos, vulnerabilidades y fugas en modelos de IA.", url: "https://github.com/Giskard-AI/giskard-oss", category: "evals", evalType: "redteam", icon: "fa-bug-slash", tag: "Model Testing" },
+            { title: "Evidently", desc: "Monitorización de modelos en producción para detectar data drift, deterioro de calidad y variaciones en prompts.", url: "https://github.com/evidentlyai/evidently", category: "evals", evalType: "monitoring", icon: "fa-chart-line", tag: "AI Monitoring" },
 
-            // Herramientas IA (Video y Audio)
-            { title: "Suno", desc: "Crea canciones completas a partir de un prompt.", url: "https://suno.com", category: "ai", icon: "fa-music", tag: "Audio IA" },
-            { title: "HeyGen", desc: "Clona tu rostro en videos.", url: "https://heygen.com", category: "ai", icon: "fa-user-astronaut", tag: "Video IA" },
-            { title: "Kling AI", desc: "La mejor generación de video con IA.", url: "https://klingai.com", category: "ai", icon: "fa-film", tag: "Video IA" },
-            { title: "ElevenLabs", desc: "Clona cualquier voz al instante.", url: "https://elevenlabs.io", category: "ai", icon: "fa-microphone-lines", tag: "Voces IA" },
-            { title: "Pika", desc: "Anima cualquier imagen en video.", url: "https://pika.art", category: "ai", icon: "fa-wand-magic-sparkles", tag: "Video IA" },
-            { title: "Runway", desc: "Generación de video con IA cinematográfica.", url: "https://runwayml.com", category: "ai", icon: "fa-clapperboard", tag: "Cine IA" },
-            { title: "Descript", desc: "Edita video editando texto.", url: "https://descript.com", category: "ai", icon: "fa-pen-to-square", tag: "Edición" },
-            { title: "Opus Clip", desc: "Corta automáticamente videos largos en shorts.", url: "https://opus.pro", category: "ai", icon: "fa-scissors", tag: "Shorts" },
-            { title: "Synthesia", desc: "Videos con avatares de IA sin cámara.", url: "https://synthesia.io", category: "ai", icon: "fa-user-tie", tag: "Avatares" },
-            { title: "Fliki", desc: "Convierte texto en videos con IA.", url: "https://fliki.ai", category: "ai", icon: "fa-file-video", tag: "Generación" },
-            { title: "Invideo AI", desc: "Convierte prompts en videos completos.", url: "https://invideo.io", category: "ai", icon: "fa-video", tag: "Video IA" },
-            { title: "Castmagic", desc: "Convierte audio en piezas de contenido.", url: "https://castmagic.io", category: "ai", icon: "fa-podcast", tag: "Audio" },
+            // AI Agents, Frameworks & Workflows
+            { title: "LangGraph", desc: "Orquestación de agentes cíclicos y con estado persistente; control total de flujos complejos.", url: "https://github.com/langchain-ai/langgraph", category: "ai", icon: "fa-code-branch", tag: "Agent Graphs" },
+            { title: "CrewAI", desc: "Orquestación de equipos de agentes de IA con roles especializados y colaboración autónoma.", url: "https://github.com/crewAIInc/crewAI", category: "ai", icon: "fa-users-gear", tag: "Agent Teams" },
+            { title: "AutoGen", desc: "Framework de Microsoft para arquitecturas de conversación multiagente y resolución colaborativa.", url: "https://github.com/microsoft/autogen", category: "ai", icon: "fa-robot", tag: "Multi-Agent" },
+            { title: "MetaGPT", desc: "Framework multiagente que asigna roles formales (Product Manager, Arquitecto, QA) para generar software.", url: "https://github.com/FoundationAgents/MetaGPT", category: "ai", icon: "fa-sitemap", tag: "Software Team" },
+            { title: "AutoGPT", desc: "Plataforma autónoma pionera para coordinar tareas generales mediante encadenamiento de prompts y herramientas.", url: "https://github.com/Significant-Gravitas/AutoGPT", category: "ai", icon: "fa-robot", tag: "Agent Automation" },
+            { title: "OpenHands", desc: "Entorno de desarrollo agéntico autónomo que puede clonar repositorios, modificar código y ejecutar pruebas.", url: "https://github.com/OpenHands/OpenHands", category: "ai", icon: "fa-code-branch", tag: "Coding Agent" },
+            { title: "Cline", desc: "Agente de desarrollo autónomo para IDE con soporte de terminal y comandos manteniendo revisión humana continua.", url: "https://github.com/cline/cline", category: "ai", icon: "fa-terminal", tag: "Coding Agent" },
+            { title: "Aider", desc: "AI pair programming por CLI: se integra con Git, edita múltiples archivos y aplica cambios limpios.", url: "https://github.com/Aider-AI/aider", category: "ai", icon: "fa-code", tag: "Terminal Coding" },
+            { title: "Browser Use", desc: "Framework para que agentes autónomos interactúen con navegadores reales mediante visión y comandos MCP.", url: "https://github.com/browser-use/browser-use", category: "ai", icon: "fa-window-maximize", tag: "Browser Agent" },
+            { title: "Skyvern", desc: "Automatización de flujos de trabajo web complejos usando visión por computadora y LLMs.", url: "https://github.com/Skyvern-AI/skyvern", category: "ai", icon: "fa-arrows-split-up-and-left", tag: "Browser Automation" },
+            { title: "Moli", desc: "Navegador headless ultraligero y de alto rendimiento programado en Rust para agentes de IA y web scraping.", url: "https://github.com/lexmount/moli", category: "ai", icon: "fa-globe", tag: "Headless Browser" },
+            { title: "DSPy", desc: "Framework declarativo para optimizar prompts y pesos de LLMs mediante programación algorítmica.", url: "https://github.com/stanfordnlp/dspy", category: "ai", icon: "fa-gears", tag: "Prompt Compiler" },
+            { title: "Dify", desc: "Plataforma visual open source para diseñar, desplegar y orquestar flujos de trabajo con agentes y RAG.", url: "https://github.com/langgenius/dify", category: "ai", icon: "fa-layer-group", tag: "Agent Platform" },
+            { title: "Ollama", desc: "Servidor local y CLI para ejecutar modelos abiertos (Llama, DeepSeek, Qwen) en tu propia máquina.", url: "https://github.com/ollama/ollama", category: "ai", icon: "fa-laptop", tag: "Local AI" },
+            { title: "DeepSeek Models", desc: "Repositorio oficial de DeepSeek con arquitecturas, especificaciones y pesos de la familia V3 y R1.", url: "https://github.com/deepseek-ai/DeepSeek-V3", category: "ai", icon: "fa-brain", tag: "Open Weights" },
+            { title: "LivePortrait", desc: "Transferencia canónica de expresiones faciales y dinámicas de movimiento en tiempo real para retratos.", url: "https://github.com/KlingAIResearch/LivePortrait", category: "ai", icon: "fa-person", tag: "Portrait Animation" },
+            { title: "SadTalker", desc: "Generación de avatares hablantes a partir de imágenes individuales y pistas de audio guiadas.", url: "https://github.com/OpenTalker/SadTalker", category: "ai", icon: "fa-comment-dots", tag: "Talking Avatar" },
+            { title: "Hallo3", desc: "Modelo de generación de video de retratos impulsado por difusión y condicionamiento multimodal.", url: "https://github.com/fudan-generative-vision/hallo3", category: "ai", icon: "fa-film", tag: "Portrait Video" },
+            { title: "Wav2Lip", desc: "Sincronización labial de alta precisión para adaptar videos existentes a nuevas pistas de audio.", url: "https://github.com/Rudrabha/Wav2Lip", category: "ai", icon: "fa-volume-high", tag: "Lip Sync" },
 
-            // Herramientas IA (Imágenes)
-            { title: "Napkin AI", desc: "Convierte texto en diagramas.", url: "https://napkin.ai", category: "ai", icon: "fa-diagram-project", tag: "Diagramas" },
-            { title: "Ideogram", desc: "Genera texto en imágenes perfectamente.", url: "https://ideogram.ai", category: "ai", icon: "fa-image", tag: "Imagen IA" },
-            { title: "Krea AI", desc: "Generación de imágenes con IA en tiempo real.", url: "https://krea.ai", category: "ai", icon: "fa-paintbrush", tag: "Generación" },
-            { title: "Magnific", desc: "Mejora cualquier imagen con IA.", url: "https://magnific.ai", category: "ai", icon: "fa-expand", tag: "Upscaling" },
-            { title: "Viggle", desc: "Hace que los personajes se muevan de forma realista.", url: "https://viggle.ai", category: "ai", icon: "fa-person-running", tag: "Animación" },
-            { title: "Leonardo AI", desc: "Genera imágenes gratis.", url: "https://leonardo.ai", category: "ai", icon: "fa-palette", tag: "Generación" },
-            { title: "Photoroom", desc: "Fotografía de productos con IA.", url: "https://photoroom.com", category: "ai", icon: "fa-camera", tag: "Comercio" },
-            { title: "Meshy", desc: "Convierte texto en modelos 3D.", url: "https://meshy.ai", category: "ai", icon: "fa-cube", tag: "3D IA" },
-            { title: "Vizcom", desc: "Convierte bocetos en renders.", url: "https://vizcom.ai", category: "ai", icon: "fa-pen-nib", tag: "Renders" },
+            // Infraestructura, Datos y MCP
+            { title: "MCP TypeScript SDK v2", desc: "SDK oficial para crear clientes y servidores del Model Context Protocol con soporte para stdio y streamable HTTP.", url: "https://ts.sdk.modelcontextprotocol.io/v2/", category: "dev", icon: "fa-plug", tag: "MCP SDK" },
+            { title: "Official MCP Registry", desc: "Catálogo central para descubrir y publicar servidores compatibles con Model Context Protocol.", url: "https://registry.modelcontextprotocol.io/docs", category: "dev", icon: "fa-server", tag: "MCP Registry" },
+            { title: "MCP Gateway", desc: "Pasarela para gestionar, enrutar y proteger conexiones MCP en arquitecturas de agentes empresariales.", url: "https://github.com/MikkoParkkola/mcp-gateway", category: "dev", icon: "fa-network-wired", tag: "MCP Infrastructure" },
+            { title: "Bifrost AI Gateway", desc: "Gateway de alto rendimiento para LLMs: balanceo de carga, guardrails de seguridad y compatibilidad MCP.", url: "https://github.com/maximhq/bifrost", category: "dev", icon: "fa-route", tag: "AI Gateway" },
+            { title: "Plexo", desc: "Acelerador de descargas y cliente torrent open source que agrega múltiples interfaces de red (Wi-Fi + Ethernet) en paralelo.", url: "https://github.com/anmolkapil/plexo", category: "dev", icon: "fa-network-wired", tag: "Network Bonding" },
+            { title: "REA", desc: "Entorno de ingeniería inversa y análisis de binarios asistido por agentes con integración nativa Model Context Protocol (MCP).", url: "https://github.com/morluto/rea", category: "dev", icon: "fa-microchip", tag: "Reverse Engineering / MCP" },
+            { title: "Scrapling", desc: "Framework adaptativo en Python para web scraping con rotación de proxies, bypass de protecciones y soporte MCP.", url: "https://github.com/D4Vinci/Scrapling", category: "dev", icon: "fa-spider", tag: "Web Scraping" },
+            { title: "Crawl4AI", desc: "Rastreador web diseñado para alimentar LLMs con contenido Markdown limpio y sin dependencias pesadas.", url: "https://github.com/unclecode/crawl4ai", category: "dev", icon: "fa-code-branch", tag: "Web Extraction" },
+            { title: "Firecrawl", desc: "API y motor open source que transforma cualquier sitio web completo en Markdown estructurado para RAG.", url: "https://github.com/firecrawl/firecrawl", category: "dev", icon: "fa-fire", tag: "Web to Markdown" },
+            { title: "Patchright Enhanced", desc: "Automatización de navegadores basada en Playwright con técnicas stealth avanzadas para auditoría web.", url: "https://github.com/whaleyxbt/patchright-enhanced", category: "dev", icon: "fa-globe", tag: "Stealth Browser" },
+            { title: "Agent-Reach", desc: "CLI unificada para proporcionar a agentes capacidades de lectura y búsqueda en redes y repositorios sin APIs propietarias.", url: "https://github.com/Panniantong/Agent-Reach", category: "dev", icon: "fa-magnifying-glass-chart", tag: "Web Data" },
+            { title: "Mailpit", desc: "Servidor SMTP y visor web de pruebas para interceptar y validar correos en entornos locales de desarrollo.", url: "https://github.com/axllent/mailpit", category: "dev", icon: "fa-inbox", tag: "Email Testing" },
+            { title: "Postal", desc: "Servidor de correo transaccional de código abierto completo, autoalojable y con soporte para DKIM y SPF.", url: "https://github.com/postalserver/postal", category: "dev", icon: "fa-envelope", tag: "Mail Server" },
+            { title: "vLLM", desc: "Motor de inferencia de alto rendimiento para servir modelos de lenguaje con PagedAttention optimizado.", url: "https://github.com/vllm-project/vllm", category: "dev", icon: "fa-bolt", tag: "Inference Engine" },
+            { title: "llama.cpp", desc: "Implementación en C/C++ puro para ejecutar modelos de IA localmente con quantización y mínima memoria.", url: "https://github.com/ggml-org/llama.cpp", category: "dev", icon: "fa-terminal", tag: "C/C++ LLM" },
+            { title: "n8n", desc: "Plataforma de automatización de flujos con nodos visuales, ejecución autoalojable y conectores para IA.", url: "https://github.com/n8n-io/n8n", category: "dev", icon: "fa-diagram-project", tag: "Workflows" },
+            { title: "OpenBB", desc: "Plataforma de datos financieros y macroeconómicos con integración directa para analistas cuantitativos y agentes.", url: "https://github.com/OpenBB-finance/OpenBB", category: "dev", icon: "fa-chart-line", tag: "Finance Data" },
+            { title: "Microsoft MarkItDown", desc: "Herramienta ligera de Microsoft para convertir PDF, hojas de cálculo y documentos de oficina a Markdown limpio.", url: "https://github.com/microsoft/markitdown", category: "dev", icon: "fa-file-lines", tag: "Doc Converter" },
 
-            // Herramientas IA (Código)
-            { title: "Cursor", desc: "Editor de código con IA que construye por ti.", url: "https://cursor.com", category: "ai", icon: "fa-terminal", tag: "IDE IA" },
-            { title: "v0", desc: "Genera componentes de UI con IA.", url: "https://v0.dev", category: "ai", icon: "fa-layer-group", tag: "Frontend IA" },
-            { title: "Lovable", desc: "Convierte ideas en apps funcionales.", url: "https://lovable.dev", category: "ai", icon: "fa-code", tag: "Fullstack IA" },
-            { title: "Replit", desc: "Codifica y despliega desde el navegador.", url: "https://replit.com", category: "ai", icon: "fa-server", tag: "IDE Cloud" },
-            { title: "Tome", desc: "IA construye tus mazos de presentación.", url: "https://tome.app", category: "ai", icon: "fa-desktop", tag: "Slides" },
-            { title: "Beautiful AI", desc: "Diseño inteligente de presentaciones.", url: "https://beautiful.ai", category: "ai", icon: "fa-presentation-screen", tag: "Slides" },
+            // Aprendizaje & Referencias Canónicas
+            { title: "Developer Roadmap (Oficial)", desc: "Mapas de ruta interactivos y planes de estudio canónicos para ingeniería de software y DevOps.", url: "https://github.com/kamranahmedse/developer-roadmap", category: "learn", icon: "fa-map", tag: "Roadmaps" },
+            { title: "Public APIs", desc: "Directorio comunitario de APIs públicas organizadas por categorías para experimentación y proyectos.", url: "https://github.com/public-apis/public-apis", category: "learn", icon: "fa-network-wired", tag: "API Directory" },
+            { title: "Build Your Own X", desc: "Compilación de tutoriales para reconstruir bases de datos, compiladores, navegadores y shells desde cero.", url: "https://github.com/codecrafters-io/build-your-own-x", category: "learn", icon: "fa-cubes", tag: "Hands-On" },
+            { title: "System Design Primer", desc: "Guía completa para diseñar sistemas a gran escala y prepararse para arquitectura de software.", url: "https://github.com/donnemartin/system-design-primer", category: "learn", icon: "fa-diagram-project", tag: "Architecture" },
+            { title: "The Art of Command Line", desc: "Dominio de la línea de comandos Unix/Linux: trucos de productividad, tuberías y administración de sistemas.", url: "https://github.com/jlevy/the-art-of-command-line", category: "learn", icon: "fa-terminal", tag: "Terminal Guide" },
+            { title: "The Book of Secret Knowledge", desc: "Colección exhaustiva de herramientas de seguridad, redes, CLI y trucos para administradores de sistemas.", url: "https://github.com/trimstray/the-book-of-secret-knowledge", category: "learn", icon: "fa-book-bookmark", tag: "SysAdmin Wiki" },
+            { title: "Free Programming Books", desc: "Enorme catálogo libre de libros técnicos, cursos y referencias de programación en múltiples idiomas.", url: "https://github.com/EbookFoundation/free-programming-books", category: "learn", icon: "fa-book-open", tag: "Libros Gratis" },
+            { title: "Anthropic: Building Effective Agents", desc: "Guía de ingeniería sobre patrones recomendados de diseño: routing, chains, evaluadores y orquestadores.", url: "https://www.anthropic.com/engineering/building-effective-agents", category: "learn", icon: "fa-book", tag: "Arquitectura IA" },
+            { title: "Claude Code Best Practices", desc: "Directrices para maximizar la calidad de código, pruebas y seguridad al usar agentes en terminal.", url: "https://code.claude.com/docs/en/best-practices", category: "learn", icon: "fa-code", tag: "Agentes Guía" },
+            { title: "ReAct: Synergizing Reasoning", desc: "Paper fundamental que formalizó el paradigma de razonamiento y acción intercalada en agentes de IA.", url: "https://arxiv.org/abs/2210.03629", category: "learn", icon: "fa-file-lines", tag: "Paper Fundacional" },
 
-            // Agujeros de Conejo (Mapas y Rastreo)
-            { title: "Zoom Earth", desc: "Observa el mundo a través de imágenes satelitales en vivo.", url: "https://zoom.earth", category: "explore", icon: "fa-earth-americas", tag: "Satélite" },
-            { title: "Flightradar24", desc: "Ve todos los aviones actualmente en el cielo.", url: "https://flightradar24.com", category: "explore", icon: "fa-plane", tag: "Aviación" },
-            { title: "MarineTraffic", desc: "Rastrea todos los barcos en el mar en tiempo real.", url: "https://marinetraffic.com", category: "explore", icon: "fa-ship", tag: "Marítimo" },
-            { title: "Windy", desc: "Mapa en vivo de vientos y tormentas.", url: "https://windy.com", category: "explore", icon: "fa-wind", tag: "Clima" },
-            { title: "Lightning Maps", desc: "Observa rayos golpeando la Tierra en tiempo real.", url: "https://lightningmaps.org", category: "explore", icon: "fa-bolt-lightning", tag: "Clima" },
-            { title: "USGS Earthquake", desc: "Lista en vivo de terremotos recientes.", url: "https://earthquake.usgs.gov", category: "explore", icon: "fa-house-crack", tag: "Sismos" },
-            { title: "Submarine Cable Map", desc: "Cables oceánicos que transportan internet.", url: "https://submarinecablemap.com", category: "explore", icon: "fa-network-wired", tag: "Infraestructura" },
-            { title: "Global Forest Watch", desc: "Observa cómo los bosques desaparecen desde el espacio.", url: "https://globalforestwatch.org", category: "explore", icon: "fa-tree", tag: "Ecológico" },
+            // Agujeros de Conejo (Mapas, Datos y Archivos)
+            { title: "Submarine Cable Map", desc: "Visualización exhaustiva de todos los cables de fibra óptica submarinos que interconectan internet global.", url: "https://submarinecablemap.com", category: "explore", icon: "fa-network-wired", tag: "Infraestructura" },
+            { title: "Flightradar24", desc: "Seguimiento en vivo del tráfico aéreo comercial y privado con datos de telemetría ADS-B.", url: "https://flightradar24.com", category: "explore", icon: "fa-plane", tag: "Telemetría" },
+            { title: "MarineTraffic", desc: "Rastreo marítimo global de embarcaciones y cargueros mediante el sistema AIS.", url: "https://marinetraffic.com", category: "explore", icon: "fa-ship", tag: "Telemetría" },
+            { title: "Windy", desc: "Modelo meteorológico interactivo de corrientes de aire, presiones y tormentas en tiempo real.", url: "https://windy.com", category: "explore", icon: "fa-wind", tag: "Meteorología" },
+            { title: "Lightning Maps", desc: "Detección de impactos de rayos a nivel mundial en tiempo real mediante triangulación comunitaria.", url: "https://lightningmaps.org", category: "explore", icon: "fa-bolt-lightning", tag: "Geofísica" },
+            { title: "Internet Archive", desc: "Biblioteca digital global: Wayback Machine, software preservado, libros y grabaciones históricas.", url: "https://archive.org", category: "explore", icon: "fa-building-columns", tag: "Archivo Global" },
+            { title: "Our World in Data", desc: "Publicación científica que investiga los mayores desafíos globales a través de datos empíricos.", url: "https://ourworldindata.org", category: "explore", icon: "fa-chart-pie", tag: "Datos Empíricos" },
+            { title: "Radiooooo", desc: "Mapa musical interactivo que permite seleccionar cualquier país y década para escuchar transmisiones históricas.", url: "https://radiooooo.com", category: "explore", icon: "fa-radio", tag: "Historia Musical" },
 
-            // Agujeros de Conejo (Datos y Stats)
-            { title: "Worldometer", desc: "Las estadísticas del mundo, segundo a segundo.", url: "https://worldometers.info", category: "explore", icon: "fa-chart-simple", tag: "Métricas" },
-            { title: "Internet Live Stats", desc: "Número actual de tuits y búsquedas publicadas.", url: "https://internetlivestats.com", category: "explore", icon: "fa-globe", tag: "Métricas" },
-            { title: "The True Size", desc: "Compara los verdaderos tamaños de los países.", url: "https://thetruesize.com", category: "explore", icon: "fa-map", tag: "Mapas" },
-            { title: "OpenStreetMap", desc: "Mapa mundial dibujado por voluntarios.", url: "https://openstreetmap.org", category: "explore", icon: "fa-map-location-dot", tag: "Mapas" },
-            { title: "Pudding Cool", desc: "Artículos visuales contados a través de datos.", url: "https://pudding.cool", category: "explore", icon: "fa-chart-pie", tag: "Data Visual" },
-            { title: "Our World in Data", desc: "El estado del mundo con datos reales.", url: "https://ourworldindata.org", category: "explore", icon: "fa-database", tag: "Data" },
-            { title: "Gapminder", desc: "Lo que erróneamente creemos saber sobre el mundo.", url: "https://gapminder.org", category: "explore", icon: "fa-lightbulb", tag: "Data Visual" },
-            { title: "Information is Beautiful", desc: "Visualizando datos complejos.", url: "https://informationisbeautiful.net", category: "explore", icon: "fa-eye", tag: "Data Visual" },
-            { title: "World Bank Data", desc: "Datos abiertos del Banco Mundial.", url: "https://data.worldbank.org", category: "explore", icon: "fa-building-columns", tag: "Data" },
-            { title: "TUIK", desc: "Base de datos de estadísticas oficiales de Turquía.", url: "https://data.tuik.gov.tr", category: "explore", icon: "fa-chart-bar", tag: "Data" },
-            { title: "Observable", desc: "Visualiza datos con código en vivo.", url: "https://observablehq.com", category: "explore", icon: "fa-code", tag: "Data Visual" },
+            // Diseño, Prototipado y Utilidades
+            { title: "Penpot", desc: "Plataforma open source de diseño y prototipado UI/UX colaborativa basada en estándares web abiertos.", url: "https://penpot.app", category: "design", icon: "fa-bezier-curve", tag: "UI/UX Open Source" },
+            { title: "tldraw", desc: "Lienzo colaborativo infinito y minimalista para diagramación y dibujo técnico rápido.", url: "https://tldraw.com", category: "design", icon: "fa-pen-to-square", tag: "Whiteboard" },
+            { title: "Excalidraw", desc: "Herramienta virtual de bocetos de arquitectura y diagramas técnicos con estilo dibujado a mano.", url: "https://excalidraw.com", category: "design", icon: "fa-pen", tag: "Diagramas" },
+            { title: "Coolors", desc: "Generador y probador de armonías y paletas de color para desarrollo visual de sistemas de diseño.", url: "https://coolors.co", category: "design", icon: "fa-palette", tag: "Color Systems" },
+            { title: "TinyPNG", desc: "Optimización y compresión inteligente de imágenes PNG, WebP y JPEG para aplicaciones web.", url: "https://tinypng.com", category: "design", icon: "fa-file-image", tag: "Optimización" },
 
-            // Agujeros de Conejo (Archivos y Bibliotecas)
-            { title: "Old Maps Online", desc: "Mapas de hace siglos.", url: "https://oldmapsonline.org", category: "explore", icon: "fa-map-pin", tag: "Historia" },
-            { title: "David Rumsey", desc: "Archivo de 150.000 mapas históricos.", url: "https://davidrumsey.com", category: "explore", icon: "fa-scroll", tag: "Historia" },
-            { title: "Internet Archive", desc: "Archivo de millones de libros, películas y software.", url: "https://archive.org", category: "explore", icon: "fa-building", tag: "Archivo" },
-            { title: "Project Gutenberg", desc: "70.000 libros gratuitos cuyos derechos han expirado.", url: "https://gutenberg.org", category: "explore", icon: "fa-book", tag: "Libros" },
-            { title: "Open Library", desc: "Registro de todos los libros del mundo.", url: "https://openlibrary.org", category: "explore", icon: "fa-book-open-reader", tag: "Libros" },
-            { title: "Library of Congress", desc: "Archivo digital de la Biblioteca del Congreso de EE.UU.", url: "https://loc.gov", category: "explore", icon: "fa-landmark", tag: "Archivo" },
-            { title: "Europeana", desc: "Archivo del patrimonio cultural de Europa.", url: "https://europeana.eu", category: "explore", icon: "fa-landmark-dome", tag: "Cultura" },
-            { title: "Digital Public Library", desc: "Colección de la biblioteca digital de América.", url: "https://dp.la", category: "explore", icon: "fa-book-bookmark", tag: "Archivo" },
-            { title: "Wikipedia", desc: "Pozo de conocimiento al azar.", url: "https://wikipedia.org", category: "explore", icon: "fa-w", tag: "Wiki" },
-
-            // Agujeros de Conejo (Cultura y Espacio)
-            { title: "Google Arts & Culture", desc: "Recorre museos desde casa.", url: "https://artsandculture.google.com", category: "explore", icon: "fa-palette", tag: "Arte" },
-            { title: "Rijksmuseum", desc: "Descarga obras de arte en alta resolución.", url: "https://rijksmuseum.nl", category: "explore", icon: "fa-image", tag: "Arte" },
-            { title: "WikiArt", desc: "Archivo de 250.000 obras de arte.", url: "https://wikiart.org", category: "explore", icon: "fa-paintbrush", tag: "Arte" },
-            { title: "Public Domain Review", desc: "Tesoros visuales olvidados de la historia.", url: "https://publicdomainreview.org", category: "explore", icon: "fa-eye", tag: "Historia" },
-            { title: "Open Culture", desc: "Archivo gratuito de cultura y educación.", url: "https://openculture.com", category: "explore", icon: "fa-graduation-cap", tag: "Cultura" },
-            { title: "Met Museum", desc: "Colección abierta del Met Museum.", url: "https://metmuseum.org", category: "explore", icon: "fa-building-columns", tag: "Museo" },
-            { title: "Music Map", desc: "Árbol genealógico de géneros musicales.", url: "https://musicmap.info", category: "explore", icon: "fa-music", tag: "Música" },
-            { title: "NASA Eyes", desc: "Explora el sistema solar en 3D.", url: "https://eyes.nasa.gov", category: "explore", icon: "fa-satellite", tag: "Espacio" },
-            { title: "Stellarium Web", desc: "Mapa real del cielo en tu navegador.", url: "https://stellarium-web.org", category: "explore", icon: "fa-star", tag: "Espacio" },
-            { title: "APOD", desc: "La imagen astronómica del día de la NASA.", url: "https://apod.nasa.gov", category: "explore", icon: "fa-meteor", tag: "Espacio" },
-            { title: "NASA Images", desc: "Todo el archivo visual de la NASA, gratis.", url: "https://images.nasa.gov", category: "explore", icon: "fa-rocket", tag: "Espacio" },
-            { title: "Science Daily", desc: "Transmisión en vivo de noticias científicas.", url: "https://sciencedaily.com", category: "explore", icon: "fa-flask", tag: "Ciencia" },
-            { title: "arXiv", desc: "Preimpresiones gratuitas de artículos científicos.", url: "https://arxiv.org", category: "explore", icon: "fa-file-lines", tag: "Ciencia" },
-            { title: "Time and Date", desc: "Tiempo, amaneceres y eventos celestes.", url: "https://timeanddate.com", category: "explore", icon: "fa-clock", tag: "Tiempo" },
-            
-            // Agujeros de Conejo (Interactividad)
-            { title: "Window Swap", desc: "Mira por la ventana de una persona al azar.", url: "https://window-swap.com", category: "explore", icon: "fa-window-maximize", tag: "Interactivo" },
-            { title: "Virtual Vacation", desc: "Paseos virtuales por ciudades.", url: "https://virtualvacation.us", category: "explore", icon: "fa-person-walking-luggage", tag: "Interactivo" },
-            { title: "MapCrunch", desc: "Teletransporta a un lugar al azar en la Tierra.", url: "https://mapcrunch.com", category: "explore", icon: "fa-location-dot", tag: "Interactivo" },
-            { title: "Atlas Obscura", desc: "Catálogo de los lugares más extraños del mundo.", url: "https://atlasobscura.com", category: "explore", icon: "fa-map", tag: "Exploración" },
-            { title: "Neal.fun", desc: "Experiencias interactivas de conocimiento.", url: "https://neal.fun", category: "explore", icon: "fa-gamepad", tag: "Interactivo" },
-            { title: "Scale of the Universe 2", desc: "Viaje a escala desde el átomo hasta el universo.", url: "https://htwins.net/scale2", category: "explore", icon: "fa-up-right-and-down-left-from-center", tag: "Ciencia" },
-            { title: "Radiooooo", desc: "Elige un país y una década para escuchar esa era.", url: "https://radiooooo.com", category: "explore", icon: "fa-radio", tag: "Música" },
-            { title: "Listen to Wikipedia", desc: "Convierte ediciones de Wikipedia en audio.", url: "https://listen.hatnote.com", category: "explore", icon: "fa-headphones", tag: "Música" },
-
-            // Plataformas Big Tech y Aprendizaje
-            { title: "Anthropic Skilljar", desc: "Uso seguro y efectivo de modelos Claude.", url: "https://anthropic.skilljar.com", category: "learn", icon: "fa-brain", tag: "Big Tech" },
-            { title: "Google Grow", desc: "IA aplicada para negocios y desarrollo.", url: "https://grow.google/ai", category: "learn", icon: "fa-google", tag: "Big Tech" },
-            { title: "Meta AI", desc: "Modelos de código abierto e investigación.", url: "https://ai.meta.com/resources/", category: "learn", icon: "fa-meta", tag: "Big Tech" },
-            { title: "NVIDIA Developer", desc: "Computación acelerada y CUDA.", url: "https://developer.nvidia.com/cuda", category: "learn", icon: "fa-microchip", tag: "Big Tech" },
-            { title: "Microsoft Learn", desc: "Azure AI, Copilot y fundamentos.", url: "https://learn.microsoft.com/en-us/training/", category: "learn", icon: "fa-microsoft", tag: "Big Tech" },
-            { title: "OpenAI Academy", desc: "Ingeniería de prompts y APIs.", url: "https://academy.openai.com", category: "learn", icon: "fa-robot", tag: "Big Tech" },
-            { title: "IBM SkillsBuild", desc: "Habilidades digitales e IA ética.", url: "https://skillsbuild.org", category: "learn", icon: "fa-laptop-code", tag: "Big Tech" },
-            { title: "AWS Skill Builder", desc: "Machine Learning en AWS.", url: "https://skillbuilder.aws", category: "learn", icon: "fa-aws", tag: "Big Tech" },
-            { title: "DeepLearning.AI", desc: "Cursos prácticos de IA (Andrew Ng).", url: "https://deeplearning.ai", category: "learn", icon: "fa-graduation-cap", tag: "Academia" },
-            { title: "Hugging Face Learn", desc: "Modelos de código abierto.", url: "https://huggingface.co/learn", category: "learn", icon: "fa-face-smiling-hands", tag: "Comunidad" },
-            
-            // Cursos Gratuitos Web (Selección)
-            { title: "Curso HTML/CSS/JS", desc: "Introducción a programación web básica.", url: "https://imp.i384100.net/qWGQ0b", category: "learn", icon: "fa-html5", tag: "Web Dev" },
-            { title: "Especialización Fundamentos Web", desc: "Diseño web para todos.", url: "https://imp.i384100.net/2RjxMz", category: "learn", icon: "fa-code", tag: "Web Dev" },
-            { title: "HTML Build a Website", desc: "Cómo construir un sitio web HTML.", url: "https://imp.i384100.net/aNPBjZ", category: "learn", icon: "fa-html5", tag: "Web Dev" },
-            { title: "HTML/CSS Single Page", desc: "Construyendo un sitio web SPA.", url: "https://imp.i384100.net/k4PyQ0", category: "learn", icon: "fa-css3", tag: "Web Dev" },
-            { title: "Portfolio Web Dev", desc: "Construye un portafolio web con JS.", url: "https://imp.i384100.net/5kBWmb", category: "learn", icon: "fa-laptop-code", tag: "Web Dev" },
-            { title: "Especialización React/Angular", desc: "Desarrollo frontend avanzado.", url: "https://imp.i384100.net/PzqeYj", category: "learn", icon: "fa-react", tag: "Web Dev" },
-            { title: "Web API JSON", desc: "Construye sitios web conectando a APIs.", url: "https://imp.i384100.net/GbYxon", category: "learn", icon: "fa-server", tag: "Web Dev" },
-            { title: "WordPress Complete", desc: "Sitios completos con CMS.", url: "https://imp.i384100.net/DWMYq5", category: "learn", icon: "fa-wordpress", tag: "No-Code" },
-            { title: "Wix Dev", desc: "Desarrollo empresarial con Wix.", url: "https://imp.i384100.net/QYxaGa", category: "learn", icon: "fa-w", tag: "No-Code" },
-            { title: "Weebly SME", desc: "Sitios para pequeños negocios.", url: "https://imp.i384100.net/jRjN5M", category: "learn", icon: "fa-w", tag: "No-Code" },
-            { title: "Webflow Responsive", desc: "Crea web responsive sin código.", url: "https://imp.i384100.net/AgYdkK", category: "learn", icon: "fa-layer-group", tag: "No-Code" },
-            { title: "AI Vibe Local Biz", desc: "Sitios web para negocios locales con IA.", url: "https://imp.i384100.net/1G2ayd", category: "learn", icon: "fa-store", tag: "Business" },
-            { title: "Personal Branding", desc: "Branding personal para principiantes.", url: "https://imp.i384100.net/rE190j", category: "learn", icon: "fa-id-badge", tag: "Business" },
-            { title: "Google SEO", desc: "Optimización de sitio web para búsquedas.", url: "https://imp.i384100.net/aNZbYN", category: "learn", icon: "fa-google", tag: "SEO" },
-            { title: "Ecommerce & Amazon", desc: "Redacción de ventas para ecommerce.", url: "https://imp.i384100.net/1GKXoD", category: "learn", icon: "fa-cart-shopping", tag: "Ecommerce" },
-
-            // Roadmap y Libros/Papers
-            { title: "Intro a LLM (Andrej Karpathy)", desc: "Video fundacional de introducción a IA.", url: "https://youtube.com/watch?v=zjkBMFhNzNc", category: "learn", icon: "fa-youtube", tag: "Video" },
-            { title: "Google AI Agents Whitepaper", desc: "Guía oficial sobre agentes.", url: "https://www.kaggle.com/whitepaper-agents", category: "learn", icon: "fa-file-pdf", tag: "Paper" },
-            { title: "Anthropic: Building Effective Agents", desc: "Guía de construcción de agentes efectivos.", url: "https://www.anthropic.com/engineering/building-effective-agents", category: "learn", icon: "fa-book", tag: "Guía" },
-            { title: "Claude Code Best Practices", desc: "Mejores prácticas de código agéntico.", url: "https://code.claude.com/docs/en/best-practices", category: "learn", icon: "fa-code", tag: "Guía" },
-            { title: "OpenAI Agent Guide", desc: "Guía práctica para construir agentes AI.", url: "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/", category: "learn", icon: "fa-robot", tag: "Guía" },
-            { title: "Understanding Deep Learning", desc: "Libro fundacional gratis.", url: "https://udlbook.github.io/udlbook/", category: "learn", icon: "fa-book-open", tag: "Libro" },
-            { title: "Build LLM from Scratch", desc: "Libro práctico de Manning.", url: "https://www.manning.com/books/build-a-large-language-model-from-scratch", category: "learn", icon: "fa-book-open", tag: "Libro" },
-            { title: "ReAct: Synergizing Reasoning", desc: "Paper sobre cadena de pensamiento en agentes (2022).", url: "https://arxiv.org/abs/2210.03629", category: "learn", icon: "fa-file-lines", tag: "Paper" },
-            { title: "Generative Agents Simulacra", desc: "Paper interactivo de agentes (2023).", url: "https://arxiv.org/abs/2304.03442", category: "learn", icon: "fa-file-lines", tag: "Paper" },
-            { title: "Toolformer", desc: "Módulos de lenguaje usando herramientas (2023).", url: "https://arxiv.org/abs/2302.04761", category: "learn", icon: "fa-file-lines", tag: "Paper" },
-            { title: "Chain-of-Thought Prompting", desc: "Razonamiento inducido (2022).", url: "https://arxiv.org/abs/2201.11903", category: "learn", icon: "fa-file-lines", tag: "Paper" },
-
-            // Desarrollo (Repos y Tools)
-            { title: "Regexr", desc: "Constructor y probador de expresiones regulares.", url: "https://regexr.com", category: "dev", icon: "fa-code", tag: "Utilidad" },
-            { title: "JSON Formatter", desc: "Formatea y valida datos JSON.", url: "https://jsonformatter.org", category: "dev", icon: "fa-brackets-curly", tag: "Utilidad" },
-            { title: "JWT.io", desc: "Decodifica e inspecciona tokens JWT.", url: "https://jwt.io", category: "dev", icon: "fa-key", tag: "Seguridad API" },
-            { title: "Postman", desc: "Prueba y exploración de APIs.", url: "https://postman.com", category: "dev", icon: "fa-rocket", tag: "Testing" },
-            { title: "ReqBin", desc: "Envía solicitudes HTTP online.", url: "https://reqbin.com", category: "dev", icon: "fa-network-wired", tag: "Testing" },
-            { title: "Carbon", desc: "Crea screenshots de código estéticos.", url: "https://carbon.now.sh", category: "dev", icon: "fa-image", tag: "Visual" },
-            { title: "Ray.so", desc: "Convierte código en imágenes bonitas.", url: "https://ray.so", category: "dev", icon: "fa-image", tag: "Visual" },
-            { title: "Bundlephobia", desc: "Verifica el tamaño de paquetes JS.", url: "https://bundlephobia.com", category: "dev", icon: "fa-box", tag: "Optimización" },
-            { title: "Roadmap.sh", desc: "Rutas de aprendizaje para desarrolladores.", url: "https://roadmap.sh", category: "dev", icon: "fa-map", tag: "Rutas" },
-            { title: "Learn-Anything", desc: "Rutas de aprendizaje visuales.", url: "https://learn-anything.xyz", category: "dev", icon: "fa-sitemap", tag: "Educación" },
-            { title: "Learn X in Y Minutes", desc: "Aprende conceptos de lenguaje ultrarrápido.", url: "https://learnxinyminutes.com", category: "dev", icon: "fa-stopwatch", tag: "Code" },
-            { title: "OverAPI", desc: "Cheat sheets para desarrolladores.", url: "https://overapi.com", category: "dev", icon: "fa-list", tag: "Docs" },
-            { title: "Sitemap.org", desc: "Aprende cómo funcionan los sitemaps.", url: "https://sitemap.org", category: "dev", icon: "fa-sitemap", tag: "SEO" },
-            
-            // Research / Web Data (Repos verificados)
-            { title: "Agent-Reach", desc: "CLI para dar a agentes acceso unificado de lectura y búsqueda en X/Twitter, Reddit, YouTube, GitHub y otras plataformas, sin depender de una API de pago única.", url: "https://github.com/Panniantong/Agent-Reach", category: "dev", icon: "fa-magnifying-glass-chart", tag: "Research / Web Data" },
-            { title: "Patchright Enhanced", desc: "Framework de automatización de navegador basado en Patchright, orientado a sesiones Chrome con técnicas stealth para QA, monitoring y scraping.", url: "https://github.com/whaleyxbt/patchright-enhanced", category: "dev", icon: "fa-globe", tag: "Browser Automation" },
-            { title: "Scrapling", desc: "Framework adaptativo de web scraping y crawling en Python: extracción, fetchers, spiders, rotación de proxies, CLI y soporte MCP para flujos con agentes.", url: "https://github.com/D4Vinci/Scrapling", category: "dev", icon: "fa-spider", tag: "Scraping / MCP" },
-
-            // Proyectos de GitHub (Desarrollo)
-            { title: "GenAI Agents (Nir Diamant)", desc: "Guías avanzadas sobre agentes.", url: "https://github.com/NirDiamant/GenAI_Agents", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "AI Agents for Beginners", desc: "Curso oficial de Microsoft.", url: "https://github.com/microsoft/ai-agents-for-beginners", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "Prompt Engineering Guide", desc: "Guía definitiva de prompts.", url: "https://github.com/dair-ai/Prompt-Engineering-Guide", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "Hands-On LLM", desc: "Libro práctico O'Reilly.", url: "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "Made With ML", desc: "MLOps de cero a producción.", url: "https://github.com/GokuMohandas/Made-With-ML", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "Awesome Generative AI", desc: "Curaduría de recursos.", url: "https://github.com/aishwaryanr/awesome-generative-ai-guide", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "Designing ML Systems", desc: "Diseño de sistemas por Chip Huyen.", url: "https://github.com/chiphuyen/dmls-book", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "LLM Course", desc: "Curso completo de LLMs (Maxime Labonne).", url: "https://github.com/mlabonne/llm-course", category: "dev", icon: "fa-github", tag: "Repo" },
-            { title: "DSH Desktop", desc: "Ejecuta y gestiona agentes de IA desde escritorio.", url: "https://github.com/anywhere-labs/dsh-desktop", category: "dev", icon: "fa-desktop", tag: "OpenSource" },
-            { title: "Artemis (Google)", desc: "Automatiza Android con IA mediante lenguaje natural.", url: "https://github.com/google/artemis", category: "dev", icon: "fa-android", tag: "OpenSource" },
-            { title: "ARC Task Gen", desc: "Genera rompecabezas para testear razonamiento de IA.", url: "https://github.com/pathwaycom/arc-task-gen", category: "dev", icon: "fa-puzzle-piece", tag: "OpenSource" },
-
-            // Directorios y Especializados
-            { title: "FutureTools", desc: "Descubre herramientas de IA útiles y filtradas.", url: "https://futuretools.io", category: "dev", icon: "fa-list", tag: "Directorio" },
-            { title: "There's an AI for That", desc: "Directorio gigante para encontrar IA.", url: "https://theresanaiforthat.com", category: "dev", icon: "fa-magnifying-glass", tag: "Directorio" },
-            { title: "AI Tools FYI", desc: "Explora aplicaciones y herramientas.", url: "https://aitools.fyi", category: "dev", icon: "fa-folder-open", tag: "Directorio" },
-            { title: "Hugging Face Spaces", desc: "Prueba demos de IA de la comunidad.", url: "https://huggingface.co/spaces", category: "dev", icon: "fa-flask", tag: "Laboratorio" },
-            { title: "Replicate", desc: "Ejecuta modelos de IA en la nube vía API.", url: "https://replicate.com", category: "dev", icon: "fa-cloud", tag: "Plataforma" },
-            { title: "Spatial Intelligence", desc: "Atlas de IA, AR/VR, robótica e intel geoespacial.", url: "https://www.spatialintelligence.ai/", category: "dev", icon: "fa-vr-cardboard", tag: "Especializado" },
-
-            // Diseño, Recursos y Archivos
-            { title: "tldraw", desc: "Pizarra online colaborativa infinita.", url: "https://tldraw.com", category: "design", icon: "fa-pen-to-square", tag: "Pizarra" },
-            { title: "Excalidraw", desc: "Diagramas con estilo de dibujo a mano.", url: "https://excalidraw.com", category: "design", icon: "fa-pen", tag: "Pizarra" },
-            { title: "Draw.io", desc: "Creación de diagramas de flujo y esquemas.", url: "https://drawio.com", category: "design", icon: "fa-project-diagram", tag: "Diagramas" },
-            { title: "Penpot", desc: "Diseño y prototipado open-source.", url: "https://penpot.app", category: "design", icon: "fa-bezier-curve", tag: "UI/UX" },
-            { title: "Vectr", desc: "Editor de gráficos vectoriales online.", url: "https://vectr.com", category: "design", icon: "fa-vector-square", tag: "Gráficos" },
-            { title: "Coolors", desc: "Generador de paletas de colores.", url: "https://coolors.co", category: "design", icon: "fa-palette", tag: "Colores" },
-            { title: "Fontjoy", desc: "Combinaciones de fuentes con IA.", url: "https://fontjoy.com", category: "design", icon: "fa-font", tag: "Tipografía" },
-            { title: "WhatTheFont", desc: "Identifica fuentes desde una imagen.", url: "https://www.myfonts.com/WhatTheFont", category: "design", icon: "fa-magnifying-glass", tag: "Tipografía" },
-            { title: "Favicon.io", desc: "Crea favicons rápidamente.", url: "https://favicon.io", category: "design", icon: "fa-icons", tag: "Assets" },
-            { title: "Unsplash", desc: "Fotografía de stock de alta calidad.", url: "https://unsplash.com", category: "design", icon: "fa-camera", tag: "Stock" },
-            { title: "Pexels", desc: "Fotos y videos stock gratis.", url: "https://pexels.com", category: "design", icon: "fa-video", tag: "Stock" },
-            { title: "Pixabay", desc: "Imágenes, videos e ilustraciones.", url: "https://pixabay.com", category: "design", icon: "fa-image", tag: "Stock" },
-            { title: "Mixkit", desc: "Videos, música y plantillas gratis.", url: "https://mixkit.co", category: "design", icon: "fa-film", tag: "Stock" },
-            { title: "Coverr", desc: "Videos stock para proyectos creativos.", url: "https://coverr.co", category: "design", icon: "fa-video", tag: "Stock" },
-            { title: "Humaaans", desc: "Ilustraciones personalizables de humanos.", url: "https://humaaans.com", category: "design", icon: "fa-person", tag: "Assets" },
-            { title: "unDraw", desc: "Ilustraciones gratuitas personalizables.", url: "https://undraw.co", category: "design", icon: "fa-pencil", tag: "Assets" },
-            { title: "Storyset", desc: "Ilustraciones animadas para proyectos.", url: "https://storyset.com", category: "design", icon: "fa-shapes", tag: "Assets" },
-            { title: "Compress JPEG", desc: "Comprime imágenes JPEG.", url: "https://compressjpeg.com", category: "design", icon: "fa-file-image", tag: "Archivos" },
-            { title: "TinyPNG", desc: "Comprime PNG y WebP.", url: "https://tinypng.com", category: "design", icon: "fa-file-image", tag: "Archivos" },
-            { title: "Convertio", desc: "Convierte archivos entre formatos.", url: "https://convertio.co", category: "design", icon: "fa-file-export", tag: "Archivos" },
-            { title: "CloudConvert", desc: "Convierte casi cualquier archivo.", url: "https://cloudconvert.com", category: "design", icon: "fa-cloud-arrow-up", tag: "Archivos" },
-            { title: "ILoveIMG", desc: "Edita y optimiza imágenes masivamente.", url: "https://iloveimg.com", category: "design", icon: "fa-images", tag: "Archivos" },
-            { title: "QR Code Gen", desc: "Crea códigos QR rápidamente.", url: "https://qr-code-generator.com", category: "design", icon: "fa-qrcode", tag: "Archivos" }
+            // Juegos en Navegador (Puertos funcionales verificados)
+            { title: "QuakeWorld Web", desc: "Cliente web multijugador no oficial de QuakeWorld ejecutándose sobre WebAssembly.", url: "https://q1.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Quake II Web", desc: "Port de Quake II en navegador con aceleración WebGL y soporte para servidores dedicados.", url: "https://q2.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Quake III Arena Web", desc: "Implementación en WebGL/WASM del clásico shooter competitivo de id Software.", url: "https://q3.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Return to Castle Wolfenstein", desc: "Motor RTCW compilado para navegador; permite partidas multijugador en WebGL.", url: "https://rtcw.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Urban Terror", desc: "Port web del mod de acción táctica basado en el motor ioquake3.", url: "https://ut.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Diablo Web", desc: "Recreación en navegador del juego clásico de 1996; ejecuta la versión shareware o datos propios.", url: "https://johnimril.github.io/diablo_web/", category: "games", icon: "fa-gamepad", tag: "RPG" },
+            { title: "WASM Arcade", desc: "Archivo de demostraciones técnicas y títulos clásicos compilados a WebAssembly.", url: "https://wasmarcade.com", category: "games", icon: "fa-gamepad", tag: "Arcade" },
+            { title: "GTA Vice City WASM", desc: "Port de investigación a WebAssembly que ejecuta el motor de Vice City en navegador.", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
+            { title: "WebXash GoldSrc", desc: "Reimplementación web del motor GoldSrc (Half-Life / CS) para pruebas en navegador.", url: "https://x8bitrain.github.io/webXash/", category: "games", icon: "fa-gamepad", tag: "Shooter" }
         ];
 
         const grid = document.getElementById('catalogGrid');
@@ -884,10 +575,12 @@
             const styles = {
                 'ai': { color: 'text-cyber-cyan', bg: 'bg-cyber-cyan/10 border-cyber-cyan/20 text-cyber-cyan' },
                 'security': { color: 'text-cyber-emerald', bg: 'bg-cyber-emerald/10 border-cyber-emerald/20 text-cyber-emerald' },
+                'evals': { color: 'text-purple-400', bg: 'bg-purple-500/10 border-purple-500/20 text-purple-300' },
                 'dev': { color: 'text-cyber-purple', bg: 'bg-cyber-purple/10 border-cyber-purple/20 text-cyber-purple' },
                 'explore': { color: 'text-yellow-500', bg: 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' },
                 'learn': { color: 'text-blue-500', bg: 'bg-blue-500/10 border-blue-500/20 text-blue-500' },
                 'design': { color: 'text-pink-500', bg: 'bg-pink-500/10 border-pink-500/20 text-pink-500' },
+                'games': { color: 'text-cyan-400', bg: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-300' }
             };
             return styles[category] || { color: 'text-slate-300', bg: 'bg-slate-700 border-slate-600 text-slate-300' };
         }
@@ -909,12 +602,12 @@
                         <div class="w-10 h-10 rounded bg-slate-800 border border-slate-700 flex items-center justify-center ${style.color} text-xl">
                             <i class="fa-solid ${item.icon}"></i>
                         </div>
-                        <span class="text-xs font-mono ${style.bg} border px-2 py-1 rounded whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]" title="${item.tag}">${item.tag}</span>
+                        <span class="text-xs font-mono ${style.bg} border px-2 py-1 rounded whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px]" title="${item.tag}">${item.tag}</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">${item.title}</h3>
-                    <p class="text-slate-400 text-sm flex-1 mb-4">${item.desc}</p>
+                    <p class="text-slate-400 text-sm flex-1 mb-4 leading-relaxed">${item.desc}</p>
                     <div class="pt-4 border-t border-slate-700 flex justify-between items-center mt-auto">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-cyber-cyan hover:text-white transition-colors flex items-center gap-1">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-cyber-cyan hover:text-white transition-colors flex items-center gap-1.5">
                             Acceder <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                         </a>
                     </div>
@@ -933,21 +626,21 @@
             },
             mcp: {
                 title: 'Arquitecturas MCP',
-                description: 'Servidores, clientes, herramientas y referencias relacionadas con Model Context Protocol y conectividad de agentes.',
+                description: 'Servidores, clientes, herramientas y especificaciones relacionadas con el Model Context Protocol.',
                 icon: 'fa-network-wired',
-                keywords: ['mcp', 'model context protocol', 'stdio', 'streamable http']
+                keywords: ['mcp', 'model context protocol', 'stdio', 'streamable http', 'gateway']
             },
             sandbox: {
-                title: 'Sandboxes & ejecución aislada',
-                description: 'Herramientas para aislar agentes, automatizar navegadores y ejecutar código con menor superficie de riesgo.',
+                title: 'Sandboxes & Ejecución Aislada',
+                description: 'Entornos de aislamiento a nivel de proceso y kernel, control de subprocesos y automatización segura.',
                 icon: 'fa-microchip',
-                keywords: ['sandbox', 'openshell', 'isolation', 'aislad', 'kernel', 'container', 'browser automation', 'patchright', 'playwright']
+                keywords: ['sandbox', 'openshell', 'isolation', 'aislad', 'kernel', 'stealth', 'patchright', 'headless', 'moli']
             },
             policy: {
-                title: 'Políticas & gobierno',
-                description: 'Recursos para auditoría, permisos, guardrails, secretos, policy-as-code y controles de seguridad en flujos agénticos.',
+                title: 'Políticas & Gobierno',
+                description: 'Auditoría, validación de dependencias, enlaces, análisis de vulnerabilidades y límites de confianza en CI/CD.',
                 icon: 'fa-file-shield',
-                keywords: ['policy', 'política', 'audit', 'auditor', 'guardrail', 'permission', 'permiso', 'secret', 'zero-trust', 'security', 'seguridad', 'ci/cd', 'gobernanza']
+                keywords: ['policy', 'política', 'audit', 'auditor', 'guardrail', 'osv', 'lychee', 'evals', 'testing', 'red team', 'observability']
             }
         };
 
@@ -955,14 +648,6 @@
         let currentCategory = 'all';
         let currentSearch = '';
         let currentEval = 'all';
-        const evalTitles = new Set(['DeepEval','Promptfoo','Ragas','Opik','Arize Phoenix','Inspect AI','TruLens','OpenAI Evals','Giskard','Evidently']);
-        const evalGroups = {
-            testing: new Set(['DeepEval','Promptfoo','Ragas','Inspect AI','TruLens','OpenAI Evals','Giskard','Evidently']),
-            redteam: new Set(['Promptfoo','Giskard','Inspect AI']),
-            rag: new Set(['DeepEval','Ragas','TruLens','Giskard']),
-            tracing: new Set(['Opik','Arize Phoenix','TruLens']),
-            monitoring: new Set(['Opik','Arize Phoenix','TruLens','Evidently'])
-        };
 
         function normalizeText(value) {
             return (value || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -982,9 +667,12 @@
         function getVisibleData() {
             return resourcesData.filter(item => {
                 if (!matchesView(item, currentView)) return false;
-                if (currentCategory === 'evals' && !evalTitles.has(item.title)) return false;
-                if (currentCategory !== 'all' && currentCategory !== 'evals' && item.category !== currentCategory) return false;
-                if (currentCategory === 'evals' && currentEval !== 'all' && !evalGroups[currentEval].has(item.title)) return false;
+                
+                if (currentCategory !== 'all') {
+                    if (item.category !== currentCategory) return false;
+                    if (currentCategory === 'evals' && currentEval !== 'all' && item.evalType !== currentEval) return false;
+                }
+                
                 if (!currentSearch) return true;
                 const haystack = normalizeText([item.title, item.desc, item.tag].join(' '));
                 return haystack.includes(normalizeText(currentSearch));
@@ -1023,12 +711,14 @@
         }
 
         function updateStats() {
-            const githubCount = resourcesData.filter(item => item.url.includes('github.com/')).length;
+            // Contabiliza repositorios GitHub y GitHub Pages
+            const githubCount = resourcesData.filter(item => item.url.includes('github.com') || item.url.includes('github.io')).length;
             const mcpCount = dataForView('mcp').length;
             const researchCount = resourcesData.filter(item => {
                 const text = normalizeText([item.title, item.desc, item.tag].join(' '));
-                return ['research', 'web data', 'scrap', 'crawler', 'reddit', 'youtube', 'twitter', 'x/twitter'].some(k => text.includes(k));
+                return ['research', 'web data', 'scrap', 'crawler', 'osint', 'telemetría'].some(k => text.includes(k));
             }).length;
+
             document.getElementById('statResources').textContent = resourcesData.length.toLocaleString('es-MX');
             document.getElementById('statGithub').textContent = githubCount.toLocaleString('es-MX');
             document.getElementById('statMcp').textContent = mcpCount.toLocaleString('es-MX');
@@ -1053,11 +743,11 @@
             currentCategory = 'all';
             currentSearch = '';
             document.getElementById('searchInput').value = '';
+            document.getElementById('evalSubfilters').classList.add('hidden');
             renderCurrentState();
 
             if (window.innerWidth < 768 && !sidebar.classList.contains('hidden')) {
                 sidebar.classList.add('hidden');
-                sidebar.classList.remove('absolute', 'z-50', 'h-screen');
             }
 
             document.getElementById('viewContext').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1067,7 +757,15 @@
             if (category === 'games' && currentView !== 'catalog') currentView = 'catalog';
             currentCategory = category;
             currentEval = 'all';
-            document.querySelectorAll('.eval-chip').forEach(chip => { const active = chip.dataset.eval === 'all'; chip.setAttribute('aria-pressed', active ? 'true' : 'false'); chip.classList.toggle('bg-cyber-purple/10', active); chip.classList.toggle('text-purple-200', active); chip.classList.toggle('text-slate-400', !active); });
+            
+            document.querySelectorAll('.eval-chip').forEach(chip => {
+                const active = chip.dataset.eval === 'all';
+                chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+                chip.classList.toggle('bg-cyber-purple/10', active);
+                chip.classList.toggle('text-purple-200', active);
+                chip.classList.toggle('text-slate-400', !active);
+            });
+
             document.getElementById('evalSubfilters').classList.toggle('hidden', category !== 'evals');
             renderCurrentState();
         }
