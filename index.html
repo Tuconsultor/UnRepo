@@ -456,6 +456,37 @@
 
     <script>
         const resourcesData = [
+            // Digital humans, coding agents and UI references — October 2026
+            { title: "Plexo", desc: "Proyecto de agentes de IA; consulta el repositorio para conocer su alcance e instalación.", url: "https://github.com/anmolkapil/plexo", category: "ai", icon: "fa-robot", tag: "AI Agents" },
+            { title: "JEV Trader", desc: "Proyecto experimental relacionado con trading; no implica rentabilidad ni asesoramiento financiero.", url: "https://github.com/jarrodwatts/jev-trader", category: "ai", icon: "fa-chart-line", tag: "AI / Trading" },
+            { title: "LiveTalking", desc: "Avatares conversacionales en tiempo real con voz y sincronización labial.", url: "https://github.com/lipku/LiveTalking", category: "ai", icon: "fa-video", tag: "Talking Avatars" },
+            { title: "MuseTalk", desc: "Generación de sincronización labial de rostros guiada por audio.", url: "https://github.com/TMElyralab/MuseTalk", category: "ai", icon: "fa-face-smile", tag: "Lip Sync" },
+            { title: "Hallo", desc: "Animación de retratos a partir de imágenes y audio.", url: "https://github.com/fudan-generative-vision/hallo", category: "ai", icon: "fa-portrait", tag: "Portrait Animation" },
+            { title: "SadTalker", desc: "Generación de videos parlantes desde un retrato y una pista de audio.", url: "https://github.com/OpenTalker/SadTalker", category: "ai", icon: "fa-comment-dots", tag: "Talking Portraits" },
+            { title: "LivePortrait", desc: "Transferencia de expresiones y movimiento a retratos; repositorio canónico de Kling AI Research.", url: "https://github.com/KlingAIResearch/LivePortrait", category: "ai", icon: "fa-person", tag: "Portrait Animation" },
+            { title: "Wav2Lip", desc: "Sincronización de movimientos labiales de video con audio de referencia.", url: "https://github.com/Rudrabha/Wav2Lip", category: "ai", icon: "fa-volume-high", tag: "Lip Sync" },
+            { title: "EchoMimic", desc: "Animación de retratos expresivos guiada por audio.", url: "https://github.com/antgroup/echomimic", category: "ai", icon: "fa-face-smile-beam", tag: "Audio Portraits" },
+            { title: "AniPortrait", desc: "Animación de retratos mediante audio y señales de movimiento facial.", url: "https://github.com/Zejun-Yang/AniPortrait", category: "ai", icon: "fa-image-portrait", tag: "Portrait Animation" },
+            { title: "Hallo3", desc: "Investigación en generación de video de retratos guiado por audio.", url: "https://github.com/fudan-generative-vision/hallo3", category: "ai", icon: "fa-film", tag: "Portrait Video" },
+            { title: "Hallo2", desc: "Generación de animaciones de retratos mediante modelos de difusión.", url: "https://github.com/fudan-generative-vision/hallo2", category: "ai", icon: "fa-photo-film", tag: "Portrait Video" },
+            { title: "HackerAI", desc: "Proyecto de IA aplicada a evaluación de seguridad en entornos autorizados.", url: "https://github.com/hackerai-tech/hackerai", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
+            { title: "SWE-agent", desc: "Agente para abordar incidencias de repositorios mediante edición y ejecución de código.", url: "https://github.com/SWE-agent/SWE-agent", category: "dev", icon: "fa-code", tag: "Coding Agents" },
+            { title: "DSPy", desc: "Framework declarativo para construir y optimizar programas con modelos de lenguaje.", url: "https://github.com/stanfordnlp/dspy", category: "ai", icon: "fa-gears", tag: "LLM Programming" },
+            { title: "TextGrad", desc: "Optimización basada en retroalimentación textual de componentes de sistemas de IA.", url: "https://github.com/zou-group/textgrad", category: "ai", icon: "fa-arrow-trend-up", tag: "LLM Optimization" },
+            { title: "EvoAgentX", desc: "Framework para desarrollar y mejorar flujos de trabajo multiagente.", url: "https://github.com/ANative-Lab/EvoAgentX", category: "ai", icon: "fa-robot", tag: "Agent Optimization" },
+            { title: "ADAS", desc: "Investigación sobre búsqueda automatizada de arquitecturas de agentes.", url: "https://github.com/ShengranHu/ADAS", category: "ai", icon: "fa-diagram-project", tag: "Agent Research" },
+            { title: "OpenEvolve", desc: "Optimización iterativa de programas mediante generación y evaluación de candidatos.", url: "https://github.com/algorithmicsuperintelligence/openevolve", category: "dev", icon: "fa-code-branch", tag: "Code Evolution" },
+            { title: "SWE-smith", desc: "Generación de tareas y entornos para entrenamiento de agentes de ingeniería de software.", url: "https://github.com/SWE-bench/SWE-smith", category: "dev", icon: "fa-vial", tag: "Agent Training" },
+            { title: "AutoGPT", desc: "Plataforma para construir y experimentar con flujos de agentes autónomos.", url: "https://github.com/Significant-Gravitas/AutoGPT", category: "ai", icon: "fa-robot", tag: "Agent Automation" },
+            { title: "Affect UI", desc: "Biblioteca y referencias de componentes de interfaz.", url: "https://affectui.com", category: "design", icon: "fa-palette", tag: "UI Components" },
+            { title: "Kobra Systems", desc: "Componentes y recursos de interfaces modernas.", url: "https://kobra.systems", category: "design", icon: "fa-layer-group", tag: "UI Components" },
+            { title: "UI Arc", desc: "Inspiración y recursos para diseño de interfaces.", url: "https://uiarc.dev", category: "design", icon: "fa-wand-magic-sparkles", tag: "UI Inspiration" },
+            { title: "Evil Charts", desc: "Componentes de gráficos personalizables para interfaces.", url: "https://evilcharts.com", category: "design", icon: "fa-chart-column", tag: "Data Visualization" },
+            { title: "Transitions", desc: "Recursos de transiciones y animaciones de interfaz.", url: "https://transitions.dev", category: "design", icon: "fa-arrows-spin", tag: "UI Animation" },
+            { title: "BeUI", desc: "Componentes animados para aplicaciones React.", url: "https://beui.dev", category: "design", icon: "fa-bolt", tag: "React UI" },
+            { title: "Board UI", desc: "Componentes visuales orientados a paneles de control.", url: "https://boardui.com", category: "design", icon: "fa-table-cells-large", tag: "Dashboard UI" },
+            { title: "iximiuz Labs: Network Interfaces", desc: "Ejercicio práctico de Linux sobre interfaces de red y rutas.", url: "https://labs.iximiuz.com/challenges/linux-inspect-network-interfaces-and-routes", category: "dev", icon: "fa-network-wired", tag: "Linux Lab" },
+
             // New AI agents, OCR and MCP — validated links
             { title: "Skales", desc: "Proyecto open source de agentes y automatización de tareas; consulta su documentación para conocer integraciones y requisitos.", url: "https://github.com/skalesapp/skales", category: "ai", icon: "fa-robot", tag: "AI Agents" },
             { title: "PentAGI", desc: "Plataforma de agentes de IA orientada a pruebas de penetración y evaluación de seguridad en sistemas autorizados.", url: "https://github.com/vxcontrol/pentagi", category: "security", icon: "fa-shield-halved", tag: "AI Security Testing" },
