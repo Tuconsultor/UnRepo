@@ -401,6 +401,7 @@
                     <button onclick="filterCatalog('learn')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
                     <button onclick="filterCatalog('explore')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
                     <button onclick="filterCatalog('design')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
+                    <button onclick="filterCatalog('games')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="games"><i class="fa-solid fa-gamepad mr-1.5 text-cyan-400"></i>Juegos en navegador</button>
                     <button onclick="filterCatalog('evals')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap border border-cyber-purple/20" data-filter="evals"><i class="fa-solid fa-flask-vial mr-1.5 text-cyber-purple"></i>AI Evals & Observability</button>
                 </div>
                 
@@ -456,6 +457,42 @@
 
     <script>
         const resourcesData = [
+            // Web security, automation and browser gaming resources — October 2026
+            { title: "OSV.dev", desc: "Base abierta de vulnerabilidades de paquetes de software, versiones afectadas y APIs.", url: "https://osv.dev", category: "security", icon: "fa-shield-virus", tag: "Vulnerability Database" },
+            { title: "LangGraph", desc: "Orquestación de flujos y estados para agentes de IA.", url: "https://github.com/langchain-ai/langgraph", category: "ai", icon: "fa-code-branch", tag: "Agent Workflows" },
+            { title: "Postal", desc: "Servidor de correo electrónico autoalojado.", url: "https://github.com/postalserver/postal", category: "dev", icon: "fa-code-branch", tag: "Mail Infrastructure" },
+            { title: "Mailpit", desc: "Buzón de pruebas para inspeccionar correos en entornos de desarrollo.", url: "https://github.com/axllent/mailpit", category: "dev", icon: "fa-code-branch", tag: "Email Testing" },
+            { title: "Strix", desc: "Agente para pruebas de seguridad de aplicaciones propias o autorizadas.", url: "https://github.com/usestrix/strix", category: "security", icon: "fa-code-branch", tag: "AI Security" },
+            { title: "Crawl4AI", desc: "Extracción estructurada de contenido web para datos y sistemas de IA.", url: "https://github.com/unclecode/crawl4ai", category: "dev", icon: "fa-code-branch", tag: "Web Extraction" },
+            { title: "Remotion", desc: "Creación y renderizado de videos mediante componentes y código.", url: "https://github.com/remotion-dev/remotion", category: "dev", icon: "fa-code-branch", tag: "Programmatic Video" },
+            { title: "Skyvern", desc: "Automatización de tareas web mediante agentes.", url: "https://github.com/Skyvern-AI/skyvern", category: "ai", icon: "fa-code-branch", tag: "Browser Automation" },
+            { title: "Freqtrade", desc: "Bot de trading algorítmico con backtesting; con riesgo financiero.", url: "https://github.com/freqtrade/freqtrade", category: "dev", icon: "fa-code-branch", tag: "Trading Research" },
+            { title: "Moli", desc: "Proyecto de código abierto alojado en GitHub; revisar documentación y requisitos antes de usarlo.", url: "https://github.com/lexmount/moli", category: "ai", icon: "fa-code-branch", tag: "AI Project" },
+            { title: "GTA V (fan web)", desc: "Sitio de demostración no oficial; carga del juego no comprobada.", url: "https://gta.deloskiyt.pl", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
+            { title: "GTA Vice City WASM", desc: "Port para navegador; el proyecto indica que requiere archivos legítimos del juego.", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
+            { title: "The Simpsons Hit & Run WASM", desc: "Port de navegador no oficial; ejecución y derechos no comprobados.", url: "https://shar-wasm.cjoseph.workers.dev/?skipmovie", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
+            { title: "Skate 3 (fan game)", desc: "Proyecto de aficionados; indica que requiere datos de una copia propia.", url: "https://skate.aaddpp.lol", category: "games", icon: "fa-gamepad", tag: "Deportes" },
+            { title: "PES 6 Web", desc: "Adaptación web no oficial; ejecución y derechos no comprobados.", url: "https://pes6.optijuegos.net", category: "games", icon: "fa-gamepad", tag: "Deportes" },
+            { title: "Hedgewars Web (sin verificar)", desc: "Enlace proporcionado; no se pudo confirmar la disponibilidad del sitio.", url: "https://webwars.link", category: "games", icon: "fa-gamepad", tag: "Estrategia" },
+            { title: "WASM Arcade", desc: "Archivo no oficial de juegos clásicos en navegador; revisar derechos y procedencia de contenido.", url: "https://wasmarcade.com", category: "games", icon: "fa-gamepad", tag: "Arcade" },
+            { title: "BO1 Zombies Web", desc: "Experiencia web de zombies; funcionalidad no comprobada.", url: "https://vel.gg/bo1z", category: "games", icon: "fa-gamepad", tag: "Zombies" },
+            { title: "Moon Zombies (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://moon-zombies.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
+            { title: "Kino der Toten (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://kino-der-toten.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
+            { title: "BO3 Cheese Cube (sin verificar)", desc: "Página con redirección; destino o juego no confirmado.", url: "https://cheese-cube.pages.dev", category: "games", icon: "fa-gamepad", tag: "Zombies" },
+            { title: "Black Ops 2 (fan web)", desc: "Página externa; no se pudo confirmar la experiencia jugable.", url: "https://vibeslops.luckeysystems.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Contemporary Conflict", desc: "El sitio presenta Contemporary Conflict: Global Flashpoint, no Modern Warfare 2.", url: "https://ovz-game-production.up.railway.app", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Halo CE web", desc: "Punto de entrada a una experiencia de Halo en navegador; contenido no oficial.", url: "https://mitchellhynes.com/halo/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Halo CE Mobile", desc: "Port no oficial que requiere datos de una copia propia de Halo CE.", url: "https://hcemobile.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "QuakeWorld", desc: "Cliente web multijugador no oficial de QuakeWorld.", url: "https://q1.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Quake II", desc: "Cliente web multijugador no oficial de Quake II.", url: "https://q2.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Quake III", desc: "Cliente web no oficial de Quake III.", url: "https://q3.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Return to Castle Wolfenstein", desc: "Experiencia multijugador web no oficial.", url: "https://rtcw.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Urban Terror (no Unreal Tournament)", desc: "El enlace corresponde a Urban Terror, no a Unreal Tournament.", url: "https://ut.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Half-Life browser demo", desc: "Experimento de Half-Life en navegador; ejecución no comprobada.", url: "https://pixelsuft.github.io/hl/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "WebXash Half-Life / CS", desc: "Proyecto WebXash para juegos basados en GoldSrc; puede requerir archivos propios.", url: "https://x8bitrain.github.io/webXash/", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "CS Surf", desc: "Experiencia de surf estilo Counter-Strike en navegador.", url: "https://surfd.net", category: "games", icon: "fa-gamepad", tag: "Shooter" },
+            { title: "Diablo Web", desc: "Port de Diablo en navegador; verificar requisitos de archivos de juego.", url: "https://johnimril.github.io/diablo_web/", category: "games", icon: "fa-gamepad", tag: "RPG" },
+
             // Curated verified developer resources — October 2026
             { title: "iFixAi", desc: "Evaluación de alineación y comportamiento de agentes de IA.", url: "https://github.com/ifixai-ai/iFixAi", category: "security", icon: "fa-bookmark", tag: "AI Safety & OSINT" },
             { title: "Maigret", desc: "Búsqueda OSINT de nombres de usuario en plataformas públicas.", url: "https://github.com/soxoj/maigret", category: "security", icon: "fa-bookmark", tag: "AI Safety & OSINT" },
@@ -1026,8 +1063,10 @@
         }
 
         function filterCatalog(category) {
+            if (category === 'games' && currentView !== 'catalog') currentView = 'catalog';
             currentCategory = category;
             currentEval = 'all';
+            document.querySelectorAll('.eval-chip').forEach(chip => { const active = chip.dataset.eval === 'all'; chip.setAttribute('aria-pressed', active ? 'true' : 'false'); chip.classList.toggle('bg-cyber-purple/10', active); chip.classList.toggle('text-purple-200', active); chip.classList.toggle('text-slate-400', !active); });
             document.getElementById('evalSubfilters').classList.toggle('hidden', category !== 'evals');
             renderCurrentState();
         }
