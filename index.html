@@ -1,9 +1,9 @@
-html
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AgentSec Playbook: directorio curado de herramientas de seguridad, agentes de IA, desarrollo, aprendizaje y juegos en navegador.">
     <title>AgentSec Playbook | DevSecOps & AI Agents Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -461,7 +461,7 @@ html
         const resourcesData = [
             // Ecosistema DevSecOps & AI Security
             { title: "OSV-Scanner", desc: "Escáner oficial de vulnerabilidades de dependencias de software y contenedores; utilizable en terminal y CI/CD con datos de OSV.dev.", url: "https://google.github.io/osv-scanner/", category: "security", icon: "fa-shield-virus", tag: "Dependency Security" },
-            { title: "OSV.dev", desc: "Base abierta de vulnerabilidades de paquetes de software, versiones afectadas y APIs distribuida por Open Source Security.", url: "https://osv.dev", category: "security", icon: "fa-shield-virus", tag: "Vulnerability Database" },
+            { title: "OSV.dev", desc: "Base de datos abierta de vulnerabilidades de software, con versiones afectadas y una API pública.", url: "https://osv.dev", category: "security", icon: "fa-shield-virus", tag: "Vulnerability Database" },
             { title: "Strix", desc: "Agente autónomo para pruebas de penetración y evaluación de seguridad de aplicaciones en entornos autorizados.", url: "https://github.com/usestrix/strix", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
             { title: "HackerAI", desc: "Plataforma de IA aplicada a auditorías de seguridad ofensiva y remediación en infraestructura autorizada.", url: "https://github.com/hackerai-tech/hackerai", category: "security", icon: "fa-shield-halved", tag: "AI Security" },
             { title: "PentAGI", desc: "Plataforma de agentes autónomos orientada a simulación de adversarios y pruebas de penetración continuas.", url: "https://github.com/vxcontrol/pentagi", category: "security", icon: "fa-shield-halved", tag: "Security Testing" },
@@ -469,7 +469,7 @@ html
             { title: "NVIDIA OpenShell", desc: "Runtime de código abierto para ejecutar flotas de agentes autónomos en entornos aislados con protección a nivel de kernel.", url: "https://docs.nvidia.com/openshell/latest", category: "security", icon: "fa-shield-virus", tag: "Kernel Isolation" },
             { title: "Second Brain OS", desc: "Playbook completo de agentes de IA y plugins de auditoría (context-audit, loop-critic) para flujos agénticos.", url: "https://github.com/undefined-ui/second-brain-os", category: "security", icon: "fa-brain", tag: "Agentes OS" },
             { title: "Wireshark", desc: "Analizador de tráfico de red para capturar, inspeccionar (DNS, TCP, TLS) y auditar protocolos en tiempo real.", url: "https://www.wireshark.org/", category: "security", icon: "fa-network-wired", tag: "Auditoría Red" },
-            { title: "CaoLiao QR (cli.im)", desc: "Generación avanzada de códigos QR con trazabilidad óptica para entornos de transferencia aislada (air-gapped).", url: "https://cli.im/", category: "security", icon: "fa-qrcode", tag: "Física/Air-Gap" },
+            { title: "CaoLiao QR (cli.im)", desc: "Servicio para crear y administrar códigos QR, con opciones comerciales de seguimiento y gestión.", url: "https://cli.im/", category: "security", icon: "fa-qrcode", tag: "Física/Air-Gap" },
             { title: "Lychee Link Checker", desc: "Auditor asíncrono y de alto rendimiento en Rust para validar masivamente enlaces web en CI/CD y prevenir enlaces rotos.", url: "https://lychee.cli.rs/", category: "security", icon: "fa-link-slash", tag: "Gobernanza" },
             { title: "iFixAi", desc: "Framework de evaluación de alineación, seguridad y comportamiento defensivo para agentes autónomos.", url: "https://github.com/ifixai-ai/iFixAi", category: "security", icon: "fa-bookmark", tag: "AI Safety" },
             { title: "Maigret", desc: "Herramienta OSINT para recolectar dossieres de presencia de usuarios a través de plataformas públicas.", url: "https://github.com/soxoj/maigret", category: "security", icon: "fa-bookmark", tag: "OSINT" },
@@ -499,11 +499,11 @@ html
             { title: "Browser Use", desc: "Framework para que agentes autónomos interactúen con navegadores reales mediante visión y comandos MCP.", url: "https://github.com/browser-use/browser-use", category: "ai", icon: "fa-window-maximize", tag: "Browser Agent" },
             { title: "Skyvern", desc: "Automatización de flujos de trabajo web complejos usando visión por computadora y LLMs.", url: "https://github.com/Skyvern-AI/skyvern", category: "ai", icon: "fa-arrows-split-up-and-left", tag: "Browser Automation" },
             { title: "Moli", desc: "Navegador headless ultraligero y de alto rendimiento programado en Rust para agentes de IA y web scraping.", url: "https://github.com/lexmount/moli", category: "ai", icon: "fa-globe", tag: "Headless Browser" },
-            { title: "DSPy", desc: "Framework declarativo para optimizar prompts y pesos de LLMs mediante programación algorítmica.", url: "https://github.com/stanfordnlp/dspy", category: "ai", icon: "fa-gears", tag: "Prompt Compiler" },
+            { title: "DSPy", desc: "Framework declarativo para programar y optimizar sistemas basados en modelos de lenguaje.", url: "https://github.com/stanfordnlp/dspy", category: "ai", icon: "fa-gears", tag: "Prompt Compiler" },
             { title: "Dify", desc: "Plataforma visual open source para diseñar, desplegar y orquestar flujos de trabajo con agentes y RAG.", url: "https://github.com/langgenius/dify", category: "ai", icon: "fa-layer-group", tag: "Agent Platform" },
             { title: "Ollama", desc: "Servidor local y CLI para ejecutar modelos abiertos (Llama, DeepSeek, Qwen) en tu propia máquina.", url: "https://github.com/ollama/ollama", category: "ai", icon: "fa-laptop", tag: "Local AI" },
-            { title: "DeepSeek Models", desc: "Repositorio oficial de DeepSeek con arquitecturas, especificaciones y pesos de la familia V3 y R1.", url: "https://github.com/deepseek-ai/DeepSeek-V3", category: "ai", icon: "fa-brain", tag: "Open Weights" },
-            { title: "LivePortrait", desc: "Transferencia canónica de expresiones faciales y dinámicas de movimiento en tiempo real para retratos.", url: "https://github.com/KlingAIResearch/LivePortrait", category: "ai", icon: "fa-person", tag: "Portrait Animation" },
+            { title: "DeepSeek Models", desc: "Repositorio de DeepSeek-V3 con información técnica, código y recursos del modelo; otros modelos tienen repositorios independientes.", url: "https://github.com/deepseek-ai/DeepSeek-V3", category: "ai", icon: "fa-brain", tag: "Open Weights" },
+            { title: "LivePortrait", desc: "Herramienta para animar retratos transfiriendo expresiones faciales y movimientos desde una referencia.", url: "https://github.com/KlingAIResearch/LivePortrait", category: "ai", icon: "fa-person", tag: "Portrait Animation" },
             { title: "SadTalker", desc: "Generación de avatares hablantes a partir de imágenes individuales y pistas de audio guiadas.", url: "https://github.com/OpenTalker/SadTalker", category: "ai", icon: "fa-comment-dots", tag: "Talking Avatar" },
             { title: "Hallo3", desc: "Modelo de generación de video de retratos impulsado por difusión y condicionamiento multimodal.", url: "https://github.com/fudan-generative-vision/hallo3", category: "ai", icon: "fa-film", tag: "Portrait Video" },
             { title: "Wav2Lip", desc: "Sincronización labial de alta precisión para adaptar videos existentes a nuevas pistas de audio.", url: "https://github.com/Rudrabha/Wav2Lip", category: "ai", icon: "fa-volume-high", tag: "Lip Sync" },
@@ -515,9 +515,9 @@ html
             { title: "Bifrost AI Gateway", desc: "Gateway de alto rendimiento para LLMs: balanceo de carga, guardrails de seguridad y compatibilidad MCP.", url: "https://github.com/maximhq/bifrost", category: "dev", icon: "fa-route", tag: "AI Gateway" },
             { title: "Plexo", desc: "Acelerador de descargas y cliente torrent open source que agrega múltiples interfaces de red (Wi-Fi + Ethernet) en paralelo.", url: "https://github.com/anmolkapil/plexo", category: "dev", icon: "fa-network-wired", tag: "Network Bonding" },
             { title: "REA", desc: "Entorno de ingeniería inversa y análisis de binarios asistido por agentes con integración nativa Model Context Protocol (MCP).", url: "https://github.com/morluto/rea", category: "dev", icon: "fa-microchip", tag: "Reverse Engineering / MCP" },
-            { title: "Scrapling", desc: "Framework adaptativo en Python para web scraping con rotación de proxies, bypass de protecciones y soporte MCP.", url: "https://github.com/D4Vinci/Scrapling", category: "dev", icon: "fa-spider", tag: "Web Scraping" },
-            { title: "Crawl4AI", desc: "Rastreador web diseñado para alimentar LLMs con contenido Markdown limpio y sin dependencias pesadas.", url: "https://github.com/unclecode/crawl4ai", category: "dev", icon: "fa-code-branch", tag: "Web Extraction" },
-            { title: "Firecrawl", desc: "API y motor open source que transforma cualquier sitio web completo en Markdown estructurado para RAG.", url: "https://github.com/firecrawl/firecrawl", category: "dev", icon: "fa-fire", tag: "Web to Markdown" },
+            { title: "Scrapling", desc: "Biblioteca de scraping y extracción web en Python con herramientas de navegación y automatización.", url: "https://github.com/D4Vinci/Scrapling", category: "dev", icon: "fa-spider", tag: "Web Scraping" },
+            { title: "Crawl4AI", desc: "Herramienta de rastreo y extracción web que transforma contenido en formatos útiles para sistemas de IA.", url: "https://github.com/unclecode/crawl4ai", category: "dev", icon: "fa-code-branch", tag: "Web Extraction" },
+            { title: "Firecrawl", desc: "Herramienta de rastreo y extracción web con salidas estructuradas útiles para aplicaciones RAG.", url: "https://github.com/firecrawl/firecrawl", category: "dev", icon: "fa-fire", tag: "Web to Markdown" },
             { title: "Patchright Enhanced", desc: "Automatización de navegadores basada en Playwright con técnicas stealth avanzadas para auditoría web.", url: "https://github.com/whaleyxbt/patchright-enhanced", category: "dev", icon: "fa-globe", tag: "Stealth Browser" },
             { title: "Agent-Reach", desc: "CLI unificada para proporcionar a agentes capacidades de lectura y búsqueda en redes y repositorios sin APIs propietarias.", url: "https://github.com/Panniantong/Agent-Reach", category: "dev", icon: "fa-magnifying-glass-chart", tag: "Web Data" },
             { title: "Mailpit", desc: "Servidor SMTP y visor web de pruebas para interceptar y validar correos en entornos locales de desarrollo.", url: "https://github.com/axllent/mailpit", category: "dev", icon: "fa-inbox", tag: "Email Testing" },
@@ -525,11 +525,11 @@ html
             { title: "vLLM", desc: "Motor de inferencia de alto rendimiento para servir modelos de lenguaje con PagedAttention optimizado.", url: "https://github.com/vllm-project/vllm", category: "dev", icon: "fa-bolt", tag: "Inference Engine" },
             { title: "llama.cpp", desc: "Implementación en C/C++ puro para ejecutar modelos de IA localmente con quantización y mínima memoria.", url: "https://github.com/ggml-org/llama.cpp", category: "dev", icon: "fa-terminal", tag: "C/C++ LLM" },
             { title: "n8n", desc: "Plataforma de automatización de flujos con nodos visuales, ejecución autoalojable y conectores para IA.", url: "https://github.com/n8n-io/n8n", category: "dev", icon: "fa-diagram-project", tag: "Workflows" },
-            { title: "OpenBB", desc: "Plataforma de datos financieros y macroeconómicos con integración directa para analistas cuantitativos y agentes.", url: "https://github.com/OpenBB-finance/OpenBB", category: "dev", icon: "fa-chart-line", tag: "Finance Data" },
+            { title: "OpenBB", desc: "Herramientas y componentes de datos financieros para analistas y aplicaciones.", url: "https://github.com/openbq-org/OpenBB", category: "dev", icon: "fa-chart-line", tag: "Finance Data" },
             { title: "Microsoft MarkItDown", desc: "Herramienta ligera de Microsoft para convertir PDF, hojas de cálculo y documentos de oficina a Markdown limpio.", url: "https://github.com/microsoft/markitdown", category: "dev", icon: "fa-file-lines", tag: "Doc Converter" },
 
             // Aprendizaje & Referencias Canónicas
-            { title: "Developer Roadmap (Oficial)", desc: "Mapas de ruta interactivos y planes de estudio canónicos para ingeniería de software y DevOps.", url: "https://github.com/kamranahmedse/developer-roadmap", category: "learn", icon: "fa-map", tag: "Roadmaps" },
+            { title: "Developer Roadmap (Oficial)", desc: "Mapas de ruta interactivos y planes de estudio canónicos para ingeniería de software y DevOps.", url: "https://github.com/nilbuild/developer-roadmap", category: "learn", icon: "fa-map", tag: "Roadmaps" },
             { title: "Public APIs", desc: "Directorio comunitario de APIs públicas organizadas por categorías para experimentación y proyectos.", url: "https://github.com/public-apis/public-apis", category: "learn", icon: "fa-network-wired", tag: "API Directory" },
             { title: "Build Your Own X", desc: "Compilación de tutoriales para reconstruir bases de datos, compiladores, navegadores y shells desde cero.", url: "https://github.com/codecrafters-io/build-your-own-x", category: "learn", icon: "fa-cubes", tag: "Hands-On" },
             { title: "System Design Primer", desc: "Guía completa para diseñar sistemas a gran escala y prepararse para arquitectura de software.", url: "https://github.com/donnemartin/system-design-primer", category: "learn", icon: "fa-diagram-project", tag: "Architecture" },
@@ -541,14 +541,14 @@ html
             { title: "ReAct: Synergizing Reasoning", desc: "Paper fundamental que formalizó el paradigma de razonamiento y acción intercalada en agentes de IA.", url: "https://arxiv.org/abs/2210.03629", category: "learn", icon: "fa-file-lines", tag: "Paper Fundacional" },
 
             // Agujeros de Conejo (Mapas, Datos y Archivos)
-            { title: "Submarine Cable Map", desc: "Visualización exhaustiva de todos los cables de fibra óptica submarinos que interconectan internet global.", url: "https://submarinecablemap.com", category: "explore", icon: "fa-network-wired", tag: "Infraestructura" },
+            { title: "Submarine Cable Map", desc: "Mapa interactivo de sistemas de cables submarinos internacionales.", url: "https://submarinecablemap.com", category: "explore", icon: "fa-network-wired", tag: "Infraestructura" },
             { title: "Flightradar24", desc: "Seguimiento en vivo del tráfico aéreo comercial y privado con datos de telemetría ADS-B.", url: "https://flightradar24.com", category: "explore", icon: "fa-plane", tag: "Telemetría" },
             { title: "MarineTraffic", desc: "Rastreo marítimo global de embarcaciones y cargueros mediante el sistema AIS.", url: "https://marinetraffic.com", category: "explore", icon: "fa-ship", tag: "Telemetría" },
             { title: "Windy", desc: "Modelo meteorológico interactivo de corrientes de aire, presiones y tormentas en tiempo real.", url: "https://windy.com", category: "explore", icon: "fa-wind", tag: "Meteorología" },
             { title: "Lightning Maps", desc: "Detección de impactos de rayos a nivel mundial en tiempo real mediante triangulación comunitaria.", url: "https://lightningmaps.org", category: "explore", icon: "fa-bolt-lightning", tag: "Geofísica" },
             { title: "Internet Archive", desc: "Biblioteca digital global: Wayback Machine, software preservado, libros y grabaciones históricas.", url: "https://archive.org", category: "explore", icon: "fa-building-columns", tag: "Archivo Global" },
             { title: "Our World in Data", desc: "Publicación científica que investiga los mayores desafíos globales a través de datos empíricos.", url: "https://ourworldindata.org", category: "explore", icon: "fa-chart-pie", tag: "Datos Empíricos" },
-            { title: "Radiooooo", desc: "Mapa musical interactivo que permite seleccionar cualquier país y década para escuchar transmisiones históricas.", url: "https://radiooooo.com", category: "explore", icon: "fa-radio", tag: "Historia Musical" },
+            { title: "Radiooooo", desc: "Mapa musical interactivo para explorar música por país y década.", url: "https://radiooooo.com", category: "explore", icon: "fa-radio", tag: "Historia Musical" },
 
             // Diseño, Prototipado y Utilidades
             { title: "Penpot", desc: "Plataforma open source de diseño y prototipado UI/UX colaborativa basada en estándares web abiertos.", url: "https://penpot.app", category: "design", icon: "fa-bezier-curve", tag: "UI/UX Open Source" },
@@ -563,7 +563,7 @@ html
             { title: "Quake III Arena Web", desc: "Implementación en WebGL/WASM del clásico shooter competitivo de id Software.", url: "https://q3.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
             { title: "Return to Castle Wolfenstein", desc: "Motor RTCW compilado para navegador; permite partidas multijugador en WebGL.", url: "https://rtcw.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
             { title: "Urban Terror", desc: "Port web del mod de acción táctica basado en el motor ioquake3.", url: "https://ut.pieter.com", category: "games", icon: "fa-gamepad", tag: "Shooter" },
-            { title: "Diablo Web", desc: "Recreación en navegador del juego clásico de 1996; ejecuta la versión shareware o datos propios.", url: "https://johnimril.github.io/diablo_web/", category: "games", icon: "fa-gamepad", tag: "RPG" },
+            { title: "Diablo Web", desc: "Port del juego Diablo para navegador; puede requerir archivos de una copia legítima.", url: "https://johnimril.github.io/diablo_web/", category: "games", icon: "fa-gamepad", tag: "RPG" },
             { title: "WASM Arcade", desc: "Archivo de demostraciones técnicas y títulos clásicos compilados a WebAssembly.", url: "https://wasmarcade.com", category: "games", icon: "fa-gamepad", tag: "Arcade" },
             { title: "GTA Vice City WASM", desc: "Port de investigación a WebAssembly que ejecuta el motor de Vice City en navegador.", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
             { title: "WebXash GoldSrc", desc: "Reimplementación web del motor GoldSrc (Half-Life / CS) para pruebas en navegador.", url: "https://x8bitrain.github.io/webXash/", category: "games", icon: "fa-gamepad", tag: "Shooter" }
@@ -754,7 +754,7 @@ html
         }
 
         function filterCatalog(category) {
-            if (category === 'games' && currentView !== 'catalog') currentView = 'catalog';
+            if (currentView !== 'catalog') currentView = 'catalog';
             currentCategory = category;
             currentEval = 'all';
             
