@@ -143,6 +143,12 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 <script>
 "use strict";
 const resourcesData = [
+            // Investigación de modelos, agentes autónomos y seguridad (uso responsable) — octubre 2026
+            { title: "LogonStealer (investigación)", desc: "Prueba de concepto sobre captura de credenciales en la pantalla de inicio de sesión de Windows mediante un Credential Provider; referencia para análisis defensivo.", url: "https://github.com/S12cybersecurity/LogonStealer", category: "security", icon: "fa-bookmark", tag: "Windows Security / PoC" },
+            { title: "μLattice (mLattice)", desc: "Investigación experimental de memoria neuronal estructurada en retícula 2D con acceso local de costo fijo por token según las pruebas publicadas por el autor.", url: "https://github.com/eelbaz/mLattice", category: "ai", icon: "fa-bookmark", tag: "AI Research / Memory" },
+            { title: "Ouroboros Agent", desc: "Agente de IA general con memoria e historial persistentes entre tareas y reinicios, ejecución local y capacidades de autoedición configurables.", url: "https://github.com/razzant/ouroboros", category: "ai", icon: "fa-bookmark", tag: "Persistent Agents" },
+            { title: "Magic-Atomics", desc: "Framework de validación de controles preventivos frente a técnicas living-off-the-land, con mapeo MITRE ATT&CK y pruebas controladas.", url: "https://github.com/magicsword-io/Magic-Atomics", category: "security", icon: "fa-bookmark", tag: "Security Validation / ATT&CK" },
+            { title: "MiniCPM-V", desc: "Familia de modelos multimodales ligeros de OpenBMB para imágenes, video y documentos, con variantes para despliegue local y dispositivos.", url: "https://github.com/OpenBMB/MiniCPM-V", category: "ai", icon: "fa-bookmark", tag: "Multimodal / On-device" },
             // Investigación profunda, herramientas de auditoría y recursos técnicos — octubre 2026
             { title: "ARTEX (copia independiente)", desc: "Copia mantenida por terceros del sistema de pruebas de penetración con agentes IA, backend Go y frontend Next.js; incluye demostración con datos simulados.", url: "https://github.com/bookSiYi1412/ARTEX", category: "security", icon: "fa-bookmark", tag: "AI Pentesting" },
             { title: "Fieldwatch", desc: "Aplicación Android sin backend para observar pasivamente puntos de acceso Wi-Fi y anuncios Bluetooth LE, clasificar señales y elaborar reportes locales.", url: "https://github.com/OffGridPete/Fieldwatch", category: "security", icon: "fa-bookmark", tag: "Wireless / Android" },
@@ -418,6 +424,11 @@ const state={category:"all",tag:"all",level:"all",license:"all",search:"",sort:"
 const normalized=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 // Datos de curaduría: nivel = criterio editorial, licencia = información aún sujeta a revisión del repositorio.
 const RESOURCE_METADATA={
+"https://github.com/S12cybersecurity/LogonStealer":{level:"Avanzado",license:"Por verificar",caution:"Código de robo de credenciales. No instalar ni ejecutar en dispositivos reales; investigar únicamente en laboratorio aislado, propio y autorizado."},
+"https://github.com/eelbaz/mLattice":{level:"Avanzado",license:"Por verificar",caution:"Resultados de benchmarks declarados por el autor; requieren reproducción independiente y hardware compatible."},
+"https://github.com/razzant/ouroboros":{level:"Avanzado",license:"Por verificar",caution:"La autoedición y ejecución de herramientas exige sandbox, revisión humana, límites y respaldo de datos."},
+"https://github.com/magicsword-io/Magic-Atomics":{level:"Avanzado",license:"Por verificar",caution:"Ejecutar solo en infraestructura de laboratorio o autorizada: las pruebas pueden activar herramientas de sistema de doble uso."},
+"https://github.com/OpenBMB/MiniCPM-V":{level:"Avanzado",license:"Por verificar",caution:"Revisar licencias por variante, requisitos de cómputo, pesos y compatibilidad antes de uso comercial."},
 "https://github.com/bookSiYi1412/ARTEX":{level:"Avanzado",license:"Por verificar",caution:"Copia no oficial del proyecto original mhtsec/ARTEX; auditar procedencia, dependencias y autorización de pruebas."},
 "https://github.com/OffGridPete/Fieldwatch":{level:"Intermedio",license:"Por verificar",caution:"Escaneo pasivo local; revisar permisos y procedencia del APK antes de instalar."},
 "https://github.com/QingYunA/answer-me-with-html":{level:"Intermedio",license:"Por verificar",caution:"Revisar el HTML generado y no abrir contenidos no confiables con permisos privilegiados."},
