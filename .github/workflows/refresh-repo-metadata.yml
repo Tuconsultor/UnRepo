@@ -1,6 +1,12 @@
 name: Refresh GitHub resource metadata
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/refresh_metadata.py'
+      - '.github/workflows/refresh-repo-metadata.yml'
   schedule:
     - cron: '23 5 * * *'
 permissions:
