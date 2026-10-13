@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guía práctica de idempotencia, persistencia y políticas de reintento para agentes IA resistentes a caídas, reinicios y fallos de herramientas.">
+<title>Agentes resilientes · Guía de arquitectura | UnRepo Nexus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#090e1a;--surface:#131c2e;--surface2:#19243a;--line:#33445f;--text:#f1f5f9;--muted:#b4c3d9;--cyan:#67e8f9;--gold:#fcd34d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 100% 0,#14314a,transparent 36%),var(--bg);color:var(--text);font:16px/1.65 "Space Grotesk",system-ui,sans-serif}a{color:var(--cyan)}a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}header{border-bottom:1px solid var(--line);background:#0c1424}header>div,main,footer{max-width:1100px;margin:auto;padding:20px 24px}header>div{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}header a{text-decoration:none;font-weight:700}header small{color:var(--muted)}main{padding-top:38px;padding-bottom:70px}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.1;letter-spacing:-.05em;margin:12px 0 24px}h2{font-size:1.55rem;line-height:1.25;margin-top:42px}h3{font-size:1.1rem}p,li{max-width:85ch}p{color:#d9e3f1}ul,ol{padding-left:1.4rem}.eyebrow{font:12px "JetBrains Mono",monospace;letter-spacing:1px;text-transform:uppercase;color:var(--cyan)}.lead{font-size:1.2rem;color:#dbeafe;max-width:75ch}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:20px 0}.panel strong{color:#fff}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.full{grid-column:1/-1}.tag{display:inline-block;padding:3px 9px;color:var(--cyan);border:1px solid #155e75;border-radius:20px;font:12px "JetBrains Mono",monospace}.warning{border-left:4px solid var(--gold)}.warning strong{color:var(--gold)}.pipeline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0}.pipeline span{padding:9px 11px;border:1px solid #296176;background:#10374b;border-radius:8px;font:13px "JetBrains Mono",monospace}.pipeline b{color:var(--cyan)}.step{padding:14px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}.step b{color:var(--cyan)}code,pre{font-family:"JetBrains Mono",monospace;font-size:.86em}code{color:#99f6e4}pre{background:#070d18;color:#e0f2fe;overflow-x:auto;border:1px solid var(--line);border-radius:10px;padding:16px;font-size:.82rem;line-height:1.6}pre code{color:inherit}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:610px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--surface2);color:#fff}td{color:#d9e3f1}.checklist li{margin:6px 0}footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}summary{cursor:pointer;color:var(--cyan);font-weight:600}details{margin:14px 0}@media(max-width:700px){.grid{grid-template-columns:1fr}.panel{padding:16px}.full{grid-column:auto}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div><a href="./index.html">✳ UnRepo Nexus</a><small>Guías técnicas · Arquitectura confiable</small><a href="./index.html">← Volver al catálogo</a></div></header>
+<main id="contenido">
+<div class="eyebrow">Guía de implementación · Octubre de 2026</div>
+<h1>Agentes de IA que <span style="color:var(--cyan)">pueden continuar después de fallar.</span></h1>
+<p class="lead">Cómo diseñar idempotencia, persistencia, reintentos y recuperación usando software abierto, sin confundir “volver a ejecutar” con “ejecutar sin duplicar efectos”.</p>
+<div class="panel warning"><strong>Respuesta técnica: sí, con condiciones.</strong><p>Las bibliotecas gratuitas proporcionan primitivas de ejecución duradera y colas, pero <b>ninguna combinación garantiza automáticamente exactamente una ejecución de efectos externos</b>. Hace falta identidad de tarea, base de datos duradera, deduplicación de operaciones, límites de reintentos y pruebas de interrupción. “Continuar” tampoco significa conservar memoria interna de una sesión LLM no registrada: hay que persistir entradas, decisiones, pasos y resultados.</p></div>
+<h2>1 · El patrón de referencia</h2>
+<div class="pipeline" aria-label="Flujo operativo"><span>Solicitud con ID</span><b>→</b><span>Cola duradera</span><b>→</b><span>Paso</span><b>→</b><span>Checkpoint</span><b>→</b><span>Fallo</span><b>→</b><span>Reinicio</span><b>→</b><span>Reintento seguro</span><b>→</b><span>Verificación</span></div>
+<div class="grid">
+<div class="panel"><h3>Idempotencia</h3><p>Para la misma operación lógica, repetir una petición <strong>no debe duplicar el efecto empresarial</strong>. Use clave estable por operación, índice único y resultado persistido. Reutilice la misma clave en la API externa cuando lo admita.</p></div>
+<div class="panel"><h3>Persistencia</h3><p>Registre solicitud, identificador de flujo, versión, estado, pasos finalizados, salidas y errores en almacenamiento duradero. No dependa de memoria RAM ni exclusivamente de cachés.</p></div>
+<div class="panel"><h3>Reintentos</h3><p>Reintente únicamente errores transitorios, con <strong>backoff exponencial, jitter, límite de intentos y fecha máxima</strong>. No reintente sin control errores de permisos, validación o solicitudes mal construidas.</p></div>
+<div class="panel"><h3>Recuperación</h3><p>En el arranque, recupere operaciones pendientes, verifique efectos inciertos y continúe desde el último checkpoint confirmado. Aísle tareas que agotaron reintentos para revisión humana.</p></div>
+</div>
+<h2>2 · Ruta mínima recomendada (Python)</h2>
+<div class="panel"><span class="tag">Costos: software abierto; infraestructura aparte</span><h3>DBOS + PostgreSQL</h3><p><a href="https://github.com/dbos-inc/dbos-transact-py">DBOS</a> administra estado de workflows y checkpoints; <a href="https://github.com/postgres/postgres">PostgreSQL</a> conserva el registro después de reinicios. Para un proyecto pequeño no es obligatorio sumar Celery: DBOS dispone de mecanismos de orquestación y colas propios. Añádalo solo cuando se justifique por integración o necesidades operativas.</p>
+<ol class="checklist">
+<li>Instale PostgreSQL y establezca respaldos automáticos, retención y restauración ensayada.</li>
+<li>Instale DBOS; el ejemplo inicial usa <code>pip install dbos</code>. Configure <code>DBOS_SYSTEM_DATABASE_URL</code> con un usuario de mínimos privilegios.</li>
+<li>Defina un <code>workflow_id</code> único y estable a partir del identificador de la solicitud. Rechace nuevas solicitudes incompatibles con el mismo ID.</li>
+<li>Divida las acciones externas en <em>steps</em>; conserve entradas y resultados serializables.</li>
+<li>Para cada efecto externo, use una clave idempotente y un ledger propio; en respuestas ambiguas consulte el estado remoto antes de repetir.</li>
+<li>Configure reintentos solo para errores transitorios; marque como terminal un error funcional no recuperable.</li>
+<li>Reinicie el proceso a mitad de un workflow y verifique que continúa desde el último paso confirmado.</li>
+</ol>
+<p><a href="https://docs.dbos.dev/python/integrating-dbos">Instalación oficial DBOS</a> · <a href="https://docs.dbos.dev/python/tutorials/step-tutorial">Steps y reintentos</a> · <a href="https://docs.dbos.dev/python/tutorials/workflow-tutorial">Garantías documentadas</a></p></div>
+<h2>3 · Receta de claves idempotentes</h2>
+<p>Los IDs son del negocio, no números aleatorios nuevos en cada reintento. Esta operación SQL es una <strong>plantilla conceptual PostgreSQL</strong>, no una aplicación ejecutable completa:</p>
+<pre><code>CREATE TABLE operation_ledger (
+  operation_key TEXT PRIMARY KEY,
+  request_hash TEXT NOT NULL,
+  status TEXT NOT NULL CHECK
+    (status IN ('pending','running','done','failed','needs_review')),
+  result_json JSONB,
+  attempts INT NOT NULL DEFAULT 0,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+-- Para cada solicitud:
+-- 1. INSERT ... ON CONFLICT DO NOTHING
+-- 2. Si existe, comparar request_hash (conflicto = error).
+-- 3. Bloquear/adquirir la operación de forma transaccional.
+-- 4. Si status='done', reutilizar result_json.
+-- 5. Si hay efecto remoto ambiguo, consultar el sistema remoto.
+-- 6. Guardar resultado y estado final antes de responder.</code></pre>
+<div class="panel warning"><strong>Regla fundamental</strong><p>Un índice único evita dos entradas para la misma clave, pero no evita por sí solo dos pagos, correos o llamadas externas. Combine ledger, exclusión de ejecuciones simultáneas, idempotency keys del proveedor y conciliación del resultado remoto. Cuando el servicio externo no soporte deduplicación, adopte compensación o revisión humana ante estados inciertos.</p></div>
+<h2>4 · Política operativa de reintentos</h2>
+<div class="table-wrap"><table><thead><tr><th>Incidencia</th><th>Acción</th><th>Razón</th></tr></thead><tbody>
+<tr><td>Timeout, HTTP 502/503/504</td><td>Máx. 4 intentos, backoff exponencial y jitter</td><td>Fallo normalmente transitorio; verificar primero si el efecto se completó</td></tr>
+<tr><td>HTTP 429</td><td>Respetar <code>Retry-After</code> y aplicar límite global</td><td>Evitar saturar el servicio</td></tr>
+<tr><td>HTTP 400/401/403 o datos inválidos</td><td>No reintentar automáticamente</td><td>Requiere corrección, credenciales o intervención</td></tr>
+<tr><td>Proceso termina / host reinicia</td><td>Recargar checkpoints persistidos</td><td>El reinicio no debe borrar el estado</td></tr>
+<tr><td>Respuesta ambigua de API externa</td><td>Conciliar por ID antes de repetir</td><td>El proveedor quizá procesó la acción</td></tr>
+<tr><td>Intentos agotados</td><td>Estado <code>needs_review</code> y alerta</td><td>Evitar bucles y pérdidas silenciosas</td></tr>
+</tbody></table></div>
+<p><strong>Ejemplo de parámetros iniciales:</strong> 4 intentos, espera base de 2 s, factor 2, jitter aleatorio limitado, tiempo máximo por operación de 15 min. Son valores orientativos y deben adaptarse a límites, latencias y semántica del proveedor.</p>
+<h2>5 · Cuando el sistema crece: elegir componentes, no coleccionarlos</h2>
+<div class="table-wrap"><table><thead><tr><th>Necesidad real</th><th>Componente</th><th>Precaución</th></tr></thead><tbody>
+<tr><td>Workflows duraderos Python</td><td><a href="https://github.com/dbos-inc/dbos-transact-py">DBOS</a> + PostgreSQL</td><td>Steps externos pueden reintentarse; consulte efectos previos</td></tr>
+<tr><td>Servicios duraderos y objetos con estado</td><td><a href="https://github.com/restatedev/restate">Restate</a></td><td>Persistencia y journaling requieren configurar servidor y recuperación</td></tr>
+<tr><td>Tareas Python distribuidas existentes</td><td><a href="https://github.com/celery/celery">Celery</a> + broker</td><td>Requiere idempotencia; <code>acks_late</code> no sustituye retry</td></tr>
+<tr><td>Eventos entre servicios</td><td><a href="https://github.com/nats-io/nats-server">NATS JetStream</a></td><td>At-least-once; deduplicación por ID tiene ventana configurable</td></tr>
+<tr><td>Trabajos Node / TypeScript</td><td><a href="https://github.com/taskforcesh/bullmq">BullMQ</a> + Redis</td><td>Persistencia de Redis, backoff y efectos idempotentes</td></tr>
+<tr><td>Procesos TS con reintentos</td><td><a href="https://github.com/triggerdotdev/trigger.dev">Trigger.dev</a></td><td>Evaluar límites y ámbito de idempotency keys</td></tr>
+<tr><td>Scripts y automatizaciones operativas</td><td><a href="https://github.com/windmill-labs/windmill">Windmill</a></td><td>Permisos, secretos y semántica de ejecución</td></tr>
+<tr><td>Orquestación de contenedores</td><td><a href="https://github.com/argoproj/argo-workflows">Argo Workflows</a></td><td>Exige Kubernetes y mantenimiento operativo</td></tr>
+<tr><td>Telemetría y trazas</td><td><a href="https://github.com/open-telemetry/opentelemetry-collector">OpenTelemetry Collector</a></td><td>Evitar fuga de prompts, secretos y datos personales</td></tr>
+<tr><td>Caché y coordinación de estado</td><td><a href="https://github.com/valkey-io/valkey">Valkey</a></td><td>No reemplaza almacenamiento transaccional permanente</td></tr>
+<tr><td>Artefactos binarios</td><td><a href="https://github.com/minio/minio">MinIO</a> o alternativa S3</td><td>Repositorio citado archivado; evaluar mantenimiento y licencias</td></tr>
+</tbody></table></div>
+<h2>6 · Sesiones LLM: qué persistir</h2>
+<div class="panel"><p>Persistir solamente la cola no reconstruye una tarea de IA. Guarde: <strong>workflow_id, modelo y versión, instrucciones vigentes, referencias de documentos, mensajes necesarios, decisiones aceptadas, IDs de llamadas a herramientas, resultados, hashes de entradas, presupuesto de consumo y estado de aprobación humana</strong>. Al reanudar, reconstruya el contexto con esos datos y ejecute únicamente los pasos pendientes. No guarde secretos en texto plano ni asuma que una respuesta regenerada será idéntica.</p></div>
+<h2>7 · Pruebas de resiliencia antes de producción</h2>
+<ol class="checklist">
+<li><strong>Duplicado:</strong> envíe la misma solicitud 10 veces simultáneamente. Debe existir una sola operación lógica y, en lo posible, un solo efecto remoto.</li>
+<li><strong>Caída:</strong> mate el proceso después de una operación externa y antes de guardar la respuesta. Al reiniciar, verificar antes de reintentar.</li>
+<li><strong>Reinicio:</strong> reinicie el worker a mitad de un flujo y asegure la recuperación del checkpoint.</li>
+<li><strong>Fallo transitorio:</strong> simule 503/429; compruebe límites, <code>Retry-After</code>, jitter y máximo de intentos.</li>
+<li><strong>Fallo permanente:</strong> simule 401 o validación fallida; debe detenerse, registrar la causa y permitir intervención.</li>
+<li><strong>Base de datos:</strong> desconecte PostgreSQL; no se deben reportar finalizaciones sin confirmación persistida.</li>
+<li><strong>Pérdida de ACK:</strong> fuerce la entrega repetida del mensaje; el consumidor debe tratar el duplicado como seguro.</li>
+<li><strong>Restauración:</strong> restaure respaldos en entorno alterno y mida pérdida máxima de datos y tiempo de recuperación.</li>
+<li><strong>Revisión:</strong> cada operación pendiente debe tener propietario, estado visible y procedimiento de conciliación.</li>
+</ol>
+<h2>8 · Costo y alcance de las garantías</h2>
+<div class="grid"><div class="panel"><span class="tag">Prototipo</span><h3>DBOS + SQLite</h3><p>Permite aprender y validar recuperación local sin pagar licencias del motor. No representa una configuración de alta disponibilidad ni reemplaza respaldos.</p></div>
+<div class="panel"><span class="tag">Producción pequeña</span><h3>DBOS + PostgreSQL</h3><p>Ruta simple con persistencia y workflows duraderos. Software de código abierto; el hosting, cómputo, almacenamiento, monitoreo y llamadas a modelos pueden generar costos.</p></div></div>
+<p>Para alta disponibilidad multinstancia se requiere diseñar además la coordinación y recuperación distribuida. El plano de control DBOS Conductor puede tener licencias y costos distintos de la biblioteca abierta; su versión autoalojada está documentada con licencia propietaria. No es correcto afirmar que todas las piezas sean gratuitas en cualquier despliegue.</p>
+<h2>9 · Fuentes para verificar antes de implementar</h2>
+<ul>
+<li><a href="https://docs.dbos.dev/python/tutorials/workflow-tutorial">DBOS: garantías de workflows</a> y <a href="https://docs.dbos.dev/python/tutorials/step-tutorial">steps y retries</a>.</li>
+<li><a href="https://docs.dbos.dev/conductor/self-hosting/hosting-conductor">DBOS: licenciamiento de Conductor autoalojado</a>.</li>
+<li><a href="https://docs.restate.dev/concepts/services/">Restate: services, virtual objects y workflows</a>.</li>
+<li><a href="https://github.com/celery/celery/blob/main/docs/userguide/tasks.rst">Celery: task acknowledgments e idempotencia</a>.</li>
+<li><a href="https://github.com/nats-io/nats.docs/blob/master/using-nats/jetstream/model_deep_dive.md">NATS JetStream: deduplicación y acknowledgements</a>.</li>
+<li><a href="https://github.com/triggerdotdev/trigger.dev/blob/main/rules/4.0.0/advanced-tasks.md">Trigger.dev: retries e idempotencia</a>.</li>
+</ul>
+<div class="panel"><h3>Criterio de aceptación</h3><p>Un agente es recuperable cuando una solicitud repetida no duplica el efecto empresarial, un reinicio conserva el progreso, un error transitorio se reintenta dentro de límites, uno permanente se detiene y cada resultado puede auditarse. Una demostración sin pruebas de fallos es solamente un prototipo.</p></div>
+</main>
+<footer>UnRepo Nexus · Guía técnica de referencia. Validar documentación y versiones antes de producción. <a href="./index.html">Volver al catálogo</a>.</footer>
+</body></html>
