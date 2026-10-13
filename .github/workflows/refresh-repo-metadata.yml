@@ -40,3 +40,21 @@ jobs:
           git add data/github-metadata.json
           git commit -m "data: refresh GitHub repository metadata [skip ci]"
           git push
+      - name: Publish Nexus to gh-pages
+        run: |
+          git fetch origin gh-pages
+          git worktree add --detach /tmp/unrepo-nexus-gh-pages FETCH_HEAD
+          mkdir -p /tmp/unrepo-nexus-gh-pages/data
+          cp index.html /tmp/unrepo-nexus-gh-pages/index.html
+          cp data/github-metadata.json /tmp/unrepo-nexus-gh-pages/data/github-metadata.json
+          cd /tmp/unrepo-nexus-gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/github-metadata.json
+          if git diff --cached --quiet; then
+            echo "No website changes to publish"
+          else
+            git commit -m "publish: sync Nexus catalog and metadata [skip ci]"
+            git push origin HEAD:refs/heads/gh-pages
+          fi
+
