@@ -1,464 +1,160 @@
-<!DOCTYPE html>
-<html lang="es" class="dark">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AgentSec Playbook: directorio curado de herramientas de seguridad, agentes de IA, desarrollo, aprendizaje y juegos en navegador.">
-    <title>AgentSec Playbook | DevSecOps & AI Agents Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        cyber: {
-                            cyan: '#06b6d4',
-                            emerald: '#10b981',
-                            purple: '#8b5cf6',
-                            dark: '#0f172a',
-                            panel: '#1e293b',
-                            border: '#334155'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
-        
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.8);
-        }
-        
-        .cyber-glow:hover {
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-            border-color: rgba(6, 182, 212, 0.5);
-        }
-
-        .sidebar-nav {
-            width: 100%;
-            text-align: left;
-            position: relative;
-        }
-        .sidebar-nav::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 9px;
-            bottom: 9px;
-            width: 2px;
-            border-radius: 999px;
-            background: transparent;
-        }
-        .sidebar-nav.is-active {
-            background: rgba(6, 182, 212, 0.10);
-            color: #06b6d4;
-            border-color: rgba(6, 182, 212, 0.22);
-        }
-        .sidebar-nav.is-active::before { background: #06b6d4; }
-        .sidebar-nav:focus-visible,
-        .filter-btn:focus-visible,
-        .tool-card a:focus-visible {
-            outline: 2px solid #06b6d4;
-            outline-offset: 2px;
-        }
-        .view-context {
-            background:
-                radial-gradient(circle at 100% 0%, rgba(139,92,246,.10), transparent 35%),
-                linear-gradient(135deg, rgba(15,23,42,.92), rgba(30,41,59,.70));
-        }
-        .tool-card { transform: translateY(0); }
-        .tool-card:hover { transform: translateY(-2px); }
-        .mcp-architecture {
-            background:
-                radial-gradient(circle at 20% 0%, rgba(6,182,212,.09), transparent 28%),
-                radial-gradient(circle at 85% 100%, rgba(139,92,246,.10), transparent 30%),
-                rgba(15,23,42,.72);
-        }
-        .arch-node {
-            background: rgba(30,41,59,.72);
-            border: 1px solid rgba(71,85,105,.78);
-            min-height: 132px;
-        }
-        .arch-node:hover {
-            border-color: rgba(6,182,212,.45);
-            box-shadow: 0 0 20px rgba(6,182,212,.08);
-        }
-        .arch-connector {
-            position: relative;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(6,182,212,.25), rgba(6,182,212,.9));
-        }
-        .arch-connector::after {
-            content: "";
-            position: absolute;
-            right: -1px;
-            top: 50%;
-            width: 8px;
-            height: 8px;
-            border-top: 2px solid #06b6d4;
-            border-right: 2px solid #06b6d4;
-            transform: translateY(-50%) rotate(45deg);
-        }
-        .trust-chip {
-            background: rgba(15,23,42,.76);
-            border: 1px solid rgba(71,85,105,.72);
-        }
-        .mcp-mode-btn[aria-pressed="true"] {
-            background: rgba(6,182,212,.12);
-            border-color: rgba(6,182,212,.32);
-            color: #67e8f9;
-        }
-        @media (max-width: 1023px) {
-            .arch-connector {
-                width: 2px !important;
-                height: 24px;
-                margin: 0 auto;
-                background: linear-gradient(180deg, rgba(6,182,212,.25), rgba(6,182,212,.9));
-            }
-            .arch-connector::after {
-                right: 50%;
-                top: auto;
-                bottom: -1px;
-                transform: translateX(50%) rotate(135deg);
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="UnRepo Nexus: directorio curado de herramientas IA, desarrollo, seguridad, aprendizaje y recursos tecnológicos.">
+<title>UnRepo · Nexus | Explorador de recursos Tech & IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#090e1a;--panel:#131c2e;--panel2:#19243a;--line:#33445f;--text:#f1f5f9;--muted:#b4c3d9;--cyan:#22d3ee;--cyan2:#083344;--focus:#67e8f9;--shadow:0 18px 50px #0004}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 90% 0%,#14314a 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.55 "Space Grotesk",system-ui,sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}button:disabled{opacity:.55;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-70px;z-index:100;background:#fff;color:#111;padding:10px 16px;border-radius:8px}.skip:focus{top:12px}
+.shell{display:grid;grid-template-columns:256px minmax(0,1fr);min-height:100vh}
+.sidebar{border-right:1px solid var(--line);padding:24px 17px;background:#0c1424;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:20px;letter-spacing:-.7px}
+.logo{width:41px;height:41px;border:1px solid #2b6a83;background:#10374b;border-radius:12px;color:var(--cyan);display:grid;place-items:center}
+.brand small{display:block;color:var(--muted);font:10px "JetBrains Mono",monospace;letter-spacing:1px}
+.overline{font:11px "JetBrains Mono",monospace;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin:34px 10px 12px}
+.nav-btn{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:transparent;color:var(--muted);border:1px solid transparent;border-radius:11px;padding:10px 12px;margin:3px 0}
+.nav-btn:hover,.nav-btn[aria-pressed=true]{background:#14293b;color:#f0fbff;border-color:#29526b}
+.nav-btn[aria-pressed=true]{box-shadow:inset 3px 0 var(--cyan)}
+.nav-btn b{font:11px "JetBrains Mono",monospace;color:#c5d4e9}
+.nav-label{display:flex;gap:10px;align-items:center}
+.sidebar-foot{border-top:1px solid var(--line);padding:20px 10px 4px;margin-top:22px;color:var(--muted);font-size:12px}
+.main{min-width:0;padding:24px clamp(18px,3.8vw,62px) 70px;max-width:1800px;width:100%;margin:0 auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:35px}
+.breadcrumb{display:flex;align-items:center;gap:10px;color:var(--muted);font:12px "JetBrains Mono",monospace}.breadcrumb strong{color:var(--text)}
+.actions{display:flex;gap:10px;align-items:center}
+.btn{border:1px solid var(--line);background:#1a2a41;color:var(--text);border-radius:10px;padding:9px 13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;text-decoration:none}
+.btn:hover{border-color:#6b8da9;background:#243a52}.btn-primary{background:#0e7490;border-color:#0891b2;color:white}.btn-primary:hover{background:#155e75}
+.kbd{font:11px "JetBrains Mono",monospace;padding:3px 6px;border:1px solid #64748b;border-radius:5px;color:#d4e6f7}
+.hero{max-width:930px;margin-bottom:28px}
+.eyebrow{display:flex;align-items:center;gap:10px;color:#67e8f9;font:11px "JetBrains Mono",monospace;letter-spacing:1.8px;text-transform:uppercase}
+.pulse{height:7px;width:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px #34d39920}
+h1{font-size:clamp(32px,5vw,62px);line-height:1.06;letter-spacing:-2.5px;margin:15px 0 15px;font-weight:700}h1 span{color:var(--cyan)}
+.lead{max-width:750px;color:#c6d3e5;font-size:clamp(15px,1.5vw,18px);margin:0}
+.metrics{display:flex;gap:12px;flex-wrap:wrap;margin:27px 0 0}
+.metric{min-width:135px;border:1px solid var(--line);background:#111d2d;border-radius:12px;padding:12px 16px}
+.metric strong{font:23px "JetBrains Mono",monospace;color:#f8fafc;display:block}.metric span{color:var(--muted);font-size:12px}
+.search-panel{border:1px solid #3a5b73;background:linear-gradient(135deg,#14243a,#101b2d);box-shadow:var(--shadow);padding:17px;border-radius:18px;margin:28px 0 24px}
+.search-label{display:block;margin-bottom:9px;color:#d6e4f4;font-size:13px;font-weight:600}
+.search-wrap{display:flex;align-items:center;gap:12px;padding:0 16px;background:#091524;border:1px solid #56718c;border-radius:12px;min-height:57px}
+.search-wrap:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px #22d3ee25}
+.search-icon{color:#81bace;font-size:23px}
+#search{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;padding:14px 0;font-size:16px}
+#search::placeholder{color:#91a3bc}
+.search-hint{color:#c9d7e8;font:11px "JetBrains Mono",monospace;white-space:nowrap}
+.filter-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:13px;align-items:end}
+.field label{color:#c0d0e4;display:block;font-size:12px;margin-bottom:6px}
+select{appearance:none;width:100%;min-height:43px;padding:9px 34px 9px 12px;border-radius:10px;border:1px solid #4c627e;background:#17283e;color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2e8f0' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:16px}
+.sort-row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:30px 0 14px}
+h2{font-size:23px;letter-spacing:-.6px;margin:0}
+.result-info{color:#bdcee3;font-size:13px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 21px}
+.chip{background:#132a3e;border:1px solid #345774;border-radius:999px;color:#d9eaff;padding:5px 11px;font-size:12px}
+.chip button{border:0;color:#fff;background:none;margin-left:5px;font-weight:700}
+.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{display:flex;flex-direction:column;min-width:0;min-height:240px;border:1px solid #34455c;background:linear-gradient(155deg,#162238,#101a2b);border-radius:15px;padding:20px;transition:border-color .16s,transform .16s,box-shadow .16s}
+.card:hover{border-color:#3d9fb7;transform:translateY(-2px);box-shadow:0 12px 28px #0004}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.card-symbol{height:42px;width:42px;border-radius:12px;border:1px solid #355b72;background:#103144;display:grid;place-items:center;color:#67e8f9;font:700 17px "JetBrains Mono",monospace}
+.favorite{border:1px solid #49607a;border-radius:9px;background:#1a2a40;color:#d1dfef;min-width:39px;height:39px;display:grid;place-items:center}
+.favorite[aria-pressed=true]{color:#fcd34d;border-color:#b98b32;background:#42331c}
+.card h3{margin:16px 0 7px;font-size:18px;line-height:1.25;overflow-wrap:anywhere}
+.card p{margin:0 0 18px;color:#c4d1e1;font-size:13px;line-height:1.6;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:9px;border-top:1px solid #33465d;padding-top:14px}
+.tag{font:10px "JetBrains Mono",monospace;color:#b9d8ea;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:65%}
+.external{color:#67e8f9;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap;padding:5px;border-radius:6px}.external:hover{text-decoration:underline}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;border:1px dashed #58708a;border-radius:16px;background:#101b2b}
+.empty strong{display:block;font-size:23px}.empty p{color:var(--muted);max-width:480px;margin:8px auto 20px}
+.more{text-align:center;margin-top:26px}
+.footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:15px;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;flex-wrap:wrap}
+.mobile-toggle{display:none}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:1150px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:830px){.shell{display:block}.sidebar{position:fixed;z-index:50;top:0;bottom:0;left:0;transform:translateX(-110%);width:min(85vw,290px);transition:transform .2s;box-shadow:15px 0 35px #0009}.sidebar.open{transform:translateX(0)}.mobile-toggle{display:inline-flex}.main{padding:18px 20px 60px}.topbar{margin-bottom:24px}.breadcrumb{margin-right:auto}.desktop-hint{display:none}}
+@media(max-width:550px){.catalog{grid-template-columns:1fr}.filter-line{grid-template-columns:1fr}.filter-line .btn{width:100%}.search-hint{display:none}.metric{flex:1;min-width:85px}.card{min-height:210px}h1{letter-spacing:-1.3px}.topbar .actions .btn-text{display:none}.search-panel{padding:13px}.sort-row{align-items:start}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+.resource-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 11px}
+.resource-facts .fact{min-width:0;border:1px solid #3c506b;border-radius:8px;padding:7px 9px;background:#0f2032}
+.resource-facts dt{color:#bdd4e9;font-size:11px}
+.resource-facts dd{margin:2px 0 0;color:#f1f5f9;font-size:12px;font-weight:600;overflow-wrap:anywhere}
+.card .resource-caution{margin:0 0 13px;color:#e6d9ad;font-size:12px;line-height:1.5;flex:none}
+.github-info{display:flex;flex-wrap:wrap;gap:7px 12px;color:#d2e3f4;font-size:11px;margin:0 0 11px}
+.archive-status{color:#fcd34d;border:1px solid #aa772e;border-radius:5px;padding:0 5px}
+</style>
 </head>
-<body class="bg-cyber-dark text-slate-300 font-sans antialiased selection:bg-cyber-cyan selection:text-white flex h-screen overflow-hidden">
-
-    <!-- Sidebar -->
-    <aside id="sidebar" class="glass-panel w-64 h-full flex-shrink-0 hidden md:flex flex-col transition-all duration-300 z-20">
-        <div class="p-6 flex items-center gap-3 border-b border-cyber-border">
-            <div class="w-8 h-8 rounded bg-gradient-to-br from-cyber-cyan to-cyber-purple flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(6,182,212,0.5)]">
-                <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h1 class="text-white font-bold tracking-wider text-lg">AgentSec</h1>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto py-4" aria-label="Secciones de AgentSec">
-            <div class="px-4 pb-2 text-[10px] uppercase tracking-[0.18em] text-slate-600 font-semibold">Explorar</div>
-            <ul class="space-y-1 px-3">
-                <li>
-                    <button type="button" class="sidebar-nav is-active flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="catalog" aria-current="page">
-                        <i class="fa-solid fa-layer-group w-5 text-center"></i>
-                        <span class="flex-1">Catálogo de Recursos</span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="mcp">
-                        <i class="fa-solid fa-network-wired w-5 text-center"></i>
-                        <span class="flex-1">Arquitecturas MCP</span>
-                        <span id="navCountMcp" class="text-[10px] font-mono text-slate-600"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="sandbox">
-                        <i class="fa-solid fa-microchip w-5 text-center"></i>
-                        <span class="flex-1">Sandboxes</span>
-                        <span id="navCountSandbox" class="text-[10px] font-mono text-slate-600"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="sidebar-nav flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all border border-transparent" data-view="policy">
-                        <i class="fa-solid fa-file-shield w-5 text-center"></i>
-                        <span class="flex-1">Políticas & Gobierno</span>
-                        <span id="navCountPolicy" class="text-[10px] font-mono text-slate-600"></span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-        
-        <div class="p-4 border-t border-cyber-border">
-            <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700 text-xs">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-slate-400">Estado del Sistema</span>
-                    <span class="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse"></span>
-                </div>
-                <div class="font-mono text-cyber-emerald text-[10px]">CATÁLOGO: READY</div>
-                <div class="font-mono text-slate-500 text-[10px]">VERSIÓN: 2026 AUDITED</div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
-        
-        <!-- Mobile Header -->
-        <header class="md:hidden glass-panel h-16 flex items-center justify-between px-4 z-20">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-shield-halved text-cyber-cyan"></i>
-                <span class="text-white font-bold">AgentSec</span>
-            </div>
-            <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-        </header>
-
-        <!-- Contenido desplazable -->
-        <div class="flex-1 overflow-y-auto p-4 md:p-8 w-full max-w-7xl mx-auto">
-            
-            <!-- Hero Section -->
-            <div class="mb-10">
-                <h2 id="pageTitle" class="text-3xl md:text-4xl font-bold text-white mb-3">DevSecOps & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">AI Agents</span> Wiki</h2>
-                <p id="pageDescription" class="text-slate-400 max-w-3xl text-sm md:text-base leading-relaxed">
-                    Directorio consultivo y playbook para descubrir, auditar y operar herramientas de agentes, seguridad, datos y arquitecturas MCP.
-                </p>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-cyan mb-1 text-sm"><i class="fa-solid fa-layer-group"></i> Recursos catalogados</div>
-                    <div id="statResources" class="text-2xl font-bold text-white font-mono">—</div>
-                </div>
-                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-emerald mb-1 text-sm"><i class="fa-brands fa-github"></i> Repos GitHub</div>
-                    <div id="statGithub" class="text-2xl font-bold text-white font-mono">—</div>
-                </div>
-                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-cyber-purple mb-1 text-sm"><i class="fa-solid fa-plug"></i> Recursos MCP</div>
-                    <div id="statMcp" class="text-2xl font-bold text-white font-mono">—</div>
-                </div>
-                <div class="glass-panel p-4 rounded-xl cyber-glow transition-all">
-                    <div class="text-yellow-500 mb-1 text-sm"><i class="fa-solid fa-magnifying-glass-chart"></i> Research / Web Data</div>
-                    <div id="statResearch" class="text-2xl font-bold text-white font-mono">—</div>
-                </div>
-            </div>
-
-            <!-- Contexto de la vista -->
-            <section id="viewContext" class="view-context border border-slate-700/80 rounded-xl p-4 md:p-5 mb-6 flex flex-col md:flex-row md:items-center gap-4" aria-live="polite">
-                <div id="viewIcon" class="w-11 h-11 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyber-cyan flex items-center justify-center text-lg flex-shrink-0">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <div class="min-w-0 flex-1">
-                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                        <h3 id="viewTitle" class="text-white font-semibold">Catálogo completo</h3>
-                        <span id="viewResultCount" class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-slate-700 text-slate-400">0 recursos</span>
-                    </div>
-                    <p id="viewDescription" class="text-sm text-slate-400 leading-relaxed">Explora todo el inventario y usa categorías o búsqueda para reducir resultados.</p>
-                </div>
-                <button id="clearViewBtn" type="button" class="hidden text-xs font-medium text-cyber-cyan hover:text-white transition-colors whitespace-nowrap">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver al catálogo
-                </button>
-            </section>
-
-            <!-- MCP Architecture View -->
-            <section id="mcpArchitecturePanel" class="hidden mcp-architecture border border-slate-700/80 rounded-2xl p-4 md:p-6 mb-6 shadow-2xl" aria-labelledby="mcpArchitectureTitle">
-                <div class="flex flex-col xl:flex-row xl:items-start justify-between gap-4 mb-6">
-                    <div class="max-w-3xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-cyber-cyan border border-cyber-cyan/20 bg-cyber-cyan/10 px-2 py-1 rounded">Reference Architecture</span>
-                            <span class="text-[10px] font-mono text-slate-500">MCP · 2026</span>
-                        </div>
-                        <h3 id="mcpArchitectureTitle" class="text-xl md:text-2xl font-bold text-white">Cómo fluye una conexión MCP</h3>
-                        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-                            Un host de IA crea un cliente MCP que se comunica con un servidor mediante un transporte seguro. El servidor expone capacidades controladas —como tools, resources y prompts— hacia sistemas y datos concretos.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2" role="group" aria-label="Modo de arquitectura MCP">
-                        <button type="button" class="mcp-mode-btn text-xs px-3 py-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white transition-colors" data-mcp-mode="remote" aria-pressed="true">
-                            <i class="fa-solid fa-cloud mr-1.5"></i>Remoto HTTP
-                        </button>
-                        <button type="button" class="mcp-mode-btn text-xs px-3 py-2 rounded-lg border border-slate-700 text-slate-400 hover:text-white transition-colors" data-mcp-mode="local" aria-pressed="false">
-                            <i class="fa-solid fa-terminal mr-1.5"></i>Local stdio
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid lg:grid-cols-[1fr_38px_1fr_38px_1fr_38px_1fr] items-stretch gap-3 lg:gap-0" aria-label="Diagrama de arquitectura MCP">
-                    <article class="arch-node rounded-xl p-4 transition-all">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-cyber-purple/10 border border-cyber-purple/20 text-cyber-purple flex items-center justify-center">
-                                <i class="fa-solid fa-brain"></i>
-                            </div>
-                            <span class="text-[10px] font-mono text-slate-600">01</span>
-                        </div>
-                        <h4 class="text-white font-semibold mt-4">Host / Agente</h4>
-                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Aplicación de IA que decide cuándo necesita contexto o una acción externa.</p>
-                    </article>
-                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
-
-                    <article class="arch-node rounded-xl p-4 transition-all">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyber-cyan flex items-center justify-center">
-                                <i class="fa-solid fa-plug"></i>
-                            </div>
-                            <span class="text-[10px] font-mono text-slate-600">02</span>
-                        </div>
-                        <h4 class="text-white font-semibold mt-4">MCP Client</h4>
-                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Mantiene la conexión lógica y envía solicitudes al servidor MCP autorizado.</p>
-                    </article>
-                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
-
-                    <article class="arch-node rounded-xl p-4 transition-all border-cyber-cyan/20">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 flex items-center justify-center">
-                                <i id="mcpTransportIcon" class="fa-solid fa-cloud-arrow-up"></i>
-                            </div>
-                            <span class="text-[10px] font-mono text-slate-600">03</span>
-                        </div>
-                        <h4 id="mcpTransportTitle" class="text-white font-semibold mt-4">Streamable HTTP</h4>
-                        <p id="mcpTransportDescription" class="text-xs text-slate-500 mt-1 leading-relaxed">Transporte recomendado para un servidor MCP remoto. La autorización se aplica en este límite de confianza.</p>
-                    </article>
-                    <div class="arch-connector self-center w-full" aria-hidden="true"></div>
-
-                    <article class="arch-node rounded-xl p-4 transition-all">
-                        <div class="flex items-start justify-between gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-cyber-emerald/10 border border-cyber-emerald/20 text-cyber-emerald flex items-center justify-center">
-                                <i class="fa-solid fa-server"></i>
-                            </div>
-                            <span class="text-[10px] font-mono text-slate-600">04</span>
-                        </div>
-                        <h4 class="text-white font-semibold mt-4">MCP Server</h4>
-                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Expone únicamente las capacidades que el host puede descubrir y utilizar.</p>
-                    </article>
-                </div>
-
-                <div class="mt-4 grid md:grid-cols-3 gap-3">
-                    <div class="trust-chip rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-cyber-cyan text-sm font-semibold">
-                            <i class="fa-solid fa-screwdriver-wrench"></i> Tools
-                        </div>
-                        <p class="text-xs text-slate-500 mt-2">Acciones ejecutables con esquema de entrada definido y validación del servidor.</p>
-                    </div>
-                    <div class="trust-chip rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-cyber-purple text-sm font-semibold">
-                            <i class="fa-solid fa-database"></i> Resources
-                        </div>
-                        <p class="text-xs text-slate-500 mt-2">Datos y contexto que el servidor hace accesibles mediante interfaces MCP.</p>
-                    </div>
-                    <div class="trust-chip rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-cyber-emerald text-sm font-semibold">
-                            <i class="fa-solid fa-message"></i> Prompts
-                        </div>
-                        <p class="text-xs text-slate-500 mt-2">Plantillas y flujos de interacción expuestos por el servidor cuando aplica.</p>
-                    </div>
-                </div>
-
-                <div class="mt-5 border-t border-slate-800 pt-5">
-                    <div class="flex items-center justify-between gap-3 mb-3">
-                        <h4 class="text-sm font-semibold text-white"><i class="fa-solid fa-shield-halved text-cyber-emerald mr-2"></i>Límites de confianza</h4>
-                        <span id="mcpTrustLabel" class="text-[10px] font-mono text-cyber-emerald border border-cyber-emerald/20 bg-cyber-emerald/10 px-2 py-1 rounded">REMOTE BOUNDARY</span>
-                    </div>
-                    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-2">
-                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
-                            <div class="text-xs text-white font-medium">Autorización</div>
-                            <div id="mcpAuthText" class="text-[11px] text-slate-500 mt-1">OAuth / credenciales verificadas para servidores remotos.</div>
-                        </div>
-                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
-                            <div class="text-xs text-white font-medium">Mínimo privilegio</div>
-                            <div class="text-[11px] text-slate-500 mt-1">Expón solo tools y datos necesarios para el caso de uso.</div>
-                        </div>
-                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
-                            <div class="text-xs text-white font-medium">Validación</div>
-                            <div class="text-[11px] text-slate-500 mt-1">Valida argumentos, identidad, origen y límites antes de ejecutar.</div>
-                        </div>
-                        <div class="rounded-lg bg-slate-900/60 border border-slate-800 p-3">
-                            <div class="text-xs text-white font-medium">Auditoría</div>
-                            <div class="text-[11px] text-slate-500 mt-1">Registra llamadas sensibles sin volcar secretos ni tokens en logs.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <p class="text-[11px] text-slate-600 max-w-2xl">
-                        Arquitectura de referencia: adapta autenticación, aislamiento y permisos al riesgo real de cada servidor.
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://ts.sdk.modelcontextprotocol.io/v2/" target="_blank" rel="noopener noreferrer" class="text-xs text-cyber-cyan hover:text-white transition-colors">
-                            SDK oficial MCP <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                        </a>
-                        <a href="https://registry.modelcontextprotocol.io/docs" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-400 hover:text-white transition-colors">
-                            Registry oficial <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Filter Bar -->
-            <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                <div class="flex space-x-2 bg-slate-800/50 p-1 rounded-lg border border-slate-700 w-full sm:w-auto overflow-x-auto">
-                    <button onclick="filterCatalog('all')" aria-pressed="true" class="filter-btn active px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-700 text-white whitespace-nowrap" data-filter="all">Todos</button>
-                    <button onclick="filterCatalog('security')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="security">Seguridad & Ecosistema</button>
-                    <button onclick="filterCatalog('evals')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap border border-cyber-purple/30" data-filter="evals"><i class="fa-solid fa-flask-vial mr-1.5 text-cyber-purple"></i>AI Evals & Observability</button>
-                    <button onclick="filterCatalog('ai')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="ai">IA & Agentes</button>
-                    <button onclick="filterCatalog('dev')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="dev">Desarrollo & Datos</button>
-                    <button onclick="filterCatalog('learn')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="learn">Aprendizaje & Cursos</button>
-                    <button onclick="filterCatalog('explore')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="explore">Agujeros de Conejo</button>
-                    <button onclick="filterCatalog('design')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="design">Diseño & Utils</button>
-                    <button onclick="filterCatalog('games')" aria-pressed="false" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-white whitespace-nowrap" data-filter="games"><i class="fa-solid fa-gamepad mr-1.5 text-cyan-400"></i>Juegos en navegador</button>
-                </div>
-                
-                <div class="relative w-full sm:w-64">
-                    <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
-                    <input type="search" id="searchInput" placeholder="Buscar en el catálogo..." autocomplete="off" aria-label="Buscar recursos" class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30 transition-colors placeholder-slate-500">
-                </div>
-            </div>
-
-            <!-- AI Evaluation Subfilters -->
-            <div id="evalSubfilters" class="hidden mb-6 flex flex-wrap items-center gap-2" aria-label="Filtros de AI Evaluation">
-                <span class="text-[10px] uppercase tracking-[0.16em] text-slate-600 font-semibold mr-1">Especialidad</span>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-cyber-purple/30 bg-cyber-purple/10 text-purple-200" data-eval="all" aria-pressed="true">Todos</button>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="testing" aria-pressed="false">Testing</button>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="redteam" aria-pressed="false">Red Team</button>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="rag" aria-pressed="false">RAG</button>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="tracing" aria-pressed="false">Tracing</button>
-                <button type="button" class="eval-chip px-3 py-1.5 rounded-full text-xs border border-slate-700 text-slate-400 hover:text-white" data-eval="monitoring" aria-pressed="false">Monitoring</button>
-            </div>
-
-            <!-- Catalog Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid"></div>
-            
-            <!-- Terminal Demo -->
-            <div class="mt-10 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
-                <div class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
-                    <div class="flex gap-1.5">
-                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                    </div>
-                    <span class="text-xs text-slate-500 font-mono ml-2">agentsec-sandbox: ~ · VERIFICACIÓN DEVSECOPS</span>
-                </div>
-                <div class="p-4 font-mono text-sm text-slate-300 overflow-x-auto">
-                    <div class="text-cyber-cyan mb-1">$ ./auditor.sh --check-mcp-servers</div>
-                    <div class="text-slate-400 mb-3">[demo] Verificación de aislamiento de procesos y límites de confianza.</div>
-                    <div class="text-cyber-emerald mb-1">[OK] GitHub Server (stdio: isolation=sandbox) - Secure</div>
-                    <div class="text-cyber-emerald mb-1">[OK] PostgreSQL Server (stdio: read-only) - Secure</div>
-                    <div class="text-cyber-cyan mb-1 mt-4">$ qrencode -t PNG -o auth_airgap.png "ED25519_PAYLOAD_AIRGAP"</div>
-                    <div class="text-slate-400 mb-3">[+] Token óptico transferible fuera de banda generado localmente sin fuga de red.</div>
-                    <div class="flex">
-                        <span class="text-cyber-cyan mr-2">$</span>
-                        <span class="animate-pulse bg-slate-400 w-2 h-4 inline-block align-middle"></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <footer class="mt-12 pt-6 border-t border-slate-800 text-center text-slate-500 text-sm pb-8">
-                &copy; 2026 AgentSec Playbook · DevSecOps & AI Agents Wiki. Curado y validado técnicamente.
-            </footer>
-        </div>
-    </main>
-
-    <script>
-        const resourcesData = [
+<body>
+<a class="skip" href="#main">Saltar al contenido principal</a>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Navegación de categorías">
+<a href="#" class="brand" id="brand"><span class="logo" aria-hidden="true">✳</span><span>UnRepo<small>NEXUS / RESOURCE OS</small></span></a>
+<p class="overline">Explorar</p>
+<nav id="navigation" aria-label="Categorías del directorio"></nav>
+<div class="sidebar-foot">Directorio independiente de recursos tecnológicos. Verifica licencias, costos y seguridad antes de usar herramientas externas.</div>
+</aside>
+<main class="main" id="main">
+<header class="topbar">
+<button class="btn mobile-toggle" id="menuBtn" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menú de categorías">☰</button>
+<div class="breadcrumb"><span>DIRECTORIO</span><span aria-hidden="true">/</span><strong>EXPLORAR</strong></div>
+<div class="actions"><button type="button" class="btn" id="favToggle" aria-pressed="false" title="Mostrar favoritos">☆ <span class="btn-text">Favoritos</span></button><a class="btn" href="https://github.com/tuconsultor/UnRepo" target="_blank" rel="noopener noreferrer" aria-label="Repositorio UnRepo en GitHub">↗ <span class="btn-text">GitHub</span></a></div>
+</header>
+<section class="hero" aria-labelledby="page-title">
+<div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Explorador de tecnología · Edición Nexus</div>
+<h1 id="page-title">Tu próximo recurso <span>empieza aquí.</span></h1>
+<p class="lead">Herramientas de IA, desarrollo, ciberseguridad y aprendizaje. Busca por problema, explora por categoría y guarda lo que realmente te sirve.</p>
+<div class="metrics" aria-label="Resumen del catálogo">
+<div class="metric"><strong id="totalStat">—</strong><span>Recursos indexados</span></div>
+<div class="metric"><strong id="categoryStat">—</strong><span>Categorías</span></div>
+<div class="metric"><strong id="savedStat">0</strong><span>Favoritos locales</span></div>
+</div>
+</section>
+<section class="search-panel" aria-label="Buscar y filtrar recursos">
+<label for="search" class="search-label">Buscar en el directorio</label>
+<div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" autocomplete="off" type="search" placeholder="Ej. agentes de IA, RAG, pentesting, automatización…" aria-describedby="searchHelp"><span class="search-hint desktop-hint" aria-hidden="true">Ctrl / ⌘ + K</span></div>
+<p id="searchHelp" class="sr-only">Buscar por nombre, descripción o etiqueta. Los resultados se actualizan automáticamente.</p>
+<div class="filter-line">
+<div class="field"><label for="category">Categoría</label><select id="category"></select></div>
+<div class="field"><label for="tag">Especialidad / etiqueta</label><select id="tag"><option value="all">Todas las especialidades</option></select></div>
+<div class="field"><label for="level">Nivel técnico (orientativo)</label><select id="level"><option value="all">Todos los niveles</option><option value="Inicial">Inicial</option><option value="Intermedio">Intermedio</option><option value="Avanzado">Avanzado</option><option value="Por evaluar">Por evaluar</option></select></div>
+<div class="field"><label for="license">Licencia declarada</label><select id="license"><option value="all">Todas las licencias</option></select></div>
+<button type="button" class="btn" id="clearFilters">↺ Limpiar filtros</button>
+</div>
+</section>
+<section aria-labelledby="resultsTitle">
+<div class="sort-row"><div><h2 id="resultsTitle">Explorar recursos</h2><div class="result-info" id="resultsInfo" role="status" aria-live="polite" aria-atomic="true">Preparando catálogo…</div></div><div class="field"><label for="sort">Ordenar por</label><select id="sort"><option value="original">Orden editorial</option><option value="name">Nombre A–Z</option><option value="name-desc">Nombre Z–A</option><option value="category">Categoría</option></select></div></div>
+<div class="chip-row" id="activeFilters" aria-label="Filtros activos"></div>
+<div class="catalog" id="catalog" aria-label="Resultados de herramientas"></div>
+<div class="more"><button id="loadMore" type="button" class="btn btn-primary" hidden>Mostrar más recursos ↓</button></div>
+</section>
+<footer class="footer"><span>© UnRepo · Curaduría tecnológica · Interfaz Nexus × Atlas</span><span>Los enlaces externos pertenecen a sus respectivos autores.</span></footer>
+</main></div>
+<script>
+"use strict";
+const resourcesData = [
+            // Nuevos recursos validados: Edge AI, SEO, ventas y seguridad — octubre 2026
+            { title: "CosmoEdge", desc: "Motor de IA en el borde para analítica de video, modelos de visión y flujos de eventos; compatible con plataformas Sophon, Rockchip y x86.", url: "https://github.com/cosmo-wander-ai/cosmo-edge", category: "ai", icon: "fa-microchip", tag: "Edge AI / Vision" },
+            { title: "Searchata", desc: "Conecta Google Search Console y Bing Webmaster Tools con asistentes de IA mediante MCP para consultar rendimiento de búsqueda y oportunidades SEO.", url: "https://searchata.com/", category: "dev", icon: "fa-chart-line", tag: "SEO / MCP" },
+            { title: "Explee", desc: "Servicio comercial de prospección B2B que utiliza agentes de IA para investigar cuentas, identificar prospectos y automatizar comunicaciones de ventas.", url: "https://explee.com/", category: "ai", icon: "fa-envelope", tag: "Sales Automation" },
+            { title: "FFmpeg y video de cámaras IP", desc: "Artículo técnico de Hackers Arise sobre procesamiento de flujos RTSP de cámaras IP mediante FFmpeg; utilizar solo con sistemas y transmisiones autorizados.", url: "https://hackers-arise.com/ip-camera-hacking-the-ffmpeg-tool-for-streaming-camera-video/", category: "learn", icon: "fa-video", tag: "IoT / RTSP" },
+            { title: "Fragtunnel y firewalls NGFW", desc: "Artículo de Hackers Arise que examina la fragmentación del tráfico y las limitaciones de detección de firewalls NGFW; estudio defensivo en laboratorios autorizados.", url: "https://hackers-arise.com/bypassing-next-generation-firewalls-with-fragtunnel/", category: "security", icon: "fa-shield-halved", tag: "Network Security" },
+            { title: "BruteForceAI", desc: "Herramienta de investigación para evaluar autenticación con asistencia de LLM y automatización de pruebas de credenciales; uso exclusivo en entornos autorizados.", url: "https://github.com/MorDavid/BruteForceAI", category: "security", icon: "fa-shield-halved", tag: "Auth Security" },
+            // Curaduría verificada octubre 2026: AI, MCP, RAG, seguridad y agentes
+            { title: "Awesome LLM Apps", desc: "Colección de agentes de IA, aplicaciones RAG y ejemplos ejecutables de código abierto para aprender y experimentar.", url: "https://github.com/Shubhamsaboo/awesome-llm-apps", category: "ai", icon: "fa-bookmark", tag: "Agent Examples" },
+            { title: "Awesome MCP Servers", desc: "Directorio comunitario de servidores MCP para conectar asistentes y agentes con herramientas, sistemas y datos; revisa cada servidor antes de instalar.", url: "https://github.com/punkpeye/awesome-mcp-servers", category: "ai", icon: "fa-bookmark", tag: "MCP Directory" },
+            { title: "RAG Techniques", desc: "Notebooks y ejemplos de recuperación aumentada, reranking y evaluación para desarrollar sistemas RAG avanzados.", url: "https://github.com/NirDiamant/RAG_Techniques", category: "learn", icon: "fa-bookmark", tag: "RAG / Notebooks" },
+            { title: "Agents Towards Production", desc: "Tutoriales de ingeniería de agentes sobre evaluación, guardrails, observabilidad y despliegue; revisar restricciones de licencia antes de reutilizar código.", url: "https://github.com/NirDiamant/agents-towards-production", category: "learn", icon: "fa-bookmark", tag: "Production AI" },
+            { title: "Xiryn", desc: "Agente personal autoalojado con escritorios Linux aislados en Docker, automatización y control remoto; revisar scripts y permisos antes de instalar.", url: "https://github.com/SouravBeraAkaSpeed/xiryn", category: "ai", icon: "fa-bookmark", tag: "Self-hosted Agents" },
+            { title: "Free Claude Code", desc: "Herramienta independiente para conectar agentes de programación con distintos proveedores y modelos; cuotas gratuitas sujetas a condiciones del proveedor.", url: "https://github.com/Alishahryar1/free-claude-code", category: "dev", icon: "fa-bookmark", tag: "Coding Agents" },
+            { title: "RSI-Anything", desc: "Framework de investigación de mejora iterativa mediante modelos del mundo, evaluación y retroalimentación; orientado a experimentación avanzada.", url: "https://github.com/Gen-Verse/RSI-Anything", category: "ai", icon: "fa-bookmark", tag: "AI Research" },
             // Recuperación curada: núcleo técnico, biblioteca y colecciones secundarias (octubre 2026)
             { title: "Mem0", desc: "Memoria persistente y contextual para agentes y asistentes de IA.", url: "https://github.com/mem0ai/mem0", category: "ai", icon: "fa-bookmark", tag: "AI Models & Agents" },
             { title: "Graphiti", desc: "Grafo temporal de conocimiento para memoria de agentes y relaciones cambiantes.", url: "https://github.com/getzep/graphiti", category: "ai", icon: "fa-diagram-project", tag: "Temporal Memory" },
@@ -680,268 +376,75 @@
             { title: "GTA Vice City WASM", desc: "Port de investigación a WebAssembly que ejecuta el motor de Vice City en navegador.", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/", category: "games", icon: "fa-gamepad", tag: "Mundo abierto" },
             { title: "WebXash GoldSrc", desc: "Reimplementación web del motor GoldSrc (Half-Life / CS) para pruebas en navegador.", url: "https://x8bitrain.github.io/webXash/", category: "games", icon: "fa-gamepad", tag: "Shooter" }
         ];
+const CATEGORY_NAMES={ai:"IA y agentes",dev:"Desarrollo e infraestructura",security:"Ciberseguridad",learn:"Aprendizaje",design:"Diseño y creatividad",explore:"Exploración y datos",games:"Juegos y simulación",evals:"Evaluación de IA"};
+const ICONS={ai:"AI",dev:"</>",security:"S",learn:"L",design:"D",explore:"↗",games:"G",evals:"E"};
+const STORAGE_KEY="unrepo-nexus-favorites-v1";
+const $=id=>document.getElementById(id);
+const state={category:"all",tag:"all",level:"all",license:"all",search:"",sort:"original",favoritesOnly:false,limit:24};
+const normalized=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+// Datos de curaduría: nivel = criterio editorial, licencia = información aún sujeta a revisión del repositorio.
+const RESOURCE_METADATA={
+"https://github.com/cosmo-wander-ai/cosmo-edge":{level:"Avanzado",license:"Apache-2.0",caution:"Validar compatibilidad de hardware, modelos y licencias de componentes comerciales antes de desplegar."},
+"https://github.com/MorDavid/BruteForceAI":{level:"Avanzado",license:"Por verificar",caution:"Solo pruebas expresamente autorizadas; controlar tasa, privacidad, credenciales y registro de auditoría."},
+"https://searchata.com/":{level:"Intermedio",license:"Servicio comercial",caution:"Evaluar permisos OAuth, tratamiento de datos SEO, política de privacidad y precios antes de conectar cuentas."},
+"https://explee.com/":{level:"Intermedio",license:"Servicio comercial",caution:"Revisar costos, privacidad, tratamiento de datos personales y cumplimiento de políticas de correo comercial."},
+"https://hackers-arise.com/ip-camera-hacking-the-ffmpeg-tool-for-streaming-camera-video/":{level:"Intermedio",license:"Artículo externo",caution:"No acceder ni capturar transmisiones de cámaras sin permiso expreso."},
+"https://hackers-arise.com/bypassing-next-generation-firewalls-with-fragtunnel/":{level:"Avanzado",license:"Artículo externo",caution:"Analizar únicamente en laboratorio o sistemas bajo autorización formal."},
+"https://github.com/Shubhamsaboo/awesome-llm-apps":{level:"Intermedio",license:"Apache-2.0",caution:"Revisar licencias y credenciales de cada ejemplo antes de desplegar."},
+"https://github.com/punkpeye/awesome-mcp-servers":{level:"Intermedio",license:"MIT (lista)",caution:"Cada servidor tiene su propia licencia, permisos y riesgos; auditar antes de conectar sistemas."},
+"https://github.com/mlabonne/llm-course":{level:"Intermedio",license:"Por verificar",caution:"Los notebooks pueden requerir GPU, claves API y consumo de servicios externos."},
+"https://github.com/microsoft/ai-agents-for-beginners":{level:"Inicial",license:"Por verificar",caution:"Verificar costos y permisos de los servicios usados en los ejercicios."},
+"https://github.com/NirDiamant/RAG_Techniques":{level:"Avanzado",license:"Por verificar",caution:"Evaluar privacidad de documentos, calidad de recuperación y costos antes de producción."},
+"https://github.com/NirDiamant/agents-towards-production":{level:"Avanzado",license:"Restrictiva: revisar",caution:"Licencia con restricciones de uso: verificar autorización antes de reutilización comercial."},
+"https://github.com/SouravBeraAkaSpeed/xiryn":{level:"Avanzado",license:"MIT",caution:"No ejecutar scripts remotos sin revisarlos; aislar contenedores y proteger secretos."},
+"https://github.com/Alishahryar1/free-claude-code":{level:"Intermedio",license:"AGPL-3.0",caution:"Verificar condiciones de cada proveedor; gratuito no implica cuotas ilimitadas."},
+"https://github.com/vxcontrol/pentagi":{level:"Avanzado",license:"Por verificar",caution:"Ejecutar únicamente pruebas de seguridad autorizadas en entornos controlados."},
+"https://github.com/Gen-Verse/RSI-Anything":{level:"Avanzado",license:"Apache-2.0",caution:"Framework experimental: validar resultados y restricciones antes de aplicaciones reales."}
+};
+const DEFAULT_METADATA={level:"Por evaluar",license:"Por verificar",caution:"Nivel orientativo por categoría; verifica requisitos, licencia, privacidad, costos y permisos en la fuente oficial."};
+const LEVEL_GUIDANCE={ai:"Intermedio",dev:"Intermedio",security:"Avanzado",learn:"Inicial",design:"Inicial",explore:"Inicial",games:"Inicial",evals:"Avanzado"};
+let githubMetadata={};
+function repoKey(url){const match=url.match(/^https:\/\/github\.com\/([^/?#]+)\/([^/?#]+)/i);return match?(match[1]+"/"+match[2]).toLowerCase():null}
+function metadataFor(item){const base=RESOURCE_METADATA[item.url]||{...DEFAULT_METADATA,level:LEVEL_GUIDANCE[item.category]||"Por evaluar",estimated:true};const remote=githubMetadata[repoKey(item.url)]||null;return {...base,remote,license:remote?.license||base.license,licenseVerified:!!remote?.license}}
+async function loadGithubMetadata(){try{const response=await fetch("./data/github-metadata.json",{cache:"no-cache"});if(!response.ok)throw Error("HTTP "+response.status);const data=await response.json();if(data&&data.schema===1&&data.repos&&typeof data.repos==="object"){githubMetadata=data.repos;updateLicenses();render()}}catch(err){console.info("GitHub metadata cache unavailable; showing catalog defaults.",err.message)}}
 
-        const grid = document.getElementById('catalogGrid');
-        
-        function getCategoryStyles(category) {
-            const styles = {
-                'ai': { color: 'text-cyber-cyan', bg: 'bg-cyber-cyan/10 border-cyber-cyan/20 text-cyber-cyan' },
-                'security': { color: 'text-cyber-emerald', bg: 'bg-cyber-emerald/10 border-cyber-emerald/20 text-cyber-emerald' },
-                'evals': { color: 'text-purple-400', bg: 'bg-purple-500/10 border-purple-500/20 text-purple-300' },
-                'dev': { color: 'text-cyber-purple', bg: 'bg-cyber-purple/10 border-cyber-purple/20 text-cyber-purple' },
-                'explore': { color: 'text-yellow-500', bg: 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' },
-                'learn': { color: 'text-blue-500', bg: 'bg-blue-500/10 border-blue-500/20 text-blue-500' },
-                'design': { color: 'text-pink-500', bg: 'bg-pink-500/10 border-pink-500/20 text-pink-500' },
-                'games': { color: 'text-cyan-400', bg: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-300' }
-            };
-            return styles[category] || { color: 'text-slate-300', bg: 'bg-slate-700 border-slate-600 text-slate-300' };
-        }
+function updateLicenses(){const list=[...new Set(resources.map(x=>metadataFor(x).license))].sort((a,b)=>a.localeCompare(b,"es"));options($("license"),[["all","Todas las licencias"],...list.map(x=>[x,x])]);$("license").value=state.license}
 
-        function renderCards(data) {
-            grid.innerHTML = '';
-            
-            if (data.length === 0) {
-                grid.innerHTML = '<div class="col-span-full glass-panel rounded-xl p-10 text-center"><div class="w-12 h-12 mx-auto mb-3 rounded-full bg-slate-800 flex items-center justify-center text-slate-500"><i class="fa-solid fa-magnifying-glass"></i></div><h3 class="text-white font-semibold mb-1">Sin resultados</h3><p class="text-slate-500 text-sm">Prueba otra búsqueda, categoría o vuelve al catálogo completo.</p></div>';
-                return;
-            }
-
-            data.forEach(item => {
-                const style = getCategoryStyles(item.category);
-                const cardHTML = `
-                <div class="tool-card glass-panel rounded-xl p-5 cyber-glow transition-all flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-100 transition-opacity ${style.color}"></div>
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-10 h-10 rounded bg-slate-800 border border-slate-700 flex items-center justify-center ${style.color} text-xl">
-                            <i class="fa-solid ${item.icon}"></i>
-                        </div>
-                        <span class="text-xs font-mono ${style.bg} border px-2 py-1 rounded whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px]" title="${item.tag}">${item.tag}</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">${item.title}</h3>
-                    <p class="text-slate-400 text-sm flex-1 mb-4 leading-relaxed">${item.desc}</p>
-                    <div class="pt-4 border-t border-slate-700 flex justify-between items-center mt-auto">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-cyber-cyan hover:text-white transition-colors flex items-center gap-1.5">
-                            Acceder <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-                `;
-                grid.insertAdjacentHTML('beforeend', cardHTML);
-            });
-        }
-
-        const viewDefinitions = {
-            catalog: {
-                title: 'Catálogo completo',
-                description: 'Explora todo el inventario y usa categorías o búsqueda para reducir resultados.',
-                icon: 'fa-layer-group',
-                keywords: []
-            },
-            mcp: {
-                title: 'Arquitecturas MCP',
-                description: 'Servidores, clientes, herramientas y especificaciones relacionadas con el Model Context Protocol.',
-                icon: 'fa-network-wired',
-                keywords: ['mcp', 'model context protocol', 'stdio', 'streamable http', 'gateway']
-            },
-            sandbox: {
-                title: 'Sandboxes & Ejecución Aislada',
-                description: 'Entornos de aislamiento a nivel de proceso y kernel, control de subprocesos y automatización segura.',
-                icon: 'fa-microchip',
-                keywords: ['sandbox', 'openshell', 'isolation', 'aislad', 'kernel', 'stealth', 'patchright', 'headless', 'moli']
-            },
-            policy: {
-                title: 'Políticas & Gobierno',
-                description: 'Auditoría, validación de dependencias, enlaces, análisis de vulnerabilidades y límites de confianza en CI/CD.',
-                icon: 'fa-file-shield',
-                keywords: ['policy', 'política', 'audit', 'auditor', 'guardrail', 'osv', 'lychee', 'evals', 'testing', 'red team', 'observability']
-            }
-        };
-
-        let currentView = 'catalog';
-        let currentCategory = 'all';
-        let currentSearch = '';
-        let currentEval = 'all';
-
-        function normalizeText(value) {
-            return (value || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        }
-
-        function matchesView(item, viewKey) {
-            if (viewKey === 'catalog') return true;
-            const view = viewDefinitions[viewKey];
-            const haystack = normalizeText([item.title, item.desc, item.tag, item.category].join(' '));
-            return view.keywords.some(keyword => haystack.includes(normalizeText(keyword)));
-        }
-
-        function dataForView(viewKey) {
-            return resourcesData.filter(item => matchesView(item, viewKey));
-        }
-
-        function getVisibleData() {
-            return resourcesData.filter(item => {
-                if (!matchesView(item, currentView)) return false;
-                
-                if (currentCategory !== 'all') {
-                    if (item.category !== currentCategory) return false;
-                    if (currentCategory === 'evals' && currentEval !== 'all' && item.evalType !== currentEval) return false;
-                }
-                
-                if (!currentSearch) return true;
-                const haystack = normalizeText([item.title, item.desc, item.tag].join(' '));
-                return haystack.includes(normalizeText(currentSearch));
-            });
-        }
-
-        function setActiveFilter(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                const active = btn.dataset.filter === category;
-                btn.classList.toggle('bg-slate-700', active);
-                btn.classList.toggle('text-white', active);
-                btn.classList.toggle('text-slate-400', !active);
-                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-            });
-        }
-
-        function updateSidebar() {
-            document.querySelectorAll('.sidebar-nav').forEach(btn => {
-                const active = btn.dataset.view === currentView;
-                btn.classList.toggle('is-active', active);
-                if (active) btn.setAttribute('aria-current', 'page');
-                else btn.removeAttribute('aria-current');
-            });
-        }
-
-        function updateViewContext(visibleCount) {
-            const view = viewDefinitions[currentView];
-            document.getElementById('viewTitle').textContent = view.title;
-            document.getElementById('viewDescription').textContent = view.description;
-            document.getElementById('viewResultCount').textContent = visibleCount + (visibleCount === 1 ? ' recurso' : ' recursos');
-            document.getElementById('viewIcon').innerHTML = '<i class="fa-solid ' + view.icon + '"></i>';
-            document.getElementById('clearViewBtn').classList.toggle('hidden', currentView === 'catalog');
-            document.getElementById('searchInput').placeholder = currentView === 'catalog'
-                ? 'Buscar en el catálogo...'
-                : 'Buscar en ' + view.title.toLowerCase() + '...';
-        }
-
-        function updateStats() {
-            // Contabiliza repositorios GitHub y GitHub Pages
-            const githubCount = resourcesData.filter(item => item.url.includes('github.com') || item.url.includes('github.io')).length;
-            const mcpCount = dataForView('mcp').length;
-            const researchCount = resourcesData.filter(item => {
-                const text = normalizeText([item.title, item.desc, item.tag].join(' '));
-                return ['research', 'web data', 'scrap', 'crawler', 'osint', 'telemetría'].some(k => text.includes(k));
-            }).length;
-
-            document.getElementById('statResources').textContent = resourcesData.length.toLocaleString('es-MX');
-            document.getElementById('statGithub').textContent = githubCount.toLocaleString('es-MX');
-            document.getElementById('statMcp').textContent = mcpCount.toLocaleString('es-MX');
-            document.getElementById('statResearch').textContent = researchCount.toLocaleString('es-MX');
-            document.getElementById('navCountMcp').textContent = mcpCount;
-            document.getElementById('navCountSandbox').textContent = dataForView('sandbox').length;
-            document.getElementById('navCountPolicy').textContent = dataForView('policy').length;
-        }
-
-        function renderCurrentState() {
-            const visible = getVisibleData();
-            renderCards(visible);
-            updateSidebar();
-            updateViewContext(visible.length);
-            setActiveFilter(currentCategory);
-            document.getElementById('mcpArchitecturePanel').classList.toggle('hidden', currentView !== 'mcp');
-        }
-
-        function setView(viewKey) {
-            if (!viewDefinitions[viewKey]) return;
-            currentView = viewKey;
-            currentCategory = 'all';
-            currentSearch = '';
-            document.getElementById('searchInput').value = '';
-            document.getElementById('evalSubfilters').classList.add('hidden');
-            renderCurrentState();
-
-            if (window.innerWidth < 768 && !sidebar.classList.contains('hidden')) {
-                sidebar.classList.add('hidden');
-            }
-
-            document.getElementById('viewContext').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function filterCatalog(category) {
-            if (currentView !== 'catalog') currentView = 'catalog';
-            currentCategory = category;
-            currentEval = 'all';
-            
-            document.querySelectorAll('.eval-chip').forEach(chip => {
-                const active = chip.dataset.eval === 'all';
-                chip.setAttribute('aria-pressed', active ? 'true' : 'false');
-                chip.classList.toggle('bg-cyber-purple/10', active);
-                chip.classList.toggle('text-purple-200', active);
-                chip.classList.toggle('text-slate-400', !active);
-            });
-
-            document.getElementById('evalSubfilters').classList.toggle('hidden', category !== 'evals');
-            renderCurrentState();
-        }
-
-        document.querySelectorAll('.eval-chip').forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentEval = btn.dataset.eval;
-                document.querySelectorAll('.eval-chip').forEach(chip => {
-                    const active = chip === btn;
-                    chip.setAttribute('aria-pressed', active ? 'true' : 'false');
-                    chip.classList.toggle('bg-cyber-purple/10', active);
-                    chip.classList.toggle('text-purple-200', active);
-                    chip.classList.toggle('text-slate-400', !active);
-                });
-                renderCurrentState();
-            });
-        });
-
-        document.querySelectorAll('.sidebar-nav').forEach(btn => {
-            btn.addEventListener('click', () => setView(btn.dataset.view));
-        });
-
-        document.getElementById('clearViewBtn').addEventListener('click', () => setView('catalog'));
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            currentSearch = e.target.value.trim();
-            renderCurrentState();
-        });
-
-        function setMcpArchitectureMode(mode) {
-            const isRemote = mode === 'remote';
-            document.querySelectorAll('.mcp-mode-btn').forEach(btn => {
-                btn.setAttribute('aria-pressed', btn.dataset.mcpMode === mode ? 'true' : 'false');
-            });
-            document.getElementById('mcpTransportTitle').textContent = isRemote ? 'Streamable HTTP' : 'stdio';
-            document.getElementById('mcpTransportDescription').textContent = isRemote
-                ? 'Transporte para un servidor MCP remoto. La autorización y la seguridad HTTP viven en este límite de confianza.'
-                : 'El cliente inicia un servidor MCP como subproceso local y se comunica por stdin/stdout.';
-            document.getElementById('mcpTransportIcon').className = isRemote
-                ? 'fa-solid fa-cloud-arrow-up'
-                : 'fa-solid fa-terminal';
-            document.getElementById('mcpTrustLabel').textContent = isRemote ? 'REMOTE BOUNDARY' : 'LOCAL PROCESS';
-            document.getElementById('mcpAuthText').textContent = isRemote
-                ? 'OAuth / credenciales verificadas para servidores remotos.'
-                : 'Controla binario, argumentos, entorno heredado y permisos del subproceso.';
-        }
-
-        document.querySelectorAll('.mcp-mode-btn').forEach(btn => {
-            btn.addEventListener('click', () => setMcpArchitectureMode(btn.dataset.mcpMode));
-        });
-
-        // Menú móvil
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('sidebar');
-
-        mobileBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-            sidebar.classList.toggle('absolute');
-            sidebar.classList.toggle('z-50');
-            sidebar.classList.toggle('h-screen');
-        });
-
-        updateStats();
-        renderCurrentState();
-    </script>
+const resources=resourcesData.map((item,index)=>({...item,_id:item.url,_index:index})).filter(item=>item.title&&item.url&&/^https?:\/\//i.test(item.url));
+let favorites=new Set();
+try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");if(Array.isArray(saved))favorites=new Set(saved.filter(v=>typeof v==="string"))}catch(_){}
+function saveFavorites(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify([...favorites]))}catch(_){}}
+const countByCategory=resources.reduce((acc,x)=>(acc[x.category]=(acc[x.category]||0)+1,acc),{});
+const categories=Object.keys(countByCategory);
+function make(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=String(text);return el}
+function options(select,items){select.replaceChildren();for(const [value,label] of items){const op=document.createElement("option");op.value=value;op.textContent=label;select.append(op)}}
+function buildNav(){const nav=$("navigation");nav.replaceChildren();for(const [value,label,num] of [["all","Todo el directorio",resources.length],...categories.map(c=>[c,CATEGORY_NAMES[c]||c,countByCategory[c]])]){const btn=make("button","nav-btn");btn.type="button";btn.dataset.category=value;btn.setAttribute("aria-pressed",String(state.category===value));const left=make("span","nav-label",label);const right=make("b","",num);btn.append(left,right);btn.addEventListener("click",()=>{state.category=value;state.tag="all";state.limit=24;sync();closeMenu();$("resultsTitle").scrollIntoView({block:"start",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});nav.append(btn)}}
+function updateTags(){const relevant=resources.filter(x=>state.category==="all"||x.category===state.category);const tags=[...new Set(relevant.map(x=>x.tag).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));if(state.tag!=="all"&&!tags.includes(state.tag))state.tag="all";options($("tag"),[["all","Todas las especialidades"],...tags.map(t=>[t,t])]);$("tag").value=state.tag}
+function results(){const q=normalized(state.search.trim());const words=q.split(/\s+/).filter(Boolean);const arr=resources.filter(x=>(state.category==="all"||x.category===state.category)&&(state.tag==="all"||x.tag===state.tag)&&(state.level==="all"||metadataFor(x).level===state.level)&&(state.license==="all"||metadataFor(x).license===state.license)&&(!state.favoritesOnly||favorites.has(x._id))&&words.every(w=>normalized([x.title,x.desc,x.category,x.tag,metadataFor(x).level,metadataFor(x).license].join(" ")).includes(w)));if(state.sort==="name")arr.sort((a,b)=>a.title.localeCompare(b.title,"es"));if(state.sort==="name-desc")arr.sort((a,b)=>b.title.localeCompare(a.title,"es"));if(state.sort==="category")arr.sort((a,b)=>a.category.localeCompare(b.category,"es")||a.title.localeCompare(b.title,"es"));return arr}
+function card(item){const article=make("article","card");const top=make("div","card-top");const symbol=make("span","card-symbol",ICONS[item.category]||"↗");symbol.setAttribute("aria-hidden","true");const fav=make("button","favorite",favorites.has(item._id)?"★":"☆");fav.type="button";fav.setAttribute("aria-pressed",String(favorites.has(item._id)));fav.setAttribute("aria-label",(favorites.has(item._id)?"Quitar de favoritos: ":"Guardar en favoritos: ")+item.title);fav.addEventListener("click",()=>{favorites.has(item._id)?favorites.delete(item._id):favorites.add(item._id);saveFavorites();sync()});top.append(symbol,fav);const h=make("h3","",item.title);const desc=make("p","",item.desc||"Recurso disponible en su sitio original.");const meta=metadataFor(item);const facts=make("dl","resource-facts");for(const [label,value] of [["Nivel",meta.level+(meta.estimated?" (estimado)":"")],["Licencia",meta.license]]){const group=make("div","fact");group.append(make("dt","",label),make("dd","",value));facts.append(group)}
+const gh=meta.remote;const githubInfo=make("div","github-info");if(gh){if(Number.isInteger(gh.stars))githubInfo.append(make("span","","★ "+gh.stars.toLocaleString("es-MX")+" estrellas"));if(gh.updated_at&&!Number.isNaN(Date.parse(gh.updated_at)))githubInfo.append(make("span","","Actualizado: "+new Date(gh.updated_at).toLocaleDateString("es-MX",{year:"numeric",month:"short",day:"numeric"})));if(gh.archived===true)githubInfo.append(make("strong","archive-status","Archivado"));}
+const caution=make("p","resource-caution","Precaución: "+meta.caution);
+const foot=make("div","card-foot");const tag=make("span","tag",item.tag||CATEGORY_NAMES[item.category]||item.category);tag.title=item.tag||"";const link=make("a","external","Visitar ↗");link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label","Visitar "+item.title+" (abre en nueva pestaña)");foot.append(tag,link);article.append(top,h,desc,facts,githubInfo,caution,foot);return article}
+function filterChip(label,action){const span=make("span","chip",label+" ");const btn=make("button","","×");btn.type="button";btn.setAttribute("aria-label","Quitar filtro "+label);btn.addEventListener("click",action);span.append(btn);return span}
+function renderChips(){const chips=$("activeFilters");chips.replaceChildren();if(state.category!=="all")chips.append(filterChip(CATEGORY_NAMES[state.category]||state.category,()=>{state.category="all";state.tag="all";sync()}));if(state.tag!=="all")chips.append(filterChip(state.tag,()=>{state.tag="all";sync()}));if(state.level!=="all")chips.append(filterChip("Nivel: "+state.level,()=>{state.level="all";sync()}));if(state.license!=="all")chips.append(filterChip("Licencia: "+state.license,()=>{state.license="all";sync()}));if(state.search.trim())chips.append(filterChip("Búsqueda: "+state.search,()=>{state.search="";$("search").value="";sync()}));if(state.favoritesOnly)chips.append(filterChip("Solo favoritos",()=>{state.favoritesOnly=false;sync()}))}
+function render(){const found=results();const target=$("catalog");target.replaceChildren();const page=found.slice(0,state.limit);for(const resource of page)target.append(card(resource));if(!found.length){const empty=make("div","empty");const title=make("strong","","Sin coincidencias");const message=make("p","","Prueba otra palabra, selecciona otra categoría o limpia los filtros para explorar todo el catálogo.");const clear=make("button","btn btn-primary","Limpiar filtros");clear.type="button";clear.addEventListener("click",clearAll);empty.append(title,message,clear);target.append(empty)}$("resultsInfo").textContent=found.length+" resultado"+(found.length===1?"":"s")+" · mostrando "+page.length;const more=$("loadMore");more.hidden=found.length<=state.limit;more.textContent="Mostrar más recursos ("+(found.length-state.limit)+" restantes) ↓";$("savedStat").textContent=favorites.size;const favToggle=$("favToggle");favToggle.setAttribute("aria-pressed",String(state.favoritesOnly));favToggle.innerHTML=state.favoritesOnly?"★ <span class='btn-text'>Favoritos</span>":"☆ <span class='btn-text'>Favoritos</span>";renderChips()}
+function sync(){updateTags();$("category").value=state.category;$("level").value=state.level;$("license").value=state.license;document.querySelectorAll(".nav-btn").forEach(el=>el.setAttribute("aria-pressed",String(el.dataset.category===state.category)));render()}
+function clearAll(){state.category="all";state.tag="all";state.level="all";state.license="all";state.search="";state.favoritesOnly=false;state.limit=24;$("search").value="";sync()}
+function closeMenu(){$("sidebar").classList.remove("open");$("menuBtn").setAttribute("aria-expanded","false");$("menuBtn").setAttribute("aria-label","Abrir menú de categorías")}
+options($("category"),[["all","Todas las categorías"],...categories.map(c=>[c,(CATEGORY_NAMES[c]||c)+" ("+countByCategory[c]+")"])]);$("totalStat").textContent=resources.length;$("categoryStat").textContent=categories.length;
+updateLicenses();buildNav();sync();loadGithubMetadata();
+$("search").addEventListener("input",e=>{state.search=e.target.value;state.limit=24;render()});
+$("category").addEventListener("change",e=>{state.category=e.target.value;state.tag="all";state.limit=24;sync()});
+$("tag").addEventListener("change",e=>{state.tag=e.target.value;state.limit=24;render()});
+$("level").addEventListener("change",e=>{state.level=e.target.value;state.limit=24;render()});
+$("license").addEventListener("change",e=>{state.license=e.target.value;state.limit=24;render()});
+$("sort").addEventListener("change",e=>{state.sort=e.target.value;state.limit=24;render()});
+$("clearFilters").addEventListener("click",clearAll);
+$("favToggle").addEventListener("click",()=>{state.favoritesOnly=!state.favoritesOnly;state.limit=24;render()});
+$("loadMore").addEventListener("click",()=>{state.limit+=24;render()});
+$("menuBtn").addEventListener("click",()=>{const open=$("sidebar").classList.toggle("open");$("menuBtn").setAttribute("aria-expanded",String(open));$("menuBtn").setAttribute("aria-label",open?"Cerrar menú de categorías":"Abrir menú de categorías")});
+document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("search").focus()}if(e.key==="Escape"){if(document.activeElement===$("search")){$("search").blur()}closeMenu()}});
+document.addEventListener("pointerdown",e=>{if(window.innerWidth<=830&&!$("sidebar").contains(e.target)&&!$("menuBtn").contains(e.target))closeMenu()});
+</script>
 </body>
 </html>
