@@ -140,6 +140,13 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 <script>
 "use strict";
 const resourcesData = [
+            // Nuevos recursos validados: Edge AI, SEO, ventas y seguridad — octubre 2026
+            { title: "CosmoEdge", desc: "Motor de IA en el borde para analítica de video, modelos de visión y flujos de eventos; compatible con plataformas Sophon, Rockchip y x86.", url: "https://github.com/cosmo-wander-ai/cosmo-edge", category: "ai", icon: "fa-microchip", tag: "Edge AI / Vision" },
+            { title: "Searchata", desc: "Conecta Google Search Console y Bing Webmaster Tools con asistentes de IA mediante MCP para consultar rendimiento de búsqueda y oportunidades SEO.", url: "https://searchata.com/", category: "dev", icon: "fa-chart-line", tag: "SEO / MCP" },
+            { title: "Explee", desc: "Servicio comercial de prospección B2B que utiliza agentes de IA para investigar cuentas, identificar prospectos y automatizar comunicaciones de ventas.", url: "https://explee.com/", category: "ai", icon: "fa-envelope", tag: "Sales Automation" },
+            { title: "FFmpeg y video de cámaras IP", desc: "Artículo técnico de Hackers Arise sobre procesamiento de flujos RTSP de cámaras IP mediante FFmpeg; utilizar solo con sistemas y transmisiones autorizados.", url: "https://hackers-arise.com/ip-camera-hacking-the-ffmpeg-tool-for-streaming-camera-video/", category: "learn", icon: "fa-video", tag: "IoT / RTSP" },
+            { title: "Fragtunnel y firewalls NGFW", desc: "Artículo de Hackers Arise que examina la fragmentación del tráfico y las limitaciones de detección de firewalls NGFW; estudio defensivo en laboratorios autorizados.", url: "https://hackers-arise.com/bypassing-next-generation-firewalls-with-fragtunnel/", category: "security", icon: "fa-shield-halved", tag: "Network Security" },
+            { title: "BruteForceAI", desc: "Herramienta de investigación para evaluar autenticación con asistencia de LLM y automatización de pruebas de credenciales; uso exclusivo en entornos autorizados.", url: "https://github.com/MorDavid/BruteForceAI", category: "security", icon: "fa-shield-halved", tag: "Auth Security" },
             // Curaduría verificada octubre 2026: AI, MCP, RAG, seguridad y agentes
             { title: "Awesome LLM Apps", desc: "Colección de agentes de IA, aplicaciones RAG y ejemplos ejecutables de código abierto para aprender y experimentar.", url: "https://github.com/Shubhamsaboo/awesome-llm-apps", category: "ai", icon: "fa-bookmark", tag: "Agent Examples" },
             { title: "Awesome MCP Servers", desc: "Directorio comunitario de servidores MCP para conectar asistentes y agentes con herramientas, sistemas y datos; revisa cada servidor antes de instalar.", url: "https://github.com/punkpeye/awesome-mcp-servers", category: "ai", icon: "fa-bookmark", tag: "MCP Directory" },
@@ -377,6 +384,12 @@ const state={category:"all",tag:"all",level:"all",license:"all",search:"",sort:"
 const normalized=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 // Datos de curaduría: nivel = criterio editorial, licencia = información aún sujeta a revisión del repositorio.
 const RESOURCE_METADATA={
+"https://github.com/cosmo-wander-ai/cosmo-edge":{level:"Avanzado",license:"Apache-2.0",caution:"Validar compatibilidad de hardware, modelos y licencias de componentes comerciales antes de desplegar."},
+"https://github.com/MorDavid/BruteForceAI":{level:"Avanzado",license:"Por verificar",caution:"Solo pruebas expresamente autorizadas; controlar tasa, privacidad, credenciales y registro de auditoría."},
+"https://searchata.com/":{level:"Intermedio",license:"Servicio comercial",caution:"Evaluar permisos OAuth, tratamiento de datos SEO, política de privacidad y precios antes de conectar cuentas."},
+"https://explee.com/":{level:"Intermedio",license:"Servicio comercial",caution:"Revisar costos, privacidad, tratamiento de datos personales y cumplimiento de políticas de correo comercial."},
+"https://hackers-arise.com/ip-camera-hacking-the-ffmpeg-tool-for-streaming-camera-video/":{level:"Intermedio",license:"Artículo externo",caution:"No acceder ni capturar transmisiones de cámaras sin permiso expreso."},
+"https://hackers-arise.com/bypassing-next-generation-firewalls-with-fragtunnel/":{level:"Avanzado",license:"Artículo externo",caution:"Analizar únicamente en laboratorio o sistemas bajo autorización formal."},
 "https://github.com/Shubhamsaboo/awesome-llm-apps":{level:"Intermedio",license:"Apache-2.0",caution:"Revisar licencias y credenciales de cada ejemplo antes de desplegar."},
 "https://github.com/punkpeye/awesome-mcp-servers":{level:"Intermedio",license:"MIT (lista)",caution:"Cada servidor tiene su propia licencia, permisos y riesgos; auditar antes de conectar sistemas."},
 "https://github.com/mlabonne/llm-course":{level:"Intermedio",license:"Por verificar",caution:"Los notebooks pueden requerir GPU, claves API y consumo de servicios externos."},
