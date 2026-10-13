@@ -90,6 +90,8 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 .card .resource-caution{margin:0 0 13px;color:#e6d9ad;font-size:12px;line-height:1.5;flex:none}
 .github-info{display:flex;flex-wrap:wrap;gap:7px 12px;color:#d2e3f4;font-size:11px;margin:0 0 11px}
 .archive-status{color:#fcd34d;border:1px solid #aa772e;border-radius:5px;padding:0 5px}
+
+.resilience-banner{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:19px 22px;margin:0 0 23px;background:linear-gradient(115deg,#10374b,#131c2e);border:1px solid #296176;border-radius:14px}.resilience-banner strong{display:block;color:#f1f5f9;font-size:17px}.resilience-banner p{margin:4px 0 0;color:#b4c3d9;font-size:13px}.resilience-banner a{display:inline-flex;padding:10px 14px;border:1px solid #67e8f9;border-radius:9px;color:#67e8f9;font-weight:700;text-decoration:none}.resilience-banner a:hover{background:#164e63;color:#fff}
 </style>
 </head>
 <body>
@@ -117,6 +119,7 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 <div class="metric"><strong id="savedStat">0</strong><span>Favoritos locales</span></div>
 </div>
 </section>
+<section class="resilience-banner" aria-label="Guía práctica de agentes resilientes"><div><strong>⟳ Agentes que sobreviven a fallos y reinicios</strong><p>Guía gratuita: DBOS, PostgreSQL, idempotencia, reintentos, recuperación y pruebas reales.</p></div><a href="./resiliencia-agentes.html">Leer guía técnica ↗</a></section>
 <section class="search-panel" aria-label="Buscar y filtrar recursos">
 <label for="search" class="search-label">Buscar en el directorio</label>
 <div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" autocomplete="off" type="search" placeholder="Ej. agentes de IA, RAG, pentesting, automatización…" aria-describedby="searchHelp"><span class="search-hint desktop-hint" aria-hidden="true">Ctrl / ⌘ + K</span></div>
@@ -140,6 +143,22 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 <script>
 "use strict";
 const resourcesData = [
+            // Resiliencia de agentes, colas, persistencia y herramientas verificadas — octubre 2026
+            { title: "Restate", desc: "Ejecución duradera para aplicaciones y agentes distribuidos: conserva el progreso de operaciones y permite recuperación tras interrupciones.", url: "https://github.com/restatedev/restate", category: "dev", icon: "fa-bookmark", tag: "Durable Execution" },
+            { title: "DBOS Transact Python", desc: "Biblioteca de Python para flujos de trabajo duraderos con pasos persistidos y recuperación a través de PostgreSQL.", url: "https://github.com/dbos-inc/dbos-transact-py", category: "dev", icon: "fa-bookmark", tag: "Durable Workflows" },
+            { title: "Windmill", desc: "Plataforma autoalojable para ejecutar scripts, automatizaciones y flujos de trabajo con programación y gestión operativa.", url: "https://github.com/windmill-labs/windmill", category: "dev", icon: "fa-bookmark", tag: "Workflow Automation" },
+            { title: "Trigger.dev", desc: "Plataforma para trabajos de larga duración y tareas de fondo en aplicaciones TypeScript con reintentos y observabilidad.", url: "https://github.com/triggerdotdev/trigger.dev", category: "dev", icon: "fa-bookmark", tag: "Background Jobs" },
+            { title: "NATS Server", desc: "Servidor de mensajería distribuida para comunicación entre servicios y trabajadores; JetStream aporta persistencia opcional.", url: "https://github.com/nats-io/nats-server", category: "dev", icon: "fa-bookmark", tag: "Messaging / Workers" },
+            { title: "Celery", desc: "Sistema distribuido de colas de tareas para Python mediante trabajadores y un broker de mensajes.", url: "https://github.com/celery/celery", category: "dev", icon: "fa-bookmark", tag: "Python Task Queue" },
+            { title: "BullMQ", desc: "Colas de trabajos para Node.js/TypeScript respaldadas por Redis con retrasos, reintentos y coordinación de trabajadores.", url: "https://github.com/taskforcesh/bullmq", category: "dev", icon: "fa-bookmark", tag: "Redis Job Queue" },
+            { title: "Valkey", desc: "Almacén clave-valor de alto rendimiento compatible con el ecosistema Redis, útil para cachés, estados y coordinación.", url: "https://github.com/valkey-io/valkey", category: "dev", icon: "fa-bookmark", tag: "State / Cache" },
+            { title: "PostgreSQL", desc: "Base de datos relacional de código abierto para persistir estados, ejecuciones, puntos de control e historial.", url: "https://github.com/postgres/postgres", category: "dev", icon: "fa-bookmark", tag: "Durable Database" },
+            { title: "MinIO (repositorio archivado)", desc: "Servidor de almacenamiento de objetos compatible con S3; el repositorio original está archivado y debe evaluarse antes de adoptarlo.", url: "https://github.com/minio/minio", category: "dev", icon: "fa-bookmark", tag: "Object Storage" },
+            { title: "OpenTelemetry Collector", desc: "Componente para recibir, procesar y exportar señales de observabilidad como trazas, métricas y registros.", url: "https://github.com/open-telemetry/opentelemetry-collector", category: "dev", icon: "fa-bookmark", tag: "Tracing / Observability" },
+            { title: "Argo Workflows", desc: "Motor de orquestación de flujos de trabajo basados en contenedores sobre Kubernetes.", url: "https://github.com/argoproj/argo-workflows", category: "dev", icon: "fa-bookmark", tag: "Kubernetes Workflows" },
+            { title: "VoiceStudio", desc: "Suite local de voz con funciones de síntesis, clonación, doblaje, transcripción y audiolibros; revisar modelos y hardware.", url: "https://github.com/debpalash/VoiceStudio", category: "ai", icon: "fa-bookmark", tag: "Voice / Dubbing" },
+            { title: "God's Eye View", desc: "Proyecto experimental de globo 3D y visualización geoespacial que combina capas de información públicas.", url: "https://github.com/bilawalsidhu/gods-eye-view", category: "explore", icon: "fa-bookmark", tag: "Geospatial / 3D" },
+            { title: "cocomelonc · Investigación de seguridad", desc: "Blog técnico sobre ingeniería inversa, análisis de malware, pruebas de penetración y desarrollo de herramientas; fines educativos y defensivos.", url: "https://cocomelonc.github.io/", category: "security", icon: "fa-bookmark", tag: "Reverse Engineering" },
             // Nuevos recursos validados: Edge AI, SEO, ventas y seguridad — octubre 2026
             { title: "CosmoEdge", desc: "Motor de IA en el borde para analítica de video, modelos de visión y flujos de eventos; compatible con plataformas Sophon, Rockchip y x86.", url: "https://github.com/cosmo-wander-ai/cosmo-edge", category: "ai", icon: "fa-microchip", tag: "Edge AI / Vision" },
             { title: "Searchata", desc: "Conecta Google Search Console y Bing Webmaster Tools con asistentes de IA mediante MCP para consultar rendimiento de búsqueda y oportunidades SEO.", url: "https://searchata.com/", category: "dev", icon: "fa-chart-line", tag: "SEO / MCP" },
@@ -384,6 +403,21 @@ const state={category:"all",tag:"all",level:"all",license:"all",search:"",sort:"
 const normalized=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 // Datos de curaduría: nivel = criterio editorial, licencia = información aún sujeta a revisión del repositorio.
 const RESOURCE_METADATA={
+"https://github.com/restatedev/restate":{level:"Avanzado",license:"Por verificar",caution:"Verificar semántica de reintentos, idempotencia y requisitos del servidor antes de producción."},
+"https://github.com/dbos-inc/dbos-transact-py":{level:"Avanzado",license:"Por verificar",caution:"Configurar PostgreSQL, idempotencia y recuperación de efectos externos; no confundir reintentos con ejecución exactamente una vez."},
+"https://github.com/windmill-labs/windmill":{level:"Intermedio",license:"Por verificar",caution:"Revisar condiciones de licencia, permisos de ejecución y seguridad de secretos."},
+"https://github.com/triggerdotdev/trigger.dev":{level:"Intermedio",license:"Por verificar",caution:"Comprobar límites, despliegue y costos del servicio o infraestructura elegidos."},
+"https://github.com/nats-io/nats-server":{level:"Avanzado",license:"Por verificar",caution:"Diseñar garantías de entrega, autenticación, retención y consumidores según el uso real."},
+"https://github.com/celery/celery":{level:"Intermedio",license:"Por verificar",caution:"Requiere broker compatible; asegurar idempotencia, límites de reintentos y supervisión."},
+"https://github.com/taskforcesh/bullmq":{level:"Intermedio",license:"Por verificar",caution:"Validar persistencia, reintentos y compatibilidad del backend Redis elegido."},
+"https://github.com/valkey-io/valkey":{level:"Intermedio",license:"Por verificar",caution:"No usar caché como único almacén duradero sin configurar persistencia y recuperación."},
+"https://github.com/postgres/postgres":{level:"Intermedio",license:"Por verificar",caution:"Establecer respaldos, integridad transaccional y pruebas de recuperación."},
+"https://github.com/minio/minio":{level:"Avanzado",license:"Por verificar",caution:"Repositorio archivado; verificar mantenimiento, soporte, licencia y alternativas vigentes."},
+"https://github.com/open-telemetry/opentelemetry-collector":{level:"Avanzado",license:"Por verificar",caution:"Configurar filtros para evitar la exportación de datos confidenciales y credenciales."},
+"https://github.com/argoproj/argo-workflows":{level:"Avanzado",license:"Por verificar",caution:"Requiere operaciones Kubernetes; controlar permisos, recursos y manejo de fallas."},
+"https://github.com/debpalash/VoiceStudio":{level:"Intermedio",license:"Por verificar",caution:"Utilizar voces y material de terceros solo con consentimiento y licencias adecuadas."},
+"https://github.com/bilawalsidhu/gods-eye-view":{level:"Intermedio",license:"Por verificar",caution:"Las capas, datos en vivo y funcionalidades dependen de integraciones y proveedores externos."},
+"https://cocomelonc.github.io/":{level:"Avanzado",license:"Por verificar",caution:"Contenido de doble uso; estudiar únicamente en laboratorios aislados y autorizados."},
 "https://github.com/cosmo-wander-ai/cosmo-edge":{level:"Avanzado",license:"Apache-2.0",caution:"Validar compatibilidad de hardware, modelos y licencias de componentes comerciales antes de desplegar."},
 "https://github.com/MorDavid/BruteForceAI":{level:"Avanzado",license:"Por verificar",caution:"Solo pruebas expresamente autorizadas; controlar tasa, privacidad, credenciales y registro de auditoría."},
 "https://searchata.com/":{level:"Intermedio",license:"Servicio comercial",caution:"Evaluar permisos OAuth, tratamiento de datos SEO, política de privacidad y precios antes de conectar cuentas."},
