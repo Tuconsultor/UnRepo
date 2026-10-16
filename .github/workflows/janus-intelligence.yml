@@ -11,7 +11,10 @@ on:
         required: true
         default: 'free/glm-5.3-flash'
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: intelligence-publish
+  cancel-in-progress: false
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -61,3 +64,42 @@ jobs:
           name: nexus-intelligence-report
           path: janus-worker/output/report.json
           retention-days: 7
+
+      - name: Publish successful report to Intelligence Lab
+        if: success() && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("janus-worker/output/report.json")
+          report=json.loads(path.read_text(encoding="utf-8"))
+          assert report.get("schema")==2
+          assert report.get("verified") is False
+          assert 1<=len(report.get("files",[]))<=3
+          target=Path("data/intelligence/latest.json")
+          target.parent.mkdir(parents=True,exist_ok=True)
+          target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("Validated report ready for publication as unverified AI analysis.")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/intelligence/latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish latest Intelligence Lab report [skip ci]"
+            git push origin HEAD:main
+          fi
+          git fetch origin gh-pages
+          git worktree add --detach /tmp/unrepo-intelligence-publish origin/gh-pages
+          mkdir -p /tmp/unrepo-intelligence-publish/data/intelligence
+          cp data/intelligence/latest.json /tmp/unrepo-intelligence-publish/data/intelligence/latest.json
+          cp intelligence.html /tmp/unrepo-intelligence-publish/intelligence.html
+          cd /tmp/unrepo-intelligence-publish
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/intelligence/latest.json intelligence.html
+          if ! git diff --cached --quiet; then
+            git commit -m "publish: update Intelligence Lab website and report [skip ci]"
+            git push origin HEAD:refs/heads/gh-pages
+          fi
