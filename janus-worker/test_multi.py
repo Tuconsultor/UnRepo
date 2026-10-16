@@ -27,6 +27,16 @@ class TestLimits(unittest.TestCase):
         ]
         self.assertEqual([f["path"] for f in module.plan_files(tree)], ["src/app.py","src/util.ts"])
 
+    def test_provider_json_wrappers(self):
+        sample = '{"purpose":"example","components":["x"],"risks":[],"evidence":["x"]}'
+        for text in (sample, "```json\\n" + sample + "\\n```", "Here is the result:\\n" + sample):
+            result = module.parse_analysis(text.replace("\\n", "\n"))
+            self.assertEqual(result["purpose"], "example")
+
+    def test_provider_json_rejects_truncated_output(self):
+        with self.assertRaises(ValueError):
+            module.parse_analysis('{"purpose":"partial","components":[')
+
     def test_estimate_grows_with_bytes(self):
         self.assertGreater(module.estimated_tokens("hola"*200), module.estimated_tokens("hola"))
 
