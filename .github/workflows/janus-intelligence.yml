@@ -1,4 +1,4 @@
-name: Nexus Janus Intelligence (experimental)
+name: Nexus Intelligence Lab (experimental)
 on:
   workflow_dispatch:
     inputs:
@@ -7,14 +7,57 @@ on:
         required: true
         default: 'janus-llm/janus-llm'
       model:
-        description: 'Exact provider model ID'
+        description: 'Exact model ID supported by provider'
         required: true
-        default: 'deepseek-chat'
+        default: 'free/glm-5.3-flash'
 permissions:
   contents: read
 jobs:
-  registration:
-    if: github.ref_name == 'main'
+  analyze:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXUS_API_BASE: https://api.apinex.bond/v1
+      NEXUS_API_KEY: ${{ secrets.NEXUS_LLM_API_KEY }}
+      NEXUS_MODEL: ${{ inputs.model }}
+      TARGET_REPO: ${{ inputs.repository }}
     steps:
-      - run: echo "This is a dispatcher registration only. Run on feature/janus-intelligence for testing."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate input and credentials
+        shell: bash
+        run: |
+          test -n "$NEXUS_API_KEY" || { echo "::error::Missing NEXUS_LLM_API_KEY secret"; exit 1; }
+          python - <<'PY'
+          import os,re
+          target=os.environ["TARGET_REPO"]
+          if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+",target):
+              raise SystemExit("Invalid public GitHub owner/name")
+          if not re.fullmatch(r"[A-Za-z0-9_.:/-]{1,100}",os.environ["NEXUS_MODEL"]):
+              raise SystemExit("Invalid model ID")
+          PY
+      - name: Check Python syntax before API requests
+        run: python -m py_compile janus-worker/multi_analyze.py
+      - name: Run offline guardrail tests
+        run: python -m unittest discover -s janus-worker -p 'test_*.py' -v
+      - name: Check dashboard script syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path("intelligence.html").read_text(encoding="utf-8")
+          script = html.split("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/nexus-intelligence.cjs").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/nexus-intelligence.cjs
+      - name: Smoke test dashboard with schema v1 and v2
+        run: node janus-worker/test_ui.cjs
+      - name: Analyze up to three public source files
+        run: python janus-worker/multi_analyze.py
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: nexus-intelligence-report
+          path: janus-worker/output/report.json
+          retention-days: 7
