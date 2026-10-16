@@ -9,7 +9,7 @@ on:
       model:
         description: 'Exact model ID supported by provider'
         required: true
-        default: 'deepseek-chat'
+        default: 'free/glm-5.3-flash'
 permissions:
   contents: read
 jobs:
@@ -38,12 +38,10 @@ jobs:
           if not re.fullmatch(r"[A-Za-z0-9_.:/-]{1,100}",os.environ["NEXUS_MODEL"]):
               raise SystemExit("Invalid model ID")
           PY
-      - name: Install Janus
-        run: python -m pip install 'janus-llm==4.5.4'
       - name: Check Python syntax before API requests
-        run: python -m py_compile janus-worker/analyze.py
+        run: python -m py_compile janus-worker/direct_analyze.py
       - name: Analyze small public source sample
-        run: python janus-worker/analyze.py
+        run: python janus-worker/direct_analyze.py
       - uses: actions/upload-artifact@v4
         if: success()
         with:
