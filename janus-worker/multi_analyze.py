@@ -130,7 +130,8 @@ def main():
     if not files:
         raise RuntimeError("SCOPE: no eligible code files")
 
-    results, consumed, output_reserved, calls = [], 0, 0, 0\n    errors = []
+    results, consumed, output_reserved, calls = [], 0, 0, 0
+    errors = []
     usage_input, usage_output = 0, 0
     for entry in files:
         if calls >= MAX_CALLS:
@@ -177,7 +178,8 @@ def main():
         "commit": commit,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "verified": False,
-        "files": results,\n        "skipped": errors,
+        "files": results,
+        "skipped": errors,
         "limits": {
             "max_files": MAX_FILES, "max_calls": MAX_CALLS,
             "max_bytes_per_file": MAX_BYTES_PER_FILE,
