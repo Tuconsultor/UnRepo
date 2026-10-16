@@ -1,0 +1,48 @@
+name: Nexus Intelligence Lab CI
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'intelligence.html'
+      - 'data/intelligence/**'
+      - 'janus-worker/**'
+      - '.github/workflows/janus-intelligence.yml'
+      - '.github/workflows/intelligence-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check Python source syntax
+        run: python -m py_compile janus-worker/multi_analyze.py janus-worker/test_multi.py
+      - name: Run Python offline tests
+        run: python -m unittest discover -s janus-worker -p 'test_*.py' -v
+      - name: Validate lab JSON schema
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          doc = json.loads(Path('data/intelligence/latest.json').read_text())
+          assert doc['schema'] == 2
+          assert 1 <= len(doc['files']) <= 3
+          assert all(isinstance(x['analysis']['purpose'], str) for x in doc['files'])
+          print('JSON schema fixture valid')
+          PY
+      - name: Check UI script syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          content=Path('intelligence.html').read_text()
+          script=content.split('<script>',1)[1].split('</script>',1)[0]
+          Path('/tmp/intelligence.cjs').write_text(script)
+          PY
+          node --check /tmp/intelligence.cjs
+      - name: Run browser DOM smoke tests
+        run: node janus-worker/test_ui.cjs
