@@ -8,6 +8,7 @@ on:
       - 'janus-worker/**'
       - '.github/workflows/janus-intelligence.yml'
       - '.github/workflows/intelligence-ci.yml'
+      - '.github/workflows/intelligence-weekly.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,7 +22,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Check Python source syntax
-        run: python -m py_compile janus-worker/multi_analyze.py janus-worker/test_multi.py
+        run: python -m py_compile janus-worker/multi_analyze.py janus-worker/test_multi.py janus-worker/weekly_batch.py
       - name: Run Python offline tests
         run: python -m unittest discover -s janus-worker -p 'test_*.py' -v
       - name: Validate lab JSON schema
