@@ -91,6 +91,9 @@ function renderFile(details,entry,index){
   });
   const notice=element("p","notice","⚠️ Interpretación no verificada de una muestra limitada; no constituye auditoría de seguridad.");
   details.append(notice);
+  if(Array.isArray(data.review_notes)&&data.review_notes.length){
+    details.append(section("Notas de revisión del informe",list(data.review_notes.slice(0,10))));
+  }
   if(data.schema===2&&data.usage){
     const u=data.usage;
     details.append(section("Consumo de la ejecución",element("p","muted",
