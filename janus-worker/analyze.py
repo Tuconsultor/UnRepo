@@ -51,7 +51,9 @@ def main():
         "model_cost": {"input": 0, "output": 0},
         "input_token_proportion": 0.4,
     }
-    # Janus 4.5.4 overwrites the API key with OPENAI_API_KEY internally.\n    os.environ["OPENAI_API_KEY"] = KEY\n    config_dir = pathlib.Path.home() / ".janus" / "llm"
+    # Janus 4.5.4 overwrites the API key with OPENAI_API_KEY internally.
+    os.environ["OPENAI_API_KEY"] = KEY
+    config_dir = pathlib.Path.home() / ".janus" / "llm"
     config_dir.mkdir(parents=True, exist_ok=True)
     config_file = config_dir / "nexus.json"
     config_file.write_text(json.dumps(cfg), encoding="utf-8")
@@ -66,9 +68,14 @@ def main():
                     "--input", str(source_dir), "--output", str(output_dir),
                     "--llm", "nexus", "--language", languages[suffix]]
             # Avoid printing Janus stderr, which could contain provider response content.
-            env = os.environ.copy()\n            env["OPENAI_API_KEY"] = KEY\n            result = subprocess.run(args, capture_output=True, text=True, timeout=120, env=env)
+            env = os.environ.copy()
+            env["OPENAI_API_KEY"] = KEY
+            result = subprocess.run(args, capture_output=True, text=True, timeout=120, env=env)
             if result.returncode:
-                combined = (result.stderr + "\\n" + result.stdout).lower()\n                patterns = [("no such option", "CLI_OPTION"), ("unexpected keyword argument", "MODEL_CONFIG"), ("validationerror", "MODEL_CONFIG"), ("api key", "AUTH_OR_CONFIG"), ("authentication", "AUTH"), ("401", "AUTH"), ("403", "FORBIDDEN"), ("404", "MODEL_OR_ENDPOINT"), ("429", "RATE_LIMIT"), ("connection", "CONNECTION"), ("timed out", "TIMEOUT"), ("token", "TOKEN_LIMIT")]\n                category = next((label for needle, label in patterns if needle in combined), "UNKNOWN")\n                raise RuntimeError(f"Janus failed: {category}; exit={result.returncode}. Raw provider logs suppressed.")
+                combined = (result.stderr + "\\n" + result.stdout).lower()
+                patterns = [("no such option", "CLI_OPTION"), ("unexpected keyword argument", "MODEL_CONFIG"), ("validationerror", "MODEL_CONFIG"), ("api key", "AUTH_OR_CONFIG"), ("authentication", "AUTH"), ("401", "AUTH"), ("403", "FORBIDDEN"), ("404", "MODEL_OR_ENDPOINT"), ("429", "RATE_LIMIT"), ("connection", "CONNECTION"), ("timed out", "TIMEOUT"), ("token", "TOKEN_LIMIT")]
+                category = next((label for needle, label in patterns if needle in combined), "UNKNOWN")
+                raise RuntimeError(f"Janus failed: {category}; exit={result.returncode}. Raw provider logs suppressed.")
             produced = list(output_dir.rglob("*.json"))
             if not produced:
                 raise RuntimeError("Janus did not produce JSON output")
