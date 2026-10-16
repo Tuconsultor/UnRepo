@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "engine": "direct-chat-completions",
+  "model": "free/glm-5.3-flash",
+  "repository": "janus-llm/janus-llm",
+  "revision": "969e1217b8a5e65ce70a270621bc41fc07facb1e",
+  "file": "janus/__init__.py",
+  "generated_at": "2026-10-16T19:13:00.219177+00:00",
+  "verified": false,
+  "analysis": {
+    "purpose": "Initialize the janus package, define its version, import core components like Translator and metrics, and suppress specific deprecation warnings from langchain_core.",
+    "components": [
+      "__version__",
+      "Translator",
+      "metrics"
+    ],
+    "risks": [
+      "Suppression of LangChainDeprecationWarning may hide future breaking changes or issues in dependencies.",
+      "Wildcard import from janus.metrics could lead to namespace pollution or unexpected name collisions."
+    ],
+    "evidence": [
+      "__version__",
+      "Translator",
+      "warnings.filterwarnings"
+    ]
+  },
+  "notice": "AI-generated interpretation of one source file; not a security audit."
+}
