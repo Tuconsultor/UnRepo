@@ -40,6 +40,17 @@ jobs:
           PY
       - name: Check Python syntax before API requests
         run: python -m py_compile janus-worker/multi_analyze.py
+      - name: Run offline guardrail tests
+        run: python -m unittest discover -s janus-worker -p 'test_*.py' -v
+      - name: Check dashboard script syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path("intelligence.html").read_text(encoding="utf-8")
+          script = html.split("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/nexus-intelligence.cjs").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/nexus-intelligence.cjs
       - name: Analyze up to three public source files
         run: python janus-worker/multi_analyze.py
       - uses: actions/upload-artifact@v4
