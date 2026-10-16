@@ -14,42 +14,97 @@
 <main>
 <nav class="top"><a class="logo" href="./" aria-label="Volver al catálogo Nexus">UNREPO <span>· NEXUS</span></a><span class="pill">INTELLIGENCE LAB · BETA</span></nav>
 <h1>Conocimiento que nace del <span style="color:#22d3ee">código.</span></h1>
-<p class="lead">Primer informe de análisis de código generado en GitHub Actions mediante una API de lenguaje. Cada observación se presenta como interpretación de IA, no como auditoría verificada.</p>
+<p class="lead">Informes experimentales de código generados en GitHub Actions mediante una API de lenguaje. Cada observación se presenta como interpretación de IA, no como auditoría verificada.</p>
 <div class="card"><h2>Informe experimental</h2><p id="status" class="muted" role="status">Cargando informe real…</p><div id="report" hidden>
 <dl class="meta"><div><dt>Repositorio</dt><dd id="repository"></dd></div><div><dt>Archivo analizado</dt><dd id="file"></dd></div><div><dt>Modelo</dt><dd id="model"></dd></div><div><dt>Fecha del análisis</dt><dd id="generated"></dd></div></dl>
 <div class="actions"><a id="sourceLink" class="button secondary" target="_blank" rel="noopener noreferrer">Consultar repositorio ↗</a><a href="./data/intelligence/latest.json" class="button secondary">Ver informe JSON ↗</a></div></div></div>
-<div id="details" hidden>
-<section class="card"><h2>¿Qué hace este archivo?</h2><p id="purpose"></p></section>
-<div class="grid"><section class="box"><h2>Componentes identificados</h2><ul id="components"></ul></section><section class="box"><h2>Observaciones a revisar</h2><ul id="risks"></ul></section></div>
-<section class="card"><h2>Elementos citados por el modelo</h2><ul id="evidence"></ul></section>
-<p class="notice">⚠️ Análisis preliminar de un solo archivo. Los posibles riesgos requieren revisión humana y contraste con el código fuente. La clave de API nunca se incluye en los informes.</p>
-</div>
+<div id="details" hidden></div>
+
 <footer>UnRepo Nexus · Intelligence Lab · Los informes publicados son instantáneas estáticas. La ejecución de IA ocurre únicamente en GitHub Actions.</footer>
 </main>
 <script>
 "use strict";
-const $=id=>document.getElementById(id);
-function setList(id,items){const root=$(id);root.replaceChildren();for(const item of items){const li=document.createElement("li");li.textContent=String(item);root.append(li)}}
+const $ = id => document.getElementById(id);
+function element(tag,className,text){
+ const el=document.createElement(tag);
+ if(className)el.className=className;
+ if(text!==undefined)el.textContent=String(text);
+ return el;
+}
+function list(items){
+ const ul=element("ul");
+ for(const value of items){ul.append(element("li","",value))}
+ return ul;
+}
+function section(title,content){
+ const area=element("section","card");
+ area.append(element("h2","",title),content);
+ return area;
+}
+function renderFile(details,entry,index){
+ const data=entry.analysis;
+ const root=element("section","card");
+ root.append(element("h2","",String(index+1)+". "+entry.file));
+ const source=element("a","button secondary","Ver archivo fuente ↗");
+ const repo=$("repository").textContent;
+ const revision=$("revisionValue").textContent;
+ source.href="https://github.com/"+repo+"/blob/"+encodeURIComponent(revision)+"/"+entry.file.split("/").map(encodeURIComponent).join("/");
+ source.target="_blank";source.rel="noopener noreferrer";
+ root.append(source,element("p","",data.purpose||"Sin descripción"));
+ const layout=element("div","grid");
+ for(const [heading,values] of [
+  ["Componentes",data.components],["Observaciones por revisar",data.risks],
+  ["Evidencia declarada por IA",data.evidence]
+ ]){
+  const panel=element("div","box");
+  panel.append(element("h2","",heading),list(Array.isArray(values)?values:[]));
+  layout.append(panel);
+ }
+ root.append(layout);
+ details.append(root);
+}
 (async()=>{
  try{
   const response=await fetch("./data/intelligence/latest.json",{cache:"no-store"});
-  if(!response.ok)throw new Error("No se pudo obtener el informe");
+  if(!response.ok)throw Error("HTTP");
   const data=await response.json();
-  if(data.schema!==1||typeof data.repository!=="string"||!Array.isArray(data.analysis?.components))throw new Error("Formato de informe incompatible");
-  if(!/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(data.repository))throw new Error("Identificador de repositorio no válido");
+  if(![1,2].includes(data.schema)||typeof data.repository!=="string"||!data.repository.match(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/)){
+   throw Error("SCHEMA");
+  }
+  const files=data.schema===2 ? data.files : [{file:data.file,blob_sha:data.revision,analysis:data.analysis}];
+  if(!Array.isArray(files)||files.length<1||files.length>20)throw Error("FILES");
+  const revision=String(data.commit||data.revision||"");
+  if(!/^[a-f0-9]{40}$/i.test(revision))throw Error("REVISION");
   $("repository").textContent=data.repository;
-  $("file").textContent=String(data.file||"No especificado");
-  $("model").textContent=String(data.model||"No especificado");
-  $("generated").textContent=data.generated_at&&!Number.isNaN(Date.parse(data.generated_at))?new Date(data.generated_at).toLocaleString("es-MX"):"No especificada";
-  $("purpose").textContent=String(data.analysis.purpose||"Sin descripción");
-  setList("components",data.analysis.components||[]);
-  setList("risks",data.analysis.risks||[]);
-  setList("evidence",data.analysis.evidence||[]);
+  $("file").textContent=files.length+" archivo(s) analizado(s)";
+  $("model").textContent=String(data.model||"No indicado");
+  $("generated").textContent=data.generated_at&&!Number.isNaN(Date.parse(data.generated_at))?new Date(data.generated_at).toLocaleString("es-MX"):"No disponible";
   const repoUrl="https://github.com/"+data.repository;
   $("sourceLink").href=repoUrl;
-  $("status").textContent="Informe cargado correctamente. Verificación humana pendiente.";
-  $("report").hidden=false;$("details").hidden=false;
- }catch(err){$("status").textContent="No fue posible cargar el informe. Revisa el archivo JSON o intenta recargar la página.";$("status").classList.add("error")}
+  const rev=document.createElement("span");rev.id="revisionValue";rev.hidden=true;rev.textContent=revision;
+  $("report").append(rev);
+  const details=$("details");details.replaceChildren();
+  files.forEach((entry,index)=>{
+    if(!entry||typeof entry.file!=="string"||!entry.analysis||typeof entry.analysis.purpose!=="string")throw Error("FILE_SCHEMA");
+    if(entry.file.includes("..")||entry.file.startsWith("/")||entry.file.includes("\\"))throw Error("FILE_PATH");
+    renderFile(details,entry,index);
+  });
+  const notice=element("p","notice","⚠️ Interpretación no verificada de una muestra limitada; no constituye auditoría de seguridad.");
+  details.append(notice);
+  if(data.schema===2&&data.usage){
+    const u=data.usage;
+    details.append(section("Consumo de la ejecución",element("p","muted",
+      "Solicitudes: "+u.calls+" · Tokens de entrada estimados: "+u.estimated_input_tokens+
+      " · Reserva máxima de salida: "+u.max_output_tokens_reserved+
+      ". Estos valores NO garantizan costo cero ni son un límite de facturación del proveedor."
+    )));
+  }
+  $("status").textContent="Informe cargado correctamente. Revisión humana pendiente.";
+  $("report").hidden=false;details.hidden=false;
+ }catch(error){
+  $("status").textContent="No fue posible cargar el informe. Revisa su formato o vuelve a intentar.";
+  $("status").classList.add("error");
+ }
 })();
 </script>
 </body>
