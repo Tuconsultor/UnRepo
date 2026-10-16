@@ -2,6 +2,7 @@
 import json
 import os
 import pathlib
+import re
 import subprocess
 import tempfile
 import urllib.request
@@ -75,7 +76,26 @@ def main():
                 combined = (result.stderr + "\\n" + result.stdout).lower()
                 patterns = [("no such option", "CLI_OPTION"), ("unexpected keyword argument", "MODEL_CONFIG"), ("validationerror", "MODEL_CONFIG"), ("api key", "AUTH_OR_CONFIG"), ("authentication", "AUTH"), ("401", "AUTH"), ("403", "FORBIDDEN"), ("404", "MODEL_OR_ENDPOINT"), ("429", "RATE_LIMIT"), ("connection", "CONNECTION"), ("timed out", "TIMEOUT"), ("token", "TOKEN_LIMIT")]
                 category = next((label for needle, label in patterns if needle in combined), "UNKNOWN")
-                raise RuntimeError(f"Janus failed: {category}; exit={result.returncode}. Raw provider logs suppressed.")
+                # Only exception class identifiers: never expose exception messages,
+                # URLs, prompts, HTTP response bodies, or credentials.
+                exception_types = re.findall(
+                    r"(?m)^([A-Za-z_][A-Za-z0-9_.]*(?:Error|Exception|Exit)):", 
+                    result.stderr
+                )
+                exception_type = exception_types[-1].split(".")[-1] if exception_types else "NONE"
+                # Common local failures where no provider call should have occurred.
+                if "keyerror" in combined:
+                    category = "JANUS_CONFIG_KEY"
+                if "attributeerror" in combined:
+                    category = "JANUS_ATTRIBUTE"
+                if "typeerror" in combined:
+                    category = "JANUS_TYPE"
+                if "traceback" not in combined and category == "UNKNOWN":
+                    category = "CLI_OR_PROCESS"
+                raise RuntimeError(
+                    f"Janus failed: {category}; exception={exception_type}; "
+                    f"exit={result.returncode}. Raw provider logs suppressed."
+                )
             produced = list(output_dir.rglob("*.json"))
             if not produced:
                 raise RuntimeError("Janus did not produce JSON output")
