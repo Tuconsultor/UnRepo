@@ -40,6 +40,8 @@ jobs:
           PY
       - name: Install Janus
         run: python -m pip install 'janus-llm==4.5.4'
+      - name: Check Python syntax before API requests
+        run: python -m py_compile janus-worker/analyze.py
       - name: Analyze small public source sample
         run: python janus-worker/analyze.py
       - uses: actions/upload-artifact@v4
