@@ -94,11 +94,12 @@ jobs:
           git worktree add --detach /tmp/unrepo-intelligence-publish origin/gh-pages
           mkdir -p /tmp/unrepo-intelligence-publish/data/intelligence
           cp data/intelligence/latest.json /tmp/unrepo-intelligence-publish/data/intelligence/latest.json
+          cp intelligence.html /tmp/unrepo-intelligence-publish/intelligence.html
           cd /tmp/unrepo-intelligence-publish
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/intelligence/latest.json
+          git add data/intelligence/latest.json intelligence.html
           if ! git diff --cached --quiet; then
-            git commit -m "publish: update Intelligence Lab report [skip ci]"
+            git commit -m "publish: update Intelligence Lab website and report [skip ci]"
             git push origin HEAD:refs/heads/gh-pages
           fi
