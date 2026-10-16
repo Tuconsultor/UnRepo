@@ -1,4 +1,4 @@
-name: Nexus Janus Intelligence (experimental)
+name: Nexus Intelligence Lab (experimental)
 on:
   workflow_dispatch:
     inputs:
@@ -39,9 +39,9 @@ jobs:
               raise SystemExit("Invalid model ID")
           PY
       - name: Check Python syntax before API requests
-        run: python -m py_compile janus-worker/direct_analyze.py
-      - name: Analyze small public source sample
-        run: python janus-worker/direct_analyze.py
+        run: python -m py_compile janus-worker/multi_analyze.py
+      - name: Analyze up to three public source files
+        run: python janus-worker/multi_analyze.py
       - uses: actions/upload-artifact@v4
         if: success()
         with:
