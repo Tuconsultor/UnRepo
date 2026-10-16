@@ -44,7 +44,7 @@ def parse_analysis(answer):
     """Extract a JSON object even when a model adds surrounding text or code fences."""
     if not isinstance(answer, str):
         raise ValueError("empty_or_nontext")
-    text = answer.strip().lstrip("\\ufeff")
+    text = answer.strip().lstrip(chr(65279))
     decoder = json.JSONDecoder()
     candidates = [0] + [i for i, ch in enumerate(text) if ch == "{"]
     for offset in candidates[:50]:
