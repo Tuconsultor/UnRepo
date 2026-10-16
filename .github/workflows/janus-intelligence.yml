@@ -1,0 +1,20 @@
+name: Nexus Janus Intelligence (experimental)
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Public GitHub repository (owner/name)'
+        required: true
+        default: 'janus-llm/janus-llm'
+      model:
+        description: 'Exact provider model ID'
+        required: true
+        default: 'deepseek-chat'
+permissions:
+  contents: read
+jobs:
+  registration:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is a dispatcher registration only. Run on feature/janus-intelligence for testing."
