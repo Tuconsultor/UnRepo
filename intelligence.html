@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Nexus · Intelligence Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#090e1a;--panel:#131c2e;--line:#33445f;--text:#f1f5f9;--muted:#b4c3d9;--cyan:#22d3ee}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0%,#14314a,transparent 38%),var(--bg);color:var(--text);font:15px/1.6 system-ui,sans-serif}a{color:#67e8f9}main{max-width:1040px;padding:30px 18px 70px;margin:auto}.top{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.logo{font-size:20px;letter-spacing:.5px;font-weight:750}.logo span{color:var(--cyan)}h1{font-size:clamp(32px,5vw,54px);line-height:1.1;margin:42px 0 12px;letter-spacing:-1.5px}h2{font-size:19px;margin:0 0 12px}.lead{max-width:700px;color:#bfd0e1}.pill{border:1px solid #40728a;background:#102a3e;color:#b9f3ff;padding:5px 11px;border-radius:99px;font-size:12px}.card{background:linear-gradient(145deg,#162238,#101a2b);border:1px solid var(--line);border-radius:16px;padding:22px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.box{padding:15px;border:1px solid #344c69;background:#0e1b2c;border-radius:12px}.muted{color:var(--muted)}.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.meta dt{font-size:12px;color:var(--muted)}.meta dd{margin:3px 0 0;overflow-wrap:anywhere}ul{padding-left:20px;margin:0}li+li{margin-top:9px}.notice{border-left:3px solid #fbbf24;padding:12px 15px;background:#43301b45;border-radius:6px}.error{color:#fda4af}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.button{border:1px solid #3e7890;background:#0d6a82;color:#fff;text-decoration:none;border-radius:10px;padding:10px 15px;font-weight:650}.button.secondary{background:#192b42}.button:hover{background:#155e75}footer{margin-top:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:20px}:focus-visible{outline:3px solid #67e8f9;outline-offset:3px}@media(max-width:670px){.grid,.meta{grid-template-columns:1fr}.card{padding:17px}}
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a class="logo" href="./" aria-label="Volver al catálogo Nexus">UNREPO <span>· NEXUS</span></a><span class="pill">INTELLIGENCE LAB · BETA</span></nav>
+<h1>Conocimiento que nace del <span style="color:#22d3ee">código.</span></h1>
+<p class="lead">Primer informe de análisis de código generado en GitHub Actions mediante una API de lenguaje. Cada observación se presenta como interpretación de IA, no como auditoría verificada.</p>
+<div class="card"><h2>Informe experimental</h2><p id="status" class="muted" role="status">Cargando informe real…</p><div id="report" hidden>
+<dl class="meta"><div><dt>Repositorio</dt><dd id="repository"></dd></div><div><dt>Archivo analizado</dt><dd id="file"></dd></div><div><dt>Modelo</dt><dd id="model"></dd></div><div><dt>Fecha del análisis</dt><dd id="generated"></dd></div></dl>
+<div class="actions"><a id="sourceLink" class="button secondary" target="_blank" rel="noopener noreferrer">Consultar repositorio ↗</a><a href="./data/intelligence/latest.json" class="button secondary">Ver informe JSON ↗</a></div></div></div>
+<div id="details" hidden>
+<section class="card"><h2>¿Qué hace este archivo?</h2><p id="purpose"></p></section>
+<div class="grid"><section class="box"><h2>Componentes identificados</h2><ul id="components"></ul></section><section class="box"><h2>Observaciones a revisar</h2><ul id="risks"></ul></section></div>
+<section class="card"><h2>Elementos citados por el modelo</h2><ul id="evidence"></ul></section>
+<p class="notice">⚠️ Análisis preliminar de un solo archivo. Los posibles riesgos requieren revisión humana y contraste con el código fuente. La clave de API nunca se incluye en los informes.</p>
+</div>
+<footer>UnRepo Nexus · Intelligence Lab · Los informes publicados son instantáneas estáticas. La ejecución de IA ocurre únicamente en GitHub Actions.</footer>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+function setList(id,items){const root=$(id);root.replaceChildren();for(const item of items){const li=document.createElement("li");li.textContent=String(item);root.append(li)}}
+(async()=>{
+ try{
+  const response=await fetch("./data/intelligence/latest.json",{cache:"no-store"});
+  if(!response.ok)throw new Error("No se pudo obtener el informe");
+  const data=await response.json();
+  if(data.schema!==1||typeof data.repository!=="string"||!Array.isArray(data.analysis?.components))throw new Error("Formato de informe incompatible");
+  if(!/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(data.repository))throw new Error("Identificador de repositorio no válido");
+  $("repository").textContent=data.repository;
+  $("file").textContent=String(data.file||"No especificado");
+  $("model").textContent=String(data.model||"No especificado");
+  $("generated").textContent=data.generated_at&&!Number.isNaN(Date.parse(data.generated_at))?new Date(data.generated_at).toLocaleString("es-MX"):"No especificada";
+  $("purpose").textContent=String(data.analysis.purpose||"Sin descripción");
+  setList("components",data.analysis.components||[]);
+  setList("risks",data.analysis.risks||[]);
+  setList("evidence",data.analysis.evidence||[]);
+  const repoUrl="https://github.com/"+data.repository;
+  $("sourceLink").href=repoUrl;
+  $("status").textContent="Informe cargado correctamente. Verificación humana pendiente.";
+  $("report").hidden=false;$("details").hidden=false;
+ }catch(err){$("status").textContent="No fue posible cargar el informe. Revisa el archivo JSON o intenta recargar la página.";$("status").classList.add("error")}
+})();
+</script>
+</body>
+</html>
