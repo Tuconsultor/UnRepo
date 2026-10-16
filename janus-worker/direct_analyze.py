@@ -79,14 +79,20 @@ def main():
     }).encode("utf-8")
     req = urllib.request.Request(
         BASE + "/chat/completions", data=payload, method="POST",
-        headers={"Authorization": "Bearer " + KEY, "Content-Type": "application/json"}
+        headers={"Authorization": "Bearer " + KEY, "Content-Type": "application/json", "Accept": "application/json", "User-Agent": "Nexus-Intelligence/0.2"}
     )
     try:
         with urllib.request.urlopen(req, timeout=55) as resp:
             response = json.load(resp)
     except urllib.error.HTTPError as e:
-        # Never output third-party response bodies or request headers.
-        raise RuntimeError("PROVIDER_HTTP_STATUS: " + str(e.code)) from None
+        # Use only coarse header metadata; never print response bodies or credentials.
+        kind = (e.headers.get("Content-Type") or "").lower()
+        category = "HTML" if "html" in kind else ("JSON" if "json" in kind else "OTHER")
+        cf = bool(e.headers.get("CF-Ray")) or "cloudflare" in (e.headers.get("Server") or "").lower()
+        auth = bool(e.headers.get("WWW-Authenticate"))
+        raise RuntimeError(
+            f"PROVIDER_HTTP_STATUS: {e.code}; response={category}; cloudflare={cf}; auth_challenge={auth}"
+        ) from None
     except urllib.error.URLError:
         raise RuntimeError("PROVIDER_CONNECTION") from None
     choices = response.get("choices") or []
