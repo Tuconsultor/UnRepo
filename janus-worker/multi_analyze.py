@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 BASE = "https://api.apinex.bond/v1"
 KEY = os.environ.get("NEXUS_API_KEY", "")
 MODEL = os.environ.get("NEXUS_MODEL", "free/glm-5.3-flash")
-REPO = os.environ.get("TARGET_REPO", "janus-llm/janus-llm")
+REPO = os.environ.get("TARGET_REPO", "janus-llm/janus-llm").strip().rstrip(".")
 OUT = pathlib.Path(__file__).parent / "output" / "report.json"
 
 MAX_FILES = 3
