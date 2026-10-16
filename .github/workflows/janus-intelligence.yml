@@ -51,6 +51,8 @@ jobs:
           Path("/tmp/nexus-intelligence.cjs").write_text(script, encoding="utf-8")
           PY
           node --check /tmp/nexus-intelligence.cjs
+      - name: Smoke test dashboard with schema v1 and v2
+        run: node janus-worker/test_ui.cjs
       - name: Analyze up to three public source files
         run: python janus-worker/multi_analyze.py
       - uses: actions/upload-artifact@v4
