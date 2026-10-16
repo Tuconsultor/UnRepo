@@ -29,8 +29,8 @@ class TestLimits(unittest.TestCase):
 
     def test_provider_json_wrappers(self):
         sample = '{"purpose":"example","components":["x"],"risks":[],"evidence":["x"]}'
-        for text in (sample, "```json\\n" + sample + "\\n```", "Here is the result:\\n" + sample):
-            result = module.parse_analysis(text.replace("\\n", "\n"))
+        for text in (sample, "```json\n" + sample + "\n```", "Here is the result:\n" + sample):
+            result = module.parse_analysis(text)
             self.assertEqual(result["purpose"], "example")
 
     def test_provider_json_rejects_truncated_output(self):
