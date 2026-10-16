@@ -1,0 +1,50 @@
+name: Nexus Janus Intelligence (experimental)
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Public GitHub repository (owner/name)'
+        required: true
+        default: 'janus-llm/janus-llm'
+      model:
+        description: 'Exact model ID supported by provider'
+        required: true
+        default: 'deepseek-chat'
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXUS_API_BASE: https://api.apinex.bond/v1
+      NEXUS_API_KEY: ${{ secrets.NEXUS_LLM_API_KEY }}
+      NEXUS_MODEL: ${{ inputs.model }}
+      TARGET_REPO: ${{ inputs.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate input and credentials
+        shell: bash
+        run: |
+          test -n "$NEXUS_API_KEY" || { echo "::error::Missing NEXUS_LLM_API_KEY secret"; exit 1; }
+          python - <<'PY'
+          import os,re
+          target=os.environ["TARGET_REPO"]
+          if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+",target):
+              raise SystemExit("Invalid public GitHub owner/name")
+          if not re.fullmatch(r"[A-Za-z0-9_.:/-]{1,100}",os.environ["NEXUS_MODEL"]):
+              raise SystemExit("Invalid model ID")
+          PY
+      - name: Install Janus
+        run: python -m pip install 'janus-llm==4.5.4'
+      - name: Analyze small public source sample
+        run: python janus-worker/analyze.py
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: nexus-intelligence-report
+          path: janus-worker/output/report.json
+          retention-days: 7
