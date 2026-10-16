@@ -40,6 +40,29 @@ def github_json(url):
     with urllib.request.urlopen(urllib.request.Request(url, headers=GITHUB_HEADERS), timeout=18) as resp:
         return json.load(resp)
 
+def parse_analysis(answer):
+    """Extract a JSON object even when a model adds surrounding text or code fences."""
+    if not isinstance(answer, str):
+        raise ValueError("empty_or_nontext")
+    text = answer.strip().lstrip("\\ufeff")
+    decoder = json.JSONDecoder()
+    candidates = [0] + [i for i, ch in enumerate(text) if ch == "{"]
+    for offset in candidates[:50]:
+        try:
+            obj, _ = decoder.raw_decode(text[offset:])
+        except (json.JSONDecodeError, ValueError):
+            continue
+        if isinstance(obj, dict) and isinstance(obj.get("purpose"), str) and all(
+            isinstance(obj.get(field), list) for field in ("components", "risks", "evidence")
+        ):
+            return {
+                "purpose": obj["purpose"][:1000],
+                **{field: [str(x)[:300] for x in obj[field][:6]]
+                   for field in ("components", "risks", "evidence")},
+            }
+    raise ValueError("no_valid_json_object")
+
+
 def provider(prompt):
     payload = {
         "model": MODEL,
@@ -70,21 +93,13 @@ def provider(prompt):
     choices = result.get("choices") or []
     if not choices or not isinstance(choices[0].get("message", {}).get("content"), str):
         raise RuntimeError("PROVIDER_FORMAT: no response text")
-    answer = choices[0]["message"]["content"].strip()
-    if answer.startswith("```"):
-        answer = re.sub(r"^\x60{3}(?:json)?\s*|\s*\x60{3}$", "", answer, flags=re.I).strip()
+    answer = choices[0]["message"]["content"]
     try:
-        data = json.loads(answer)
-    except json.JSONDecodeError:
+        data = parse_analysis(answer)
+    except ValueError:
         raise RuntimeError("PROVIDER_FORMAT: invalid JSON") from None
-    if not isinstance(data, dict) or not isinstance(data.get("purpose"), str):
-        raise RuntimeError("PROVIDER_FORMAT: invalid schema")
-    for field in ("components", "risks", "evidence"):
-        if not isinstance(data.get(field), list):
-            raise RuntimeError("PROVIDER_FORMAT: missing " + field)
-        data[field] = [str(item)[:300] for item in data[field][:6]]
-    data["purpose"] = data["purpose"][:1000]
     return data, result.get("usage", {})
+
 
 def plan_files(tree):
     candidates = [
@@ -115,7 +130,7 @@ def main():
     if not files:
         raise RuntimeError("SCOPE: no eligible code files")
 
-    results, consumed, output_reserved, calls = [], 0, 0, 0
+    results, consumed, output_reserved, calls = [], 0, 0, 0\n    errors = []
     usage_input, usage_output = 0, 0
     for entry in files:
         if calls >= MAX_CALLS:
@@ -162,7 +177,7 @@ def main():
         "commit": commit,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "verified": False,
-        "files": results,
+        "files": results,\n        "skipped": errors,
         "limits": {
             "max_files": MAX_FILES, "max_calls": MAX_CALLS,
             "max_bytes_per_file": MAX_BYTES_PER_FILE,
@@ -181,7 +196,7 @@ def main():
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Nexus analysis complete; files={len(results)}; calls={calls}; estimated_input_tokens={consumed}.")
+    print(f"Nexus analysis complete; files={len(results)}; calls={calls}; skipped={len(errors)}; estimated_input_tokens={consumed}.")
 
 if __name__ == "__main__":
     main()
