@@ -42,6 +42,9 @@ def fetch(repo):
                 "stars": payload.get("stargazers_count"),
                 "updated_at": payload.get("pushed_at"),
                 "archived": payload.get("archived"),
+                "disabled": payload.get("disabled", False),
+                "visibility": payload.get("visibility", "public"),
+                "status": "archived" if payload.get("archived") else ("disabled" if payload.get("disabled") else "available"),
                 "license": lic.get("spdx_id") if lic.get("spdx_id") not in (None, "NOASSERTION") else None,
                 "checked_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             }
@@ -74,7 +77,9 @@ def main():
             result[repo.lower()] = item
             success += 1
         elif repo.lower() in existing:
-            result[repo.lower()] = existing[repo.lower()]
+            result[repo.lower()] = {**existing[repo.lower()], "status": "not_verified", "last_successful_check": existing[repo.lower()].get("checked_at")}
+        else:
+            result[repo.lower()] = {"status": "not_verified", "stars": None, "archived": None, "checked_at": None}
         time.sleep(0.06)
     if not names:
         raise SystemExit("No GitHub repository URLs found: refusing to overwrite cache")
