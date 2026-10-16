@@ -1,0 +1,60 @@
+name: Nexus Intelligence Weekly Review
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 14 * * 1'
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: nexus-weekly-review
+  cancel-in-progress: false
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      NEXUS_API_KEY: ${{ secrets.NEXUS_LLM_API_KEY }}
+      NEXUS_MODEL: free/glm-5.3-flash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preflight and tests
+        run: |
+          test -n "$NEXUS_API_KEY" || { echo "::error::Missing NEXUS_LLM_API_KEY secret"; exit 1; }
+          python -m py_compile janus-worker/multi_analyze.py janus-worker/weekly_batch.py
+          python -m unittest discover -s janus-worker -p 'test_*.py' -v
+      - name: Generate at most five review candidates
+        run: python janus-worker/weekly_batch.py
+      - name: Check report size and keep publication separate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("data/intelligence/candidates")
+          files=list(root.glob("*.json"))
+          assert 1 <= len(files) <= 6
+          assert sum(p.stat().st_size for p in files) < 200000
+          for p in files:
+              json.loads(p.read_text())
+          assert Path("data/intelligence/latest.json").exists()
+          PY
+      - name: Propose draft reports for review; do not publish automatically
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          branch="automation/intelligence-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data/intelligence/candidates
+          if git diff --cached --quiet; then
+            echo "Nothing to propose"
+            exit 0
+          fi
+          git commit -m "Propose weekly AI repository reviews"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "Review weekly Nexus Intelligence candidates" --body "Automated AI drafts for human review. **Do not merge without reviewing generated claims.** Up to 5 repositories and up to 3 API calls per repository; no change to the live latest.json. Generated reports are not verified security findings."
