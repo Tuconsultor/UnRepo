@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 BASE = "https://api.apinex.bond/v1"
 KEY = os.environ.get("NEXUS_API_KEY", "")
 MODEL = os.environ.get("NEXUS_MODEL", "free/glm-5.3-flash")
-REPO = os.environ.get("TARGET_REPO", "janus-llm/janus-llm")
+REPO = os.environ.get("TARGET_REPO", "janus-llm/janus-llm").strip().rstrip(".")
 OUT = pathlib.Path(__file__).parent / "output" / "report.json"
 
 MAX_FILES = 3
@@ -37,8 +37,13 @@ def estimated_tokens(text):
     return (len(text.encode("utf-8")) + 2) // 3
 
 def github_json(url):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=GITHUB_HEADERS), timeout=18) as resp:
-        return json.load(resp)
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=GITHUB_HEADERS), timeout=18) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            raise RuntimeError("GITHUB_NOT_FOUND: repository or requested source does not exist (check owner/name)") from None
+        raise RuntimeError(f"GITHUB_HTTP_STATUS: {exc.code}") from None
 
 def parse_analysis(answer):
     """Extract a JSON object even when a model adds surrounding text or code fences."""
