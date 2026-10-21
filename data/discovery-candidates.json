@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-21T05:43:15+00:00",
+  "generated_at": "2026-10-21T05:45:43+00:00",
   "source": "https://raw.githubusercontent.com/alexgaoth/awesome-reverse-engineered/main/data/entries.json",
   "method": "curation_queue_not_auto_import",
   "scope_note": "External index has its own editorial exclusions; discoveries are not a comprehensive security inventory.",
