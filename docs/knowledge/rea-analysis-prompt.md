@@ -1,8 +1,8 @@
 # REA — Prompt de análisis y reconstrucción con evidencia
 
-**Tipo:** prompt reutilizable · **Fuente:** segunda captura proporcionada por el usuario (octubre de 2026) · **Herramienta mencionada:** [REA](https://github.com/morluto/rea).
+**Tipo:** prompt reutilizable · **Herramienta mencionada:** [REA](https://github.com/morluto/rea).
 
-La imagen propone a un analista de ingeniería inversa que estudia una **función específica**, distingue hechos de hipótesis, y escribe una implementación propia después de verificar el comportamiento. Esta versión conserva la secuencia, requisitos y límites de la captura, con redacción clara en español. No representa una ejecución ni validación práctica de REA.
+Analista de ingeniería inversa que estudia una **función específica**, distingue hechos de hipótesis, y escribe una implementación propia después de verificar el comportamiento.
 
 ## Prompt maestro listo para copiar
 
@@ -101,6 +101,4 @@ nada hasta recibir aprobación. Separa hechos, inferencias e incógnitas.
 ```
 
 ## Notas de la captura
-La referencia menciona como herramientas de inspección **Hopper, Ghidra, IDA**, análisis JavaScript/Electron y .NET, observación del navegador, capturas HAR y snapshots de bases de datos. Sus nombres son **opciones técnicas**, no instrucciones de instalar todo ni permisos para analizar cualquier objetivo. La captura también incluye `npx rea-agents setup` y `rea update`; revisar la documentación actual antes de usarlos.
-
-**Proveniencia:** adaptación y transcripción funcional de material visual entregado por el usuario para su biblioteca de conocimiento de Nexus. No se afirma que el prompt sea oficial ni que todos los comandos estén comprobados en el entorno.
+Las herramientas de inspección **Hopper, Ghidra, IDA**, análisis JavaScript/Electron y .NET, observación del navegador, capturas HAR y snapshots de bases de datos. Sus nombres son **opciones técnicas**, no instrucciones de instalar todo ni permisos para analizar cualquier objetivo. También incluye `npx rea-agents setup` y `rea update`; revisar la documentación actual antes de usarlos.
