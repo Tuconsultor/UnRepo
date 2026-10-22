@@ -110,6 +110,25 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 .archive-status{color:#fcd34d;border:1px solid #aa772e;border-radius:5px;padding:0 5px}
 
 .resilience-banner{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:19px 22px;margin:0 0 23px;background:linear-gradient(115deg,#10374b,#131c2e);border:1px solid #296176;border-radius:14px}.resilience-banner strong{display:block;color:#f1f5f9;font-size:17px}.resilience-banner p{margin:4px 0 0;color:#b4c3d9;font-size:13px}.resilience-banner a{display:inline-flex;padding:10px 14px;border:1px solid #67e8f9;border-radius:9px;color:#67e8f9;font-weight:700;text-decoration:none}.resilience-banner a:hover{background:#164e63;color:#fff}
+
+/* UnRepo secret personal routes — no visible navigation entry. */
+.nexus-secret{background:radial-gradient(circle at 90% 0%,#17364c 0,transparent 55%),#0d1727;border:1px solid #39516b;border-radius:15px;padding:0;color:#e6effb;width:min(500px,calc(100vw - 28px));max-height:86vh;box-shadow:0 28px 90px #000c;overflow:auto}
+.nexus-secret::backdrop{background:#020916d9;backdrop-filter:blur(4px)}
+.nexus-secret-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border-bottom:1px solid #354960;color:#80cbdf;font:600 11px "JetBrains Mono",monospace;letter-spacing:.09em}
+.nexus-secret-close{border:1px solid #4a627e;border-radius:8px;background:#1c2b41;color:#fff;font:20px/1 system-ui;width:36px;height:36px}
+.nexus-secret-inner{padding:25px 22px}
+.nexus-secret-code{margin:0 0 10px;color:#67e8f9;font:600 11px "JetBrains Mono",monospace;letter-spacing:.13em}
+.nexus-secret h2{margin:0 0 8px;font:700 clamp(22px,5vw,29px)/1.25 "Space Grotesk",sans-serif;letter-spacing:-.02em}
+.nexus-secret-summary{color:#b5c8dc;font-size:14px;line-height:1.6;margin:0 0 22px}
+.nexus-secret-links{display:grid;gap:10px}
+.nexus-secret-links a{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid #344b66;border-radius:10px;padding:16px;background:#142237;text-decoration:none}
+.nexus-secret-links a:hover,.nexus-secret-links a:focus-visible{border-color:#67e8f9;background:#20344c}
+.nexus-secret-links a span{display:grid;gap:4px}
+.nexus-secret-links small{color:#85c8d7;font:600 10px "JetBrains Mono",monospace;letter-spacing:.05em}
+.nexus-secret-links strong{color:#f3f8ff;font:600 17px "Space Grotesk",sans-serif}
+.nexus-secret-links em{color:#b6c7db;font:normal 13px "Space Grotesk",sans-serif}
+.nexus-secret-links b{color:#67e8f9}
+.nexus-secret-note{color:#8199b5;font:11px/1.6 "JetBrains Mono",monospace;margin:21px 0 0}
 </style>
 </head>
 <body>
@@ -160,6 +179,24 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 </section>
 <footer class="footer"><span>© UnRepo · Curaduría tecnológica · Interfaz Nexus</span><span><!--<a href="./data/discovery-candidates.json" target="_blank" rel="noopener noreferrer" title="Propuestas de fuentes externas aún sin revisar">Candidatos por revisar (JSON) ↗</a>--> · <!--<a href="https://github.com/tuconsultor/UnRepo/blob/main/docs/discovery-workflow.md" target="_blank" rel="noopener noreferrer">Flujo de descubrimiento ↗</a></span></a>--><span>Los enlaces externos pertenecen a sus respectivos autores.</span></footer>
 </main></div>
+
+<dialog id="nexusSecret" class="nexus-secret" aria-labelledby="nexusSecretTitle" aria-describedby="nexusSecretSummary">
+  <div class="nexus-secret-head"><span aria-hidden="true">✳ NEXUS / AUXILIARY ROUTES</span><button type="button" class="nexus-secret-close" id="nexusSecretClose" aria-label="Cerrar rutas ocultas">×</button></div>
+  <div class="nexus-secret-inner">
+    <p class="nexus-secret-code">UNREPO://OFF-GRID</p>
+    <h2 id="nexusSecretTitle">Hay más allá del índice.</h2>
+    <p class="nexus-secret-summary" id="nexusSecretSummary">Dos rutas personales fuera del catálogo tecnológico.</p>
+    <nav class="nexus-secret-links" aria-label="Rutas personales">
+      <a href="https://github.com/Tuconsultor/HUB-NFC" target="_blank" rel="noopener noreferrer">
+        <span><small>01 / TRANSPORT SOLUTIONS</small><strong>HUB-NFC</strong><em>Proyecto de venta de camiones</em></span><b aria-hidden="true">↗</b>
+      </a>
+      <a href="https://rentahuman.ai/humans/yJ4sM0eBbL5ZW2WpSpOn" target="_blank" rel="noopener noreferrer">
+        <span><small>02 / HUMAN INTERFACE</small><strong>Rent a Human</strong><em>Perfil personal</em></span><b aria-hidden="true">↗</b>
+      </a>
+    </nav>
+    <p class="nexus-secret-note">// Has encontrado las rutas ocultas de Nexus.</p>
+  </div>
+</dialog>
 <script>
 "use strict";
 const resourcesData = [
@@ -686,6 +723,43 @@ $("loadMore").addEventListener("click",()=>{state.limit+=24;render()});
 $("menuBtn").addEventListener("click",()=>{const open=$("sidebar").classList.toggle("open");$("menuBtn").setAttribute("aria-expanded",String(open));$("menuBtn").setAttribute("aria-label",open?"Cerrar menú de categorías":"Abrir menú de categorías")});
 document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("search").focus()}if(e.key==="Escape"){if(document.activeElement===$("search")){$("search").blur()}closeMenu()}});
 document.addEventListener("pointerdown",e=>{if(window.innerWidth<=830&&!$("sidebar").contains(e.target)&&!$("menuBtn").contains(e.target))closeMenu()});
+
+// Secreto de Nexus: escribir "xus" fuera de campos de texto o tocar ✳ cinco veces.
+(() => {
+  const dialog = document.getElementById("nexusSecret");
+  const close = document.getElementById("nexusSecretClose");
+  const icon = document.querySelector("#brand .logo");
+  if (!dialog || !close || !icon || typeof dialog.showModal !== "function") return;
+  let priorFocus = null;
+  const reveal = () => {
+    if (dialog.open) return;
+    priorFocus = document.activeElement;
+    dialog.showModal();
+    close.focus();
+  };
+  close.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => {
+    if (priorFocus?.isConnected) priorFocus.focus();
+    priorFocus = null;
+  });
+  let sequence = "";
+  document.addEventListener("keydown", event => {
+    if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.isComposing || dialog.open) return;
+    if (event.target instanceof Element && event.target.closest('input,textarea,select,[contenteditable],[role="textbox"]')) return;
+    if (event.key.length !== 1) return;
+    sequence = (sequence + event.key.toLowerCase()).slice(-3);
+    if (sequence === "xus") { sequence = ""; reveal(); }
+  });
+  let taps = 0;
+  let lastTap = 0;
+  icon.addEventListener("click", event => {
+    event.preventDefault();
+    const now = Date.now();
+    taps = now - lastTap <= 1400 ? taps + 1 : 1;
+    lastTap = now;
+    if (taps === 5) { taps = 0; reveal(); }
+  });
+})();
 </script>
 </body>
 </html>
