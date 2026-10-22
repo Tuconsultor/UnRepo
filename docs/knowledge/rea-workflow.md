@@ -1,20 +1,20 @@
 # REA — Guía operativa visual y flujo de trabajo
 
-**Tipo:** conocimiento / prompt reusable · **Fuente:** primera captura proporcionada por el usuario (octubre de 2026) · **Referencia técnica:** [morluto/rea](https://github.com/morluto/rea).  
-**Estado de transcripción:** adaptación estructurada fiel a los conceptos y prompts legibles de la imagen; no es documentación oficial ni se ha probado aquí ejecutando REA.
+**Tipo:** conocimiento / prompt reusable · **Referencia técnica:** [morluto/rea](https://github.com/morluto/rea).  
+**Estado de transcripción:**
 
 ## ¿Qué es REA?
 Reverse Engineer Anything (REA) permite que un agente inspeccione el funcionamiento de aplicaciones, componentes y formatos, organice evidencia y formule especificaciones para construir una implementación **propia y original**. Puede integrarse mediante MCP. La captura muestra un proceso aprobado por etapas ("approval-gated") y recomienda confirmar cambios antes de aplicarlos.
 
 ## Objetivos y límites
-- Alcance representado en la imagen: **websites**, **desktop apps** (Electron, Slack, Notion, Discord), **Android apps**, **native software + games**.
+- Alcance: **websites**, **desktop apps** (Electron, Slack, Notion, Discord), **Android apps**, **native software + games**.
 - Analizar sólo software propio o con autorización suficiente.
 - Especificar **comportamiento**, no reproducir código, marcas, nombres, rutas internas o recursos protegidos del original.
 - Clasificar cada hallazgo como **CONFIRMED**, **INFERRED** o **UNKNOWN**; agregar evidencia.
 - No implementar ni modificar sistemas hasta revisar el plan. Operar en un laboratorio o copia aislada.
 
 ## Instalación mostrada en la referencia
-Requiere un agente compatible y Node.js 22.19+ según la captura. **Revisar siempre README/versiones actuales en el proyecto original antes de ejecutar comandos.**
+Requiere un agente compatible y Node.js 22.19+. **Revisar siempre README/versiones actuales en el proyecto original antes de ejecutar comandos.**
 
 ```bash
 npx rea-agents setup
@@ -92,4 +92,4 @@ src/ + tests/         — implementación independiente y pruebas
 - ¿El constructor está separado de los artefactos propietarios?
 - ¿El plan y las modificaciones se revisarán antes de ejecutarse?
 
-> Esta página conserva como **conocimiento consultable** el contenido de una captura aportada por el usuario. Revisa las instrucciones originales y la versión actual de REA antes de ponerlas en práctica.
+> Esta página conserva como **conocimiento consultable**. Revisa las instrucciones originales y la versión actual de REA antes de ponerlas en práctica.
