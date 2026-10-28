@@ -18,3 +18,12 @@ Al recibir la URL completa: comprobar acceso y permisos, inspeccionar contenido,
 - Prompt de ingeniería inversa REA: [REA prompt](rea-analysis-prompt.md)
 
 Ambos documentos son **adaptaciones textuales de las capturas aportadas**, no certificaciones oficiales de REA ni ejecución de herramientas.
+
+## Acortador t.co pendiente de identificación — 27 de octubre de 2026
+
+- URL recibida: `https://t.co/lPcGP6L5jJ`
+- Estado: **pendiente de validar el destino**. El acortador no permitió inspeccionar su redirección en las consultas disponibles y una búsqueda exacta no proporcionó una URL canónica comprobable.
+- Política de integración: **no publicar el enlace como recurso validado** ni atribuirle una descripción, categoría o licencia hasta conocer la URL de destino.
+- Próximo paso: comprobar el destino final mediante navegador y revisar reputación, autoría, derechos y riesgo antes de añadirlo a Nexus.
+
+Esta fuente se conserva en la lista de pendientes sin afectar los recursos ya aprobados.
