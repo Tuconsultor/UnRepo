@@ -200,6 +200,8 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
 <script>
 "use strict";
 const resourcesData = [
+// Referencia editorial adicional: no verificada
+{ title: "DarkFox en Kitploit — ficha editorial pendiente", desc: "Ficha externa sobre la herramienta DarkFox para OSINT e inteligencia de amenazas. Consultar el proyecto original en GitHub para el código y su documentación.", url: "https://kitploit.com/es/tools/github/aryanguenthner/darkfox?utm_campaign=kitploit&utm_content=374462&utm_medium=social&utm_source=x", category: "sources", icon: "fa-bookmark", tag: "CTI / Ficha externa" },
 // Curaduría REA: herramientas, directorios y guía práctica de Nexus
 { title: "Darkus — Buscador de sitios .onion", desc: "Buscador OSINT de direcciones .onion mediante motores especializados de la red Tor.", url: "https://github.com/Lucksi/Darkus", category: "security", icon: "fa-bookmark", tag: "OSINT / Dark Web" },
 { title: "Zero Breach Toolkit — Indicios de spyware", desc: "Examina evidencias conocidas de spyware mercenario en computadoras, Android y respaldos de iPhone, con informes y límites explícitos.", url: "https://github.com/interplains/Zero-Breach-Toolkit", category: "security", icon: "fa-bookmark", tag: "Análisis forense / Antispyware" },
@@ -577,6 +579,7 @@ const state={category:"all",tag:"all",level:"all",license:"all",search:"",sort:"
 const normalized=value=>String(value??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 // Datos de curaduría: nivel = criterio editorial, licencia = información aún sujeta a revisión del repositorio.
 const RESOURCE_METADATA={
+"https://kitploit.com/es/tools/github/aryanguenthner/darkfox?utm_campaign=kitploit&utm_content=374462&utm_medium=social&utm_source=x":{level:"Intermedio",license:"Contenido editorial: por verificar",maturity:"Referencia externa no auditada",impact:"Referencia adicional sobre DarkFox",sourceType:"Referencia externa por verificar",caution:"Esta página no pudo comprobarse directamente: su URL y contenido permanecen sin verificar. Utilizar el repositorio aryanguenthner/darkfox como fuente técnica primaria."},
 "https://github.com/Lucksi/Darkus":{level:"Avanzado",license:"GPL-3.0",maturity:"Buscador Python / Tor",impact:"Consultas .onion sin descubrir destinos manualmente",sourceType:"Curaduría REA 2026",caution:"No visitar sitios desconocidos sin evaluación previa; evitar material ilícito y proteger el entorno de análisis."},
 "https://github.com/interplains/Zero-Breach-Toolkit":{level:"Intermedio",license:"Apache-2.0",maturity:"Herramienta forense / En desarrollo",impact:"Artefactos locales → informe de indicios",sourceType:"Curaduría REA 2026",caution:"Un resultado limpio no garantiza ausencia de spyware. La recolección móvil puede contener datos privados; revisar el alcance y pedir apoyo experto si es necesario."},
 "https://github.com/lightpanda-io/browser":{level:"Avanzado",license:"AGPL-3.0",maturity:"Nightly / En desarrollo",impact:"Automatizar navegación con consumo optimizado",sourceType:"Curaduría REA 2026",caution:"Las métricas de rendimiento proceden de benchmarks del proyecto. No tiene binario nativo Windows: usar WSL2 o Docker; comprobar compatibilidad."},
