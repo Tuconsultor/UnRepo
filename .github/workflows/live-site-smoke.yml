@@ -1,6 +1,12 @@
 name: Public Nexus browser smoke test
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/smoke_public_site.cjs'
+      - '.github/workflows/live-site-smoke.yml'
   push:
     branches: [main]
     paths:
