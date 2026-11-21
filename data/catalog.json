@@ -2,12 +2,12 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "main",
-    "commit": "ea0e0351412f01c0f90b31ce08c86e00a6c51b49",
+    "branch": "audit/nexus-p0-continuity-20261121",
+    "commit": "b4e12897a05d32ce2a97699f9e454d7006feae68",
     "file": "index.html",
     "data_array": "resourcesData"
   },
-  "resource_count": 375,
+  "resource_count": 380,
   "field_policy": "Unverified or unavailable attributes are null; this export does not replace RESOURCE_METADATA or live GitHub metadata.",
   "resources": [
     {
@@ -11268,6 +11268,207 @@
       "verification_status": "pending_review",
       "legacy_ui": {
         "icon": "fa-gamepad"
+      }
+    },
+    {
+      "id": "https://github.com/cantools/cantools",
+      "title": "cantools — Analizador de mensajes CAN para Python",
+      "canonical_url": "https://github.com/cantools/cantools",
+      "source_url": "https://github.com/cantools/cantools",
+      "source_type": "github_repository",
+      "category": "dev",
+      "tags": [
+        "Automoción / CAN Bus"
+      ],
+      "description": "Biblioteca y herramientas Python para leer DBC, ARXML y otros formatos de red CAN; codifica, decodifica y visualiza señales de vehículos y equipos.",
+      "capabilities": [
+        "Lectura DBC/KCD/ARXML",
+        "Codificación y decodificación de mensajes CAN"
+      ],
+      "use_cases": [
+        "Inspección y documentación técnica de señales de un bus CAN"
+      ],
+      "prerequisites": [
+        "Python 3",
+        "Conocimientos de redes CAN"
+      ],
+      "technical_level": null,
+      "language": null,
+      "access_model": null,
+      "license": "MIT (según API GitHub; texto no auditado)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/cantools/cantools",
+        "https://github.com/cantools/cantools/blob/master/README.rst"
+      ],
+      "limitations": null,
+      "usage_notice": null,
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-code"
+      }
+    },
+    {
+      "id": "https://github.com/evcc-io/evcc",
+      "title": "evcc — Gestión local de carga de vehículos eléctricos",
+      "canonical_url": "https://github.com/evcc-io/evcc",
+      "source_url": "https://github.com/evcc-io/evcc",
+      "source_type": "github_repository",
+      "category": "dev",
+      "tags": [
+        "Energía / Movilidad eléctrica"
+      ],
+      "description": "Controlador de carga y gestión energética doméstica que integra cargadores, medidores, inversores solares y vehículos para ajustar la carga a las condiciones de energía.",
+      "capabilities": [
+        "Control local de carga",
+        "Gestión energética con integración solar"
+      ],
+      "use_cases": [
+        "Optimización de carga de vehículos eléctricos"
+      ],
+      "prerequisites": [
+        "Equipos de carga o medición compatibles"
+      ],
+      "technical_level": null,
+      "language": null,
+      "access_model": null,
+      "license": "MIT (según API GitHub; texto no auditado)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/evcc-io/evcc",
+        "https://github.com/evcc-io/evcc/blob/master/README.md"
+      ],
+      "limitations": null,
+      "usage_notice": null,
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-bolt"
+      }
+    },
+    {
+      "id": "https://github.com/Koenkk/zigbee2mqtt",
+      "title": "Zigbee2MQTT — Puente local para dispositivos Zigbee",
+      "canonical_url": "https://github.com/Koenkk/zigbee2mqtt",
+      "source_url": "https://github.com/Koenkk/zigbee2mqtt",
+      "source_type": "github_repository",
+      "category": "dev",
+      "tags": [
+        "IoT / Automatización"
+      ],
+      "description": "Conecta dispositivos Zigbee a sistemas de automatización mediante MQTT sin depender necesariamente del puente propietario del fabricante.",
+      "capabilities": [
+        "Puente de dispositivos Zigbee a MQTT"
+      ],
+      "use_cases": [
+        "Interoperabilidad local de dispositivos IoT"
+      ],
+      "prerequisites": [
+        "Coordinador Zigbee compatible",
+        "Broker MQTT"
+      ],
+      "technical_level": null,
+      "language": null,
+      "access_model": null,
+      "license": "GPL-3.0 (según API GitHub; texto no auditado)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/Koenkk/zigbee2mqtt",
+        "https://github.com/Koenkk/zigbee2mqtt/blob/master/README.md"
+      ],
+      "limitations": null,
+      "usage_notice": null,
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-network-wired"
+      }
+    },
+    {
+      "id": "https://github.com/wader/fq",
+      "title": "fq — Consultas estructuradas de archivos binarios",
+      "canonical_url": "https://github.com/wader/fq",
+      "source_url": "https://github.com/wader/fq",
+      "source_type": "github_repository",
+      "category": "explore",
+      "tags": [
+        "Formatos / Análisis binario"
+      ],
+      "description": "Herramienta CLI similar a jq para consultar y decodificar formatos binarios, explorar estructuras hexadecimales y analizar datos por bits.",
+      "capabilities": [
+        "Consultas y decodificación de formatos binarios",
+        "Visualización hexadecimal estructurada"
+      ],
+      "use_cases": [
+        "Inspección técnica de datos binarios"
+      ],
+      "prerequisites": [
+        "Interfaz de línea de comandos",
+        "Nociones de consultas jq"
+      ],
+      "technical_level": null,
+      "language": null,
+      "access_model": null,
+      "license": null,
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/wader/fq",
+        "https://github.com/wader/fq/blob/master/README.md"
+      ],
+      "limitations": null,
+      "usage_notice": null,
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-magnifying-glass-chart"
+      }
+    },
+    {
+      "id": "https://github.com/LegacyUpdate/LegacyUpdate",
+      "title": "Legacy Update — Actualizaciones para Windows antiguos",
+      "canonical_url": "https://github.com/LegacyUpdate/LegacyUpdate",
+      "source_url": "https://github.com/LegacyUpdate/LegacyUpdate",
+      "source_type": "github_repository",
+      "category": "dev",
+      "tags": [
+        "Windows / Preservación"
+      ],
+      "description": "Proyecto para recuperar acceso a Windows Update y facilitar la instalación de actualizaciones disponibles en versiones históricas de Windows.",
+      "capabilities": [
+        "Recuperación de funcionalidad de Windows Update en versiones antiguas"
+      ],
+      "use_cases": [
+        "Mantenimiento de sistemas Windows históricos"
+      ],
+      "prerequisites": [
+        "Sistema Windows compatible; respaldo recomendado"
+      ],
+      "technical_level": null,
+      "language": null,
+      "access_model": null,
+      "license": "Apache-2.0 (según API GitHub; texto no auditado)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/LegacyUpdate/LegacyUpdate",
+        "https://github.com/LegacyUpdate/LegacyUpdate/blob/main/README.md"
+      ],
+      "limitations": null,
+      "usage_notice": null,
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-computer"
       }
     }
   ]
