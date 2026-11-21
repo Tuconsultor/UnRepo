@@ -59,7 +59,10 @@ def main():
         if dup_ids:
             fail(f"{path}: duplicate element IDs: {dup_ids}")
         for rel in page.local_links:
-            if not (ROOT / rel).is_file():
+            target = ROOT / rel
+            if target.is_dir():
+                target = target / "index.html"
+            if not target.is_file():
                 fail(f"{path}: broken local file path: {rel}")
         scripts = re.findall(r'<script\b[^>]*>(.*?)</script\s*>', raw, re.I | re.S)
         for n, script in enumerate(scripts, start=1):
