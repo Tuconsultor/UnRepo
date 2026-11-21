@@ -78,6 +78,9 @@ def main():
         pages[path] = (raw, page)
         print(f"PASS {path}: {len(page.ids)} IDs, {len(scripts)} inline scripts")
 
+    asset = ROOT / "assets" / "social" / "unrepo-icon-2026.png"
+    if not asset.is_file():
+        fail("Missing shared social image: assets/social/unrepo-icon-2026.png")
     index, parsed = pages["index.html"]
     missing = sorted(REQUIRED_IDS - set(parsed.ids))
     if missing:
@@ -85,6 +88,8 @@ def main():
     for text in REQUIRED_TEXT:
         if text not in index:
             fail(f"Nexus missing behavior or route: {text}")
+    if "https://tuconsultor.github.io/UnRepo/assets/social/unrepo-icon-2026.png" not in index:
+        fail("Social metadata URL does not match published icon asset")
     if "banxian888.vip" in index.lower():
         fail("Unverified high-risk domain is publicly indexed")
     urls = URL_PATTERN.findall(index)
