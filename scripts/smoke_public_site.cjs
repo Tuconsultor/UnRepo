@@ -118,7 +118,7 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     for (let n = 0; n < 5; n++) await mobile.locator("#brand .logo").click({timeout:3000});
     await mobile.locator("#nexusSecret").waitFor({state:"visible", timeout:10000});
     await mobile.locator("#nexusSecretClose").click();
-    await mobile.locator("#category").selectOption("sound");
+    await mobile.locator('#navigation .nav-btn[data-category="sound"]').click();
     assert.ok((await mobile.locator("#catalog .card").count()) >= 4, "Mobile category filter returned too few cards");
     await mobile.locator("#search").fill("AudioCraft");
     assert.ok((await mobile.locator("#catalog").textContent()).includes("AudioCraft"), "Mobile search failed");
