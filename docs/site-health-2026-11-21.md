@@ -13,10 +13,12 @@
 | URLs duplicadas | **0** | Comparación normalizada en index.html |
 | IDs HTML repetidos en portada | **0** | Revisión de 27 IDs |
 | Repositorios GitHub catalogados | **253** | Extracción de rutas `owner/repo` de las fichas |
-| Repositorios presentes en caché | **230 de 253** | `data/github-metadata.json` |
-| Repositorios con metadatos aún pendientes | **23** | Todos corresponden a la nueva tanda del 21/11/2026 |
-| Sintaxis JavaScript | **Sin errores detectados** | Compilación sintáctica de scripts inline de `index.html`, `rea-roadmap.html` e `intelligence.html`; no equivale a prueba de navegación |
+| Repositorios presentes en caché | **253 de 253** | Caché renovada en ambas ramas el 21/11/2026 a las 21:06:48 UTC |
+| Repositorios con metadatos aún pendientes | **0** | La actualización posterior incorporó los 23 nuevos |
+| Sintaxis JavaScript | **Sin errores detectados** | Compilación sintáctica de scripts inline de `index.html`, `rea-roadmap.html`, `intelligence.html` y `soporte-remoto-windows.html`; `resiliencia-agentes.html` no lleva script inline; no equivale a prueba de navegación |
 | Ruta REA | **Archivo presente** | `rea-roadmap.html` en ambas ramas |
+| Páginas adicionales | **Presentes** | `resiliencia-agentes.html` y `soporte-remoto-windows.html` en ambas ramas |
+| Imagen social | **Restaurada y verificada** | Blob original `assets/social/unrepo-icon-2026.png` con SHA idéntica en `main` y `gh-pages` |
 | Intelligence Lab | **Archivo presente** | `intelligence.html` en ambas ramas |
 | Easter Egg | **Conservado** | Diálogo `nexusSecret`, secuencia `xus` y cinco toques en el símbolo |
 | HTML de pie de página | **Corregido** | Se retiró anidamiento roto de etiquetas/comentarios preservando el texto visible |
@@ -26,7 +28,7 @@
 ## Cambios de integridad y prevención
 
 - `scripts/validate_nexus.py` verifica archivos locales, URLs duplicadas, IDs, rutas, código JavaScript mediante Node.js, contenido requerido, esquema JSON de metadatos y preservación del Easter Egg.
-- `.github/workflows/refresh-repo-metadata.yml` se amplió para ejecutar la validación, detectar cambios en `intelligence.html` y sincronizarlo junto con portada, guía REA y archivos de datos a `gh-pages`.
+- `.github/workflows/refresh-repo-metadata.yml` se amplió para ejecutar la validación y sincronizar las cinco páginas, la imagen social original y los archivos de datos en `gh-pages`.
 - Se corrigió la prioridad de licencias para conservar excepciones verificadas editorialmente (por ejemplo, **MIT con Commons Clause**, en vez de confundirla con una licencia MIT permisiva).
 - La fuente riesgosa se documentó en `docs/knowledge/pending-external-sources.md`, no en el catálogo.
 
@@ -34,7 +36,7 @@
 
 **1. Acceso público:** los intentos de consultar GitHub Pages desde esta sesión no permitieron obtener la página. La existencia e igualdad de archivos entre ramas **no prueba** que GitHub Pages sirva el contenido esperado ni que el comportamiento responda correctamente a eventos reales.
 
-**2. GitHub Actions:** el workflow quedó configurado, pero no fue posible leer un resultado de ejecución exitoso desde esta sesión. Los 23 repositorios nuevos todavía no aparecen en la caché, por lo que datos como estrellas o última actualización pueden faltar en sus tarjetas hasta completar el refresco.
+**2. GitHub Actions:** la caché sí se regeneró y pasó de 230 a 253 repositorios, sincronizada en ambas ramas. Esa actualización confirma funcionamiento del refresco de metadatos. Aun así, la herramienta no permitió inspeccionar los registros detallados del paso nuevo `Validate Nexus pages and JavaScript`, por lo que no se declara una ejecución completa de CI verificada.
 
 **3. Intelligence Lab:** `data/intelligence/latest.json` declara `generated_at=2026-10-16T21:26:20.577355+00:00` y `verified=false`. El contenido debe tratarse como **informe histórico y no verificado**, no como inteligencia actualizada a noviembre.
 
