@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-PAGES = ["index.html", "rea-roadmap.html", "intelligence.html"]
+PAGES = ["index.html", "rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html"]
 REQUIRED_IDS = {
     "sidebar", "brand", "navigation", "main", "menuBtn", "favToggle",
     "totalStat", "categoryStat", "savedStat", "search", "category", "tag",
