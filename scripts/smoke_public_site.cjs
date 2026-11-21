@@ -58,7 +58,7 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     console.log("PASS public metadata: 267+ GitHub records, all 14 new projects");
 
     await page.locator("#search").fill("AudioCraft");
-    await page.waitForFunction(() => document.querySelector("#catalog")?.textContent?.includes("AudioCraft"), null, {timeout: 10000});
+    await page.waitForFunction(() => { const text = document.querySelector("#catalog")?.textContent || ""; return text.includes("AudioCraft") && !text.includes("OpenComputer"); }, null, {timeout: 10000});
     console.log("PASS search");
 
     await page.locator("#clearFilters").click();
@@ -81,6 +81,8 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
 
     const mobile = await browser.newPage({viewport: {width: 390, height: 844}, isMobile: true});
     await mobile.goto(BASE, {waitUntil: "domcontentloaded", timeout: 30000});
+    await mobile.locator("#menuBtn").click();
+    await mobile.locator("#sidebar").waitFor({state:"visible", timeout:10000});
     for (let n = 0; n < 5; n++) await mobile.locator("#brand .logo").click({force:true, timeout:3000});
     await mobile.locator("#nexusSecret").waitFor({state:"visible", timeout:10000});
     await mobile.close();
