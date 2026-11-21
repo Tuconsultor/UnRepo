@@ -93,7 +93,7 @@ def main():
     if "banxian888.vip" in index.lower():
         fail("Unverified high-risk domain is publicly indexed")
     urls = URL_PATTERN.findall(index)
-    if len(urls) < 361:
+    if len(urls) < 375:
         fail(f"Catalogue unexpectedly shrank: {len(urls)}")
     canonical = [url.lower().rstrip("/") for url in urls]
     if len(canonical) != len(set(canonical)):
@@ -104,9 +104,30 @@ def main():
         "https://github.com/openai/plugins",
         "https://github.com/gastownhall/beads",
         "https://academy.claude.com/",
+        "https://github.com/diggerhq/opencomputer",
+        "https://github.com/ysunyang4/Nexus",
+        "https://github.com/facebookresearch/demucs",
+        "https://github.com/facebookresearch/audiocraft",
+        "https://github.com/SWivid/F5-TTS",
+        "https://github.com/audacity/audacity",
+        "https://github.com/KDE/kdenlive",
+        "https://github.com/olive-editor/olive",
+        "https://github.com/Breakthrough/PySceneDetect",
+        "https://github.com/Zulko/moviepy",
+        "https://github.com/SubtitleEdit/subtitleedit",
+        "https://github.com/k4yt3x/video2x",
+        "https://github.com/HandBrake/HandBrake",
+        "https://github.com/obsproject/obs-studio",
     ):
         if url not in urls:
             fail(f"Missing newly curated resource: {url}")
+    for category in ('sound:"Sonido y posproducción"', 'editing:"Montaje y edición"', 'delivery:"Exportación y emisión"'):
+        if category not in index:
+            fail(f"Missing audiovisual category: {category}")
+    if "ARCHIVADO / Sin mantenimiento" not in index or "ALFA / Inestable" not in index:
+        fail("Missing archived/alpha warning labels")
+    if "CC-BY-NC-4.0 (pesos)" not in index or "CC-BY-NC (modelos preentrenados)" not in index:
+        fail("Missing noncommercial audio-model license warnings")
     if '<footer class="footer">' not in index or "<!--<a" in index:
         fail("Malformed footer reintroduced")
     guide, _ = pages["rea-roadmap.html"]
