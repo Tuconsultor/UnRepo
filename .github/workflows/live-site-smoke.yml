@@ -1,0 +1,46 @@
+name: Public Nexus browser smoke test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/smoke_public_site.cjs'
+      - '.github/workflows/live-site-smoke.yml'
+  schedule:
+    - cron: '15 7 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nexus-public-browser-smoke
+  cancel-in-progress: true
+
+jobs:
+  live-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout test code
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Test deployed site in Chromium
+        env:
+          NEXUS_BASE_URL: https://tuconsultor.github.io/UnRepo/
+        run: node scripts/smoke_public_site.cjs
+      - name: Preserve screenshots and JSON result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-public-browser-smoke
+          path: artifacts/browser-smoke/
+          retention-days: 14
+          if-no-files-found: warn
