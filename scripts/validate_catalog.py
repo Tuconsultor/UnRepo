@@ -18,7 +18,7 @@ CATALOG = ROOT / "data" / "catalog.json"
 SCHEMA = ROOT / "data" / "catalog.schema.json"
 ATTRIBUTES = ("title", "desc", "url", "category", "icon", "tag", "evalType")
 FIELD_RE = re.compile(
-    r'\\b(' + "|".join(ATTRIBUTES) + r')\\s*:\\s*("(?:\\\\.|[^"\\\\])*")'
+    r'\b(' + "|".join(ATTRIBUTES) + r')\s*:\s*("(?:\\.|[^"\\])*")'
 )
 RESOURCE_REQUIRED = {
     "id", "title", "canonical_url", "source_url", "source_type", "category",
@@ -58,7 +58,7 @@ def read_inline() -> list[dict]:
     source = html.split(prefix, 1)[1].split("];", 1)[0]
     records = []
     for line in source.splitlines():
-        if not re.match(r"\\s*\\{\\s*title:", line):
+        if not re.match(r"\s*\{\s*title:", line):
             continue
         fields = {
             match.group(1): json.loads(match.group(2))
@@ -108,7 +108,7 @@ def main() -> None:
         if new["verification_status"] != "pending_review":
             fail(f"Record {index} claims an unverified status transition")
         if new["source_type"] != (
-            "github_repository" if re.match(r"^https://github\\.com/[^/]+/[^/]+", old["url"], re.I)
+            "github_repository" if re.match(r"^https://github\.com/[^/]+/[^/]+", old["url"], re.I)
             else "website"
         ):
             fail(f"Record {index} changed its source URL type")
