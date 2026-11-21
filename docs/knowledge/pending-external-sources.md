@@ -27,3 +27,13 @@ Ambos documentos son **adaptaciones textuales de las capturas aportadas**, no ce
 - Próximo paso: comprobar el destino final mediante navegador y revisar reputación, autoría, derechos y riesgo antes de añadirlo a Nexus.
 
 Esta fuente se conserva en la lista de pendientes sin afectar los recursos ya aprobados.
+
+## Dominio excluido por riesgo — 21 de noviembre de 2026
+
+- Identificador recibido: `banxian888.vip`
+- **No indexado en Nexus** por falta de contenido verificable y por señal de riesgo.
+- La consulta directa del sitio fue bloqueada o no accesible; un analizador público de reputación (Gridinsoft) mostraba una clasificación de phishing y confianza 1/100 a la fecha de revisión.
+- **Evaluación:** alerta de tercero, no demostración pericial de fraude. No iniciar sesión, entregar datos personales ni instalar aplicaciones a partir de este dominio.
+- Para reconsiderar la publicación se requiere identificación del operador, finalidad legítima, una revisión independiente de seguridad y nueva comprobación de disponibilidad.
+
+Este registro es de curaduría interna: no debe mostrarse como recomendación ni link activo del catálogo.
