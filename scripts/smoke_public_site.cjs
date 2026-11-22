@@ -85,7 +85,7 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
           const val = (selector) => rendered.querySelector(selector)?.textContent || "";
           if (val("h3") !== item.title) failures.push(item.url + ": title");
           if (val(".resource-desc") !== (item.desc || "Recurso disponible en su sitio original.")) failures.push(item.url + ": description");
-          if (rendered.querySelector("a.external")?.href !== item.url) failures.push(item.url + ": destination");
+          if (rendered.querySelector("a.external")?.getAttribute("href") !== item.url) failures.push(item.url + ": destination");
           if (val(".resource-caution") !== "Precaución: " + meta.caution) failures.push(item.url + ": caution");
           if (!val(".card-type") || !val(".card-details-toggle").includes("precauciones")) failures.push(item.url + ": discoverability");
           if (rendered.querySelectorAll(".resource-facts-primary .fact").length !== 2) failures.push(item.url + ": primary facts");
