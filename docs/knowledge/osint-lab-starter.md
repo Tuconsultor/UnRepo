@@ -2,7 +2,7 @@
 
 **Proyecto:** UnRepo Nexus  
 **Fecha de preparación:** 2026-11-21  
-**Estado:** PROPUESTO / NO PUBLICADO. Este documento no incorpora fichas al catálogo visible ni implica pruebas de instalación o funcionamiento.  
+**Estado:** IMPLEMENTADO EN RAMA DE PR / NO PUBLICADO. Tres fichas y un acceso visible a OSINT Lab ya se incorporaron al \`index.html\` y al espejo \`data/catalog.json\` en la rama de revisión; aún falta prueba de CI, aprobación, despliegue y verificación posterior. No se instalaron ni ejecutaron las herramientas externas.  
 **Alcance:** tres herramientas complementarias a las entradas OSINT ya presentes en `data/catalog.json`.
 
 ## Propósito
@@ -22,7 +22,7 @@ Facilitar acceso comprensible y verificable a técnicas de investigación de fue
 - **Uso reproducible:** identificar edificios, vialidades y elementos cartografiados en una zona para contrastarlos con pistas de una fotografía pública.
 - **Nivel orientativo:** intermedio; interfaz web, consultas Overpass QL.
 - **Limitaciones:** datos colaborativos que pueden estar incompletos, desactualizados o mal clasificados. La herramienta **no** demuestra por sí misma dónde fue tomada una imagen.
-- **Verificado documentalmente:** README del repositorio y web oficial consultados. **No** se ejecutó una consulta.
+- **Verificado documentalmente:** README y licencia MIT del repositorio consultados. **No** se ejecutó una consulta.
 
 ### 2. SpiderFoot — reconocimiento OSINT automatizado
 
@@ -33,7 +33,7 @@ Facilitar acceso comprensible y verificable a técnicas de investigación de fue
 - **Uso reproducible:** elaborar inventario de activos digitales de un dominio propio, contrastando los hallazgos con DNS y registros que controla su responsable.
 - **Nivel orientativo:** avanzado; requiere instalación y conocimiento de redes.
 - **Limitaciones:** algunos módulos requieren claves de API, devuelven falsos positivos o pueden realizar consultas activas. Restringir exploración activa a sistemas propios o expresamente autorizados. No inferir identidad o culpabilidad por coincidencias.
-- **Licencia declarada por README:** MIT; comprobar el archivo LICENSE antes de publicación.
+- **Licencia comprobada:** MIT en el archivo LICENSE del repositorio.
 - **Verificado documentalmente:** README del proyecto consultado. **No** se instaló ni ejecutó.
 
 ### 3. ExifTool — lectura de metadatos
@@ -46,7 +46,7 @@ Facilitar acceso comprensible y verificable a técnicas de investigación de fue
 - **Nivel orientativo:** intermedio; línea de comandos.
 - **Limitaciones:** redes sociales pueden eliminar metadatos; los campos pueden faltar, ser erróneos o modificarse. La presencia de una fecha o GPS **no** autentica una imagen ni prueba que represente un acontecimiento.
 - **Fuente principal:** sitio del autor, Phil Harvey, y repositorio del proyecto.
-- **Verificado documentalmente:** sitio oficial y repositorio localizados. **No** se descargó ni analizó archivo alguno.
+- **Verificado documentalmente:** README y LICENSE del repositorio consultados; el README indica licencia Perl Artistic o GPL. **No** se descargó ni analizó archivo alguno.
 
 ## Recurso didáctico transversal
 
@@ -62,17 +62,17 @@ Facilitar acceso comprensible y verificable a técnicas de investigación de fue
 ## Integración propuesta en Nexus
 
 1. Revisar manualmente si los tres URL canónicos ya constan en `data/catalog.json` / `index.html` para evitar duplicados.
-2. Confirmar licencia, fuente primaria, mantenimiento, requisitos, límites, riesgos, idioma, captura de fecha y categoría según el esquema v1.
-3. Proponer fichas en PR separado, manteniendo IDs heredados y sin afectar favoritos.
-4. Ejecutar validadores del catálogo y del sitio + prueba Chromium de escritorio/móvil antes del merge.
+2. [x] Consultar fuentes primarias y licencias; reflejar requisitos, límites y advertencias, con la revisión técnica aún pendiente.
+3. [x] Añadir fichas a PR #9, conservando los IDs heredados y la ruta de favoritos.
+4. [ ] Confirmar resultados de validadores del catálogo y del sitio + prueba Chromium de escritorio/móvil antes del merge.
 5. Aprobar y desplegar por el flujo documentado; confirmar publicación efectiva y funcionamiento real.
 
 ## Evidencia y responsabilidades
 
-- **IMPLEMENTADO (esta rama):** documento de diseño y selección editorial.
-- **VALIDADO:** sólo lectura documental y comprobación preliminar de no duplicación; no validación funcional.
+- **IMPLEMENTADO (esta rama):** documento editorial, tres fichas en el catálogo espejo e inline, categoría OSINT y banner con filtro funcional en código; pruebas de navegador en CI añadidas.
+- **VALIDADO:** lectura documental, comprobación preliminar de deduplicación y consistencia entre URL de los dos inventarios; pendiente constancia de CI/Chromium para declarar validación funcional.
 - **PUBLICADO:** no.
 - **OPERATIVO en navegador real:** no comprobado para esta nueva sección.
-- **PENDIENTE:** fichas integradas en catálogo, UI de OSINT Lab, validadores, aprobación, despliegue y smoke posterior.
+- **PENDIENTE:** resultados de CI y Chromium de previsualización, aprobación, despliegue y smoke posterior.
 
 La neutralidad del conocimiento no elimina la necesidad de documentar límites, condiciones de uso y confiabilidad de la evidencia.
