@@ -115,3 +115,28 @@ GitHub Pages + smoke post-despliegue + rollback
 ## Cómo retomar este trabajo en otra conversación
 
 Abrir `docs/CONTINUIDAD.md` y el PR asociado. Leer `main`, `gh-pages`, el HEAD de esta rama y el último run de los workflows. No asumir que los conteos de este documento siguen vigentes. Clasificar como IMPLEMENTADO, VALIDADO, PUBLICADO u OPERATIVO por evidencia, y retomar en la primera acción inconclusa.
+
+## Continuación: revisión de fuentes y preview — 2026-11-21 (hora local)
+
+**Último commit de código sometido a CI:** `b199dac61feaba52517e61e438b1b20e5c077f5a`. El HEAD posterior puede contener solamente cambios documentales; consultar el PR #7.
+
+### Nuevas verificaciones de esta sesión
+
+| Comprobación | Estado | Evidencia | Observaciones |
+|---|---|---|---|
+| CI de inventario versión propuesta | PASS | [GitHub Actions 44964986163](https://github.com/Tuconsultor/UnRepo/actions/runs/44964986163) | 380 fichas, 380 URLs únicas, sin pérdida de 375 originales |
+| Intelligence Lab CI | PASS | [GitHub Actions 44964986158](https://github.com/Tuconsultor/UnRepo/actions/runs/44964986158) | Control de CI del PR |
+| Chromium contra **rama propuesta** | PASS | [GitHub Actions 44964986154](https://github.com/Tuconsultor/UnRepo/actions/runs/44964986154), trabajo `preview-browser` | Sirvió archivos en servidor local efímero; 380 recursos y cinco fichas consultables; no publica |
+| Chromium contra producción actual | PASS | Mismo run, trabajo `live-browser` | Regresiones del sitio de 375 fichas, con escritorio y móvil |
+| Licencia raíz de las cinco fichas | DOCUMENTO VERIFICADO | `data/discovery-review-log.json` (enlaces oficiales) | MIT para cantools, evcc y fq; GPL-3.0 para Zigbee2MQTT; Apache-2.0 para Legacy Update |
+| Revisión de dependencias, activos y uso en producción de herramientas externas | NOT RUN | No se ejecutó código de las fuentes catalogadas | Mantener alcance de la licencia raíz separado de modelos, datos y dependencias |
+| Despliegue de 380 fichas | PENDIENTE | PR #7 sigue como borrador | No fusionar ni publicar sin autorización |
+
+**Mejora de calidad:** antes las pruebas en PR sólo consultaban la URL de producción. Ahora el workflow tiene un trabajo Chromium aislado contra los archivos exactos de la rama propuesta, e inspecciona las cinco fichas nuevas mediante búsqueda y enlace de origen.
+
+**Control de continuidad:** mantener el PR #7 en `draft` hasta aprobación. Si se aprueba, seguir el workflow existente de publicación y verificar el sitio desplegado con 380 recursos; después revisar que `data/github-metadata.json` cubra 272 repositorios. El total 272 es un conteo del catálogo propuesto, no un dato confirmado de metadatos publicados.
+
+**Tres próximas acciones ajustadas:**
+1. Revisar y aprobar explícitamente el PR #7 para su posible integración, manteniendo la lista histórica íntegra y las licencias documentadas.
+2. Tras el merge autorizado, verificar despliegue, 380 tarjetas, 272 repositorios con metadatos actualizados y registrar la prueba Chromium post-publicación.
+3. Hacer la migración incremental de `RESOURCE_METADATA` al JSON con validador de equivalencia, más adaptadores multifuente controlados sin autopublicación.
