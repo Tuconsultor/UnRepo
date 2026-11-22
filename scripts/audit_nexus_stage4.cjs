@@ -75,6 +75,21 @@ async function audit(browser,base,scope) {
     const request=await (await browser.newContext()).request;
     await testPublicFiles(request);
     const production=await audit(browser,PUBLIC,"production");
+    // Post-deploy checks run against the published version, not a historical PR baseline.
+    if (process.env.NEXUS_AUDIT_MODE === "production") {
+      const report={checkedAt:new Date().toISOString(),mode:"production",publicUrl:PUBLIC,
+        filesVerified:ASSETS.length,pagesVerified:ROUTES.length,
+        pages:production.map(x=>({route:x.route,violations:x.violations.length,
+          pageErrors:x.pageErrors,horizontalOverflow:x.outline.horizontalOverflow}))};
+      writeReport("production-deployment-summary.json",report);
+      assert.ok(production.every(x=>x.violations.length===0),
+        "Deployed pages have automated axe WCAG A/AA violations");
+      assert.ok(production.every(x=>!x.pageErrors.length&&x.outline.horizontalOverflow<=2),
+        "Deployed pages have JS errors or horizontal overflow");
+      console.log("PASS POST_DEPLOY: "+ASSETS.length+" exact public hashes, "
+        +ROUTES.length+" pages without automated WCAG violations or JS errors");
+      return;
+    }
     const preview=await audit(browser,LOCAL,"preview");
     const deltas=[];
     for(let i=0;i<ROUTES.length;i++){
