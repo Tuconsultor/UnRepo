@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-21T21:36:59+00:00",
+  "generated_at": "2026-11-22T00:10:48+00:00",
   "source": "https://raw.githubusercontent.com/alexgaoth/awesome-reverse-engineered/main/data/entries.json",
   "method": "curation_queue_not_auto_import",
   "scope_note": "External index has its own editorial exclusions; discoveries are not a comprehensive security inventory.",
@@ -124,19 +124,6 @@
       "status": "needs_review"
     },
     {
-      "repo": "koenkk/zigbee2mqtt",
-      "url": "https://github.com/koenkk/zigbee2mqtt",
-      "name": "Zigbee2MQTT",
-      "description": "Zigbee to MQTT bridge, removes the need for proprietary vendor hubs",
-      "category": "Devices, IoT & Hardware",
-      "topic": "IoT y hardware",
-      "stars_in_source": 15838,
-      "license_in_source": "GPL-3.0",
-      "last_push_in_source": "2026-11-19",
-      "archived_in_source": false,
-      "status": "needs_review"
-    },
-    {
       "repo": "hypfer/valetudo",
       "url": "https://github.com/hypfer/valetudo",
       "name": "Valetudo",
@@ -159,6 +146,19 @@
       "stars_in_source": 8119,
       "license_in_source": "MIT",
       "last_push_in_source": "2026-11-21",
+      "archived_in_source": false,
+      "status": "needs_review"
+    },
+    {
+      "repo": "yihong0618/xiaogpt",
+      "url": "https://github.com/yihong0618/xiaogpt",
+      "name": "xiaogpt",
+      "description": "Connects ChatGPT and other LLMs to Xiaomi XiaoAI speakers via the unofficial MiService API",
+      "category": "Devices, IoT & Hardware",
+      "topic": "IoT y hardware",
+      "stars_in_source": 7070,
+      "license_in_source": "MIT",
+      "last_push_in_source": "2026-11-20",
       "archived_in_source": false,
       "status": "needs_review"
     },
@@ -332,19 +332,6 @@
       "status": "needs_review"
     },
     {
-      "repo": "evcc-io/evcc",
-      "url": "https://github.com/evcc-io/evcc",
-      "name": "evcc",
-      "description": "EV charging controller integrating many wallboxes and car APIs",
-      "category": "Automotive",
-      "topic": "Automoción",
-      "stars_in_source": 7647,
-      "license_in_source": "MIT",
-      "last_push_in_source": "2026-11-21",
-      "archived_in_source": false,
-      "status": "needs_review"
-    },
-    {
       "repo": "vedderb/bldc",
       "url": "https://github.com/vedderb/bldc",
       "name": "VESC firmware",
@@ -384,15 +371,28 @@
       "status": "needs_review"
     },
     {
-      "repo": "cantools/cantools",
-      "url": "https://github.com/cantools/cantools",
-      "name": "cantools",
-      "description": "CAN bus tools: DBC/KCD parsing, decoding and monitoring",
+      "repo": "sunnypilot/sunnypilot",
+      "url": "https://github.com/sunnypilot/sunnypilot",
+      "name": "sunnypilot",
+      "description": "openpilot fork with extra car support and features",
       "category": "Automotive",
       "topic": "Automoción",
-      "stars_in_source": 2323,
+      "stars_in_source": 2180,
       "license_in_source": "MIT",
-      "last_push_in_source": "2026-11-20",
+      "last_push_in_source": "2026-11-21",
+      "archived_in_source": false,
+      "status": "needs_review"
+    },
+    {
+      "repo": "collin80/savvycan",
+      "url": "https://github.com/collin80/savvycan",
+      "name": "SavvyCAN",
+      "description": "Qt GUI for capturing and reverse-engineering CAN bus traffic",
+      "category": "Automotive",
+      "topic": "Automoción",
+      "stars_in_source": 1936,
+      "license_in_source": "MIT",
+      "last_push_in_source": "2026-11-17",
       "archived_in_source": false,
       "status": "needs_review"
     },
@@ -527,19 +527,6 @@
       "status": "needs_review"
     },
     {
-      "repo": "wader/fq",
-      "url": "https://github.com/wader/fq",
-      "name": "fq",
-      "description": "jq-like tool, language and decoders for inspecting binary formats",
-      "category": "File Formats",
-      "topic": "Formatos cerrados",
-      "stars_in_source": 10637,
-      "license_in_source": "NOASSERTION",
-      "last_push_in_source": "2026-11-21",
-      "archived_in_source": false,
-      "status": "needs_review"
-    },
-    {
       "repo": "osgeo/gdal",
       "url": "https://github.com/osgeo/gdal",
       "name": "GDAL",
@@ -549,6 +536,19 @@
       "stars_in_source": 6170,
       "license_in_source": "NOASSERTION",
       "last_push_in_source": "2026-11-20",
+      "archived_in_source": false,
+      "status": "needs_review"
+    },
+    {
+      "repo": "exiftool/exiftool",
+      "url": "https://github.com/exiftool/exiftool",
+      "name": "ExifTool",
+      "description": "Metadata reader/writer with extensive reverse-engineered camera maker notes",
+      "category": "File Formats",
+      "topic": "Formatos cerrados",
+      "stars_in_source": 5284,
+      "license_in_source": "GPL-3.0",
+      "last_push_in_source": "2026-11-16",
       "archived_in_source": false,
       "status": "needs_review"
     },
@@ -644,19 +644,6 @@
       "status": "needs_review"
     },
     {
-      "repo": "legacyupdate/legacyupdate",
-      "url": "https://github.com/legacyupdate/legacyupdate",
-      "name": "Legacy Update",
-      "description": "Restores Windows Update and activation for legacy Windows versions after shutdown",
-      "category": "Online Service Revivals",
-      "topic": "Servicios revividos",
-      "stars_in_source": 1403,
-      "license_in_source": "Apache-2.0",
-      "last_push_in_source": "2026-10-22",
-      "archived_in_source": false,
-      "status": "needs_review"
-    },
-    {
       "repo": "mierau/hotline",
       "url": "https://github.com/mierau/hotline",
       "name": "Hotline (mierau)",
@@ -705,6 +692,19 @@
       "stars_in_source": 1951,
       "license_in_source": null,
       "last_push_in_source": "2026-09-22",
+      "archived_in_source": false,
+      "status": "needs_review"
+    },
+    {
+      "repo": "usenocturne/nocturne",
+      "url": "https://github.com/usenocturne/nocturne",
+      "name": "nocturne",
+      "description": "Custom firmware for the discontinued Spotify Car Thing",
+      "category": "Online Service Revivals",
+      "topic": "Servicios revividos",
+      "stars_in_source": 418,
+      "license_in_source": null,
+      "last_push_in_source": "2026-11-20",
       "archived_in_source": false,
       "status": "needs_review"
     }
