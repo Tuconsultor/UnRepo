@@ -11295,13 +11295,14 @@
       "technical_level": null,
       "language": null,
       "access_model": null,
-      "license": "MIT (según API GitHub; texto no auditado)",
+      "license": "MIT (archivo LICENSE)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
       "evidence_urls": [
         "https://github.com/cantools/cantools",
-        "https://github.com/cantools/cantools/blob/master/README.rst"
+        "https://github.com/cantools/cantools/blob/master/README.rst",
+        "https://github.com/cantools/cantools/blob/master/LICENSE"
       ],
       "limitations": null,
       "usage_notice": null,
@@ -11335,13 +11336,14 @@
       "technical_level": null,
       "language": null,
       "access_model": null,
-      "license": "MIT (según API GitHub; texto no auditado)",
+      "license": "MIT (archivo LICENSE; componentes sujetos a condiciones propias)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
       "evidence_urls": [
         "https://github.com/evcc-io/evcc",
-        "https://github.com/evcc-io/evcc/blob/master/README.md"
+        "https://github.com/evcc-io/evcc/blob/master/README.md",
+        "https://github.com/evcc-io/evcc/blob/master/LICENSE"
       ],
       "limitations": null,
       "usage_notice": null,
@@ -11375,13 +11377,14 @@
       "technical_level": null,
       "language": null,
       "access_model": null,
-      "license": "GPL-3.0 (según API GitHub; texto no auditado)",
+      "license": "GPL-3.0 (archivo LICENSE)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
       "evidence_urls": [
         "https://github.com/Koenkk/zigbee2mqtt",
-        "https://github.com/Koenkk/zigbee2mqtt/blob/master/README.md"
+        "https://github.com/Koenkk/zigbee2mqtt/blob/master/README.md",
+        "https://github.com/Koenkk/zigbee2mqtt/blob/master/LICENSE"
       ],
       "limitations": null,
       "usage_notice": null,
@@ -11416,13 +11419,14 @@
       "technical_level": null,
       "language": null,
       "access_model": null,
-      "license": null,
+      "license": "MIT (archivo LICENSE; API GitHub: NOASSERTION)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
       "evidence_urls": [
         "https://github.com/wader/fq",
-        "https://github.com/wader/fq/blob/master/README.md"
+        "https://github.com/wader/fq/blob/master/README.md",
+        "https://github.com/wader/fq/blob/master/LICENSE"
       ],
       "limitations": null,
       "usage_notice": null,
@@ -11455,13 +11459,14 @@
       "technical_level": null,
       "language": null,
       "access_model": null,
-      "license": "Apache-2.0 (según API GitHub; texto no auditado)",
+      "license": "Apache-2.0 (archivo LICENSE.md)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
       "evidence_urls": [
         "https://github.com/LegacyUpdate/LegacyUpdate",
-        "https://github.com/LegacyUpdate/LegacyUpdate/blob/main/README.md"
+        "https://github.com/LegacyUpdate/LegacyUpdate/blob/main/README.md",
+        "https://github.com/LegacyUpdate/LegacyUpdate/blob/main/LICENSE.md"
       ],
       "limitations": null,
       "usage_notice": null,
