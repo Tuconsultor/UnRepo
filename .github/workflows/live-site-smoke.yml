@@ -156,3 +156,39 @@ jobs:
           path: artifacts/quality-stage4/
           retention-days: 30
           if-no-files-found: warn
+
+  production-quality:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout published source and history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated audit tooling
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts playwright@1.65.1 axe-core@4.14.1 lighthouse@13.6.0
+          npx playwright install --with-deps chromium
+      - name: Verify served public files, WCAG and JavaScript
+        env:
+          NEXUS_AUDIT_MODE: production
+          NEXUS_PUBLIC_URL: https://tuconsultor.github.io/UnRepo/
+        run: node scripts/audit_nexus_stage4.cjs
+      - name: Lighthouse deployed homepage mobile
+        run: |
+          mkdir -p artifacts/quality-stage4
+          export CHROME_PATH="$(node -p "require('playwright').chromium.executablePath()")"
+          npx --no-install lighthouse https://tuconsultor.github.io/UnRepo/ --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-production-home-mobile.json --only-categories=performance,accessibility,best-practices,seo --quiet
+      - name: Publish post-deploy verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-production-quality-stage4
+          path: artifacts/quality-stage4/
+          retention-days: 30
+          if-no-files-found: warn
