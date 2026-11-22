@@ -2,12 +2,12 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "feat/osint-lab-starter-20261121",
-    "commit": "0a806948025a56753beffb6cb575e066c221c4de",
+    "branch": "feat/open-silicon-lab-20261121",
+    "commit": "cb443fc3dfc3cb3a68f39bcf440489d8fe246601",
     "file": "index.html",
     "data_array": "resourcesData"
   },
-  "resource_count": 383,
+  "resource_count": 387,
   "field_policy": "Unverified or unavailable attributes are null; this export does not replace RESOURCE_METADATA or live GitHub metadata.",
   "resources": [
     {
@@ -11595,6 +11595,168 @@
       "verification_status": "pending_review",
       "legacy_ui": {
         "icon": "fa-camera"
+      }
+    },
+    {
+      "id": "https://github.com/YosysHQ/yosys",
+      "title": "Yosys — Síntesis digital RTL",
+      "canonical_url": "https://github.com/YosysHQ/yosys",
+      "source_url": "https://github.com/YosysHQ/yosys",
+      "source_type": "github_repository",
+      "category": "silicon",
+      "tags": [
+        "Silicio abierto / Síntesis"
+      ],
+      "description": "Suite de síntesis de hardware abierto para transformar diseños RTL de Verilog y subconjuntos de SystemVerilog en redes lógicas, según las tecnologías y bibliotecas disponibles.",
+      "capabilities": [
+        "Síntesis de descripciones RTL"
+      ],
+      "use_cases": [
+        "Explorar implementación de un contador digital de prueba"
+      ],
+      "prerequisites": [
+        "Fundamentos de lógica digital y Verilog; entorno EDA"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "ISC (archivo COPYING)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/YosysHQ/yosys",
+        "https://github.com/YosysHQ/yosys/blob/main/README.md",
+        "https://github.com/YosysHQ/yosys/blob/main/COPYING"
+      ],
+      "limitations": "Sintetizar no equivale a verificar comportamiento ni condiciones físicas; soporte de lenguajes y bibliotecas tiene límites.",
+      "usage_notice": "Información didáctica. Un archivo GDSII no sustituye simulación, comprobaciones físicas ni aceptación de la fábrica.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-microchip"
+      }
+    },
+    {
+      "id": "https://github.com/librelane/librelane",
+      "title": "LibreLane — Flujo de implementación ASIC",
+      "canonical_url": "https://github.com/librelane/librelane",
+      "source_url": "https://github.com/librelane/librelane",
+      "source_type": "github_repository",
+      "category": "silicon",
+      "tags": [
+        "Silicio abierto / Flujos ASIC"
+      ],
+      "description": "Infraestructura abierta y extensible para orquestar el flujo de diseño de circuitos integrados digitales desde RTL hacia archivos de layout mediante herramientas EDA y PDK compatibles.",
+      "capabilities": [
+        "Configuración y orquestación de flujos de implementación ASIC"
+      ],
+      "use_cases": [
+        "Preparar y revisar un flujo ASIC digital educativo"
+      ],
+      "prerequisites": [
+        "RTL digital, PDK compatible y entorno de diseño"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "Apache-2.0 (archivo License)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/librelane/librelane",
+        "https://github.com/librelane/librelane/blob/main/Readme.md",
+        "https://github.com/librelane/librelane/blob/main/License",
+        "https://librelane.readthedocs.io/en/stable/"
+      ],
+      "limitations": "Necesita PDK, restricciones y verificación; un archivo físico generado no demuestra por sí mismo que el chip sea fabricable ni funcional.",
+      "usage_notice": "Información didáctica. Un archivo GDSII no sustituye simulación, comprobaciones físicas ni aceptación de la fábrica.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-microchip"
+      }
+    },
+    {
+      "id": "https://github.com/The-OpenROAD-Project/OpenROAD",
+      "title": "OpenROAD — Diseño físico de microchips",
+      "canonical_url": "https://github.com/The-OpenROAD-Project/OpenROAD",
+      "source_url": "https://github.com/The-OpenROAD-Project/OpenROAD",
+      "source_type": "github_repository",
+      "category": "silicon",
+      "tags": [
+        "Silicio abierto / Diseño físico"
+      ],
+      "description": "Plataforma abierta para automatizar etapas de implementación física digital, desde planificación y colocación hasta enrutamiento, dentro de flujos RTL a GDSII.",
+      "capabilities": [
+        "Automatizar etapas de implementación física para ASIC digital"
+      ],
+      "use_cases": [
+        "Comparar opciones de diseño físico para un circuito pequeño"
+      ],
+      "prerequisites": [
+        "Netlist RTL sintetizable, restricciones y PDK"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "BSD-3-Clause (archivo LICENSE)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/The-OpenROAD-Project/OpenROAD",
+        "https://github.com/The-OpenROAD-Project/OpenROAD/blob/master/README.md",
+        "https://github.com/The-OpenROAD-Project/OpenROAD/blob/master/LICENSE",
+        "https://openroad.readthedocs.io/en/latest/"
+      ],
+      "limitations": "La calidad del resultado depende de bibliotecas, reglas, temporización y verificaciones independientes; no incluye fabricación de silicio.",
+      "usage_notice": "Información didáctica. Un archivo GDSII no sustituye simulación, comprobaciones físicas ni aceptación de la fábrica.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-microchip"
+      }
+    },
+    {
+      "id": "https://www.tinytapeout.com/",
+      "title": "Tiny Tapeout — Fabricación compartida de chips",
+      "canonical_url": "https://www.tinytapeout.com/",
+      "source_url": "https://www.tinytapeout.com/",
+      "source_type": "website",
+      "category": "silicon",
+      "tags": [
+        "Silicio abierto / Fabricación"
+      ],
+      "description": "Programa de shuttles de fabricación compartida para pequeños diseños digitales: reúne proyectos en una corrida y permite solicitar hardware real bajo reglas, costos y calendario publicados.",
+      "capabilities": [
+        "Recepción de diseños pequeños para programas de fabricación compartida"
+      ],
+      "use_cases": [
+        "Evaluar requisitos de una convocatoria para fabricar un circuito digital educativo"
+      ],
+      "prerequisites": [
+        "Diseño verificable que cumpla las reglas del shuttle; presupuesto y calendario"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "programa de fabricación compartida",
+      "license": "Servicio de fabricación; condiciones variables",
+      "repository_status": null,
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://www.tinytapeout.com/",
+        "https://www.tinytapeout.com/chips/",
+        "https://www.tinytapeout.com/guides/advanced-workshop/submit-your-design/"
+      ],
+      "limitations": "No ofrece fabricación gratuita garantizada: plazas, restricciones del proceso, costos, plazos, entrega y aceptación dependen de cada convocatoria.",
+      "usage_notice": "Información didáctica. Un archivo GDSII no sustituye simulación, comprobaciones físicas ni aceptación de la fábrica.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-microchip"
       }
     }
   ]
