@@ -173,6 +173,61 @@ h2{font-size:23px;letter-spacing:-.6px;margin:0}
  .knowledge-hub .resilience-banner{flex:0 0 min(83vw,326px);min-height:180px;scroll-snap-align:start}
  .sort-row{margin-top:22px}
 }
+
+/* STAGE 2 — NIGHT OPS / KNOWLEDGE ATLAS: shared home design tokens and resource cards. */
+:root{
+  --ux-bg:#0a0e17;--ux-surface:#121a28;--ux-raised:#192538;--ux-border:#2b3d53;
+  --ux-text:#f2f6ff;--ux-muted:#afc1d9;--ux-accent:#58e5e0;--ux-accent-soft:#58e5e014;
+  --ux-warning:#f6d58a;--ux-radius:16px;--ux-space-xs:8px;--ux-space-sm:12px;
+  --ux-space-md:16px;--ux-space-lg:24px;--ux-focus:3px solid var(--ux-accent);
+}
+body{background:radial-gradient(ellipse at 85% 0%,#153047 0,transparent 37%),var(--ux-bg);color:var(--ux-text)}
+.sidebar{background:#0d1725;border-color:var(--ux-border)}
+.sidebar-foot{border-color:var(--ux-border);color:var(--ux-muted)}
+.nav-btn:hover,.nav-btn[aria-pressed=true]{border-color:#326373;background:#162c3c;color:var(--ux-text)}
+.nav-btn[aria-pressed=true]{box-shadow:inset 3px 0 var(--ux-accent)}
+.btn,.metric,.search-panel,.chip{border-color:var(--ux-border)}
+.search-panel{background:linear-gradient(135deg,#142338,#111b2a)}
+.search-wrap:focus-within{border-color:var(--ux-accent)}
+.knowledge-hub .resilience-banner{border-color:var(--ux-border)}
+.catalog{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px;align-items:stretch}
+.card{position:relative;min-width:0;min-height:310px;overflow:hidden;background:var(--ux-surface);border:1px solid var(--ux-border);border-radius:var(--ux-radius);padding:18px;box-shadow:0 6px 24px #01071326;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ux-accent),#58e5e000 68%);opacity:.5}
+.card:hover{border-color:#4b8c9c;box-shadow:0 15px 36px #01071355;transform:translateY(-2px)}
+.card:focus-within{border-color:#4b8c9c}
+.card-top{align-items:center;gap:10px}
+.card-symbol{flex:0 0 42px;width:42px;height:42px;border:1px solid #376575;background:#133243;color:var(--ux-accent);font-size:16px}
+.card-type{flex:1;min-width:0;overflow-wrap:anywhere;font:600 10px/1.5 "JetBrains Mono",monospace;letter-spacing:.03em;color:var(--ux-muted)}
+.favorite{flex:0 0 44px;width:44px;min-height:44px;border-color:#425771;background:#1b2b3e}
+.favorite:hover{border-color:var(--ux-accent);background:#223b49}
+.favorite[aria-pressed=true]{background:#3e321d;border-color:#b88b3c;color:#ffdb8a}
+.card h3{margin:15px 0 9px;color:var(--ux-text);font-size:clamp(17px,1.65vw,20px);line-height:1.32;letter-spacing:-.025em}
+.card .resource-desc{margin:0 0 16px;color:var(--ux-muted);font-size:13.75px;line-height:1.6;flex:none;overflow-wrap:anywhere}
+.card .resource-facts{display:grid;gap:8px;margin:0}
+.card .resource-facts-primary{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:14px}
+.card .resource-facts .fact{background:#172436;border:1px solid var(--ux-border);border-radius:9px;padding:9px 10px}
+.card .resource-facts dt{color:var(--ux-muted);font:500 10px/1.3 "JetBrains Mono",monospace}
+.card .resource-facts dd{color:var(--ux-text);margin:4px 0 0;font-size:12px;font-weight:600;line-height:1.45;overflow-wrap:anywhere}
+.card-details{min-width:0;margin:0 0 14px;background:#0e1825;border:1px solid var(--ux-border);border-radius:11px}
+.card-details-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:11px 12px;color:#b9e9eb;font:600 12px/1.4 "Space Grotesk",system-ui,sans-serif;cursor:pointer}
+.card-details-toggle::-webkit-details-marker{display:none}
+.card-details-toggle::after{content:"+";font:500 19px/1 "JetBrains Mono",monospace;color:var(--ux-accent)}
+.card-details[open]>.card-details-toggle::after{content:"−"}
+.card-details-toggle:hover{background:var(--ux-accent-soft);color:#edffff}
+.card-details-toggle:focus-visible{outline:var(--ux-focus);outline-offset:3px;border-radius:9px}
+.card-details-content{padding:12px;border-top:1px solid var(--ux-border)}
+.card .resource-facts-extra{grid-template-columns:repeat(2,minmax(0,1fr));margin:0 0 12px}
+.card .resource-facts-extra:empty{display:none}
+.card .github-info{display:flex;flex-wrap:wrap;gap:7px 12px;color:var(--ux-muted);font-size:11px;line-height:1.5;margin:0 0 10px}
+.card .archive-status{padding:2px 6px;border-radius:5px}
+.card .resource-caution{margin:0;color:#f6dea6;background:#30281d80;padding:11px 12px;border-left:2px solid var(--ux-warning);border-radius:0 8px 8px 0;font-size:12px;line-height:1.6;flex:none}
+.card-foot{margin-top:auto;gap:12px;padding-top:13px;border-top:1px solid var(--ux-border);align-items:center}
+.card .tag{max-width:none;flex:1;min-width:0;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;color:var(--ux-muted);font:500 10px/1.45 "JetBrains Mono",monospace}
+.card .external{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;min-width:84px;padding:8px 12px;border:1px solid #387e8b;border-radius:9px;background:#153540;color:#9bf1ec;text-decoration:none;font-size:12px;transition:background .16s ease,border-color .16s ease}
+.card .external:hover,.card .external:focus-visible{background:#1e4852;border-color:var(--ux-accent);color:#edffff}
+@media(max-width:550px){.catalog{gap:13px}.card{padding:16px;min-height:0}.card h3{font-size:19px}.card .resource-desc{font-size:14px}}
+@media(max-width:360px){.card .resource-facts-primary,.card .resource-facts-extra{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.card,.card .external{transition:none!important}.card:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -923,14 +978,14 @@ function options(select,items){select.replaceChildren();for(const [value,label] 
 function buildNav(){const nav=$("navigation");nav.replaceChildren();for(const [value,label,num] of [["all","Todo el directorio",resources.length],...categories.map(c=>[c,CATEGORY_NAMES[c]||c,countByCategory[c]])]){const btn=make("button","nav-btn");btn.type="button";btn.dataset.category=value;btn.setAttribute("aria-pressed",String(state.category===value));const left=make("span","nav-label",label);const right=make("b","",num);btn.append(left,right);btn.addEventListener("click",()=>{state.category=value;state.tag="all";state.limit=24;sync();closeMenu(mobileMenuQuery.matches);$("resultsTitle").scrollIntoView({block:"start",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});nav.append(btn)}}
 function updateTags(){const relevant=resources.filter(x=>state.category==="all"||x.category===state.category);const tags=[...new Set(relevant.map(x=>x.tag).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));if(state.tag!=="all"&&!tags.includes(state.tag))state.tag="all";options($("tag"),[["all","Todas las especialidades"],...tags.map(t=>[t,t])]);$("tag").value=state.tag}
 function results(){const q=normalized(state.search.trim());const words=q.split(/\s+/).filter(Boolean);const arr=resources.filter(x=>(state.category==="all"||x.category===state.category)&&(state.tag==="all"||x.tag===state.tag)&&(state.level==="all"||metadataFor(x).level===state.level)&&(state.license==="all"||metadataFor(x).license===state.license)&&(!state.favoritesOnly||favorites.has(x._id))&&words.every(w=>normalized([x.title,x.desc,x.category,x.tag,metadataFor(x).level,metadataFor(x).license,metadataFor(x).securityProfile,metadataFor(x).maturity,metadataFor(x).impact,metadataFor(x).sourceType].join(" ")).includes(w)));if(state.sort==="name")arr.sort((a,b)=>a.title.localeCompare(b.title,"es"));if(state.sort==="name-desc")arr.sort((a,b)=>b.title.localeCompare(a.title,"es"));if(state.sort==="category")arr.sort((a,b)=>a.category.localeCompare(b.category,"es")||a.title.localeCompare(b.title,"es"));return arr}
-function card(item){const article=make("article","card");const top=make("div","card-top");const symbol=make("span","card-symbol",ICONS[item.category]||"↗");symbol.setAttribute("aria-hidden","true");const fav=make("button","favorite",favorites.has(item._id)?"★":"☆");fav.type="button";fav.setAttribute("aria-pressed",String(favorites.has(item._id)));fav.setAttribute("aria-label",(favorites.has(item._id)?"Quitar de favoritos: ":"Guardar en favoritos: ")+item.title);fav.addEventListener("click",()=>{favorites.has(item._id)?favorites.delete(item._id):favorites.add(item._id);saveFavorites();sync()});top.append(symbol,fav);const h=make("h3","",item.title);const desc=make("p","",item.desc||"Recurso disponible en su sitio original.");const meta=metadataFor(item);const facts=make("dl","resource-facts");for(const [label,value] of [["Nivel",meta.level+(meta.estimated?" (estimado)":"")],["Licencia",meta.license],...(meta.securityProfile?[["Perfil",meta.securityProfile]]:[]),...(meta.maturity?[["Madurez",meta.maturity]]:[]),...(meta.impact?[["Salto práctico",meta.impact]]:[]),...(meta.sourceType?[["Tipo",meta.sourceType]]:[])]){const group=make("div","fact");group.append(make("dt","",label),make("dd","",value));facts.append(group)}
+function card(item){const article=make("article","card");const top=make("div","card-top");const symbol=make("span","card-symbol",ICONS[item.category]||"↗");symbol.setAttribute("aria-hidden","true");const fav=make("button","favorite",favorites.has(item._id)?"★":"☆");fav.type="button";fav.setAttribute("aria-pressed",String(favorites.has(item._id)));fav.setAttribute("aria-label",(favorites.has(item._id)?"Quitar de favoritos: ":"Guardar en favoritos: ")+item.title);fav.addEventListener("click",()=>{favorites.has(item._id)?favorites.delete(item._id):favorites.add(item._id);saveFavorites();sync()});const type=make("span","card-type",CATEGORY_NAMES[item.category]||item.category);top.append(symbol,type,fav);const h=make("h3","",item.title);const desc=make("p","resource-desc",item.desc||"Recurso disponible en su sitio original.");const meta=metadataFor(item);const facts=make("dl","resource-facts resource-facts-primary");const extraFacts=make("dl","resource-facts resource-facts-extra");let factIndex=0;for(const [label,value] of [["Nivel",meta.level+(meta.estimated?" (estimado)":"")],["Licencia",meta.license],...(meta.securityProfile?[["Perfil",meta.securityProfile]]:[]),...(meta.maturity?[["Madurez",meta.maturity]]:[]),...(meta.impact?[["Salto práctico",meta.impact]]:[]),...(meta.sourceType?[["Tipo",meta.sourceType]]:[])]){const group=make("div","fact");group.append(make("dt","",label),make("dd","",value));(factIndex++<2?facts:extraFacts).append(group)}
 const gh=meta.remote;const githubInfo=make("div","github-info");if(gh){if(Number.isInteger(gh.stars))githubInfo.append(make("span","","★ "+gh.stars.toLocaleString("es-MX")+" estrellas"));if(gh.updated_at&&!Number.isNaN(Date.parse(gh.updated_at)))githubInfo.append(make("span","","Actualizado: "+new Date(gh.updated_at).toLocaleDateString("es-MX",{year:"numeric",month:"short",day:"numeric"})));if(gh.status==="not_verified")githubInfo.append(make("strong","archive-status","Sin verificar (dato anterior)"));
 else if(gh.archived===true||gh.status==="archived")githubInfo.append(make("strong","archive-status","Archivado"));
 else if(gh.disabled===true||gh.status==="disabled")githubInfo.append(make("strong","archive-status","Deshabilitado"));
 else if(gh.status==="available"||gh.archived===false){const updated=gh.updated_at?Date.parse(gh.updated_at):NaN;const days=Number.isFinite(updated)?Math.floor((Date.now()-updated)/86400000):null;githubInfo.append(make("span","",days===null?"Disponible · actividad desconocida":days>365?"Disponible · sin cambios publicados en +1 año":days>90?"Disponible · sin cambios publicados en 90 días":"Disponible · actividad reciente"));}
 if(gh.checked_at&&!Number.isNaN(Date.parse(gh.checked_at)))githubInfo.append(make("span","","Verificado: "+new Date(gh.checked_at).toLocaleDateString("es-MX",{day:"numeric",month:"short",year:"numeric"})));}
 const caution=make("p","resource-caution","Precaución: "+meta.caution);
-const foot=make("div","card-foot");const tag=make("span","tag",item.tag||CATEGORY_NAMES[item.category]||item.category);tag.title=item.tag||"";const link=make("a","external","Visitar ↗");link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label","Visitar "+item.title+" (abre en nueva pestaña)");foot.append(tag,link);article.append(top,h,desc,facts,githubInfo,caution,foot);return article}
+const details=make("details","card-details");const disclosure=make("summary","card-details-toggle","Detalles, actividad y precauciones");const detailContent=make("div","card-details-content");detailContent.append(extraFacts,githubInfo,caution);details.append(disclosure,detailContent);const foot=make("div","card-foot");const tag=make("span","tag",item.tag||CATEGORY_NAMES[item.category]||item.category);tag.title=item.tag||"";const link=make("a","external","Visitar ↗");link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label","Visitar "+item.title+" (abre en nueva pestaña)");foot.append(tag,link);article.append(top,h,desc,facts,details,foot);return article}
 function filterChip(label,action){const span=make("span","chip",label+" ");const btn=make("button","","×");btn.type="button";btn.setAttribute("aria-label","Quitar filtro "+label);btn.addEventListener("click",action);span.append(btn);return span}
 function renderChips(){const chips=$("activeFilters");chips.replaceChildren();if(state.category!=="all")chips.append(filterChip(CATEGORY_NAMES[state.category]||state.category,()=>{state.category="all";state.tag="all";sync()}));if(state.tag!=="all")chips.append(filterChip(state.tag,()=>{state.tag="all";sync()}));if(state.level!=="all")chips.append(filterChip("Nivel: "+state.level,()=>{state.level="all";sync()}));if(state.license!=="all")chips.append(filterChip("Licencia: "+state.license,()=>{state.license="all";sync()}));if(state.search.trim())chips.append(filterChip("Búsqueda: "+state.search,()=>{state.search="";$("search").value="";sync()}));if(state.favoritesOnly)chips.append(filterChip("Solo favoritos",()=>{state.favoritesOnly=false;sync()}))}
 function render(){const found=results();const target=$("catalog");target.replaceChildren();const page=found.slice(0,state.limit);for(const resource of page)target.append(card(resource));if(!found.length){const empty=make("div","empty");const title=make("strong","","Sin coincidencias");const message=make("p","","Prueba otra palabra, selecciona otra categoría o limpia los filtros para explorar todo el catálogo.");const clear=make("button","btn btn-primary","Limpiar filtros");clear.type="button";clear.addEventListener("click",clearAll);empty.append(title,message,clear);target.append(empty)}$("resultsInfo").textContent=found.length+" resultado"+(found.length===1?"":"s")+" · mostrando "+page.length;const more=$("loadMore");more.hidden=found.length<=state.limit;more.textContent="Mostrar más recursos ("+(found.length-state.limit)+" restantes) ↓";$("savedStat").textContent=favorites.size;const favToggle=$("favToggle");favToggle.setAttribute("aria-pressed",String(state.favoritesOnly));favToggle.innerHTML=state.favoritesOnly?"★ <span class='btn-text'>Favoritos</span>":"☆ <span class='btn-text'>Favoritos</span>";renderChips()}
