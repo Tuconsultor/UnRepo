@@ -114,12 +114,18 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
           documentWidth:document.documentElement.scrollWidth,
           viewportWidth:window.innerWidth,
           cardWidth:document.querySelector("#catalog .card").getBoundingClientRect().width,
-          cardScrollWidth:document.querySelector("#catalog .card").scrollWidth
+          cardScrollWidth:document.querySelector("#catalog .card").scrollWidth,
+          intelligencePosition:getComputedStyle(document.querySelector(".intelligence-cta")).position,
+          intelligenceRight:document.querySelector(".intelligence-cta").getBoundingClientRect().right
         }));
         assert.ok(geometry.documentWidth <= geometry.viewportWidth + 2,
           "Stage 2 horizontal overflow at " + width + "px: " + JSON.stringify(geometry));
         assert.ok(geometry.cardScrollWidth <= geometry.cardWidth + 2,
           "Stage 2 card content overflow at " + width + "px: " + JSON.stringify(geometry));
+        assert.notEqual(geometry.intelligencePosition, "fixed",
+          "Intelligence Lab still obstructs cards at " + width + "px");
+        assert.ok(geometry.intelligenceRight <= geometry.viewportWidth + 2,
+          "Intelligence Lab link falls outside viewport at " + width + "px");
         await page.locator("#catalog .card").first().screenshot({path: REPORT + "/stage2-card-" + width + ".png"});
       }
       await page.setViewportSize({width:1280, height:800});
