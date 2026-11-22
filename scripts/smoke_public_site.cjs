@@ -64,6 +64,26 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
       }
       await page.locator("#clearFilters").click();
       console.log("PASS proposed cohort: five independently reviewed cards are searchable and link to sources");
+      // OSINT Lab must be functional in PR preview, not merely present in HTML.
+      assert.equal(await page.locator('#category option[value="osint"]').count(), 1);
+      assert.equal(await page.locator("#osintLabOpen").count(), 1);
+      await page.locator("#osintLabOpen").click();
+      assert.equal(await page.locator("#category").inputValue(), "osint", "OSINT Lab entrypoint did not select the category");
+      const osintUrls = await page.locator("#catalog .card a.external").evaluateAll(
+        anchors => anchors.map(a => a.href)
+      );
+      const expectedOsint = [
+        "https://github.com/tyrasd/overpass-turbo",
+        "https://github.com/smicallef/spiderfoot",
+        "https://github.com/exiftool/exiftool"
+      ];
+      assert.deepEqual(osintUrls.slice().sort(), expectedOsint.slice().sort(), "OSINT category cards or canonical destinations differ");
+      await page.locator("#search").fill("ExifTool");
+      assert.equal(await page.locator("#catalog .card").count(), 1, "OSINT search did not narrow the results");
+      assert.ok((await page.locator("#catalog").textContent()).includes("ExifTool"));
+      await page.locator("#clearFilters").click();
+      console.log("PASS OSINT Lab: visible entrypoint, 3 cards, canonical links and working search/filter");
+
     }
 
     await retry(async () => {

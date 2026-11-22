@@ -2,12 +2,12 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "audit/nexus-p0-continuity-20261121",
-    "commit": "b4e12897a05d32ce2a97699f9e454d7006feae68",
+    "branch": "feat/osint-lab-starter-20261121",
+    "commit": "0a806948025a56753beffb6cb575e066c221c4de",
     "file": "index.html",
     "data_array": "resourcesData"
   },
-  "resource_count": 380,
+  "resource_count": 383,
   "field_policy": "Unverified or unavailable attributes are null; this export does not replace RESOURCE_METADATA or live GitHub metadata.",
   "resources": [
     {
@@ -11474,6 +11474,127 @@
       "verification_status": "pending_review",
       "legacy_ui": {
         "icon": "fa-computer"
+      }
+    },
+    {
+      "id": "https://github.com/tyrasd/overpass-turbo",
+      "title": "Overpass Turbo — Exploración geoespacial abierta",
+      "canonical_url": "https://github.com/tyrasd/overpass-turbo",
+      "source_url": "https://github.com/tyrasd/overpass-turbo",
+      "source_type": "github_repository",
+      "category": "osint",
+      "tags": [
+        "OSINT / Geolocalización"
+      ],
+      "description": "Consulta y visualiza datos colaborativos de OpenStreetMap mediante Overpass API; sirve para contrastar pistas geográficas en investigaciones con fuentes públicas.",
+      "capabilities": [
+        "Consultas Overpass y visualización de objetos OpenStreetMap"
+      ],
+      "use_cases": [
+        "Contraste de pistas geográficas de imágenes públicas"
+      ],
+      "prerequisites": [
+        "Acceso web; nociones básicas de mapas y Overpass QL"
+      ],
+      "technical_level": "Intermedio",
+      "language": "inglés (documentación principal)",
+      "access_model": "código abierto",
+      "license": "MIT (LICENSE; dependencias con licencias propias)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/tyrasd/overpass-turbo",
+        "https://github.com/tyrasd/overpass-turbo/blob/master/README.md",
+        "https://github.com/tyrasd/overpass-turbo/blob/master/LICENSE"
+      ],
+      "limitations": "OpenStreetMap puede estar incompleto o desactualizado; una coincidencia cartográfica no prueba la ubicación de una imagen.",
+      "usage_notice": "Verificar requisitos y condiciones de cada fuente; no confundir herramientas de análisis con conclusiones probatorias.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-map-location-dot"
+      }
+    },
+    {
+      "id": "https://github.com/smicallef/spiderfoot",
+      "title": "SpiderFoot — Inteligencia digital automatizada",
+      "canonical_url": "https://github.com/smicallef/spiderfoot",
+      "source_url": "https://github.com/smicallef/spiderfoot",
+      "source_type": "github_repository",
+      "category": "osint",
+      "tags": [
+        "OSINT / Reconocimiento digital"
+      ],
+      "description": "Integra fuentes de información abiertas para analizar dominios, subdominios y otros indicadores digitales desde interfaz web o línea de comandos.",
+      "capabilities": [
+        "Recolección y correlación de indicadores de fuentes OSINT"
+      ],
+      "use_cases": [
+        "Inventario de exposición de un dominio propio"
+      ],
+      "prerequisites": [
+        "Python y conocimientos de redes; autorización para objetivos activos"
+      ],
+      "technical_level": "Avanzado",
+      "language": "inglés (documentación principal)",
+      "access_model": "código abierto",
+      "license": "MIT (LICENSE)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/smicallef/spiderfoot",
+        "https://github.com/smicallef/spiderfoot/blob/master/README.md",
+        "https://github.com/smicallef/spiderfoot/blob/master/LICENSE"
+      ],
+      "limitations": "Algunos módulos realizan consultas activas o requieren API; comprobar falsos positivos y limitar exploración activa a sistemas propios o autorizados.",
+      "usage_notice": "Verificar requisitos y condiciones de cada fuente; no confundir herramientas de análisis con conclusiones probatorias.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-network-wired"
+      }
+    },
+    {
+      "id": "https://github.com/exiftool/exiftool",
+      "title": "ExifTool — Inspección de metadatos digitales",
+      "canonical_url": "https://github.com/exiftool/exiftool",
+      "source_url": "https://github.com/exiftool/exiftool",
+      "source_type": "github_repository",
+      "category": "osint",
+      "tags": [
+        "OSINT / Metadatos y evidencia"
+      ],
+      "description": "Herramienta de Phil Harvey para leer y analizar metadatos EXIF, XMP y otros formatos en fotografías, videos y documentos compatibles.",
+      "capabilities": [
+        "Lectura y extracción de metadatos de múltiples formatos"
+      ],
+      "use_cases": [
+        "Inspección de metadatos de imágenes propias o públicas"
+      ],
+      "prerequisites": [
+        "Archivo de prueba autorizado; terminal básica"
+      ],
+      "technical_level": "Intermedio",
+      "language": "inglés (documentación principal)",
+      "access_model": "código abierto",
+      "license": "Perl Artistic o GPL (README y LICENSE)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://exiftool.org/",
+        "https://github.com/exiftool/exiftool",
+        "https://github.com/exiftool/exiftool/blob/master/README",
+        "https://github.com/exiftool/exiftool/blob/master/LICENSE"
+      ],
+      "limitations": "Los metadatos pueden faltar, estar alterados o perderse al subir imágenes; ni GPS ni fecha por sí solos autentican un archivo.",
+      "usage_notice": "Verificar requisitos y condiciones de cada fuente; no confundir herramientas de análisis con conclusiones probatorias.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-camera"
       }
     }
   ]
