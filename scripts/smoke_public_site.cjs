@@ -5,8 +5,16 @@ const fs = require("node:fs");
 const assert = require("node:assert/strict");
 const BASE = (process.env.NEXUS_BASE_URL || "https://tuconsultor.github.io/UnRepo/").replace(/\/?$/, "/");
 const REPORT = "artifacts/browser-smoke";
-const MIN_RESOURCES = 375;
-const MIN_REPOS = 267;
+const MIN_RESOURCES = Number(process.env.NEXUS_MIN_RESOURCES || 375);
+const MIN_REPOS = Number(process.env.NEXUS_MIN_REPOS || 267);
+const PREVIEW_MODE = process.env.NEXUS_PREVIEW === "1";
+const PREVIEW_COHORT = [
+  ["cantools", "https://github.com/cantools/cantools"],
+  ["evcc", "https://github.com/evcc-io/evcc"],
+  ["Zigbee2MQTT", "https://github.com/Koenkk/zigbee2mqtt"],
+  ["fq", "https://github.com/wader/fq"],
+  ["Legacy Update", "https://github.com/LegacyUpdate/LegacyUpdate"]
+];
 const NEW_REPOS = [
   "diggerhq/opencomputer", "ysunyang4/nexus", "facebookresearch/demucs",
   "facebookresearch/audiocraft", "swivid/f5-tts", "audacity/audacity",
@@ -42,7 +50,21 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
         assert.equal(await page.locator('#category option[value="' + category + '"]').count(), 1);
       }
     }, "Live homepage");
-    console.log("PASS homepage: 375+ resources, filter controls and rendered cards");
+    console.log("PASS homepage: " + MIN_RESOURCES + "+ resources, filter controls and rendered cards");
+
+    // A pull request must prove its proposed changes work in a real browser,
+    // not just prove that the already deployed public site still works.
+    if (PREVIEW_MODE) {
+      for (const [query, canonicalUrl] of PREVIEW_COHORT) {
+        await page.locator("#search").fill(query);
+        const links = await page.locator("#catalog .card a.external").evaluateAll(
+          anchors => anchors.map(anchor => anchor.href)
+        );
+        assert.ok(links.includes(canonicalUrl), "Preview search omitted " + canonicalUrl);
+      }
+      await page.locator("#clearFilters").click();
+      console.log("PASS proposed cohort: five independently reviewed cards are searchable and link to sources");
+    }
 
     await retry(async () => {
       const response = await page.request.get(BASE + "data/github-metadata.json?audit=" + Date.now());
