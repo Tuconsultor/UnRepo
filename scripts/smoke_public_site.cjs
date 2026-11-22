@@ -55,6 +55,27 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     // A pull request must prove its proposed changes work in a real browser,
     // not just prove that the already deployed public site still works.
     if (PREVIEW_MODE) {
+      // Stage 1 UX invariants: the search must precede all five unchanged guide/lab blocks.
+      const discovery = await page.evaluate(() => {
+        const pos = selector => {
+          const node = document.querySelector(selector);
+          return node ? node.getBoundingClientRect().top + window.scrollY : NaN;
+        };
+        return {
+          resources: Number(document.querySelector("#totalStat").textContent),
+          searchTop: pos(".search-panel"),
+          guideTop: pos(".knowledge-hub"),
+          resultsTop: pos('#resultsTitle'),
+          guideCount: document.querySelectorAll(".knowledge-hub > .resilience-banner").length,
+          filterOpen: document.querySelector("#advancedFilters").open,
+        };
+      });
+      assert.equal(discovery.resources, 391, "Stage 1 modified the complete catalog");
+      assert.equal(discovery.guideCount, 5, "Guide and laboratory links were lost");
+      assert.ok(discovery.searchTop < discovery.guideTop && discovery.guideTop < discovery.resultsTop,
+        "Discovery-first visual ordering failed");
+      assert.equal(discovery.filterOpen, true, "Desktop advanced filters must remain visible");
+      console.log("PASS Stage 1 desktop hierarchy, catalog preservation and five guide blocks");
       for (const [query, canonicalUrl] of PREVIEW_COHORT) {
         await page.locator("#search").fill(query);
         const links = await page.locator("#catalog .card a.external").evaluateAll(
@@ -217,6 +238,27 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     const mobile = await browser.newPage({viewport: {width: 390, height: 844}, isMobile: true});
     await mobile.goto(BASE, {waitUntil: "domcontentloaded", timeout: 30000});
     await mobile.waitForFunction(min => Number(document.querySelector("#totalStat")?.textContent) >= min, MIN_RESOURCES);
+    if (PREVIEW_MODE) {
+      assert.equal(await mobile.locator("#advancedFilters").evaluate(el => el.open), false,
+        "Mobile advanced filters should start collapsed");
+      await mobile.locator("#advancedFilters summary").click();
+      assert.equal(await mobile.locator("#advancedFilters").evaluate(el => el.open), true,
+        "Mobile advanced filters did not expand");
+      await mobile.locator("#advancedFilters summary").click();
+      assert.equal(await mobile.locator("#sidebar").getAttribute("aria-hidden"), "true",
+        "Closed mobile navigation must be hidden to assistive technology");
+      assert.equal(await mobile.locator("#sidebar").evaluate(el => el.inert), true,
+        "Closed mobile navigation must be inert");
+      await mobile.locator("#menuBtn").click();
+      assert.equal(await mobile.locator("#sidebar").getAttribute("aria-hidden"), "false");
+      await mobile.keyboard.press("Escape");
+      assert.equal(await mobile.locator("#menuBtn").getAttribute("aria-expanded"), "false",
+        "Escape did not close the mobile drawer");
+      assert.equal(await mobile.locator("#sidebar").evaluate(el => el.inert), true);
+      assert.ok(await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 2),
+        "Stage 1 caused mobile horizontal page overflow");
+      console.log("PASS Stage 1 mobile disclosure, accessible drawer and no page overflow");
+    }
     await mobile.locator("#menuBtn").click();
     // Visibility is not enough: the responsive sidebar animates in from offscreen.
     // Wait for the logo's bounding box to enter the viewport before real pointer clicks.
