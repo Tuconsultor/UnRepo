@@ -2,12 +2,12 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "feat/open-silicon-lab-20261121",
-    "commit": "cb443fc3dfc3cb3a68f39bcf440489d8fe246601",
+    "branch": "feat/open-space-lab-20261122",
+    "commit": "af61d1aab0d8a58be8358dfbb798b140bfedd5da",
     "file": "index.html",
     "data_array": "resourcesData"
   },
-  "resource_count": 387,
+  "resource_count": 391,
   "field_policy": "Unverified or unavailable attributes are null; this export does not replace RESOURCE_METADATA or live GitHub metadata.",
   "resources": [
     {
@@ -11757,6 +11757,169 @@
       "verification_status": "pending_review",
       "legacy_ui": {
         "icon": "fa-microchip"
+      }
+    },
+    {
+      "id": "https://network.satnogs.org/",
+      "title": "SatNOGS Network — Observaciones satelitales públicas",
+      "canonical_url": "https://network.satnogs.org/",
+      "source_url": "https://network.satnogs.org/",
+      "source_type": "website",
+      "category": "space",
+      "tags": [
+        "Espacio abierto / Observaciones"
+      ],
+      "description": "Red comunitaria de estaciones terrestres con observaciones abiertas de satélites; permite consultar registros e inspeccionar resultados sin operar un transmisor propio.",
+      "capabilities": [
+        "Acceso a observaciones y registros de estaciones terrestres"
+      ],
+      "use_cases": [
+        "Documentar la evidencia de una observación satelital publicada"
+      ],
+      "prerequisites": [
+        "Navegador; conceptos básicos de radio y órbitas"
+      ],
+      "technical_level": "Intermedio",
+      "language": "documentación principal en inglés",
+      "access_model": "servicio y datos públicos",
+      "license": "Datos CC BY-SA; verificar versión y atribución",
+      "repository_status": null,
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://network.satnogs.org/",
+        "https://network.satnogs.org/observations/",
+        "https://docs.satnogs.org/projects/satnogs-network/en/latest/api.html"
+      ],
+      "limitations": "Una observación puede no incluir decodificación útil ni validar una señal; verificar fecha, estación, objeto y calidad. No implica permiso para transmitir.",
+      "usage_notice": "Distinguir datos observados, cálculos orbitales y visualizaciones educativas; no utilizar este material como sistema de vuelo o radio aprobado.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-satellite-dish"
+      }
+    },
+    {
+      "id": "https://github.com/CS-SI/Orekit",
+      "title": "Orekit — Dinámica orbital y propagación",
+      "canonical_url": "https://github.com/CS-SI/Orekit",
+      "source_url": "https://github.com/CS-SI/Orekit",
+      "source_type": "github_repository",
+      "category": "space",
+      "tags": [
+        "Espacio abierto / Dinámica orbital"
+      ],
+      "description": "Biblioteca abierta de Java para dinámica espacial, propagación de órbitas, eventos, geometría y determinación orbital. El repositorio en GitHub es espejo del proyecto oficial.",
+      "capabilities": [
+        "Propagación orbital, transformaciones de referencia y detección de eventos"
+      ],
+      "use_cases": [
+        "Simulación de ventanas de visibilidad de una estación terrestre"
+      ],
+      "prerequisites": [
+        "Java, matemáticas orbitales y datos de entrada apropiados"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "Apache-2.0 (LICENSE.txt)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/CS-SI/Orekit",
+        "https://github.com/CS-SI/Orekit/blob/develop/README.md",
+        "https://github.com/CS-SI/Orekit/blob/develop/LICENSE.txt",
+        "https://www.orekit.org/"
+      ],
+      "limitations": "Un modelo sin elementos orbitales vigentes, fecha, sistemas de referencia y verificación no determina una posición real. Repositorio GitHub espejo del proyecto en GitLab.",
+      "usage_notice": "Distinguir datos observados, cálculos orbitales y visualizaciones educativas; no utilizar este material como sistema de vuelo o radio aprobado.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-satellite"
+      }
+    },
+    {
+      "id": "https://github.com/nasa/openmct",
+      "title": "NASA Open MCT — Visualización de telemetría",
+      "canonical_url": "https://github.com/nasa/openmct",
+      "source_url": "https://github.com/nasa/openmct",
+      "source_type": "github_repository",
+      "category": "space",
+      "tags": [
+        "Espacio abierto / Control de misión"
+      ],
+      "description": "Framework abierto de NASA para crear interfaces de control y visualización de datos y series temporales de sistemas, incluidas misiones espaciales.",
+      "capabilities": [
+        "Interfaz web de telemetría, visualización y análisis temporal"
+      ],
+      "use_cases": [
+        "Panel demostrativo de telemetría simulada para una misión educativa"
+      ],
+      "prerequisites": [
+        "Desarrollo web, datos estructurados y despliegue controlado"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "Apache-2.0 (LICENSE.md)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/nasa/openmct",
+        "https://github.com/nasa/openmct/blob/master/README.md",
+        "https://github.com/nasa/openmct/blob/master/LICENSE.md",
+        "https://nasa.github.io/openmct/"
+      ],
+      "limitations": "No incluye por sí mismo una fuente real de datos ni otorga acceso a comandos de naves; exige backend e integración para cualquier operación.",
+      "usage_notice": "Distinguir datos observados, cálculos orbitales y visualizaciones educativas; no utilizar este material como sistema de vuelo o radio aprobado.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-chart-line"
+      }
+    },
+    {
+      "id": "https://github.com/nasa/cFS",
+      "title": "NASA cFS — Arquitectura de software de vuelo",
+      "canonical_url": "https://github.com/nasa/cFS",
+      "source_url": "https://github.com/nasa/cFS",
+      "source_type": "github_repository",
+      "category": "space",
+      "tags": [
+        "Espacio abierto / Software de vuelo"
+      ],
+      "description": "Framework de software de vuelo con componentes y aplicaciones de demostración para misiones y prototipos; el paquete distribuido no está validado como sistema apto para vuelo.",
+      "capabilities": [
+        "Arquitectura de vuelo, demostraciones de telemetría y comandos en laboratorio"
+      ],
+      "use_cases": [
+        "Estudiar un flujo de software embebido en entorno aislado"
+      ],
+      "prerequisites": [
+        "C/C++, sistemas embebidos, compilación, pruebas y seguridad de misión"
+      ],
+      "technical_level": "Avanzado",
+      "language": "documentación principal en inglés",
+      "access_model": "código abierto",
+      "license": "Apache-2.0 (LICENSE del bundle)",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": null,
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/nasa/cFS",
+        "https://github.com/nasa/cFS/blob/dev/README.md",
+        "https://github.com/nasa/cFS/blob/dev/LICENSE",
+        "https://etd.gsfc.nasa.gov/capabilities/core-flight-system/"
+      ],
+      "limitations": "NASA advierte que cFS es un bundle de demostración NO verificado para vuelo; requiere análisis, pruebas de integración y validación por misión. Revisar submódulos y licencias.",
+      "usage_notice": "Distinguir datos observados, cálculos orbitales y visualizaciones educativas; no utilizar este material como sistema de vuelo o radio aprobado.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-shuttle-space"
       }
     }
   ]
