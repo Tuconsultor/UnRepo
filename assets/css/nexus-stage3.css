@@ -186,7 +186,17 @@ body[data-nexus-page="silicon"] .faq details {
   border-color:var(--nx-border);
   border-radius:var(--nx-radius-sm);
 }
-body[data-nexus-page="silicon"] .facts {border-color:var(--nx-border)}
+body[data-nexus-page="silicon"] .facts {
+  border-color:var(--nx-border);
+  table-layout:fixed;
+  width:100%;
+  max-width:100%;
+}
+body[data-nexus-page="silicon"] .facts :is(th,td) {
+  min-width:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
 /* Space Lab: only framing changes; SVG simulation and telemetry logic remain. */
 body[data-nexus-page="space"] .mission {
   background:linear-gradient(160deg,#122334,#0c1827);
