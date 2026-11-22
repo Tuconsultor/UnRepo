@@ -12,6 +12,10 @@ from urllib.parse import urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAGES = ["index.html", "rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "silicon-lab.html", "space-lab.html"]
+SPECIALIST_SCOPES = {"rea-roadmap.html": "rea", "intelligence.html": "intelligence",
+                     "resiliencia-agentes.html": "resilience", "soporte-remoto-windows.html": "windows",
+                     "silicon-lab.html": "silicon", "space-lab.html": "space"}
+SHARED_VISUAL_ASSET = "assets/css/nexus-stage3.css"
 REQUIRED_IDS = {
     "sidebar", "brand", "navigation", "main", "menuBtn", "favToggle",
     "totalStat", "categoryStat", "savedStat", "search", "category", "tag",
@@ -53,6 +57,11 @@ def main():
         if not file.is_file():
             fail(f"Missing page: {path}")
         raw = file.read_text(encoding="utf-8")
+        if path in SPECIALIST_SCOPES:
+            expected = f'data-nexus-page="{SPECIALIST_SCOPES[path]}"'
+            css_link = f'<link rel="stylesheet" href="./{SHARED_VISUAL_ASSET}">'
+            if raw.count(expected) != 1 or raw.count(css_link) != 1:
+                fail(f"{path}: missing or duplicated Stage 3 identity / stylesheet")
         page = PageParser()
         page.feed(raw)
         dup_ids = sorted({x for x in page.ids if page.ids.count(x) > 1})
@@ -78,6 +87,14 @@ def main():
         pages[path] = (raw, page)
         print(f"PASS {path}: {len(page.ids)} IDs, {len(scripts)} inline scripts")
 
+    shared_css = ROOT / SHARED_VISUAL_ASSET
+    if not shared_css.is_file():
+        fail("Missing shared Stage 3 CSS")
+    css = shared_css.read_text(encoding="utf-8")
+    for token in ("--nx-bg", "--nx-surface", "--nx-border", "--nx-text", "--nx-muted", "--nx-accent"):
+        if token not in css:
+            fail(f"Missing design token in Stage 3 CSS: {token}")
+    print(f"PASS Stage 3 shared visual asset: {len(SPECIALIST_SCOPES)} specialist pages")
     asset = ROOT / "assets" / "social" / "unrepo-icon-2026.png"
     if not asset.is_file():
         fail("Missing shared social image: assets/social/unrepo-icon-2026.png")
