@@ -140,3 +140,38 @@ Abrir `docs/CONTINUIDAD.md` y el PR asociado. Leer `main`, `gh-pages`, el HEAD d
 1. Revisar y aprobar explícitamente el PR #7 para su posible integración, manteniendo la lista histórica íntegra y las licencias documentadas.
 2. Tras el merge autorizado, verificar despliegue, 380 tarjetas, 272 repositorios con metadatos actualizados y registrar la prueba Chromium post-publicación.
 3. Hacer la migración incremental de `RESOURCE_METADATA` al JSON con validador de equivalencia, más adaptadores multifuente controlados sin autopublicación.
+
+
+## Hito de publicación y siguiente migración — 2026-11-21 (México) / 2026-11-22 UTC
+
+**PR #7:** [fusionado](https://github.com/Tuconsultor/UnRepo/pull/7) con squash en \`main\`, SHA \`0415dafe813743245638a7d8f838f4dfa48b8989\`.
+
+### Resultados de publicación (con evidencia)
+
+| Prueba / evidencia | Estado | Verificación |
+|---|---|---|
+| Build/despliegue inicial de las 380 fichas | PASS | [Pages run 44965207423](https://github.com/Tuconsultor/UnRepo/actions/runs/44965207423) |
+| Catálogo público en Chromium | PASS | [Smoke run 44965207462](https://github.com/Tuconsultor/UnRepo/actions/runs/44965207462), screenshot: 380 recursos y 20 categorías |
+| Navegación escritorio/móvil, filtros, favoritos, búsqueda y fallback | PASS | Mismo smoke post-despliegue; JSON de artefacto con \`status=passed\` |
+| Actualización de metadatos GitHub | PASS | [Refresh run 44965207436](https://github.com/Tuconsultor/UnRepo/actions/runs/44965207436); 272/272 repos, 0 \`not_verified\` en caché |
+| Igualdad de caché \`main\`/\`gh-pages\` | PASS | Ambos \`data/github-metadata.json\` tienen blob \`22a214921865690063cdb3c5d65073749c933025\` |
+| Igualdad de portada \`main\`/\`gh-pages\` | PASS | Blob \`bad3fcaeaa9d755695ef97cdd812ae8b85e0a354\` |
+| Segundo deploy tras refresco de metadatos | PASS tras retry | [Pages run 44965359493](https://github.com/Tuconsultor/UnRepo/actions/runs/44965359493): primer intento error HTTP 502 de GitHub; segundo intento PASS |
+
+El refresco generó un nuevo commit automático de metadatos en \`main\`: \`0d15b280c9c60c83ae3b50103c47ff860536c8d8\`. Contar 272/272 registros indica cobertura de caché completa; no es prueba de ejecución ni seguridad de los repositorios catalogados.
+
+### Segunda etapa: desacoplar metadatos editoriales (sin afectar producción)
+
+**Rama:** \`feature/nexus-editorial-metadata-shadow-20261121\`.
+
+- \`data/resource-metadata.json\` exporta **180 registros editoriales** de \`index.html\`, sin omitir campos \`license\`, \`caution\`, \`securityProfile\`, \`authorizedUseOnly\`, etc.
+- \`scripts/validate_resource_metadata.py\` realiza comparación exacta sin ejecutar JavaScript ni instalar librerías.
+- El workflow \`catalog-integrity.yml\` ejecuta también el nuevo control en PR.
+- **No se cambió el renderizado ni la carga de datos de producción.** El JSON es una copia de transición; queda pendiente implementar consumo con fallback y rollback.
+- Esta etapa debe permanecer en PR hasta superar CI y revisión. No efectuar auto-merge.
+
+### Próximas tres acciones desde aquí
+
+1. Verificar el CI de la rama de extracción editorial y corregir cualquier FAIL.
+2. Revisar la propuesta en PR, sin cambiar producción, y determinar la transición segura de la función \`metadataFor\` con fallback.
+3. Diseñar el pipeline multifuente (GitLab, Codeberg, arXiv, Zenodo y Hugging Face) con caché incremental, deduplicación y promoción controlada, priorizando los 49 candidatos aún sin revisión primaria.
