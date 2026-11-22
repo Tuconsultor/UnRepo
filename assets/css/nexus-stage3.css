@@ -1,0 +1,215 @@
+/* UnRepo Nexus / NIGHT OPS — shared presentation layer for specialist pages.
+   Applied AFTER each page's existing stylesheet. Design only: no content, JS, routes,
+   data, simulations, state, disclosure behavior or interactions are replaced. */
+:root {
+  --nx-bg:#0a0e17;
+  --nx-surface:#121a28;
+  --nx-raised:#192538;
+  --nx-border:#2b3d53;
+  --nx-border-hover:#4c8295;
+  --nx-text:#f2f6ff;
+  --nx-muted:#afc1d9;
+  --nx-accent:#58e5e0;
+  --nx-accent-soft:#58e5e014;
+  --nx-warning:#f6d58a;
+  --nx-radius:16px;
+  --nx-radius-sm:10px;
+  --nx-shadow:0 12px 32px #01071350;
+}
+/* Bridge historical CSS custom properties into the Stage 2 palette. */
+body[data-nexus-page] {
+  --bg:var(--nx-bg);
+  --panel:var(--nx-surface);
+  --panel2:var(--nx-raised);
+  --surface:var(--nx-surface);
+  --surface2:var(--nx-raised);
+  --s:var(--nx-surface);
+  --line:var(--nx-border);
+  --border:var(--nx-border);
+  --text:var(--nx-text);
+  --t:var(--nx-text);
+  --ink:var(--nx-text);
+  --white:var(--nx-text);
+  --muted:var(--nx-muted);
+  --m:var(--nx-muted);
+  --cyan:var(--nx-accent);
+  --a:var(--nx-accent);
+  --focus:var(--nx-accent);
+  color-scheme:dark;
+  color:var(--nx-text);
+  background:radial-gradient(ellipse at 84% 0%,#163048 0%,transparent 37%),var(--nx-bg);
+  font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body[data-nexus-page] :is(main,.shell,.wrap,.panel,.card,.box,.resource,.tile,.step) {min-width:0}
+body[data-nexus-page] :is(h1,h2,h3) {color:var(--nx-text);text-wrap:balance}
+body[data-nexus-page] :is(h1,.hero h1) {line-height:1.09;letter-spacing:-.045em}
+body[data-nexus-page] :is(.lead,.sub,.small,.muted) {color:var(--nx-muted)}
+body[data-nexus-page] a {text-underline-offset:3px}
+body[data-nexus-page] :is(a,button,summary,input,select):focus-visible {
+  outline:3px solid var(--nx-accent);
+  outline-offset:3px;
+}
+body[data-nexus-page] :is(header,.top) {border-color:var(--nx-border)}
+body[data-nexus-page] header {background:#0e1826}
+body[data-nexus-page] .top {background:transparent}
+body[data-nexus-page] :is(.brand,.logo) {color:var(--nx-text)}
+body[data-nexus-page] :is(.eyebrow,.kicker) {color:var(--nx-accent)}
+body[data-nexus-page] :is(.emblem,.hero-tag,.pill,.tag,.flag,.jump a) {
+  color:#baf6f2;
+  border-color:#375d70;
+  background:#112b3a;
+}
+body[data-nexus-page] :is(.panel,.card,.box,.resource,.tile,.step,.path article) {
+  border-color:var(--nx-border);
+  border-radius:var(--nx-radius);
+  background:var(--nx-surface);
+}
+body[data-nexus-page] :is(.resource,.tile,.path article) {
+  transition:background .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+body[data-nexus-page] :is(.resource,.tile,.path article):hover {
+  background:var(--nx-raised);
+  border-color:var(--nx-border-hover);
+  box-shadow:var(--nx-shadow);
+}
+body[data-nexus-page] :is(.back,.button,.btn,.copy,.topnav a,.links a,.jump a) {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:44px;
+  border-radius:var(--nx-radius-sm);
+  text-decoration:none;
+}
+body[data-nexus-page] :is(.back,.button,.btn,.copy) {
+  border:1px solid #3f8190;
+  background:#16414c;
+  color:#efffff;
+  padding:10px 14px;
+}
+body[data-nexus-page] :is(.back,.button,.btn,.copy):hover {
+  background:#1d4b57;
+  border-color:var(--nx-accent);
+  color:#fff;
+}
+body[data-nexus-page] :is(.button.secondary,.btn:not(.primary),.topnav a,.links a,.jump a) {
+  background:#172638;
+  border:1px solid var(--nx-border);
+  color:#baf6f2;
+}
+body[data-nexus-page] :is(.button.secondary,.btn:not(.primary),.topnav a,.links a,.jump a):hover {
+  border-color:var(--nx-border-hover);
+  background:var(--nx-raised);
+}
+body[data-nexus-page] :is(.callout,.unresolved,.ribbon,.important) {
+  border-color:#496476;
+  border-radius:var(--nx-radius-sm);
+}
+body[data-nexus-page] :is(.warning,.alert,.important,.ribbon) {
+  border-left-color:var(--nx-warning);
+}
+body[data-nexus-page] :is(.section,.hero,.card,.panel,.box,.resource,.tile,.mission,.control-panel) {
+  scroll-margin-top:24px;
+}
+body[data-nexus-page] :is(pre,code) {
+  font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+body[data-nexus-page] pre {
+  background:#081220;
+  border-color:var(--nx-border);
+  border-radius:var(--nx-radius-sm);
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+}
+body[data-nexus-page] :is(.table-wrap) {
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scrollbar-color:#50758a #101c2c;
+}
+body[data-nexus-page] :is(th,td) {border-color:var(--nx-border)}
+body[data-nexus-page] :is(th) {background:var(--nx-raised)}
+body[data-nexus-page] :is(footer,.footer) {border-color:var(--nx-border);color:var(--nx-muted)}
+body[data-nexus-page] :is(input:not([type="checkbox"]):not([type="range"]),select) {
+  background-color:#142338;
+  border-color:#4b6881;
+  color:var(--nx-text);
+  min-height:44px;
+}
+body[data-nexus-page] :is(input[type="checkbox"],input[type="range"]) {accent-color:var(--nx-accent)}
+body[data-nexus-page] summary {cursor:pointer}
+body[data-nexus-page] summary:focus-visible {outline-offset:4px}
+/* REA: keep checked-step feedback and intact progress controls. */
+body[data-nexus-page="rea"] .step:has(input:checked) {
+  border-color:#328f8b;
+  background:#102f38;
+}
+body[data-nexus-page="rea"] :is(.progress,.count) {color:#a6e4e4}
+body[data-nexus-page="rea"] .resource .external {color:var(--nx-accent)}
+body[data-nexus-page="rea"] .step-number {color:var(--nx-accent)}
+/* Intelligence: reports and evidence modules retain their hierarchy. */
+body[data-nexus-page="intelligence"] .card {
+  border:1px solid var(--nx-border);
+  background:var(--nx-surface);
+  box-shadow:0 12px 28px #01071333;
+}
+body[data-nexus-page="intelligence"] .box {background:#0f2030}
+body[data-nexus-page="intelligence"] .notice {
+  background:#34291c;
+  border-left-color:var(--nx-warning);
+  color:#f6e2ba;
+}
+body[data-nexus-page="intelligence"] .pill {color:#baf6f2}
+/* Agent resilience: diagram steps and warning panels remain legible. */
+body[data-nexus-page="resilience"] .pipeline span {
+  border-color:var(--nx-border);
+  background:#143345;
+}
+body[data-nexus-page="resilience"] .warning {background:#1b2432}
+body[data-nexus-page="resilience"] details summary {color:var(--nx-accent)}
+/* Remote Windows: 250 indexed resource cards share the Nexus card grammar. */
+body[data-nexus-page="windows"] .resource {
+  border-radius:var(--nx-radius);
+  background:var(--nx-surface);
+}
+body[data-nexus-page="windows"] .r-links a {display:inline-flex;align-items:center;min-height:36px}
+body[data-nexus-page="windows"] .flow span {border-color:#3c6474;background:#143544}
+/* Silicon Lab: retain gold as fabrication-stage information, not primary brand. */
+body[data-nexus-page="silicon"] .flow .step {
+  border-color:var(--nx-border);
+  background:linear-gradient(160deg,var(--nx-raised),var(--nx-surface));
+}
+body[data-nexus-page="silicon"] :is(.num,.ribbon) {color:var(--nx-warning)}
+body[data-nexus-page="silicon"] .faq details {
+  background:var(--nx-surface);
+  border-color:var(--nx-border);
+  border-radius:var(--nx-radius-sm);
+}
+body[data-nexus-page="silicon"] .facts {border-color:var(--nx-border)}
+/* Space Lab: only framing changes; SVG simulation and telemetry logic remain. */
+body[data-nexus-page="space"] .mission {
+  background:linear-gradient(160deg,#122334,#0c1827);
+  border-color:#446a80;
+  border-radius:20px;
+  box-shadow:var(--nx-shadow);
+}
+body[data-nexus-page="space"] :is(.mission-head,.mission-foot,.telemetry,.meter) {
+  border-color:var(--nx-border);
+}
+body[data-nexus-page="space"] .control-panel {background:#101d2d}
+body[data-nexus-page="space"] .tile {background:var(--nx-surface)}
+body[data-nexus-page="space"] details {
+  border-color:var(--nx-border);
+  background:var(--nx-surface);
+  border-radius:var(--nx-radius-sm);
+}
+/* Responsive edge cases: retain all information, avoid clipping on 320px. */
+@media(max-width:580px) {
+  body[data-nexus-page] :is(.resource,.tile,.panel,.box,.step,.card) {overflow-wrap:anywhere}
+  body[data-nexus-page] :is(.resource,.tile,.panel,.box,.step,.card) {border-radius:12px}
+  body[data-nexus-page] :is(.back,.button,.btn,.copy) {max-width:100%}
+}
+@media(prefers-reduced-motion:reduce) {
+  body[data-nexus-page] :is(.resource,.tile,.path article) {transition:none!important}
+}
