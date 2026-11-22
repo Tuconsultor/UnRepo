@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-PAGES = ["index.html", "rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html"]
+PAGES = ["index.html", "rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "silicon-lab.html"]
 REQUIRED_IDS = {
     "sidebar", "brand", "navigation", "main", "menuBtn", "favToggle",
     "totalStat", "categoryStat", "savedStat", "search", "category", "tag",
@@ -21,7 +21,7 @@ REQUIRED_IDS = {
 REQUIRED_TEXT = (
     'id="nexusSecret"', 'sequence === "xus"', 'taps === 5',
     'const CATEGORY_NAMES=', 'const RESOURCE_METADATA=', 'loadGithubMetadata()',
-    'rea-roadmap.html', 'intelligence.html',
+    'rea-roadmap.html', 'intelligence.html', 'silicon-lab.html',
 )
 URL_PATTERN = re.compile(r'\burl:\s*"(https?://[^"]+)"', re.I)
 

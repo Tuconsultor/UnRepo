@@ -84,6 +84,33 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
       await page.locator("#clearFilters").click();
       console.log("PASS OSINT Lab: visible entrypoint, 3 cards, canonical links and working search/filter");
 
+      // Open Silicon Lab is verified against the proposed PR build, not production.
+      assert.equal(await page.locator('#category option[value="silicon"]').count(), 1, "Missing silicon category");
+      assert.equal(await page.locator("#siliconLabOpen").count(), 1, "Missing silicon entrypoint");
+      await page.locator("#category").selectOption("silicon");
+      const siliconUrls = await page.locator("#catalog .card a.external").evaluateAll(
+        anchors => anchors.map(anchor => anchor.href)
+      );
+      const expectedSilicon = [
+        "https://github.com/YosysHQ/yosys",
+        "https://github.com/librelane/librelane",
+        "https://github.com/The-OpenROAD-Project/OpenROAD",
+        "https://www.tinytapeout.com/"
+      ];
+      assert.deepEqual(siliconUrls.slice().sort(), expectedSilicon.slice().sort(), "Silicon links or cards differ");
+      await page.locator("#search").fill("Yosys");
+      assert.equal(await page.locator("#catalog .card").count(), 1, "Silicon search must return a single matching card");
+      await page.locator("#clearFilters").click();
+      const siliconGuide = await browser.newPage({ viewport: { width: 1280, height: 800 }, locale: "es-MX" });
+      const guideResponse = await siliconGuide.goto(BASE + "silicon-lab.html", { waitUntil: "domcontentloaded" });
+      assert.equal(guideResponse && guideResponse.status(), 200, "Silicon Lab guide failed HTTP");
+      assert.ok((await siliconGuide.locator("h1").textContent()).includes("un chip de verdad"));
+      assert.equal(await siliconGuide.locator(".flow .step").count(), 4, "Missing four design steps");
+      await siliconGuide.locator(".faq summary").first().click();
+      assert.equal(await siliconGuide.locator(".faq details[open]").count(), 1, "Native FAQ interaction failed");
+      await siliconGuide.close();
+      console.log("PASS Open Silicon Lab: four cards, sources, filter/search and guide interaction");
+
     }
 
     await retry(async () => {
@@ -169,7 +196,7 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     await mobile.close();
     console.log("PASS mobile menu, Easter egg, search and category filter");
 
-    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png"]) {
+    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png", ...(PREVIEW_MODE ? ["silicon-lab.html"] : [])]) {
       const response = await page.request.get(BASE + relative);
       assert.equal(response.status(), 200, "Broken internal file: " + relative);
     }

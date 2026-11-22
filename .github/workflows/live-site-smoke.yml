@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'silicon-lab.html'
       - 'scripts/smoke_public_site.cjs'
       - '.github/workflows/live-site-smoke.yml'
   push:
@@ -69,7 +70,7 @@ jobs:
       - name: Test proposed catalog in Chromium without publishing
         env:
           NEXUS_BASE_URL: http://127.0.0.1:8765/
-          NEXUS_MIN_RESOURCES: '383'
+          NEXUS_MIN_RESOURCES: '387'
           NEXUS_MIN_REPOS: '267'
           NEXUS_PREVIEW: '1'
         run: |
