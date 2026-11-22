@@ -226,7 +226,12 @@ body{background:radial-gradient(ellipse at 85% 0%,#153047 0,transparent 37%),var
 .card .external{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;min-width:84px;padding:8px 12px;border:1px solid #387e8b;border-radius:9px;background:#153540;color:#9bf1ec;text-decoration:none;font-size:12px;transition:background .16s ease,border-color .16s ease}
 .card .external:hover,.card .external:focus-visible{background:#1e4852;border-color:var(--ux-accent);color:#edffff}
 @media(max-width:550px){.catalog{gap:13px}.card{padding:16px;min-height:0}.card h3{font-size:19px}.card .resource-desc{font-size:14px}}
-@media(max-width:360px){.card .resource-facts-primary,.card .resource-facts-extra{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:360px){
+ .topbar{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:center}
+ .topbar .breadcrumb{margin-right:0;min-width:0}
+ .topbar .actions{grid-column:1/-1;justify-content:flex-end;gap:8px}
+ .card .resource-facts-primary,.card .resource-facts-extra{grid-template-columns:minmax(0,1fr)}
+}
 @media(prefers-reduced-motion:reduce){.card,.card .external{transition:none!important}.card:hover{transform:none}}
 </style>
 </head>
