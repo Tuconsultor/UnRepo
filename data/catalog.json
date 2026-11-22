@@ -11579,7 +11579,7 @@
       "technical_level": "Intermedio",
       "language": "inglés (documentación principal)",
       "access_model": "código abierto",
-      "license": "Perl Artistic o GPL (README; LICENCE incluye GPL-3.0)",
+      "license": "Perl Artistic o GPL (README y LICENSE)",
       "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
