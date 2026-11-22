@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Open Space Lab | UnRepo Nexus</title>
+<meta name="description" content="Explora datos satelitales públicos y experimenta con modelos orbitales educativos. SatNOGS, Orekit, Open MCT y cFS: herramientas, límites y ejercicios.">
+<link rel="canonical" href="https://tuconsultor.github.io/UnRepo/space-lab.html">
+<style>
+:root{color-scheme:dark;--bg:#060c17;--panel:#101b2c;--panel2:#14253a;--line:#36516b;--white:#edf6ff;--muted:#b7cbdf;--cyan:#67e8f9;--gold:#f3ca82;--green:#8dedd2;--shadow:0 24px 60px #01061299}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 65% -5%,#193651 0,transparent 37%),linear-gradient(#080f1f,#060c17 72%);color:var(--white);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+button,select,input{font:inherit}button{cursor:pointer}a{color:var(--cyan)}:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.skip{position:absolute;left:10px;top:-100px;z-index:20;background:#fff;color:#000;padding:8px 14px}.skip:focus{top:10px}
+.wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+header{border-bottom:1px solid #2d455d;padding:19px 0}.head-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.brand{font-size:1rem;letter-spacing:.09em;font-weight:800;text-decoration:none}.brand span{color:var(--cyan)}.links{display:flex;gap:20px;flex-wrap:wrap}.links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:650}.links a:hover{color:white}
+main{padding-bottom:72px}.hero{padding:65px 0 33px}.eyebrow{color:var(--gold);font-size:.73rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.hero h1{font-size:clamp(2.4rem,6.6vw,5.4rem);line-height:1.04;letter-spacing:-.058em;max-width:900px;margin:16px 0 17px}.hero h1 em{font-style:normal;color:var(--cyan)}.lead{color:#d7e5f2;font-size:clamp(1rem,1.8vw,1.25rem);max-width:790px;margin:0}.hero-flags{display:flex;gap:9px;flex-wrap:wrap;margin-top:27px}.flag{display:inline-flex;padding:6px 11px;border:1px solid #365878;border-radius:100px;font-size:.75rem;color:#bfe8f5;font-weight:700}.flag.alt{border-color:#685c3c;color:#f8e2a2}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.035em;line-height:1.2}h3{margin:0 0 10px;font-size:1.1rem}.sub{max-width:850px;color:var(--muted);margin:0 0 23px}.section{margin-top:58px}
+.mission{border:1px solid #3a6581;border-radius:21px;overflow:hidden;background:linear-gradient(160deg,#0e2033,#0a1525);box-shadow:var(--shadow)}
+.mission-head{padding:17px 22px;border-bottom:1px solid #30526b;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.code{font:700 .75rem ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#97eaf8}.status{font-size:.73rem;border-radius:20px;padding:5px 10px;background:#293143;color:#fce4b1;border:1px solid #746244}
+.mission-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);gap:0}
+.orbit-stage{min-height:360px;display:grid;place-items:center;position:relative;border-right:1px solid #304a62;background:radial-gradient(circle at 50% 55%,#162d43 0,#071222 58%,#081425 100%);overflow:hidden}
+.orbit-stage:before{content:"";position:absolute;inset:0;opacity:.13;pointer-events:none;background-image:linear-gradient(#6b8fac50 1px,transparent 1px),linear-gradient(90deg,#6b8fac50 1px,transparent 1px);background-size:35px 35px}
+.orbit-stage svg{position:relative;width:min(100%,460px);height:auto;aspect-ratio:1/1;filter:drop-shadow(0 0 25px #00afbb12)}
+.stage-label{position:absolute;bottom:14px;left:17px;color:#a9c5da;font:600 .68rem ui-monospace,Consolas,monospace;letter-spacing:.07em}
+.control-panel{padding:22px}.control-panel label{display:block;color:#d4e8f7;font-size:.83rem;font-weight:700;margin-bottom:8px}
+.select{background:#172b41;border:1px solid #587089;color:#fff;min-height:44px;padding:8px 10px;width:100%;border-radius:9px}
+.input-group{margin-top:20px}.input-label{display:flex;justify-content:space-between;gap:15px;align-items:baseline}.input-label output{font:700 1.05rem ui-monospace,Consolas,monospace;color:var(--cyan)}
+input[type=range]{width:100%;accent-color:#67e8f9;min-height:26px}.note{color:var(--muted);font-size:.8rem;line-height:1.5}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}.btn{border:1px solid #53718d;border-radius:9px;background:#1c354b;color:#e9f6ff;padding:10px 13px;font-size:.88rem;font-weight:700}.btn:hover{background:#2c4960}.btn[data-active=true]{border-color:#67e8f9;color:#99f3ff}.btn.primary{background:#0e7490;border-color:#0e9cc1;color:white}
+.telemetry{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #2e4b63}.meter{padding:17px 19px;border-right:1px solid #2e4b63}.meter:last-child{border-right:none}.meter strong{display:block;font:700 clamp(1rem,2.5vw,1.5rem) ui-monospace,Consolas,monospace;color:white;white-space:nowrap}.meter span{font-size:.75rem;color:#bcd1e5}.mission-foot{border-top:1px solid #2e4b63;padding:12px 20px;font-size:.78rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.tile{background:linear-gradient(150deg,#182940,#101c2e);border:1px solid var(--line);padding:22px;border-radius:14px;min-width:0}.tile p{color:var(--muted);margin:0 0 15px;font-size:.94rem}.tile a{font-weight:750;font-size:.91rem}.small{font-size:.82rem;color:var(--muted)}
+.path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.path article{border:1px solid var(--line);border-radius:12px;background:#142234;padding:20px}.path b{font:800 .75rem ui-monospace,Consolas,monospace;color:var(--gold);letter-spacing:.09em}.path h3{margin-top:12px}.path p{color:var(--muted);font-size:.87rem}.path a{font-size:.85rem;font-weight:700}
+.important{padding:17px 22px;border:1px solid #907045;border-radius:12px;background:#322920;color:#fbe9ca}.important b{color:#fff}
+.table-wrap{overflow-x:auto}.facts{width:100%;border:1px solid var(--line);border-collapse:collapse;min-width:660px;font-size:.87rem}.facts th{color:#f1d9a0;background:#1b2a3d}.facts td,.facts th{padding:12px 15px;border-bottom:1px solid #3e536b;text-align:left;vertical-align:top}.facts tr:last-child td{border:0}.facts td:last-child{color:#b7c9de}
+details{padding:15px 18px;background:#101c2d;border:1px solid var(--line);border-radius:11px;margin-bottom:9px}summary{cursor:pointer;font-weight:750}details p{color:var(--muted)}footer{padding:27px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(max-width:900px){.mission-grid{grid-template-columns:1fr}.orbit-stage{border-right:0;border-bottom:1px solid #304a62}.path{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.wrap{width:min(100% - 28px,1180px)}.hero{padding-top:39px}.mission-head{padding:15px}.control-panel{padding:17px}.orbit-stage{min-height:270px}.telemetry{grid-template-columns:repeat(2,minmax(0,1fr))}.meter:nth-child(2){border-right:0}.meter:nth-child(-n+2){border-bottom:1px solid #2e4b63}.two,.path{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header><div class="wrap head-inner"><a class="brand" href="./index.html">✳ UNREPO <span>NEXUS</span></a><nav class="links" aria-label="Navegación"><a href="#simulador">Simulador</a><a href="#observaciones">Datos reales</a><a href="#recursos">Herramientas</a><a href="./index.html">Directorio</a></nav></div></header>
+<main class="wrap" id="main">
+<section class="hero"><div class="eyebrow">Knowledge frontier / Orbital systems</div><h1>El espacio no empieza <em>en un cohete.</em></h1><p class="lead">Explora observaciones satelitales públicas, calcula una órbita circular de prueba y aprende a construir software de misión con tecnologías abiertas. Sin fingir que una simulación es telemetría real.</p><div class="hero-flags"><span class="flag">4 recursos especializados</span><span class="flag">Simulación funcional sin dependencias</span><span class="flag alt">No controla satélites ni transmisores</span></div></section>
+<section class="section" id="simulador" aria-labelledby="simTitle"><h2 id="simTitle">Centro de misión · simulación orbital</h2><p class="sub">Calcula las magnitudes de una órbita circular idealizada con dos parámetros. El dibujo es esquemático y no representa la posición de un satélite real, la Tierra a escala ni una órbita propagada con TLE.</p>
+<div class="mission">
+<div class="mission-head"><span class="code">UNREPO // MISSION CONTROL / EDU-01</span><span class="status">SIMULACIÓN LOCAL · NO EN VIVO</span></div>
+<div class="mission-grid">
+<div class="orbit-stage">
+<svg id="orbitCanvas" viewBox="0 0 420 420" role="img" aria-labelledby="orbitTitle orbitDesc">
+<title id="orbitTitle">Diagrama ilustrativo de una órbita alrededor de la Tierra</title><desc id="orbitDesc">La Tierra aparece al centro, con una trayectoria circular y un punto que avanza para ilustrar el movimiento. No representa posición real de un satélite.</desc>
+<defs><radialGradient id="earthColor" cx="30%" cy="30%"><stop offset="0" stop-color="#3688a5"/><stop offset=".58" stop-color="#19536b"/><stop offset="1" stop-color="#091e33"/></radialGradient></defs>
+<circle cx="210" cy="210" r="174" fill="none" stroke="#375670" stroke-width="1" stroke-dasharray="3 9"/>
+<circle cx="210" cy="210" r="135" fill="none" stroke="#244761" stroke-width="1" stroke-dasharray="4 11"/>
+<circle id="orbitTrack" cx="210" cy="210" r="132" fill="none" stroke="#67e8f9" stroke-opacity=".75" stroke-width="1.8"/>
+<circle cx="210" cy="210" r="66" fill="url(#earthColor)" stroke="#4ab7d8" stroke-opacity=".7" stroke-width="1.5"/>
+<path d="M152 193 Q184 172 194 187 L190 210 L173 218 L170 244 L150 231Z M219 149 Q242 163 240 182 L267 201 L246 219 L236 244 L219 248 L227 217 L207 204 L213 185Z" fill="#59b5ab" opacity=".38"/>
+<ellipse cx="210" cy="210" rx="66" ry="22" fill="none" stroke="#87daeb" stroke-opacity=".24" stroke-width="1"/>
+<circle id="orbiterGlow" cx="342" cy="210" r="13" fill="#6ceaf1" opacity=".18"/><circle id="orbiter" cx="342" cy="210" r="5.6" fill="#9cf8ff" stroke="#fff" stroke-width="1.2"/>
+<text x="210" y="213" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" font-weight="700" fill="#d3f8ff">TIERRA</text>
+</svg>
+<div class="stage-label">VISUALIZACIÓN ESQUEMÁTICA · NO A ESCALA</div>
+</div>
+<div class="control-panel">
+<label for="preset">Perfil orbital educativo</label>
+<select id="preset" class="select"><option value="leo">LEO · órbita baja didáctica</option><option value="sso">SSO · perfil polar didáctico</option><option value="meo">MEO · órbita media didáctica</option><option value="custom">Personalizado</option></select>
+<div class="input-group"><div class="input-label"><label for="altitude">Altitud sobre la superficie</label><output id="altitudeOut" for="altitude">420 km</output></div><input type="range" id="altitude" min="200" max="36000" step="10" value="420" aria-describedby="altitudeNote"><div id="altitudeNote" class="note">Rango educativo: 200–36,000 km</div></div>
+<div class="input-group"><div class="input-label"><label for="inclination">Inclinación orbital</label><output id="inclinationOut" for="inclination">51.6°</output></div><input type="range" id="inclination" min="0" max="180" step="0.1" value="51.6"><div class="note">La inclinación no modifica el periodo en este modelo esférico.</div></div>
+<div class="actions"><button id="toggleMotion" type="button" class="btn primary" aria-pressed="true">⏸ Pausar animación</button><button id="resetOrbit" type="button" class="btn">↺ Reiniciar</button></div>
+<p class="note" style="margin:17px 0 0">Movimiento ilustrativo acelerado. No incorpora perturbaciones, rotación terrestre, eclipses, TLE, telemetría ni requisitos de comunicación.</p>
+</div>
+</div>
+<div class="telemetry" aria-live="polite"><div class="meter"><strong id="periodOut">—</strong><span>Periodo orbital</span></div><div class="meter"><strong id="speedOut">—</strong><span>Velocidad circular</span></div><div class="meter"><strong id="revsOut">—</strong><span>Vueltas por día (ideal)</span></div><div class="meter"><strong id="horizonOut">—</strong><span>Horizonte superficial aprox.</span></div></div>
+<div class="mission-foot">Modelo: μ = 398,600.4418 km³/s² · radio terrestre idealizado R = 6,371 km · órbita circular de dos cuerpos. El horizonte superficial indica distancia angular convertida a arco terrestre, no alcance radio garantizado.</div>
+</div>
+</section>
+<section class="section" id="observaciones"><h2>Separar datos espaciales reales de simulaciones</h2><p class="sub">Un análisis serio distingue la medición recibida por una estación terrestre del resultado de una fórmula orbital. Aquí se consultan por separado.</p><div class="two">
+<article class="tile"><h3>01 · Datos auténticos de observación</h3><p>SatNOGS reúne observaciones generadas por estaciones terrestres comunitarias y ofrece interfaces y APIs públicas. Consulta resultados directamente en su fuente y verifica la calidad y fecha de cada registro.</p><a href="https://network.satnogs.org/observations/" target="_blank" rel="noopener noreferrer">Explorar observaciones reales ↗</a><p class="small" style="margin-top:14px">Fuente: SatNOGS Network · datos CC BY-SA · puede haber señales no decodificadas o observaciones sin resultado útil.</p></article>
+<article class="tile"><h3>02 · Modelo calculado aquí</h3><p>El panel superior calcula un periodo y una velocidad bajo supuestos físicos declarados. Sirve para formular hipótesis y aprender orbitales, no para localizar en tiempo real la Estación Espacial Internacional ni determinar su próximo paso.</p><a href="https://docs.satnogs.org/projects/satnogs-network/en/latest/api.html" target="_blank" rel="noopener noreferrer">Documentación de la API pública ↗</a><p class="small" style="margin-top:14px">No se hacen solicitudes a una API desde este simulador; no se requieren permisos ni credenciales.</p></article>
+</div></section>
+<section class="section" id="recursos"><h2>Cadena de aprendizaje espacial abierto</h2><p class="sub">No son cuatro versiones de la misma herramienta: cada recurso cubre una capacidad distinta. Las licencias de software no sustituyen autorizaciones de transmisión ni garantizan hardware apto para vuelo.</p><div class="path">
+<article><b>01 / OBSERVAR</b><h3>SatNOGS</h3><p>Red abierta de estaciones terrestres, observaciones de radio y resultados públicos.</p><a href="https://network.satnogs.org/" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a></article>
+<article><b>02 / SIMULAR</b><h3>Orekit</h3><p>Biblioteca de dinámica espacial para propagación orbital, eventos y determinación de órbitas.</p><a href="https://github.com/CS-SI/Orekit" target="_blank" rel="noopener noreferrer">Repositorio espejo oficial ↗</a></article>
+<article><b>03 / VISUALIZAR</b><h3>Open MCT</h3><p>Framework de NASA para interfaces de control, exploración y análisis de telemetría.</p><a href="https://github.com/nasa/openmct" target="_blank" rel="noopener noreferrer">Repositorio NASA ↗</a></article>
+<article><b>04 / DESARROLLAR</b><h3>NASA cFS</h3><p>Arquitectura de software de vuelo y aplicaciones de demostración; exige validación propia.</p><a href="https://github.com/nasa/cFS" target="_blank" rel="noopener noreferrer">Demo bundle ↗</a></article>
+</div></section>
+<section class="section"><h2>Dos proyectos posibles</h2><div class="two"><article class="tile"><h3>Ejercicio A · Diario de observaciones</h3><p>Elegir una observación pública SatNOGS, identificar objeto, estación, fecha, tipo de señal y evidencia disponible. Documentar lo que se recibió, lo que se decodificó y lo que permanece incierto.</p><p class="small">Resultado esperado: ficha reproducible con atribución, enlaces y calidad de evidencia; no se necesita equipo de radio.</p></article><article class="tile"><h3>Ejercicio B · Gemelo orbital educativo</h3><p>Variar altitud e inclinación, comprobar cómo cambia el periodo, plantear un caso de misión CubeSat y diseñar una arquitectura de visualización con Orekit y Open MCT. cFS puede estudiarse posteriormente en un entorno de pruebas.</p><p class="small">Resultado esperado: especificaciones y prototipo de simulación, no satélite certificado ni comunicación operativa.</p></article></div></section>
+<section class="section"><h2>Fuentes, licencias y condiciones de acceso</h2><div class="table-wrap"><table class="facts"><thead><tr><th>Recurso</th><th>Licencia / condiciones</th><th>Qué no demuestra</th></tr></thead><tbody><tr><td><a href="https://network.satnogs.org/" target="_blank" rel="noopener noreferrer">SatNOGS Network</a></td><td>Acceso público a observaciones; datos distribuidos bajo CC BY-SA.</td><td>Una recepción pública no es necesariamente telemetría decodificada ni verificada.</td></tr><tr><td><a href="https://github.com/CS-SI/Orekit/blob/develop/LICENSE.txt" target="_blank" rel="noopener noreferrer">Orekit</a></td><td>Apache-2.0 en repositorio oficial espejo; dependencias con licencias propias.</td><td>Un cálculo orbital no prueba una posición sin elementos orbitales y fecha válidos.</td></tr><tr><td><a href="https://github.com/nasa/openmct/blob/master/LICENSE.md" target="_blank" rel="noopener noreferrer">Open MCT</a></td><td>Apache-2.0.</td><td>El panel no proporciona por sí mismo datos de misión.</td></tr><tr><td><a href="https://github.com/nasa/cFS/blob/dev/LICENSE" target="_blank" rel="noopener noreferrer">NASA cFS</a></td><td>Apache-2.0 en bundle; revisar términos de submódulos.</td><td>El bundle de demostración no es una distribución verificada para vuelo.</td></tr></tbody></table></div><p class="small">Fuentes primarias revisadas: noviembre de 2026. Ningún framework externo fue instalado ni ejecutado para construir esta página.</p></section>
+<section class="section"><div class="important"><b>Regla de ingeniería:</b> un objeto que se mueve en pantalla no es un satélite rastreado. La recepción de radio, la programación de estaciones y el envío de comandos son actividades distintas, sujetas a controles técnicos, permisos y autorizaciones. Este sitio no proporciona acceso de control a equipos espaciales.</div></section>
+<section class="section"><h2>Preguntas críticas</h2><details><summary>¿Esto usa datos satelitales en tiempo real?</summary><p>No. La simulación del panel es local. Para observaciones reales debes visitar SatNOGS, consultar sus registros y verificar sus metadatos. Una observación pasada tampoco equivale a un rastreo continuo del satélite.</p></details><details><summary>¿Puedo calcular el paso de la ISS con este simulador?</summary><p>No. Se necesita una órbita actualizada (por ejemplo, elementos TLE), un propagador apropiado, hora, coordenadas de estación y modelo de visibilidad. Este ejercicio sólo calcula magnitudes de una órbita circular ficticia.</p></details><details><summary>¿Puedo construir un CubeSat con estas herramientas?</summary><p>Puedes aprender disciplinas de misión y desarrollar prototipos. Un CubeSat físico exige ingeniería de subsistemas, pruebas ambientales, integración, licencias, coordinación de frecuencias, presupuesto y proveedor de lanzamiento. Este laboratorio no sustituye esos procesos.</p></details><details><summary>¿Por qué no usamos directamente el paquete cFS en vuelo?</summary><p>NASA declara que su repositorio cFS es un bundle de demostración, no una distribución lista para volar. La validación de seguridad y adecuación para la misión corresponde al equipo responsable.</p></details></section>
+</main>
+<footer class="wrap"><span>UnRepo Nexus · Open Space Lab · conocimiento verificable y reproducible</span><a href="./index.html">Volver al directorio</a></footer>
+<script>
+"use strict";
+(function(){
+  const mu = 398600.4418, radiusKm = 6371;
+  const $ = id => document.getElementById(id);
+  const presets = {leo:[420,51.6], sso:[550,97.6], meo:[20200,55]};
+  const altitude = $("altitude"), inclination = $("inclination"), preset = $("preset");
+  const marker = $("orbiter"), glow = $("orbiterGlow"), path = $("orbitTrack");
+  const toggle = $("toggleMotion");
+  let angle = 0, running = !window.matchMedia("(prefers-reduced-motion: reduce)").matches, lastTime = null;
+  function fmt(value, digits){return Number(value).toLocaleString("es-MX",{maximumFractionDigits:digits,minimumFractionDigits:digits});}
+  function update(){
+    const h=Number(altitude.value), i=Number(inclination.value);
+    const r=radiusKm+h, periodSec=2*Math.PI*Math.sqrt(Math.pow(r,3)/mu);
+    $("altitudeOut").textContent=fmt(h,0)+" km";
+    $("inclinationOut").textContent=fmt(i,1)+"°";
+    $("periodOut").textContent=fmt(periodSec/60,1)+" min";
+    $("speedOut").textContent=fmt(Math.sqrt(mu/r),2)+" km/s";
+    $("revsOut").textContent=fmt(86400/periodSec,2);
+    $("horizonOut").textContent=fmt(radiusKm*Math.acos(radiusKm/r),0)+" km";
+    const graphicRadius=105+62*Math.log1p(h/200)/Math.log1p(36000/200);
+    path.setAttribute("r",graphicRadius.toFixed(2));
+    path.dataset.radius=graphicRadius.toFixed(2);
+    move();
+  }
+  function move(){
+    const r=Number(path.dataset.radius||132), x=210+r*Math.cos(angle), y=210+r*Math.sin(angle);
+    marker.setAttribute("cx",x.toFixed(2)); marker.setAttribute("cy",y.toFixed(2));
+    glow.setAttribute("cx",x.toFixed(2)); glow.setAttribute("cy",y.toFixed(2));
+  }
+  function setRunning(value){
+    running=value;
+    toggle.textContent=running?"⏸ Pausar animación":"▶ Reanudar animación";
+    toggle.setAttribute("aria-pressed",String(running));
+    lastTime=null;
+  }
+  function frame(ts){
+    if(lastTime!==null && running){angle=(angle+Math.min(ts-lastTime,120)*0.00065)%(Math.PI*2);move();}
+    lastTime=ts;
+    requestAnimationFrame(frame);
+  }
+  preset.addEventListener("change",()=>{
+    const values=presets[preset.value];
+    if(values){altitude.value=values[0];inclination.value=values[1];}
+    update();
+  });
+  for(const slider of [altitude,inclination])slider.addEventListener("input",()=>{preset.value="custom";update();});
+  toggle.addEventListener("click",()=>setRunning(!running));
+  $("resetOrbit").addEventListener("click",()=>{preset.value="leo";altitude.value=420;inclination.value=51.6;angle=0;update();setRunning(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);});
+  setRunning(running);update();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
