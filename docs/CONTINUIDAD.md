@@ -1,11 +1,11 @@
 # UnRepo Nexus — Continuidad operativa
 
-**Fecha de corte:** 2026-11-21  
+**Fecha de corte:** 2026-11-21; validación de CI finalizada 2026-11-22 00:01 UTC  
 **Rama de intervención:** `audit/nexus-p0-continuity-20261121`  
 **Origen (main):** `ea0e0351412f01c0f90b31ce08c86e00a6c51b49`  
-**Commit de trabajo revisado:** `718f38df2a14890e1aae96c697fbc378c74c66f7` (los commits posteriores de documentación/PR se consultan en la rama)  
+**Último commit funcional validado:** `18a4c2fad946faeef2e23c302dddd16083da9f57` (consultar HEAD de la rama para cambios de documentación posteriores)  
 **Rama de despliegue existente (gh-pages):** `051787f6fb7862d57f68478941617bf94dea48f3`  
-**PR:** por vincular tras su creación.
+**PR:** [#7 — audit(nexus): browser P0 repair](https://github.com/Tuconsultor/UnRepo/pull/7), **draft**, no fusionado.
 
 ## Estado comprobado
 
@@ -16,10 +16,10 @@
 | Caché pública GitHub | PASS | Mismo run, paso de metadata | 267 registros y 14 incorporaciones previas presentes |
 | Búsqueda y categoría en escritorio | PASS | Mismo run | AudioCraft y filtro sonido |
 | Easter Egg escritorio | PASS | Mismo run | Secuencia xus y dos enlaces |
-| Easter Egg móvil | FAIL (test histórico) | Mismo run | `locator.click: Element is outside of the viewport` mientras el sidebar entraba en pantalla; aún no prueba defecto real del usuario |
-| Favoritos, recarga, orden, paginación, vacío | NOT RUN contra producción | Test ampliado en PR | Requiere ejecución del nuevo smoke |
-| Sitio sin caché de metadatos | NOT RUN | Test añadido en PR | Requiere ejecución del nuevo smoke |
-| Integridad de catálogo JSON | NOT RUN en GitHub Actions | `scripts/validate_catalog.py` y workflow propuestos | Pendiente resultado de CI sobre el PR |
+| Easter Egg móvil | PASS | [run 44964512024](https://github.com/Tuconsultor/UnRepo/actions/runs/44964512024) | Chromium real; se corrigió sincronización del test con sidebar |
+| Favoritos, recarga, orden, paginación, vacío | PASS | [run 44964512024](https://github.com/Tuconsultor/UnRepo/actions/runs/44964512024) | Pruebas funcionales reales de producción |
+| Sitio sin caché de metadatos | PASS | [run 44964512024](https://github.com/Tuconsultor/UnRepo/actions/runs/44964512024) | Catálogo carga aunque fetch de metadata falle |
+| Integridad de catálogo JSON | PASS | [run 44964512010](https://github.com/Tuconsultor/UnRepo/actions/runs/44964512010) | 380 recursos únicos, 272 GitHub, 267 en caché; equivalencia exacta con HTML |
 | Configuración exacta de Pages | NOT VERIFIED | La API de configuración no estuvo disponible desde esta conexión | No inferir desde nombres de ramas |
 
 **Nota de evidencia:** una extracción web almacenada mostró una portada antigua `AgentSec` con `0 recursos`, mientras la ejecución real posterior en Chromium de GitHub Actions sí renderizó UnRepo Nexus con 375+. Para evaluar producción se privilegia el navegador real más reciente; la captura estática no es prueba actual de fallo.
@@ -45,8 +45,8 @@
 ## Incidencias priorizadas
 
 - **P0: no se ha demostrado caída global del sitio.** La prueba pública evidencia funcionamiento de núcleo en escritorio.
-- **P1:** no había prueba de persistencia de favoritos ni navegación móvil completa; se ampliaron los checks, pendientes CI.
-- **P2:** fallo del smoke móvil por iniciar clicks durante transición visual del menú lateral; se incluyó espera geométrica real antes del click.
+- **P1 resuelto en cobertura:** favoritos, recarga, navegación móvil, orden y carga incremental superaron Chromium en el PR (sobre producción vigente).
+- **P2 resuelto:** fallo del smoke móvil por intentar clicks durante la transición del sidebar y luego sobre el menú ya cerrado; secuencia reparada y PASS en Chromium.
 - **P2:** la ingesta está limitada a índice externo de ingeniería inversa; falta pipeline multifuente y criterios de adopción trazables.
 - **P2:** metadatos editoriales y recursos viven en HTML; la exportación JSON es **sólo primer tramo** de desacoplamiento.
 - **P3:** comprobar en producción la fecha real de la información de Intelligence Lab: el informe previo está marcado como no verificado y fechado en octubre de 2026.
@@ -94,8 +94,8 @@ GitHub Pages + smoke post-despliegue + rollback
 
 ## Pruebas y criterios para aprobar merge
 
-1. GitHub Actions `Nexus catalog integrity`: PASS para validador anterior y nuevo; 380 URLs únicas y equivalencia sin pérdida.
-2. `Public Nexus browser smoke test` sobre PR: PASS para producción existente (el PR aún no despliega sus cinco recursos).
+1. [x] GitHub Actions `Nexus catalog integrity`: PASS para validador anterior y nuevo; 380 URLs únicas y equivalencia sin pérdida.
+2. [x] `Public Nexus browser smoke test` sobre PR: PASS para producción existente (el PR aún no despliega sus cinco recursos).
 3. Revisión de diff de 5 nuevas fichas, metadatos y cautelas.
 4. Aprobación del PR antes de merge (sin auto-merge).
 5. Tras merge y publicación, repetir Chromium de producción y confirmar 380 recursos + 272 repositorios únicos GitHub si las cinco URLs se incorporan y la cache se renueva; **272 es una expectativa, no un resultado confirmado**.
@@ -108,9 +108,9 @@ GitHub Pages + smoke post-despliegue + rollback
 
 ## Próximas tres acciones
 
-1. Consultar los resultados de los dos workflows del PR, logs, captura y JSON de Chromium; corregir cualquier FAIL con evidencia.
-2. Reconciliar por ruta la configuración Pages/branch, verificar HEAD de `main` y `gh-pages`, y aprobar solo una publicación trazable.
-3. Migrar `RESOURCE_METADATA` al esquema sin pérdida; después empezar adaptadores públicos GitLab, Codeberg y arXiv con deduplicación y cola reproducible.
+1. Revisar diff y licencias de las cinco fichas, aprobar o corregir el [PR #7](https://github.com/Tuconsultor/UnRepo/pull/7) sin auto-merge.
+2. Confirmar fuente configurada de Pages y, sólo tras merge aprobado, verificar en Chromium los 380 recursos publicados y el refresco de 272 repositorios GitHub.
+3. Migrar `RESOURCE_METADATA` al esquema sin pérdida; después implementar adaptadores GitLab, Codeberg y arXiv con deduplicación y cola trazable.
 
 ## Cómo retomar este trabajo en otra conversación
 
