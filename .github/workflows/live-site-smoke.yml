@@ -193,3 +193,4 @@ jobs:
           path: artifacts/quality-stage4/
           retention-days: 30
           if-no-files-found: warn
+# Stage 4 post-publish verification-only PR; no runtime changes.
