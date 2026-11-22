@@ -13,6 +13,10 @@ on:
       - 'silicon-lab.html'
       - 'space-lab.html'
       - 'scripts/smoke_public_site.cjs'
+      - 'scripts/audit_nexus_stage4.cjs'
+      - 'scripts/summarize_nexus_lighthouse.cjs'
+      - 'scripts/probe_nexus_layout_shift.cjs'
+      - 'scripts/verify_nexus_stage4_preservation.cjs'
       - '.github/workflows/live-site-smoke.yml'
   push:
     branches: [main]
@@ -26,6 +30,10 @@ on:
       - 'space-lab.html'
       - 'assets/css/nexus-stage3.css'
       - 'scripts/smoke_public_site.cjs'
+      - 'scripts/audit_nexus_stage4.cjs'
+      - 'scripts/summarize_nexus_lighthouse.cjs'
+      - 'scripts/probe_nexus_layout_shift.cjs'
+      - 'scripts/verify_nexus_stage4_preservation.cjs'
       - '.github/workflows/live-site-smoke.yml'
   schedule:
     - cron: '15 7 * * *'
@@ -98,4 +106,53 @@ jobs:
           name: nexus-pr-preview-chromium
           path: artifacts/browser-smoke/
           retention-days: 14
+          if-no-files-found: warn
+
+  quality-stage4:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout candidate with base history for production parity
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned browser and audit tooling (no package scripts)
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts playwright@1.65.1 axe-core@4.14.1 lighthouse@13.6.0
+          npx playwright install --with-deps chromium
+      - name: Verify Stage 4 edits preserve all seven original pages exactly
+        run: node scripts/verify_nexus_stage4_preservation.cjs
+      - name: Verify live GitHub Pages byte parity and WCAG regression using Chromium
+        env:
+          NEXUS_PUBLIC_URL: https://tuconsultor.github.io/UnRepo/
+          NEXUS_PREVIEW_URL: http://127.0.0.1:8765/
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/nexus-stage4-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          node scripts/audit_nexus_stage4.cjs
+      - name: Run Lighthouse lab audits on candidate (mobile and desktop)
+        run: |
+          mkdir -p artifacts/quality-stage4
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/nexus-stage4-lighthouse.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          node scripts/probe_nexus_layout_shift.cjs
+          export CHROME_PATH="$(node -p "require('playwright').chromium.executablePath()")"
+          npx --no-install lighthouse http://127.0.0.1:8765/ --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-home-mobile.json --only-categories=performance,accessibility,best-practices,seo --quiet
+          npx --no-install lighthouse http://127.0.0.1:8765/ --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-home-desktop.json --only-categories=performance,accessibility,best-practices,seo --quiet
+          npx --no-install lighthouse http://127.0.0.1:8765/space-lab.html --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-space-mobile.json --only-categories=performance,accessibility,best-practices,seo --quiet
+          node scripts/summarize_nexus_lighthouse.cjs
+      - name: Preserve Stage 4 parity, accessibility and Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-stage4-quality
+          path: artifacts/quality-stage4/
+          retention-days: 30
           if-no-files-found: warn
