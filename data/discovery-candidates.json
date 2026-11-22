@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-22T00:10:48+00:00",
+  "generated_at": "2026-11-22T00:31:12+00:00",
   "source": "https://raw.githubusercontent.com/alexgaoth/awesome-reverse-engineered/main/data/entries.json",
   "method": "curation_queue_not_auto_import",
   "scope_note": "External index has its own editorial exclusions; discoveries are not a comprehensive security inventory.",
@@ -540,15 +540,15 @@
       "status": "needs_review"
     },
     {
-      "repo": "exiftool/exiftool",
-      "url": "https://github.com/exiftool/exiftool",
-      "name": "ExifTool",
-      "description": "Metadata reader/writer with extensive reverse-engineered camera maker notes",
+      "repo": "libreoffice/core",
+      "url": "https://github.com/libreoffice/core",
+      "name": "LibreOffice",
+      "description": "Office suite with import filters for reverse-engineered MS Office and other formats",
       "category": "File Formats",
       "topic": "Formatos cerrados",
-      "stars_in_source": 5284,
+      "stars_in_source": 4670,
       "license_in_source": "GPL-3.0",
-      "last_push_in_source": "2026-11-16",
+      "last_push_in_source": "2026-11-21",
       "archived_in_source": false,
       "status": "needs_review"
     },
