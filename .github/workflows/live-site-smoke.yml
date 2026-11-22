@@ -15,6 +15,7 @@ on:
       - 'scripts/smoke_public_site.cjs'
       - 'scripts/audit_nexus_stage4.cjs'
       - 'scripts/summarize_nexus_lighthouse.cjs'
+      - 'scripts/probe_nexus_layout_shift.cjs'
       - '.github/workflows/live-site-smoke.yml'
   push:
     branches: [main]
@@ -30,6 +31,7 @@ on:
       - 'scripts/smoke_public_site.cjs'
       - 'scripts/audit_nexus_stage4.cjs'
       - 'scripts/summarize_nexus_lighthouse.cjs'
+      - 'scripts/probe_nexus_layout_shift.cjs'
       - '.github/workflows/live-site-smoke.yml'
   schedule:
     - cron: '15 7 * * *'
@@ -136,6 +138,7 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/nexus-stage4-lighthouse.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          node scripts/probe_nexus_layout_shift.cjs
           export CHROME_PATH="$(node -p "require('playwright').chromium.executablePath()")"
           npx --no-install lighthouse http://127.0.0.1:8765/ --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-home-mobile.json --only-categories=performance,accessibility,best-practices,seo --quiet
           npx --no-install lighthouse http://127.0.0.1:8765/ --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/quality-stage4/lighthouse-home-desktop.json --only-categories=performance,accessibility,best-practices,seo --quiet
