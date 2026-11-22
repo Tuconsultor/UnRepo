@@ -88,6 +88,7 @@ async function audit(browser,base,scope) {
     writeReport("summary.json",report);
     if(deltas.length)console.error("WCAG_REGRESSIONS "+JSON.stringify(deltas));
     assert.deepEqual(deltas,[],"New or increased accessibility violations in candidate");
+    assert.ok(preview.every(x=>x.violations.length===0),"Automated WCAG A/AA violations remain in the candidate");
     assert.ok(preview.every(x=>!x.pageErrors.length&&x.outline.horizontalOverflow<=2),"Preview JS/overflow regression");
     console.log("PASS production parity + WCAG automated comparative audit. Review baseline violations in artifacts.");
   }catch(error){console.error("STAGE4_FAIL",error.stack||error);process.exitCode=1}
