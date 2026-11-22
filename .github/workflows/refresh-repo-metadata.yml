@@ -10,6 +10,7 @@ on:
       - 'resiliencia-agentes.html'
       - 'soporte-remoto-windows.html'
       - 'silicon-lab.html'
+      - 'space-lab.html'
       - 'assets/social/unrepo-icon-2026.png'
       - 'scripts/validate_nexus.py'
       - 'scripts/refresh_metadata.py'
@@ -66,13 +67,14 @@ jobs:
           cp resiliencia-agentes.html /tmp/unrepo-nexus-gh-pages/resiliencia-agentes.html
           cp soporte-remoto-windows.html /tmp/unrepo-nexus-gh-pages/soporte-remoto-windows.html
           cp silicon-lab.html /tmp/unrepo-nexus-gh-pages/silicon-lab.html
+          cp space-lab.html /tmp/unrepo-nexus-gh-pages/space-lab.html
           cp assets/social/unrepo-icon-2026.png /tmp/unrepo-nexus-gh-pages/assets/social/unrepo-icon-2026.png
           cp data/github-metadata.json /tmp/unrepo-nexus-gh-pages/data/github-metadata.json
           cp data/discovery-candidates.json /tmp/unrepo-nexus-gh-pages/data/discovery-candidates.json
           cd /tmp/unrepo-nexus-gh-pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html rea-roadmap.html intelligence.html resiliencia-agentes.html soporte-remoto-windows.html silicon-lab.html assets/social/unrepo-icon-2026.png data/github-metadata.json data/discovery-candidates.json
+          git add index.html rea-roadmap.html intelligence.html resiliencia-agentes.html soporte-remoto-windows.html silicon-lab.html space-lab.html assets/social/unrepo-icon-2026.png data/github-metadata.json data/discovery-candidates.json
           if git diff --cached --quiet; then
             echo "No website changes to publish"
           else
