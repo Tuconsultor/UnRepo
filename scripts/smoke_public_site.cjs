@@ -110,6 +110,48 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
       assert.equal(await siliconGuide.locator(".faq details[open]").count(), 1, "Native FAQ interaction failed");
       await siliconGuide.close();
       console.log("PASS Open Silicon Lab: four cards, sources, filter/search and guide interaction");
+      // Open Space Lab must be verifiably interactive and have four unique source cards.
+      assert.equal(await page.locator('#category option[value="space"]').count(), 1, "Missing space category");
+      assert.equal(await page.locator('#spaceLabOpen[href="./space-lab.html"]').count(), 1, "Missing space lab entrypoint");
+      await page.locator("#category").selectOption("space");
+      const spaceUrls = await page.locator("#catalog .card a.external").evaluateAll(
+        anchors => anchors.map(anchor => anchor.href)
+      );
+      const expectedSpace = [
+        "https://network.satnogs.org/",
+        "https://github.com/CS-SI/Orekit",
+        "https://github.com/nasa/openmct",
+        "https://github.com/nasa/cFS"
+      ];
+      assert.deepEqual(spaceUrls.slice().sort(), expectedSpace.slice().sort(), "Space catalog cards or source URLs differ");
+      await page.locator("#search").fill("Orekit");
+      assert.equal(await page.locator("#catalog .card").count(), 1, "Space category search failed");
+      await page.locator("#clearFilters").click();
+
+      const spacePage = await browser.newPage({ viewport: { width: 1280, height: 800 }, locale: "es-MX" });
+      const spaceResponse = await spacePage.goto(BASE + "space-lab.html", { waitUntil: "domcontentloaded" });
+      assert.equal(spaceResponse && spaceResponse.status(), 200, "Space Lab guide failed HTTP");
+      assert.ok((await spacePage.locator("h1").textContent()).includes("El espacio"));
+      assert.equal(await spacePage.locator(".path article").count(), 4, "Missing four space learning steps");
+      assert.ok((await spacePage.locator("#periodOut").textContent()).includes("min"), "Simulator not initialized");
+      const basePeriod = Number((await spacePage.locator("#periodOut").textContent()).split(" ")[0].replace(",", "."));
+      await spacePage.locator("#altitude").evaluate(el => { el.value = "1000"; el.dispatchEvent(new Event("input", { bubbles: true })); });
+      const higherPeriod = Number((await spacePage.locator("#periodOut").textContent()).split(" ")[0].replace(",", "."));
+      assert.ok(higherPeriod > basePeriod && basePeriod > 80, "Circular orbit period must increase with altitude");
+      assert.equal(await spacePage.locator("#preset").inputValue(), "custom", "Manual control did not select custom profile");
+      await spacePage.locator("#toggleMotion").click();
+      assert.equal(await spacePage.locator("#toggleMotion").getAttribute("aria-pressed"), "false", "Motion pause button failed");
+      await spacePage.locator("#resetOrbit").click();
+      assert.equal(await spacePage.locator("#altitudeOut").textContent(), "420 km", "Reset did not restore LEO profile");
+      assert.equal(await spacePage.locator('a[href="https://network.satnogs.org/observations/"]').count(), 1, "Real observations source missing");
+      const spaceMobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
+      await spaceMobile.goto(BASE + "space-lab.html", { waitUntil: "domcontentloaded" });
+      assert.ok((await spaceMobile.locator("#periodOut").textContent()).includes("min"), "Mobile simulator did not initialize");
+      assert.ok(await spaceMobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 2), "Space Lab mobile overflow");
+      await spaceMobile.close();
+      await spacePage.close();
+      console.log("PASS Open Space Lab: four cards, search, math controls, pause/reset, source attribution and mobile viewport");
+
 
     }
 
@@ -196,7 +238,7 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     await mobile.close();
     console.log("PASS mobile menu, Easter egg, search and category filter");
 
-    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png", ...(PREVIEW_MODE ? ["silicon-lab.html"] : [])]) {
+    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png", ...(PREVIEW_MODE ? ["silicon-lab.html", "space-lab.html"] : [])]) {
       const response = await page.request.get(BASE + relative);
       assert.equal(response.status(), 200, "Broken internal file: " + relative);
     }
