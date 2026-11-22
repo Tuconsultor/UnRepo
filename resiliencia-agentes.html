@@ -11,7 +11,7 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 100% 0,#14314a,transparent 36%),var(--bg);color:var(--text);font:16px/1.65 "Space Grotesk",system-ui,sans-serif}a{color:var(--cyan)}a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}header{border-bottom:1px solid var(--line);background:#0c1424}header>div,main,footer{max-width:1100px;margin:auto;padding:20px 24px}header>div{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}header a{text-decoration:none;font-weight:700}header small{color:var(--muted)}main{padding-top:38px;padding-bottom:70px}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.1;letter-spacing:-.05em;margin:12px 0 24px}h2{font-size:1.55rem;line-height:1.25;margin-top:42px}h3{font-size:1.1rem}p,li{max-width:85ch}p{color:#d9e3f1}ul,ol{padding-left:1.4rem}.eyebrow{font:12px "JetBrains Mono",monospace;letter-spacing:1px;text-transform:uppercase;color:var(--cyan)}.lead{font-size:1.2rem;color:#dbeafe;max-width:75ch}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:20px 0}.panel strong{color:#fff}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.full{grid-column:1/-1}.tag{display:inline-block;padding:3px 9px;color:var(--cyan);border:1px solid #155e75;border-radius:20px;font:12px "JetBrains Mono",monospace}.warning{border-left:4px solid var(--gold)}.warning strong{color:var(--gold)}.pipeline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0}.pipeline span{padding:9px 11px;border:1px solid #296176;background:#10374b;border-radius:8px;font:13px "JetBrains Mono",monospace}.pipeline b{color:var(--cyan)}.step{padding:14px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}.step b{color:var(--cyan)}code,pre{font-family:"JetBrains Mono",monospace;font-size:.86em}code{color:#99f6e4}pre{background:#070d18;color:#e0f2fe;overflow-x:auto;border:1px solid var(--line);border-radius:10px;padding:16px;font-size:.82rem;line-height:1.6}pre code{color:inherit}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:610px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--surface2);color:#fff}td{color:#d9e3f1}.checklist li{margin:6px 0}footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}summary{cursor:pointer;color:var(--cyan);font-weight:600}details{margin:14px 0}@media(max-width:700px){.grid{grid-template-columns:1fr}.panel{padding:16px}.full{grid-column:auto}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 <link rel="stylesheet" href="./assets/css/nexus-stage3.css">
-</head>
+<link rel="icon" type="image/png" href="./assets/social/unrepo-icon-2026.png"></head>
 <body data-nexus-page="resilience">
 <header><div><a href="./index.html">✳ UnRepo Nexus</a><small>Guías técnicas · Arquitectura confiable</small><a href="./index.html">← Volver al catálogo</a></div></header>
 <main id="contenido">
@@ -41,7 +41,7 @@
 <p><a href="https://docs.dbos.dev/python/integrating-dbos">Instalación oficial DBOS</a> · <a href="https://docs.dbos.dev/python/tutorials/step-tutorial">Steps y reintentos</a> · <a href="https://docs.dbos.dev/python/tutorials/workflow-tutorial">Garantías documentadas</a></p></div>
 <h2>3 · Receta de claves idempotentes</h2>
 <p>Los IDs son del negocio, no números aleatorios nuevos en cada reintento. Esta operación SQL es una <strong>plantilla conceptual PostgreSQL</strong>, no una aplicación ejecutable completa:</p>
-<pre><code>CREATE TABLE operation_ledger (
+<pre tabindex="0"><code>CREATE TABLE operation_ledger (
   operation_key TEXT PRIMARY KEY,
   request_hash TEXT NOT NULL,
   status TEXT NOT NULL CHECK
@@ -59,7 +59,7 @@
 -- 6. Guardar resultado y estado final antes de responder.</code></pre>
 <div class="panel warning"><strong>Regla fundamental</strong><p>Un índice único evita dos entradas para la misma clave, pero no evita por sí solo dos pagos, correos o llamadas externas. Combine ledger, exclusión de ejecuciones simultáneas, idempotency keys del proveedor y conciliación del resultado remoto. Cuando el servicio externo no soporte deduplicación, adopte compensación o revisión humana ante estados inciertos.</p></div>
 <h2>4 · Política operativa de reintentos</h2>
-<div class="table-wrap"><table><thead><tr><th>Incidencia</th><th>Acción</th><th>Razón</th></tr></thead><tbody>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th>Incidencia</th><th>Acción</th><th>Razón</th></tr></thead><tbody>
 <tr><td>Timeout, HTTP 502/503/504</td><td>Máx. 4 intentos, backoff exponencial y jitter</td><td>Fallo normalmente transitorio; verificar primero si el efecto se completó</td></tr>
 <tr><td>HTTP 429</td><td>Respetar <code>Retry-After</code> y aplicar límite global</td><td>Evitar saturar el servicio</td></tr>
 <tr><td>HTTP 400/401/403 o datos inválidos</td><td>No reintentar automáticamente</td><td>Requiere corrección, credenciales o intervención</td></tr>
@@ -69,7 +69,7 @@
 </tbody></table></div>
 <p><strong>Ejemplo de parámetros iniciales:</strong> 4 intentos, espera base de 2 s, factor 2, jitter aleatorio limitado, tiempo máximo por operación de 15 min. Son valores orientativos y deben adaptarse a límites, latencias y semántica del proveedor.</p>
 <h2>5 · Cuando el sistema crece: elegir componentes, no coleccionarlos</h2>
-<div class="table-wrap"><table><thead><tr><th>Necesidad real</th><th>Componente</th><th>Precaución</th></tr></thead><tbody>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th>Necesidad real</th><th>Componente</th><th>Precaución</th></tr></thead><tbody>
 <tr><td>Workflows duraderos Python</td><td><a href="https://github.com/dbos-inc/dbos-transact-py">DBOS</a> + PostgreSQL</td><td>Steps externos pueden reintentarse; consulte efectos previos</td></tr>
 <tr><td>Servicios duraderos y objetos con estado</td><td><a href="https://github.com/restatedev/restate">Restate</a></td><td>Persistencia y journaling requieren configurar servidor y recuperación</td></tr>
 <tr><td>Tareas Python distribuidas existentes</td><td><a href="https://github.com/celery/celery">Celery</a> + broker</td><td>Requiere idempotencia; <code>acks_late</code> no sustituye retry</td></tr>
