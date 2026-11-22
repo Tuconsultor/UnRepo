@@ -4,12 +4,15 @@
 const assert=require("node:assert/strict");
 const fs=require("node:fs");
 const cp=require("node:child_process");
+// The preservation contract is relative to the immutable parent of the Stage 4
+// squash merge, not to origin/main, which changes after that PR is integrated.
+const ORIGINAL_STAGE4_BASE="5a47f2c7aa314bf3650e01bd8f6e675c5084422e^";
 const paths=[
 "index.html","rea-roadmap.html","intelligence.html","resiliencia-agentes.html",
 "soporte-remoto-windows.html","silicon-lab.html","space-lab.html"
 ];
 for(const path of paths){
- const original=cp.execFileSync("git",["show","origin/main:"+path],{encoding:"utf8"});
+ const original=cp.execFileSync("git",["show",ORIGINAL_STAGE4_BASE+":"+path],{encoding:"utf8"});
  let candidate=fs.readFileSync(path,"utf8");
  candidate=candidate.replace('<link rel="icon" type="image/png" href="./assets/social/unrepo-icon-2026.png">',"");
  if(path==="index.html") {
