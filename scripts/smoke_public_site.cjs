@@ -76,6 +76,60 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
         "Discovery-first visual ordering failed");
       assert.equal(discovery.filterOpen, true, "Desktop advanced filters must remain visible");
       console.log("PASS Stage 1 desktop hierarchy, catalog preservation and five guide blocks");
+      // Stage 2: each card keeps complete factual copy, source URL and advisories.
+      const integrity = await page.evaluate(() => {
+        const failures = [];
+        for (const item of resources) {
+          const rendered = card(item);
+          const meta = metadataFor(item);
+          const val = (selector) => rendered.querySelector(selector)?.textContent || "";
+          if (val("h3") !== item.title) failures.push(item.url + ": title");
+          if (val(".resource-desc") !== (item.desc || "Recurso disponible en su sitio original.")) failures.push(item.url + ": description");
+          if (rendered.querySelector("a.external")?.getAttribute("href") !== item.url) failures.push(item.url + ": destination");
+          if (val(".resource-caution") !== "Precaución: " + meta.caution) failures.push(item.url + ": caution");
+          if (!val(".card-type") || !val(".card-details-toggle").includes("precauciones")) failures.push(item.url + ": discoverability");
+          if (rendered.querySelectorAll(".resource-facts-primary .fact").length !== 2) failures.push(item.url + ": primary facts");
+          const primary = val(".resource-facts-primary");
+          if (!primary.includes("Nivel") || !primary.includes(meta.level) ||
+              !primary.includes("Licencia") || !primary.includes(meta.license)) failures.push(item.url + ": level/license");
+          if (rendered.querySelector(".card-details")?.open) failures.push(item.url + ": disclosure initial state");
+        }
+        return {total: resources.length, failures: failures.slice(0,12), failuresCount: failures.length};
+      });
+      assert.equal(integrity.total, 391, "Stage 2 catalog count changed");
+      assert.deepEqual(integrity.failures, [], "Stage 2 card invariants failed: " + integrity.failuresCount);
+      assert.equal(integrity.failuresCount, 0, "Stage 2 contains altered resource content");
+      assert.ok(await page.locator("#catalog .card .card-details").count() >= 24, "Cards lack semantic disclosure");
+      await page.locator("#catalog .card .card-details summary").first().click();
+      assert.equal(await page.locator("#catalog .card .card-details").first().evaluate(el => el.open), true,
+        "Stage 2 details cannot be opened");
+      assert.ok(await page.locator("#catalog .card .resource-caution").first().isVisible(),
+        "Stage 2 caution inaccessible after disclosure");
+      await page.locator("#catalog .card .card-details summary").first().press("Enter");
+      assert.equal(await page.locator("#catalog .card .card-details").first().evaluate(el => el.open), false,
+        "Stage 2 disclosure cannot be closed with keyboard");
+      for (const width of [320, 375, 768, 1024, 1440]) {
+        await page.setViewportSize({width, height:900});
+        const geometry = await page.evaluate(() => ({
+          documentWidth:document.documentElement.scrollWidth,
+          viewportWidth:window.innerWidth,
+          cardWidth:document.querySelector("#catalog .card").getBoundingClientRect().width,
+          cardScrollWidth:document.querySelector("#catalog .card").scrollWidth,
+          intelligencePosition:getComputedStyle(document.querySelector(".intelligence-cta")).position,
+          intelligenceRight:document.querySelector(".intelligence-cta").getBoundingClientRect().right
+        }));
+        assert.ok(geometry.documentWidth <= geometry.viewportWidth + 2,
+          "Stage 2 horizontal overflow at " + width + "px: " + JSON.stringify(geometry));
+        assert.ok(geometry.cardScrollWidth <= geometry.cardWidth + 2,
+          "Stage 2 card content overflow at " + width + "px: " + JSON.stringify(geometry));
+        assert.notEqual(geometry.intelligencePosition, "fixed",
+          "Intelligence Lab still obstructs cards at " + width + "px");
+        assert.ok(geometry.intelligenceRight <= geometry.viewportWidth + 2,
+          "Intelligence Lab link falls outside viewport at " + width + "px");
+        await page.locator("#catalog .card").first().screenshot({path: REPORT + "/stage2-card-" + width + ".png"});
+      }
+      await page.setViewportSize({width:1280, height:800});
+      console.log("PASS Stage 2 cards: 391/391 titles, descriptions, licenses, sources and cautions; disclosure + 5 widths");
       for (const [query, canonicalUrl] of PREVIEW_COHORT) {
         await page.locator("#search").fill(query);
         const links = await page.locator("#catalog .card a.external").evaluateAll(
