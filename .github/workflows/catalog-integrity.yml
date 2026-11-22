@@ -1,0 +1,33 @@
+name: Nexus catalog integrity
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'data/catalog.json'
+      - 'data/catalog.schema.json'
+      - 'scripts/validate_catalog.py'
+      - 'scripts/validate_nexus.py'
+      - '.github/workflows/catalog-integrity.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout proposed changes
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node.js for inline syntax validation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate legacy site integrity
+        run: python scripts/validate_nexus.py
+      - name: Validate versioned catalog shadow export
+        run: python scripts/validate_catalog.py

@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tuconsultor.github.io/UnRepo/data/catalog.schema.json",
+  "title": "UnRepo Nexus shadow catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "stage",
+    "source",
+    "resource_count",
+    "field_policy",
+    "resources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "stage": {
+      "const": "shadow_snapshot_not_rendered"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "branch",
+        "commit",
+        "file",
+        "data_array"
+      ],
+      "properties": {
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "file": {
+          "const": "index.html"
+        },
+        "data_array": {
+          "const": "resourcesData"
+        }
+      }
+    },
+    "resource_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "field_policy": {
+      "type": "string"
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    }
+  },
+  "$defs": {
+    "nullableText": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nullableDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "canonical_url",
+        "source_url",
+        "source_type",
+        "category",
+        "tags",
+        "description",
+        "capabilities",
+        "use_cases",
+        "prerequisites",
+        "technical_level",
+        "language",
+        "access_model",
+        "license",
+        "repository_status",
+        "first_seen_at",
+        "last_verified_at",
+        "evidence_urls",
+        "limitations",
+        "usage_notice",
+        "related_resource_ids",
+        "verification_status",
+        "legacy_ui"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "source_type": {
+          "enum": [
+            "github_repository",
+            "website"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "use_cases": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "prerequisites": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "technical_level": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "language": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "access_model": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "license": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "repository_status": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "first_seen_at": {
+          "$ref": "#/$defs/nullableDate"
+        },
+        "last_verified_at": {
+          "$ref": "#/$defs/nullableDate"
+        },
+        "evidence_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "limitations": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "usage_notice": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "related_resource_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification_status": {
+          "enum": [
+            "pending_review",
+            "verified",
+            "stale",
+            "unavailable"
+          ]
+        },
+        "legacy_ui": {
+          "type": "object",
+          "required": [
+            "icon"
+          ],
+          "properties": {
+            "icon": {
+              "type": "string"
+            },
+            "evalType": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

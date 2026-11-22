@@ -1,6 +1,12 @@
 name: Public Nexus browser smoke test
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/smoke_public_site.cjs'
+      - '.github/workflows/live-site-smoke.yml'
   push:
     branches: [main]
     paths:
@@ -41,6 +47,41 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nexus-public-browser-smoke
+          path: artifacts/browser-smoke/
+          retention-days: 14
+          if-no-files-found: warn
+
+  preview-browser:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout candidate branch
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing Playwright test dependency
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Test proposed catalog in Chromium without publishing
+        env:
+          NEXUS_BASE_URL: http://127.0.0.1:8765/
+          NEXUS_MIN_RESOURCES: '380'
+          NEXUS_MIN_REPOS: '267'
+          NEXUS_PREVIEW: '1'
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/nexus-preview-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          node scripts/smoke_public_site.cjs
+      - name: Save preview proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-pr-preview-chromium
           path: artifacts/browser-smoke/
           retention-days: 14
           if-no-files-found: warn
