@@ -334,7 +334,76 @@ async function retry(fn, label, attempts = 8, delayMs = 15000) {
     await mobile.close();
     console.log("PASS mobile menu, Easter egg, search and category filter");
 
-    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png", ...(PREVIEW_MODE ? ["silicon-lab.html", "space-lab.html"] : [])]) {
+    if (PREVIEW_MODE) {
+      // Stage 3: test the proposed shared stylesheet and six specialist pages,
+      // not just the previously deployed public site.
+      const specialistRoutes = [
+        ["rea-roadmap.html","rea"], ["intelligence.html","intelligence"],
+        ["resiliencia-agentes.html","resilience"], ["soporte-remoto-windows.html","windows"],
+        ["silicon-lab.html","silicon"], ["space-lab.html","space"]
+      ];
+      for (const [relative,scope] of specialistRoutes) {
+        const specialist = await browser.newPage({viewport:{width:1024,height:900},locale:"es-MX"});
+        const errors = [];
+        specialist.on("pageerror", e => errors.push(e.message));
+        try {
+          const response = await specialist.goto(BASE + relative, {waitUntil:"domcontentloaded",timeout:30000});
+          assert.equal(response && response.status(),200,"Stage 3 page unavailable: " + relative);
+          await specialist.waitForFunction(() => {
+            const sheet = document.querySelector('link[rel="stylesheet"][href="./assets/css/nexus-stage3.css"]');
+            return Boolean(sheet?.sheet && getComputedStyle(document.body).getPropertyValue("--nx-bg").trim() === "#0a0e17");
+          },null,{timeout:10000});
+          const scopeActual = await specialist.locator("body").getAttribute("data-nexus-page");
+          assert.equal(scopeActual,scope,"Stage 3 wrong design scope in "+relative);
+          assert.ok((await specialist.locator("h1").count())>=1,"Stage 3 primary heading missing in "+relative);
+          for (const width of [320,375,768,1024,1440]) {
+            await specialist.setViewportSize({width,height:900});
+            const geometry = await specialist.evaluate(() => ({
+              documentWidth:document.documentElement.scrollWidth,
+              viewportWidth:window.innerWidth,
+              bodyWidth:document.body.getBoundingClientRect().width,
+              accent:getComputedStyle(document.body).getPropertyValue("--nx-accent").trim(),
+              headingWidth:document.querySelector("h1")?.getBoundingClientRect().width
+            }));
+            assert.equal(geometry.accent,"#58e5e0","Stage 3 accent mismatch in "+relative);
+            assert.ok(geometry.documentWidth<=geometry.viewportWidth+2,
+              "Stage 3 horizontal overflow "+relative+" at "+width+"px: "+JSON.stringify(geometry));
+            if(width===375||width===1440) {
+              await specialist.screenshot({path:REPORT+"/stage3-"+scope+"-"+width+".png"});
+            }
+          }
+          if(scope==="rea") {
+            const first=specialist.locator('[data-step]').first();
+            assert.ok(await first.count(),"REA steps missing");
+            await first.check();
+            assert.ok((await specialist.locator("#progressText").textContent()).includes("1 de"),"REA progress not updated");
+            await specialist.locator("#resetSteps").click();
+            assert.ok((await specialist.locator("#progressText").textContent()).includes("0 de"),"REA reset failed");
+          }
+          if(scope==="windows") {
+            const q=specialist.locator("#q");
+            assert.ok(await specialist.locator(".resource").count()===250,"Windows source inventory changed");
+            await q.fill("__NEXUS_STAGE3_NO_MATCH__");
+            assert.ok((await specialist.locator(".resource:not(.none)").count())===0,"Windows search did not filter");
+            await q.fill("");
+            assert.equal(await specialist.locator(".resource:not(.none)").count(),250,"Windows filter did not restore 250 resources");
+          }
+          if(scope==="silicon") {
+            await specialist.locator(".faq summary").first().click();
+            assert.equal(await specialist.locator(".faq details[open]").count(),1,"Silicon FAQ interaction failed");
+          }
+          if(scope==="space") {
+            assert.ok((await specialist.locator("#periodOut").textContent()).includes("min"),"Space simulator stopped");
+          }
+          assert.deepEqual(errors,[],"Stage 3 page JavaScript errors: "+relative);
+          console.log("PASS Stage 3 "+relative+": stylesheet, five viewports, interactions");
+        } finally {
+          await specialist.close();
+        }
+      }
+    }
+
+    for (const relative of ["rea-roadmap.html", "intelligence.html", "resiliencia-agentes.html", "soporte-remoto-windows.html", "assets/social/unrepo-icon-2026.png", ...(PREVIEW_MODE ? ["silicon-lab.html", "space-lab.html", "assets/css/nexus-stage3.css"] : [])]) {
       const response = await page.request.get(BASE + relative);
       assert.equal(response.status(), 200, "Broken internal file: " + relative);
     }
