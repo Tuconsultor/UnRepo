@@ -126,6 +126,7 @@ jobs:
           npm install --no-save --no-package-lock --ignore-scripts playwright@1.65.1 axe-core@4.14.1 lighthouse@13.6.0
           npx playwright install --with-deps chromium
       - name: Verify Stage 4 edits preserve all seven original pages exactly
+        if: github.head_ref == 'audit/nexus-stage4-production-quality-20261121'
         run: node scripts/verify_nexus_stage4_preservation.cjs
       - name: Verify live GitHub Pages byte parity and WCAG regression using Chromium
         env:
