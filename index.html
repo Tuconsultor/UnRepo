@@ -233,11 +233,15 @@ body{background:radial-gradient(ellipse at 85% 0%,#153047 0,transparent 37%),var
  .card .resource-facts-primary,.card .resource-facts-extra{grid-template-columns:minmax(0,1fr)}
 }
 @media(prefers-reduced-motion:reduce){.card,.card .external{transition:none!important}.card:hover{transform:none}}
+
+/* Stage 2: non-obstructive Intelligence Lab entrypoint; preserves its label and destination. */
+.intelligence-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;max-width:100%;margin:0 0 10px;padding:10px 15px;border:1px solid #387e8b;border-radius:10px;background:#13313c;color:#baf6f2;text-decoration:none;font:600 12px/1.4 "Space Grotesk",system-ui,sans-serif;box-shadow:0 5px 17px #0309161f}
+.intelligence-cta:hover,.intelligence-cta:focus-visible{background:#1a4650;border-color:var(--ux-accent);color:#fff}
+@media(max-width:550px){.intelligence-cta{width:100%;margin-bottom:12px}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido principal</a>
-<a href="./intelligence.html" style="position:fixed;right:15px;bottom:15px;z-index:45;padding:11px 16px;border:1px solid #22d3ee;border-radius:12px;background:#0e7490;color:#fff;text-decoration:none;font:600 13px system-ui,sans-serif;box-shadow:0 6px 24px #0008" aria-label="Abrir Intelligence Lab, informes de repositorios con IA">◈ Intelligence Lab →</a>
 <div class="shell">
 <button class="sidebar-backdrop" id="sidebarBackdrop" type="button" hidden aria-label="Cerrar menú de categorías"></button>
 <aside class="sidebar" id="sidebar" aria-label="Navegación de categorías">
@@ -279,6 +283,7 @@ body{background:radial-gradient(ellipse at 85% 0%,#153047 0,transparent 37%),var
 </details>
 </div>
 </section>
+<a href="./intelligence.html" class="intelligence-cta" aria-label="Abrir Intelligence Lab, informes de repositorios con IA">◈ Intelligence Lab →</a>
 <div class="knowledge-hub" role="region" aria-label="Guías y laboratorios" tabindex="0">
 <section class="resilience-banner" aria-label="Guía práctica de agentes resilientes"><div><strong>⟳ Agentes que sobreviven a fallos y reinicios</strong><p>Guía gratuita: DBOS, PostgreSQL, idempotencia, reintentos, recuperación y pruebas reales.</p></div><a href="./resiliencia-agentes.html">Leer guía técnica ↗</a></section>
 <section class="resilience-banner" aria-label="Guía técnica 02: soporte remoto de Windows"><div><strong>🛠 Guía 02 · Soporte remoto Windows</strong><p>Diagnóstico RDP, acceso autorizado, PowerShell y acciones enlazadas a los 250 recursos de Nexus.</p></div><a href="./soporte-remoto-windows.html">Abrir guía de soporte ↗</a></section>
