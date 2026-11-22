@@ -6,6 +6,8 @@ on:
     paths:
       - 'index.html'
       - 'data/catalog.json'
+      - 'data/resource-metadata.json'
+      - 'scripts/validate_resource_metadata.py'
       - 'data/catalog.schema.json'
       - 'scripts/validate_catalog.py'
       - 'scripts/validate_nexus.py'
@@ -31,3 +33,5 @@ jobs:
         run: python scripts/validate_nexus.py
       - name: Validate versioned catalog shadow export
         run: python scripts/validate_catalog.py
+      - name: Validate editorial metadata shadow export
+        run: python scripts/validate_resource_metadata.py
