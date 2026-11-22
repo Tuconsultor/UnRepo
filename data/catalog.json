@@ -2,8 +2,8 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "audit/nexus-p0-continuity-20261121",
-    "commit": "b4e12897a05d32ce2a97699f9e454d7006feae68",
+    "branch": "feat/osint-lab-starter-20261121",
+    "commit": "0a806948025a56753beffb6cb575e066c221c4de",
     "file": "index.html",
     "data_array": "resourcesData"
   },
