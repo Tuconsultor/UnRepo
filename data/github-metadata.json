@@ -1,26 +1,26 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-23T16:13:34+00:00",
+  "generated_at": "2026-11-24T16:01:33+00:00",
   "repos": {
     "0sec-labs/0": {
-      "stars": 1594,
-      "updated_at": "2026-11-23T10:41:26Z",
+      "stars": 1602,
+      "updated_at": "2026-11-24T15:50:32Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:35+00:00"
+      "checked_at": "2026-11-24T15:59:25+00:00"
     },
     "6abd/horus": {
-      "stars": 1177,
+      "stars": 1179,
       "updated_at": "2026-07-29T18:06:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:11:35+00:00"
+      "checked_at": "2026-11-24T15:59:25+00:00"
     },
     "anative-lab/evoagentx": {
       "stars": 3447,
@@ -30,47 +30,47 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:36+00:00"
+      "checked_at": "2026-11-24T15:59:26+00:00"
     },
     "agricidaniel/claude-ads": {
-      "stars": 11265,
+      "stars": 11295,
       "updated_at": "2026-11-01T21:08:14Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:36+00:00"
+      "checked_at": "2026-11-24T15:59:26+00:00"
     },
     "aider-ai/aider": {
-      "stars": 50228,
+      "stars": 50239,
       "updated_at": "2026-05-22T14:02:20Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:36+00:00"
+      "checked_at": "2026-11-24T15:59:27+00:00"
     },
     "alibaba-nlp/deepresearch": {
-      "stars": 20169,
+      "stars": 20171,
       "updated_at": "2026-02-27T13:12:11Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:37+00:00"
+      "checked_at": "2026-11-24T15:59:27+00:00"
     },
     "alishahryar1/free-claude-code": {
-      "stars": 72811,
-      "updated_at": "2026-11-22T07:05:13Z",
+      "stars": 72992,
+      "updated_at": "2026-11-24T11:11:10Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:37+00:00"
+      "checked_at": "2026-11-24T15:59:27+00:00"
     },
     "anil-matcha/openstudio": {
       "stars": 2,
@@ -80,167 +80,167 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:38+00:00"
+      "checked_at": "2026-11-24T15:59:28+00:00"
     },
     "appflowy-io/appflowy": {
-      "stars": 79426,
+      "stars": 79486,
       "updated_at": "2026-11-15T11:08:51Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:11:38+00:00"
+      "checked_at": "2026-11-24T15:59:28+00:00"
     },
     "arcanum-sec/wraith": {
-      "stars": 207,
+      "stars": 208,
       "updated_at": "2026-08-01T20:36:48Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:38+00:00"
+      "checked_at": "2026-11-24T15:59:29+00:00"
     },
     "arize-ai/phoenix": {
-      "stars": 12384,
-      "updated_at": "2026-11-23T13:20:56Z",
+      "stars": 12402,
+      "updated_at": "2026-11-24T15:32:06Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:39+00:00"
+      "checked_at": "2026-11-24T15:59:29+00:00"
     },
     "armur-ai/pentest-swarm-ai": {
-      "stars": 3292,
+      "stars": 3296,
       "updated_at": "2026-11-23T15:50:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:11:39+00:00"
+      "checked_at": "2026-11-24T15:59:30+00:00"
     },
     "asyncfuncai/deepwiki-open": {
-      "stars": 18481,
+      "stars": 18486,
       "updated_at": "2026-11-22T21:37:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:39+00:00"
+      "checked_at": "2026-11-24T15:59:30+00:00"
     },
     "bert-janp/entratrace": {
       "stars": 123,
-      "updated_at": "2026-11-23T12:14:07Z",
+      "updated_at": "2026-11-24T12:13:50Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:11:40+00:00"
+      "checked_at": "2026-11-24T15:59:30+00:00"
     },
     "breakthrough/pyscenedetect": {
-      "stars": 5627,
-      "updated_at": "2026-11-23T03:43:35Z",
+      "stars": 5641,
+      "updated_at": "2026-11-24T03:47:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:11:40+00:00"
+      "checked_at": "2026-11-24T15:59:31+00:00"
     },
     "cs-si/orekit": {
       "stars": 316,
-      "updated_at": "2026-11-23T16:06:06Z",
+      "updated_at": "2026-11-24T15:50:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:40+00:00"
+      "checked_at": "2026-11-24T15:59:31+00:00"
     },
     "comfy-org/comfyui": {
-      "stars": 148263,
-      "updated_at": "2026-11-23T15:33:46Z",
+      "stars": 148417,
+      "updated_at": "2026-11-24T15:19:46Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:11:41+00:00"
+      "checked_at": "2026-11-24T15:59:32+00:00"
     },
     "composiohq/composio": {
-      "stars": 31261,
-      "updated_at": "2026-11-23T16:01:36Z",
+      "stars": 31283,
+      "updated_at": "2026-11-24T15:55:18Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:41+00:00"
+      "checked_at": "2026-11-24T15:59:32+00:00"
     },
     "copilotkit/openmuse": {
-      "stars": 6576,
-      "updated_at": "2026-11-23T10:28:11Z",
+      "stars": 6588,
+      "updated_at": "2026-11-24T08:29:15Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:42+00:00"
+      "checked_at": "2026-11-24T15:59:33+00:00"
     },
     "cybersunil/llmvault": {
-      "stars": 363,
+      "stars": 365,
       "updated_at": "2026-11-13T14:26:14Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:42+00:00"
+      "checked_at": "2026-11-24T15:59:33+00:00"
     },
     "d4vinci/scrapling": {
-      "stars": 105231,
-      "updated_at": "2026-11-23T09:47:22Z",
+      "stars": 105492,
+      "updated_at": "2026-11-23T17:30:01Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:11:43+00:00"
+      "checked_at": "2026-11-24T15:59:33+00:00"
     },
     "defectdojo/django-defectdojo": {
-      "stars": 5270,
-      "updated_at": "2026-11-23T12:14:21Z",
+      "stars": 5274,
+      "updated_at": "2026-11-24T05:09:40Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:11:43+00:00"
+      "checked_at": "2026-11-24T15:59:34+00:00"
     },
     "ebookfoundation/free-programming-books": {
-      "stars": 402124,
-      "updated_at": "2026-11-21T23:51:56Z",
+      "stars": 402186,
+      "updated_at": "2026-11-24T02:15:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "CC-BY-4.0",
-      "checked_at": "2026-11-23T16:11:43+00:00"
+      "checked_at": "2026-11-24T15:59:34+00:00"
     },
     "fincept-corporation/finceptterminal": {
-      "stars": 34126,
+      "stars": 34178,
       "updated_at": "2026-11-19T10:39:29Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:11:44+00:00"
+      "checked_at": "2026-11-24T15:59:35+00:00"
     },
     "fireredteam/fireredtts3": {
       "stars": 1726,
@@ -250,37 +250,37 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:44+00:00"
+      "checked_at": "2026-11-24T15:59:35+00:00"
     },
     "foundationagents/metagpt": {
-      "stars": 71432,
+      "stars": 71464,
       "updated_at": "2026-01-21T10:12:33Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:45+00:00"
+      "checked_at": "2026-11-24T15:59:35+00:00"
     },
     "future-house/paper-qa": {
-      "stars": 9646,
+      "stars": 9654,
       "updated_at": "2026-11-16T16:16:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:45+00:00"
+      "checked_at": "2026-11-24T15:59:36+00:00"
     },
     "gen-verse/rsi-anything": {
-      "stars": 1201,
+      "stars": 1204,
       "updated_at": "2026-10-13T10:00:45Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:45+00:00"
+      "checked_at": "2026-11-24T15:59:36+00:00"
     },
     "giskard-ai/giskard-oss": {
       "stars": 5972,
@@ -290,67 +290,67 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:46+00:00"
+      "checked_at": "2026-11-24T15:59:36+00:00"
     },
     "gokumohandas/made-with-ml": {
-      "stars": 50140,
+      "stars": 50152,
       "updated_at": "2026-03-04T23:44:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:46+00:00"
+      "checked_at": "2026-11-24T15:59:37+00:00"
     },
     "hkuds/deeptutor": {
-      "stars": 61873,
-      "updated_at": "2026-11-23T11:58:10Z",
+      "stars": 62238,
+      "updated_at": "2026-11-24T06:57:44Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:46+00:00"
+      "checked_at": "2026-11-24T15:59:37+00:00"
     },
     "hkuds/lightrag": {
-      "stars": 40834,
-      "updated_at": "2026-11-23T10:55:29Z",
+      "stars": 40845,
+      "updated_at": "2026-11-24T14:28:29Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:47+00:00"
+      "checked_at": "2026-11-24T15:59:38+00:00"
     },
     "hkuds/vibe-trading": {
-      "stars": 38733,
-      "updated_at": "2026-11-23T15:54:34Z",
+      "stars": 38770,
+      "updated_at": "2026-11-24T09:43:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:47+00:00"
+      "checked_at": "2026-11-24T15:59:38+00:00"
     },
     "handbrake/handbrake": {
-      "stars": 25103,
+      "stars": 25116,
       "updated_at": "2026-11-22T21:37:43Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:48+00:00"
+      "checked_at": "2026-11-24T15:59:38+00:00"
     },
     "handsonllm/hands-on-large-language-models": {
-      "stars": 30358,
+      "stars": 30372,
       "updated_at": "2026-04-24T10:20:08Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:48+00:00"
+      "checked_at": "2026-11-24T15:59:39+00:00"
     },
     "internlm/mindsearch": {
       "stars": 6943,
@@ -360,17 +360,17 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:48+00:00"
+      "checked_at": "2026-11-24T15:59:39+00:00"
     },
     "itzcrazykns/vane": {
-      "stars": 38296,
+      "stars": 38305,
       "updated_at": "2026-09-01T14:12:12Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:49+00:00"
+      "checked_at": "2026-11-24T15:59:39+00:00"
     },
     "ivancastl/leakscope": {
       "stars": 28,
@@ -380,37 +380,37 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:49+00:00"
+      "checked_at": "2026-11-24T15:59:40+00:00"
     },
     "kde/kdenlive": {
-      "stars": 6180,
-      "updated_at": "2026-11-23T11:44:52Z",
+      "stars": 6188,
+      "updated_at": "2026-11-24T15:17:15Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:11:49+00:00"
+      "checked_at": "2026-11-24T15:59:40+00:00"
     },
     "klingairesearch/liveportrait": {
-      "stars": 19562,
+      "stars": 19567,
       "updated_at": "2026-06-01T17:25:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:50+00:00"
+      "checked_at": "2026-11-24T15:59:40+00:00"
     },
     "koenkk/zigbee2mqtt": {
-      "stars": 15842,
-      "updated_at": "2026-11-22T08:11:28Z",
+      "stars": 15845,
+      "updated_at": "2026-11-24T08:44:48Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:11:50+00:00"
+      "checked_at": "2026-11-24T15:59:41+00:00"
     },
     "kritt-ai/open-kritt": {
       "stars": 2440,
@@ -420,7 +420,7 @@
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:11:51+00:00"
+      "checked_at": "2026-11-24T15:59:41+00:00"
     },
     "legacyupdate/legacyupdate": {
       "stars": 1403,
@@ -430,7 +430,7 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:51+00:00"
+      "checked_at": "2026-11-24T15:59:42+00:00"
     },
     "lucksi/darkus": {
       "stars": 727,
@@ -440,167 +440,167 @@
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:11:51+00:00"
+      "checked_at": "2026-11-24T15:59:42+00:00"
     },
     "mikkoparkkola/mcp-gateway": {
       "stars": 92,
-      "updated_at": "2026-11-23T15:40:44Z",
+      "updated_at": "2026-11-24T15:54:14Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:52+00:00"
+      "checked_at": "2026-11-24T15:59:43+00:00"
     },
     "mordavid/bruteforceai": {
-      "stars": 1939,
+      "stars": 1942,
       "updated_at": "2026-07-17T22:45:32Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:52+00:00"
+      "checked_at": "2026-11-24T15:59:43+00:00"
     },
     "nvidia-ai-blueprints/deep-researcher-agent": {
-      "stars": 938,
+      "stars": 939,
       "updated_at": "2026-10-09T19:49:59Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:52+00:00"
+      "checked_at": "2026-11-24T15:59:43+00:00"
     },
     "nationalsecurityagency/ghidra": {
-      "stars": 101072,
-      "updated_at": "2026-11-23T12:41:40Z",
+      "stars": 101193,
+      "updated_at": "2026-11-24T14:44:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:53+00:00"
+      "checked_at": "2026-11-24T15:59:44+00:00"
     },
     "nirdiamant/genai_agents": {
-      "stars": 25093,
-      "updated_at": "2026-11-02T00:45:58Z",
+      "stars": 25111,
+      "updated_at": "2026-11-24T09:20:28Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:53+00:00"
+      "checked_at": "2026-11-24T15:59:44+00:00"
     },
     "nirdiamant/rag_techniques": {
-      "stars": 30515,
+      "stars": 30530,
       "updated_at": "2026-11-02T00:36:15Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:53+00:00"
+      "checked_at": "2026-11-24T15:59:45+00:00"
     },
     "nirdiamant/agents-towards-production": {
-      "stars": 21940,
+      "stars": 21948,
       "updated_at": "2026-11-15T15:18:58Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:54+00:00"
+      "checked_at": "2026-11-24T15:59:45+00:00"
     },
     "offgridpete/fieldwatch": {
-      "stars": 4854,
+      "stars": 4894,
       "updated_at": "2026-11-23T16:11:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:54+00:00"
+      "checked_at": "2026-11-24T15:59:46+00:00"
     },
     "openbmb/minicpm-ocr": {
-      "stars": 1028,
+      "stars": 1038,
       "updated_at": "2026-11-19T14:58:22Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:54+00:00"
+      "checked_at": "2026-11-24T15:59:46+00:00"
     },
     "openbmb/minicpm-v": {
-      "stars": 27183,
+      "stars": 27188,
       "updated_at": "2026-11-09T07:37:30Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:55+00:00"
+      "checked_at": "2026-11-24T15:59:46+00:00"
     },
     "openhands/openhands": {
-      "stars": 94147,
-      "updated_at": "2026-11-23T15:56:13Z",
+      "stars": 94228,
+      "updated_at": "2026-11-24T12:02:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:55+00:00"
+      "checked_at": "2026-11-24T15:59:47+00:00"
     },
     "opentalker/sadtalker": {
-      "stars": 14216,
+      "stars": 14218,
       "updated_at": "2024-06-26T12:51:53Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:55+00:00"
+      "checked_at": "2026-11-24T15:59:47+00:00"
     },
     "panniantong/agent-reach": {
-      "stars": 114205,
-      "updated_at": "2026-11-22T15:12:07Z",
+      "stars": 114450,
+      "updated_at": "2026-11-24T12:25:18Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:56+00:00"
+      "checked_at": "2026-11-24T15:59:47+00:00"
     },
     "qingyuna/answer-me-with-html": {
-      "stars": 6627,
-      "updated_at": "2026-11-23T09:34:53Z",
+      "stars": 6642,
+      "updated_at": "2026-11-24T07:31:22Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:56+00:00"
+      "checked_at": "2026-11-24T15:59:48+00:00"
     },
     "qwenlm/qwen-image-2.1": {
-      "stars": 2269,
+      "stars": 2272,
       "updated_at": "2026-10-14T10:08:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:56+00:00"
+      "checked_at": "2026-11-24T15:59:48+00:00"
     },
     "rudrabha/wav2lip": {
-      "stars": 13280,
+      "stars": 13283,
       "updated_at": "2025-06-22T02:41:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:57+00:00"
+      "checked_at": "2026-11-24T15:59:48+00:00"
     },
     "s12cybersecurity/logonstealer": {
       "stars": 135,
@@ -610,87 +610,87 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:11:57+00:00"
+      "checked_at": "2026-11-24T15:59:49+00:00"
     },
     "s1n6h/pentest-harness": {
-      "stars": 476,
+      "stars": 477,
       "updated_at": "2026-10-07T20:06:17Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:57+00:00"
+      "checked_at": "2026-11-24T15:59:49+00:00"
     },
     "swe-agent/swe-agent": {
-      "stars": 20855,
-      "updated_at": "2026-11-16T22:30:07Z",
+      "stars": 20866,
+      "updated_at": "2026-11-23T23:02:05Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:58+00:00"
+      "checked_at": "2026-11-24T15:59:49+00:00"
     },
     "swe-bench/swe-smith": {
-      "stars": 836,
-      "updated_at": "2026-11-16T20:02:18Z",
+      "stars": 837,
+      "updated_at": "2026-11-23T20:23:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:58+00:00"
+      "checked_at": "2026-11-24T15:59:50+00:00"
     },
     "swivid/f5-tts": {
-      "stars": 15641,
+      "stars": 15646,
       "updated_at": "2026-11-03T15:05:10Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:59+00:00"
+      "checked_at": "2026-11-24T15:59:50+00:00"
     },
     "scrapegraphai/scrapegraph-ai": {
-      "stars": 32899,
+      "stars": 32914,
       "updated_at": "2026-10-06T08:27:54Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:11:59+00:00"
+      "checked_at": "2026-11-24T15:59:50+00:00"
     },
     "shubhamsaboo/awesome-llm-apps": {
-      "stars": 145502,
+      "stars": 145576,
       "updated_at": "2026-11-18T05:25:32Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:11:59+00:00"
+      "checked_at": "2026-11-24T15:59:51+00:00"
     },
     "significant-gravitas/autogpt": {
-      "stars": 188157,
-      "updated_at": "2026-11-23T16:02:42Z",
+      "stars": 188162,
+      "updated_at": "2026-11-24T15:50:24Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:00+00:00"
+      "checked_at": "2026-11-24T15:59:51+00:00"
     },
     "skyvern-ai/skyvern": {
-      "stars": 23497,
-      "updated_at": "2026-11-23T16:06:34Z",
+      "stars": 23504,
+      "updated_at": "2026-11-24T13:30:07Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:00+00:00"
+      "checked_at": "2026-11-24T15:59:52+00:00"
     },
     "souravberaakaspeed/xiryn": {
       "stars": 441,
@@ -700,127 +700,127 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:00+00:00"
+      "checked_at": "2026-11-24T15:59:52+00:00"
     },
     "subtitleedit/subtitleedit": {
-      "stars": 15112,
-      "updated_at": "2026-11-23T16:10:44Z",
+      "stars": 15123,
+      "updated_at": "2026-11-24T15:57:08Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:01+00:00"
+      "checked_at": "2026-11-24T15:59:52+00:00"
     },
     "thu-maic/openmaic": {
-      "stars": 44259,
-      "updated_at": "2026-11-23T16:11:03Z",
+      "stars": 44365,
+      "updated_at": "2026-11-24T15:41:16Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:01+00:00"
+      "checked_at": "2026-11-24T15:59:53+00:00"
     },
     "tencent/weknora": {
-      "stars": 38080,
-      "updated_at": "2026-11-23T08:56:21Z",
+      "stars": 38136,
+      "updated_at": "2026-11-24T07:37:42Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:01+00:00"
+      "checked_at": "2026-11-24T15:59:53+00:00"
     },
     "the-openroad-project/openroad": {
-      "stars": 3311,
-      "updated_at": "2026-11-23T14:37:25Z",
+      "stars": 3312,
+      "updated_at": "2026-11-24T15:35:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:12:02+00:00"
+      "checked_at": "2026-11-24T15:59:54+00:00"
     },
     "the-swarm-corporation/autohedge": {
-      "stars": 6731,
+      "stars": 6736,
       "updated_at": "2026-05-11T05:44:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:02+00:00"
+      "checked_at": "2026-11-24T15:59:54+00:00"
     },
     "ukgovernmentbeis/inspect_ai": {
-      "stars": 3315,
-      "updated_at": "2026-11-23T16:05:56Z",
+      "stars": 3325,
+      "updated_at": "2026-11-24T14:54:24Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:03+00:00"
+      "checked_at": "2026-11-24T15:59:55+00:00"
     },
     "vectifyai/pageindex": {
-      "stars": 40761,
-      "updated_at": "2026-11-21T09:27:39Z",
+      "stars": 40769,
+      "updated_at": "2026-11-24T06:10:04Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:03+00:00"
+      "checked_at": "2026-11-24T15:59:55+00:00"
     },
     "vincentwei1021/anything2explainer": {
-      "stars": 3554,
+      "stars": 3614,
       "updated_at": "2026-11-21T15:08:15Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:03+00:00"
+      "checked_at": "2026-11-24T15:59:55+00:00"
     },
     "voltagent/awesome-agent-skills": {
-      "stars": 37477,
+      "stars": 37508,
       "updated_at": "2026-11-15T18:23:24Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:04+00:00"
+      "checked_at": "2026-11-24T15:59:56+00:00"
     },
     "yosyshq/yosys": {
-      "stars": 4917,
-      "updated_at": "2026-11-23T16:11:55Z",
+      "stars": 4921,
+      "updated_at": "2026-11-24T15:37:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "ISC",
-      "checked_at": "2026-11-23T16:12:04+00:00"
+      "checked_at": "2026-11-24T15:59:56+00:00"
     },
     "zipstack/unstract": {
-      "stars": 7466,
-      "updated_at": "2026-11-23T13:54:18Z",
+      "stars": 7468,
+      "updated_at": "2026-11-24T15:46:37Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:05+00:00"
+      "checked_at": "2026-11-24T15:59:56+00:00"
     },
     "zulko/moviepy": {
-      "stars": 15195,
+      "stars": 15198,
       "updated_at": "2026-08-26T06:17:08Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:05+00:00"
+      "checked_at": "2026-11-24T15:59:57+00:00"
     },
     "zyphra/zonos": {
       "stars": 7249,
@@ -830,117 +830,117 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:05+00:00"
+      "checked_at": "2026-11-24T15:59:57+00:00"
     },
     "activepieces/activepieces": {
-      "stars": 25687,
-      "updated_at": "2026-11-23T16:05:48Z",
+      "stars": 25702,
+      "updated_at": "2026-11-24T14:54:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:06+00:00"
+      "checked_at": "2026-11-24T15:59:58+00:00"
     },
     "addyosmani/agent-skills": {
-      "stars": 119937,
-      "updated_at": "2026-11-18T20:06:38Z",
+      "stars": 120144,
+      "updated_at": "2026-11-24T07:11:17Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:06+00:00"
+      "checked_at": "2026-11-24T15:59:58+00:00"
     },
     "affaan-m/ecc": {
-      "stars": 309376,
+      "stars": 310002,
       "updated_at": "2026-11-23T04:55:48Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:06+00:00"
+      "checked_at": "2026-11-24T15:59:58+00:00"
     },
     "agentsmd/agents.md": {
-      "stars": 25670,
+      "stars": 25687,
       "updated_at": "2026-09-10T18:46:16Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:07+00:00"
+      "checked_at": "2026-11-24T15:59:59+00:00"
     },
     "alexgaoth/awesome-reverse-engineered": {
-      "stars": 1536,
-      "updated_at": "2026-11-22T14:51:11Z",
+      "stars": 1548,
+      "updated_at": "2026-11-24T01:47:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:07+00:00"
+      "checked_at": "2026-11-24T15:59:59+00:00"
     },
     "algorithmicsuperintelligence/openevolve": {
-      "stars": 7859,
-      "updated_at": "2026-11-23T00:50:42Z",
+      "stars": 7861,
+      "updated_at": "2026-11-24T10:33:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:08+00:00"
+      "checked_at": "2026-11-24T15:59:59+00:00"
     },
     "anmolkapil/plexo": {
-      "stars": 5812,
+      "stars": 5873,
       "updated_at": "2026-11-18T13:06:22Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:08+00:00"
+      "checked_at": "2026-11-24T16:00:00+00:00"
     },
     "anthropics/claude-quickstarts": {
-      "stars": 21150,
+      "stars": 21162,
       "updated_at": "2026-11-06T19:37:57Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:08+00:00"
+      "checked_at": "2026-11-24T16:00:00+00:00"
     },
     "anthropics/knowledge-work-plugins": {
-      "stars": 36734,
-      "updated_at": "2026-11-23T14:44:58Z",
+      "stars": 36784,
+      "updated_at": "2026-11-23T23:45:14Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:09+00:00"
+      "checked_at": "2026-11-24T16:00:01+00:00"
     },
     "archestra-ai/openappa": {
-      "stars": 1651,
-      "updated_at": "2026-11-23T15:13:12Z",
+      "stars": 1652,
+      "updated_at": "2026-11-24T15:37:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:09+00:00"
+      "checked_at": "2026-11-24T16:00:01+00:00"
     },
     "argoproj/argo-workflows": {
-      "stars": 17110,
-      "updated_at": "2026-11-23T16:03:39Z",
+      "stars": 17115,
+      "updated_at": "2026-11-24T15:33:37Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:10+00:00"
+      "checked_at": "2026-11-24T16:00:01+00:00"
     },
     "aryanguenthner/darkfox": {
       "stars": 198,
@@ -950,27 +950,27 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:10+00:00"
+      "checked_at": "2026-11-24T16:00:02+00:00"
     },
     "asgeirtj/system_prompts_leaks": {
-      "stars": 72502,
-      "updated_at": "2026-11-23T12:28:17Z",
+      "stars": 72565,
+      "updated_at": "2026-11-24T07:10:50Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "CC0-1.0",
-      "checked_at": "2026-11-23T16:12:10+00:00"
+      "checked_at": "2026-11-24T16:00:02+00:00"
     },
     "assafelovic/gpt-researcher": {
-      "stars": 30878,
+      "stars": 30888,
       "updated_at": "2026-11-23T14:51:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:11+00:00"
+      "checked_at": "2026-11-24T16:00:03+00:00"
     },
     "assafelovic/gptr-mcp": {
       "stars": 380,
@@ -980,77 +980,77 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:11+00:00"
+      "checked_at": "2026-11-24T16:00:03+00:00"
     },
     "audacity/audacity": {
-      "stars": 19148,
-      "updated_at": "2026-11-23T12:51:09Z",
+      "stars": 19165,
+      "updated_at": "2026-11-24T09:27:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:11+00:00"
+      "checked_at": "2026-11-24T16:00:04+00:00"
     },
     "awesome-selfhosted/awesome-selfhosted": {
-      "stars": 339761,
+      "stars": 340095,
       "updated_at": "2026-11-22T15:24:53Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:12+00:00"
+      "checked_at": "2026-11-24T16:00:04+00:00"
     },
     "axllent/mailpit": {
-      "stars": 11011,
+      "stars": 11021,
       "updated_at": "2026-11-23T06:41:37Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:12+00:00"
+      "checked_at": "2026-11-24T16:00:04+00:00"
     },
     "axolotl-ai-cloud/axolotl": {
-      "stars": 12747,
+      "stars": 12748,
       "updated_at": "2026-11-20T18:24:44Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:12+00:00"
+      "checked_at": "2026-11-24T16:00:05+00:00"
     },
     "baairon/torlink": {
-      "stars": 6374,
+      "stars": 6413,
       "updated_at": "2026-11-16T23:02:10Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:13+00:00"
+      "checked_at": "2026-11-24T16:00:05+00:00"
     },
     "bilawalsidhu/gods-eye-view": {
-      "stars": 66465,
-      "updated_at": "2026-11-23T16:06:51Z",
+      "stars": 66607,
+      "updated_at": "2026-11-24T14:36:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:13+00:00"
+      "checked_at": "2026-11-24T16:00:06+00:00"
     },
     "bmad-code-org/bmad-method": {
-      "stars": 55658,
-      "updated_at": "2026-11-23T04:52:15Z",
+      "stars": 55687,
+      "updated_at": "2026-11-24T05:30:42Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:14+00:00"
+      "checked_at": "2026-11-24T16:00:06+00:00"
     },
     "booksiyi1412/artex": {
       "stars": 24,
@@ -1060,47 +1060,47 @@
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:14+00:00"
+      "checked_at": "2026-11-24T16:00:06+00:00"
     },
     "browser-use/browser-use": {
-      "stars": 121843,
-      "updated_at": "2026-11-22T03:44:56Z",
+      "stars": 121926,
+      "updated_at": "2026-11-24T08:32:44Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:14+00:00"
+      "checked_at": "2026-11-24T16:00:07+00:00"
     },
     "browserbase/stagehand": {
-      "stars": 26124,
-      "updated_at": "2026-11-21T01:07:09Z",
+      "stars": 26131,
+      "updated_at": "2026-11-24T02:08:20Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:15+00:00"
+      "checked_at": "2026-11-24T16:00:07+00:00"
     },
     "calcom/cal.com": {
-      "stars": 50341,
+      "stars": 50360,
       "updated_at": "2026-11-13T19:35:07Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:15+00:00"
+      "checked_at": "2026-11-24T16:00:08+00:00"
     },
     "canopyai/orpheus-tts": {
-      "stars": 6415,
+      "stars": 6417,
       "updated_at": "2025-12-05T19:01:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:16+00:00"
+      "checked_at": "2026-11-24T16:00:08+00:00"
     },
     "cantools/cantools": {
       "stars": 2325,
@@ -1110,207 +1110,207 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:16+00:00"
+      "checked_at": "2026-11-24T16:00:09+00:00"
     },
     "cathrynlavery/diagram-design": {
-      "stars": 70780,
+      "stars": 71663,
       "updated_at": "2026-11-23T11:00:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:16+00:00"
+      "checked_at": "2026-11-24T16:00:09+00:00"
     },
     "celery/celery": {
-      "stars": 29260,
-      "updated_at": "2026-11-23T15:41:58Z",
+      "stars": 29258,
+      "updated_at": "2026-11-24T12:32:52Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:17+00:00"
+      "checked_at": "2026-11-24T16:00:10+00:00"
     },
     "chatwoot/chatwoot": {
-      "stars": 40418,
-      "updated_at": "2026-11-23T15:41:54Z",
+      "stars": 40480,
+      "updated_at": "2026-11-24T15:49:29Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:17+00:00"
+      "checked_at": "2026-11-24T16:00:10+00:00"
     },
     "chiphuyen/dmls-book": {
-      "stars": 5483,
+      "stars": 5485,
       "updated_at": "2026-06-09T13:28:30Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:17+00:00"
+      "checked_at": "2026-11-24T16:00:10+00:00"
     },
     "cline/cline": {
-      "stars": 71845,
-      "updated_at": "2026-11-23T12:06:25Z",
+      "stars": 71862,
+      "updated_at": "2026-11-23T23:35:30Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:18+00:00"
+      "checked_at": "2026-11-24T16:00:11+00:00"
     },
     "cloudflare/agentic-inbox": {
-      "stars": 8825,
+      "stars": 8830,
       "updated_at": "2026-04-23T21:04:17Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:18+00:00"
+      "checked_at": "2026-11-24T16:00:11+00:00"
     },
     "codecrafters-io/build-your-own-x": {
-      "stars": 564944,
+      "stars": 565223,
       "updated_at": "2026-11-19T05:32:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:19+00:00"
+      "checked_at": "2026-11-24T16:00:12+00:00"
     },
     "comet-ml/opik": {
-      "stars": 23491,
-      "updated_at": "2026-11-23T16:12:03Z",
+      "stars": 23497,
+      "updated_at": "2026-11-24T15:59:54Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:19+00:00"
+      "checked_at": "2026-11-24T16:00:12+00:00"
     },
     "confident-ai/deepeval": {
-      "stars": 19605,
-      "updated_at": "2026-11-23T15:21:02Z",
+      "stars": 19638,
+      "updated_at": "2026-11-24T15:49:23Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:19+00:00"
+      "checked_at": "2026-11-24T16:00:12+00:00"
     },
     "cosmo-wander-ai/cosmo-edge": {
       "stars": 2106,
-      "updated_at": "2026-11-23T13:17:45Z",
+      "updated_at": "2026-11-24T10:20:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:20+00:00"
+      "checked_at": "2026-11-24T16:00:13+00:00"
     },
     "crewaiinc/crewai": {
-      "stars": 61201,
-      "updated_at": "2026-11-23T16:06:27Z",
+      "stars": 61226,
+      "updated_at": "2026-11-24T13:34:59Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:20+00:00"
+      "checked_at": "2026-11-24T16:00:13+00:00"
     },
     "dair-ai/prompt-engineering-guide": {
-      "stars": 80311,
+      "stars": 80338,
       "updated_at": "2026-03-11T20:09:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:20+00:00"
+      "checked_at": "2026-11-24T16:00:14+00:00"
     },
     "danielmiessler/fabric": {
-      "stars": 44751,
-      "updated_at": "2026-11-22T22:35:23Z",
+      "stars": 44760,
+      "updated_at": "2026-11-23T16:27:08Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:21+00:00"
+      "checked_at": "2026-11-24T16:00:14+00:00"
     },
     "dbos-inc/dbos-transact-py": {
-      "stars": 1701,
+      "stars": 1700,
       "updated_at": "2026-11-21T02:10:24Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:21+00:00"
+      "checked_at": "2026-11-24T16:00:14+00:00"
     },
     "debpalash/voicestudio": {
-      "stars": 117009,
-      "updated_at": "2026-11-23T13:02:14Z",
+      "stars": 117630,
+      "updated_at": "2026-11-23T22:34:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:21+00:00"
+      "checked_at": "2026-11-24T16:00:15+00:00"
     },
     "deepseek-ai/deepseek-v3": {
-      "stars": 104892,
+      "stars": 104894,
       "updated_at": "2025-08-28T03:24:37Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:22+00:00"
+      "checked_at": "2026-11-24T16:00:15+00:00"
     },
     "diggerhq/opencomputer": {
-      "stars": 1651,
-      "updated_at": "2026-11-23T05:24:10Z",
+      "stars": 1717,
+      "updated_at": "2026-11-23T21:29:33Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:22+00:00"
+      "checked_at": "2026-11-24T16:00:16+00:00"
     },
     "documenso/documenso": {
-      "stars": 15881,
-      "updated_at": "2026-11-23T09:36:24Z",
+      "stars": 15898,
+      "updated_at": "2026-11-24T07:34:07Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:22+00:00"
+      "checked_at": "2026-11-24T16:00:16+00:00"
     },
     "donnemartin/system-design-primer": {
-      "stars": 378908,
+      "stars": 379016,
       "updated_at": "2026-09-15T01:10:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:23+00:00"
+      "checked_at": "2026-11-24T16:00:17+00:00"
     },
     "earthtojake/text-to-cad": {
-      "stars": 27215,
-      "updated_at": "2026-11-23T16:05:06Z",
+      "stars": 27330,
+      "updated_at": "2026-11-24T09:08:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:23+00:00"
+      "checked_at": "2026-11-24T16:00:17+00:00"
     },
     "edwko/outetts": {
       "stars": 1440,
@@ -1320,7 +1320,7 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:23+00:00"
+      "checked_at": "2026-11-24T16:00:17+00:00"
     },
     "eelbaz/mlattice": {
       "stars": 60,
@@ -1330,77 +1330,77 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:24+00:00"
+      "checked_at": "2026-11-24T16:00:18+00:00"
     },
     "ekwek1/soprano": {
-      "stars": 1638,
+      "stars": 1637,
       "updated_at": "2026-01-15T16:32:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:24+00:00"
+      "checked_at": "2026-11-24T16:00:18+00:00"
     },
     "elementalsouls/claude-bughunter": {
-      "stars": 19178,
-      "updated_at": "2026-11-23T15:45:22Z",
+      "stars": 20943,
+      "updated_at": "2026-11-24T10:43:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:25+00:00"
+      "checked_at": "2026-11-24T16:00:18+00:00"
     },
     "evcc-io/evcc": {
-      "stars": 7652,
-      "updated_at": "2026-11-23T16:10:30Z",
+      "stars": 7654,
+      "updated_at": "2026-11-24T15:51:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:25+00:00"
+      "checked_at": "2026-11-24T16:00:19+00:00"
     },
     "evidentlyai/evidently": {
-      "stars": 8078,
+      "stars": 8082,
       "updated_at": "2026-09-29T08:32:43Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:25+00:00"
+      "checked_at": "2026-11-24T16:00:19+00:00"
     },
     "exiftool/exiftool": {
-      "stars": 5296,
+      "stars": 5306,
       "updated_at": "2026-11-16T15:33:33Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:12:26+00:00"
+      "checked_at": "2026-11-24T16:00:20+00:00"
     },
     "eyaltoledano/claude-task-master": {
-      "stars": 28531,
+      "stars": 28540,
       "updated_at": "2026-04-28T13:27:12Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:26+00:00"
+      "checked_at": "2026-11-24T16:00:20+00:00"
     },
     "facebookresearch/audiocraft": {
-      "stars": 23946,
+      "stars": 23952,
       "updated_at": "2026-03-03T21:50:32Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:26+00:00"
+      "checked_at": "2026-11-24T16:00:20+00:00"
     },
     "facebookresearch/demucs": {
       "stars": 10423,
@@ -1410,47 +1410,47 @@
       "visibility": "public",
       "status": "archived",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:27+00:00"
+      "checked_at": "2026-11-24T16:00:21+00:00"
     },
     "firecrawl/firecrawl": {
-      "stars": 207606,
-      "updated_at": "2026-11-23T14:59:30Z",
+      "stars": 208590,
+      "updated_at": "2026-11-24T15:53:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:27+00:00"
+      "checked_at": "2026-11-24T16:00:21+00:00"
     },
     "formbricks/formbricks": {
-      "stars": 13290,
-      "updated_at": "2026-11-23T16:07:41Z",
+      "stars": 13294,
+      "updated_at": "2026-11-24T14:59:39Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:28+00:00"
+      "checked_at": "2026-11-24T16:00:22+00:00"
     },
     "freecodecamp/freecodecamp": {
-      "stars": 459533,
-      "updated_at": "2026-11-23T15:11:56Z",
+      "stars": 459568,
+      "updated_at": "2026-11-24T15:46:26Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:12:28+00:00"
+      "checked_at": "2026-11-24T16:00:22+00:00"
     },
     "frida/frida": {
-      "stars": 22912,
-      "updated_at": "2026-11-20T10:03:12Z",
+      "stars": 22925,
+      "updated_at": "2026-11-23T22:34:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:28+00:00"
+      "checked_at": "2026-11-24T16:00:23+00:00"
     },
     "fudan-generative-vision/hallo3": {
       "stars": 1424,
@@ -1460,127 +1460,127 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:29+00:00"
+      "checked_at": "2026-11-24T16:00:23+00:00"
     },
     "garrytan/gstack": {
-      "stars": 142458,
-      "updated_at": "2026-11-23T15:40:36Z",
+      "stars": 142541,
+      "updated_at": "2026-11-24T15:57:30Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:29+00:00"
+      "checked_at": "2026-11-24T16:00:23+00:00"
     },
     "gastownhall/beads": {
-      "stars": 28944,
-      "updated_at": "2026-11-22T20:22:53Z",
+      "stars": 29000,
+      "updated_at": "2026-11-24T14:46:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:30+00:00"
+      "checked_at": "2026-11-24T16:00:24+00:00"
     },
     "gastownhall/gastown": {
-      "stars": 18870,
+      "stars": 18883,
       "updated_at": "2026-11-14T05:08:42Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:30+00:00"
+      "checked_at": "2026-11-24T16:00:24+00:00"
     },
     "genspark-ai/genoffice": {
-      "stars": 12816,
-      "updated_at": "2026-11-22T13:01:10Z",
+      "stars": 12871,
+      "updated_at": "2026-11-24T15:20:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:30+00:00"
+      "checked_at": "2026-11-24T16:00:24+00:00"
     },
     "getify/you-dont-know-js": {
-      "stars": 184861,
+      "stars": 184858,
       "updated_at": "2026-10-31T16:14:40Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:31+00:00"
+      "checked_at": "2026-11-24T16:00:25+00:00"
     },
     "getzep/graphiti": {
-      "stars": 33026,
-      "updated_at": "2026-11-23T05:53:23Z",
+      "stars": 33057,
+      "updated_at": "2026-11-24T14:28:39Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:31+00:00"
+      "checked_at": "2026-11-24T16:00:25+00:00"
     },
     "ggml-org/llama.cpp": {
-      "stars": 136160,
-      "updated_at": "2026-11-23T15:50:48Z",
+      "stars": 136111,
+      "updated_at": "2026-11-24T15:45:14Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:31+00:00"
+      "checked_at": "2026-11-24T16:00:26+00:00"
     },
     "github/github-mcp-server": {
-      "stars": 34691,
-      "updated_at": "2026-11-21T08:39:12Z",
+      "stars": 34720,
+      "updated_at": "2026-11-24T15:18:16Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:32+00:00"
+      "checked_at": "2026-11-24T16:00:26+00:00"
     },
     "github/gitignore": {
-      "stars": 176434,
+      "stars": 176448,
       "updated_at": "2026-11-20T23:32:34Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "CC0-1.0",
-      "checked_at": "2026-11-23T16:12:32+00:00"
+      "checked_at": "2026-11-24T16:00:26+00:00"
     },
     "github/spec-kit": {
-      "stars": 151124,
-      "updated_at": "2026-11-23T16:03:38Z",
+      "stars": 151251,
+      "updated_at": "2026-11-24T14:06:29Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:33+00:00"
+      "checked_at": "2026-11-24T16:00:27+00:00"
     },
     "guardana/guardana": {
-      "stars": 224,
+      "stars": 225,
       "updated_at": "2026-11-22T15:53:30Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:33+00:00"
+      "checked_at": "2026-11-24T16:00:27+00:00"
     },
     "hackerai-tech/hackerai": {
       "stars": 850,
-      "updated_at": "2026-11-23T15:50:27Z",
+      "updated_at": "2026-11-24T16:00:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:33+00:00"
+      "checked_at": "2026-11-24T16:00:28+00:00"
     },
     "hatsunemiku-ai/google-one-tools": {
       "stars": 1211,
@@ -1594,264 +1594,264 @@
       "last_successful_check": "2026-11-22T13:28:15+00:00"
     },
     "hexgrad/kokoro": {
-      "stars": 10328,
+      "stars": 10344,
       "updated_at": "2025-08-06T22:28:53Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:50+00:00"
+      "checked_at": "2026-11-24T16:00:45+00:00"
     },
     "heygen-com/hyperframes": {
-      "stars": 88742,
-      "updated_at": "2026-11-23T16:12:39Z",
+      "stars": 89378,
+      "updated_at": "2026-11-24T15:52:16Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:51+00:00"
+      "checked_at": "2026-11-24T16:00:45+00:00"
     },
     "hiyouga/llamafactory": {
-      "stars": 76241,
+      "stars": 76257,
       "updated_at": "2026-11-23T08:41:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:51+00:00"
+      "checked_at": "2026-11-24T16:00:46+00:00"
     },
     "huggingface/parler-tts": {
-      "stars": 5599,
+      "stars": 5600,
       "updated_at": "2024-12-10T08:28:12Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:52+00:00"
+      "checked_at": "2026-11-24T16:00:46+00:00"
     },
     "huggingface/peft": {
-      "stars": 21919,
-      "updated_at": "2026-11-20T08:36:30Z",
+      "stars": 21915,
+      "updated_at": "2026-11-24T08:24:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:52+00:00"
+      "checked_at": "2026-11-24T16:00:46+00:00"
     },
     "huggingface/transformers": {
-      "stars": 169373,
-      "updated_at": "2026-11-23T16:08:14Z",
+      "stars": 169249,
+      "updated_at": "2026-11-24T15:58:39Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:52+00:00"
+      "checked_at": "2026-11-24T16:00:47+00:00"
     },
     "huggingface/trl": {
-      "stars": 19800,
-      "updated_at": "2026-11-23T15:49:52Z",
+      "stars": 19813,
+      "updated_at": "2026-11-24T15:57:18Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:53+00:00"
+      "checked_at": "2026-11-24T16:00:47+00:00"
     },
     "hugohe3/ppt-master": {
-      "stars": 79542,
+      "stars": 79843,
       "updated_at": "2026-11-20T08:41:50Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:53+00:00"
+      "checked_at": "2026-11-24T16:00:48+00:00"
     },
     "icsharpcode/ilspy": {
-      "stars": 27138,
-      "updated_at": "2026-11-23T15:24:51Z",
+      "stars": 27145,
+      "updated_at": "2026-11-24T08:50:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:54+00:00"
+      "checked_at": "2026-11-24T16:00:48+00:00"
     },
     "ifixai-ai/ifixai": {
-      "stars": 46956,
-      "updated_at": "2026-11-20T18:23:56Z",
+      "stars": 47106,
+      "updated_at": "2026-11-23T21:48:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:54+00:00"
+      "checked_at": "2026-11-24T16:00:48+00:00"
     },
     "imputnet/cobalt": {
-      "stars": 46959,
+      "stars": 47139,
       "updated_at": "2026-04-06T11:59:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:54+00:00"
+      "checked_at": "2026-11-24T16:00:49+00:00"
     },
     "infiniflow/ragflow": {
-      "stars": 94594,
-      "updated_at": "2026-11-23T13:10:49Z",
+      "stars": 94644,
+      "updated_at": "2026-11-24T13:09:47Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:55+00:00"
+      "checked_at": "2026-11-24T16:00:49+00:00"
     },
     "interplains/zero-breach-toolkit": {
-      "stars": 5300,
+      "stars": 5319,
       "updated_at": "2026-11-17T01:51:37Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:12:55+00:00"
+      "checked_at": "2026-11-24T16:00:50+00:00"
     },
     "itgoyo/telegramgroup": {
-      "stars": 6578,
+      "stars": 6583,
       "updated_at": "2026-10-27T03:22:53Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:55+00:00"
+      "checked_at": "2026-11-24T16:00:50+00:00"
     },
     "jamiepine/voicebox": {
-      "stars": 61197,
-      "updated_at": "2026-11-21T10:31:13Z",
+      "stars": 61248,
+      "updated_at": "2026-11-24T10:25:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:56+00:00"
+      "checked_at": "2026-11-24T16:00:50+00:00"
     },
     "jely2002/youtube-dl-gui": {
-      "stars": 9769,
+      "stars": 9770,
       "updated_at": "2026-10-31T23:39:26Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:56+00:00"
+      "checked_at": "2026-11-24T16:00:51+00:00"
     },
     "jlevy/the-art-of-command-line": {
-      "stars": 162834,
+      "stars": 162833,
       "updated_at": "2024-06-25T18:13:44Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:56+00:00"
+      "checked_at": "2026-11-24T16:00:51+00:00"
     },
     "jo-inc/camofox-browser": {
-      "stars": 12464,
-      "updated_at": "2026-11-23T03:26:38Z",
+      "stars": 12474,
+      "updated_at": "2026-11-24T03:25:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:57+00:00"
+      "checked_at": "2026-11-24T16:00:52+00:00"
     },
     "jujumilk3/leaked-system-prompts": {
-      "stars": 15028,
+      "stars": 15027,
       "updated_at": "2026-09-23T04:54:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:12:57+00:00"
+      "checked_at": "2026-11-24T16:00:52+00:00"
     },
     "jwasham/coding-interview-university": {
-      "stars": 364844,
+      "stars": 364968,
       "updated_at": "2026-11-07T16:03:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "CC-BY-SA-4.0",
-      "checked_at": "2026-11-23T16:12:58+00:00"
+      "checked_at": "2026-11-24T16:00:53+00:00"
     },
     "k4yt3x/video2x": {
-      "stars": 22857,
+      "stars": 22876,
       "updated_at": "2026-03-07T15:39:42Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:58+00:00"
+      "checked_at": "2026-11-24T16:00:53+00:00"
     },
     "karpathy/nanogpt": {
-      "stars": 65038,
+      "stars": 65053,
       "updated_at": "2025-11-12T19:52:34Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:58+00:00"
+      "checked_at": "2026-11-24T16:00:53+00:00"
     },
     "knadh/listmonk": {
-      "stars": 24431,
-      "updated_at": "2026-11-23T02:14:02Z",
+      "stars": 24443,
+      "updated_at": "2026-11-24T02:13:47Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:12:59+00:00"
+      "checked_at": "2026-11-24T16:00:54+00:00"
     },
     "kyutai-labs/pocket-tts": {
-      "stars": 10389,
+      "stars": 10397,
       "updated_at": "2026-11-23T10:03:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:59+00:00"
+      "checked_at": "2026-11-24T16:00:54+00:00"
     },
     "langchain-ai/langchain": {
-      "stars": 149957,
-      "updated_at": "2026-11-23T16:12:12Z",
+      "stars": 149936,
+      "updated_at": "2026-11-24T16:00:46Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:12:59+00:00"
+      "checked_at": "2026-11-24T16:00:54+00:00"
     },
     "langchain-ai/langgraph": {
-      "stars": 45310,
-      "updated_at": "2026-11-22T00:32:52Z",
+      "stars": 45362,
+      "updated_at": "2026-11-24T15:38:33Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:00+00:00"
+      "checked_at": "2026-11-24T16:00:55+00:00"
     },
     "langchain-ai/open_deep_research": {
       "stars": 12672,
@@ -1861,57 +1861,57 @@
       "visibility": "public",
       "status": "archived",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:00+00:00"
+      "checked_at": "2026-11-24T16:00:55+00:00"
     },
     "langflow-ai/langflow": {
-      "stars": 156880,
-      "updated_at": "2026-11-23T16:05:21Z",
+      "stars": 156906,
+      "updated_at": "2026-11-24T15:49:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:00+00:00"
+      "checked_at": "2026-11-24T16:00:56+00:00"
     },
     "langgenius/dify": {
-      "stars": 161746,
-      "updated_at": "2026-11-23T15:26:33Z",
+      "stars": 161832,
+      "updated_at": "2026-11-24T16:00:49Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:01+00:00"
+      "checked_at": "2026-11-24T16:00:56+00:00"
     },
     "lexmount/moli": {
-      "stars": 24345,
-      "updated_at": "2026-11-23T15:58:57Z",
+      "stars": 24424,
+      "updated_at": "2026-11-24T15:54:52Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:01+00:00"
+      "checked_at": "2026-11-24T16:00:57+00:00"
     },
     "librelane/librelane": {
       "stars": 651,
-      "updated_at": "2026-11-23T15:10:45Z",
+      "updated_at": "2026-11-24T15:11:00Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:01+00:00"
+      "checked_at": "2026-11-24T16:00:57+00:00"
     },
     "lightpanda-io/browser": {
-      "stars": 42409,
-      "updated_at": "2026-11-23T15:51:34Z",
+      "stars": 42470,
+      "updated_at": "2026-11-24T14:23:04Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:13:02+00:00"
+      "checked_at": "2026-11-24T16:00:57+00:00"
     },
     "magicsword-io/magic-atomics": {
       "stars": 34,
@@ -1921,187 +1921,187 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:02+00:00"
+      "checked_at": "2026-11-24T16:00:58+00:00"
     },
     "makeplane/plane": {
-      "stars": 63024,
-      "updated_at": "2026-11-23T14:53:50Z",
+      "stars": 63086,
+      "updated_at": "2026-11-24T15:19:15Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:13:02+00:00"
+      "checked_at": "2026-11-24T16:00:58+00:00"
     },
     "mattpocock/skills": {
-      "stars": 331170,
-      "updated_at": "2026-11-19T13:35:13Z",
+      "stars": 331962,
+      "updated_at": "2026-11-24T14:43:16Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:03+00:00"
+      "checked_at": "2026-11-24T16:00:58+00:00"
     },
     "maximhq/bifrost": {
-      "stars": 9967,
-      "updated_at": "2026-11-23T15:56:32Z",
+      "stars": 9996,
+      "updated_at": "2026-11-24T15:09:10Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:03+00:00"
+      "checked_at": "2026-11-24T16:00:59+00:00"
     },
     "mem0ai/mem0": {
-      "stars": 69376,
-      "updated_at": "2026-11-23T10:36:02Z",
+      "stars": 69421,
+      "updated_at": "2026-11-24T09:07:52Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:03+00:00"
+      "checked_at": "2026-11-24T16:00:59+00:00"
     },
     "microsoft/ai-agents-for-beginners": {
-      "stars": 80838,
+      "stars": 80892,
       "updated_at": "2026-11-17T09:24:01Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:04+00:00"
+      "checked_at": "2026-11-24T16:01:00+00:00"
     },
     "microsoft/autogen": {
-      "stars": 61965,
+      "stars": 61969,
       "updated_at": "2026-11-12T10:19:36Z",
       "archived": true,
       "disabled": false,
       "visibility": "public",
       "status": "archived",
       "license": "CC-BY-4.0",
-      "checked_at": "2026-11-23T16:13:04+00:00"
+      "checked_at": "2026-11-24T16:01:00+00:00"
     },
     "microsoft/markitdown": {
-      "stars": 198042,
+      "stars": 198215,
       "updated_at": "2026-11-07T00:14:01Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:05+00:00"
+      "checked_at": "2026-11-24T16:01:00+00:00"
     },
     "minio/minio": {
-      "stars": 61245,
+      "stars": 61242,
       "updated_at": "2026-04-24T17:54:39Z",
       "archived": true,
       "disabled": false,
       "visibility": "public",
       "status": "archived",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:13:05+00:00"
+      "checked_at": "2026-11-24T16:01:01+00:00"
     },
     "mksglu/context-mode": {
-      "stars": 34417,
-      "updated_at": "2026-11-23T03:29:37Z",
+      "stars": 34445,
+      "updated_at": "2026-11-24T13:43:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:05+00:00"
+      "checked_at": "2026-11-24T16:01:01+00:00"
     },
     "mlabonne/llm-course": {
-      "stars": 85189,
+      "stars": 85201,
       "updated_at": "2026-02-05T13:09:26Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:06+00:00"
+      "checked_at": "2026-11-24T16:01:02+00:00"
     },
     "morluto/awesome-reverse-engineering": {
-      "stars": 2301,
+      "stars": 2320,
       "updated_at": "2026-11-15T08:05:46Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "CC0-1.0",
-      "checked_at": "2026-11-23T16:13:06+00:00"
+      "checked_at": "2026-11-24T16:01:02+00:00"
     },
     "morluto/rea": {
-      "stars": 475194,
-      "updated_at": "2026-11-23T16:11:29Z",
+      "stars": 476662,
+      "updated_at": "2026-11-24T15:56:29Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:06+00:00"
+      "checked_at": "2026-11-24T16:01:02+00:00"
     },
     "msitarzewski/agency-agents": {
-      "stars": 169912,
+      "stars": 170029,
       "updated_at": "2026-11-09T00:27:04Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:07+00:00"
+      "checked_at": "2026-11-24T16:01:03+00:00"
     },
     "myshell-ai/melotts": {
-      "stars": 7727,
+      "stars": 7726,
       "updated_at": "2024-12-24T19:17:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:07+00:00"
+      "checked_at": "2026-11-24T16:01:03+00:00"
     },
     "n8n-io/n8n": {
-      "stars": 211908,
-      "updated_at": "2026-11-23T16:12:15Z",
+      "stars": 211974,
+      "updated_at": "2026-11-24T16:00:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:07+00:00"
+      "checked_at": "2026-11-24T16:01:03+00:00"
     },
     "nasa/cfs": {
-      "stars": 1590,
-      "updated_at": "2026-11-23T13:53:50Z",
+      "stars": 1592,
+      "updated_at": "2026-11-24T10:57:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:08+00:00"
+      "checked_at": "2026-11-24T16:01:04+00:00"
     },
     "nasa/openmct": {
       "stars": 13227,
-      "updated_at": "2026-11-12T16:50:09Z",
+      "updated_at": "2026-11-23T22:55:46Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:08+00:00"
+      "checked_at": "2026-11-24T16:01:04+00:00"
     },
     "nats-io/nats-server": {
-      "stars": 21120,
-      "updated_at": "2026-11-23T15:00:40Z",
+      "stars": 21130,
+      "updated_at": "2026-11-24T15:50:31Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:08+00:00"
+      "checked_at": "2026-11-24T16:01:05+00:00"
     },
     "nealbridges/vulnhunter": {
       "stars": 826,
@@ -2111,197 +2111,197 @@
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:09+00:00"
+      "checked_at": "2026-11-24T16:01:05+00:00"
     },
     "nilbuild/developer-roadmap": {
-      "stars": 372630,
-      "updated_at": "2026-11-23T16:03:06Z",
+      "stars": 372682,
+      "updated_at": "2026-11-24T10:57:20Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:09+00:00"
+      "checked_at": "2026-11-24T16:01:05+00:00"
     },
     "nocodb/nocodb": {
-      "stars": 65603,
-      "updated_at": "2026-11-23T13:23:32Z",
+      "stars": 65602,
+      "updated_at": "2026-11-24T14:09:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:10+00:00"
+      "checked_at": "2026-11-24T16:01:06+00:00"
     },
     "nowork-studio/notfair-plugin": {
-      "stars": 4300,
+      "stars": 4308,
       "updated_at": "2026-11-17T20:25:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:10+00:00"
+      "checked_at": "2026-11-24T16:01:06+00:00"
     },
     "obra/superpowers": {
-      "stars": 324795,
+      "stars": 325707,
       "updated_at": "2026-11-03T23:24:58Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:10+00:00"
+      "checked_at": "2026-11-24T16:01:06+00:00"
     },
     "obsproject/obs-studio": {
-      "stars": 80085,
+      "stars": 80022,
       "updated_at": "2026-11-23T00:47:28Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-2.0",
-      "checked_at": "2026-11-23T16:13:11+00:00"
+      "checked_at": "2026-11-24T16:01:07+00:00"
     },
     "olive-editor/olive": {
-      "stars": 9164,
+      "stars": 9165,
       "updated_at": "2024-12-05T10:34:17Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:13:11+00:00"
+      "checked_at": "2026-11-24T16:01:07+00:00"
     },
     "ollama/ollama": {
-      "stars": 187901,
-      "updated_at": "2026-11-22T10:10:02Z",
+      "stars": 187971,
+      "updated_at": "2026-11-24T07:31:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:11+00:00"
+      "checked_at": "2026-11-24T16:01:08+00:00"
     },
     "open-telemetry/opentelemetry-collector": {
-      "stars": 7799,
-      "updated_at": "2026-11-23T16:13:00Z",
+      "stars": 7803,
+      "updated_at": "2026-11-24T15:58:32Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:12+00:00"
+      "checked_at": "2026-11-24T16:01:08+00:00"
     },
     "open-webui/open-webui": {
-      "stars": 159344,
-      "updated_at": "2026-11-23T16:13:07Z",
+      "stars": 159425,
+      "updated_at": "2026-11-24T15:25:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:12+00:00"
+      "checked_at": "2026-11-24T16:01:09+00:00"
     },
     "openai/evals": {
-      "stars": 19787,
+      "stars": 19794,
       "updated_at": "2026-04-14T15:29:57Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:13+00:00"
+      "checked_at": "2026-11-24T16:01:09+00:00"
     },
     "openai/plugins": {
-      "stars": 8201,
+      "stars": 8327,
       "updated_at": "2026-11-18T19:14:28Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:13+00:00"
+      "checked_at": "2026-11-24T16:01:09+00:00"
     },
     "openai/skills": {
-      "stars": 28990,
+      "stars": 29087,
       "updated_at": "2026-10-28T17:31:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:13+00:00"
+      "checked_at": "2026-11-24T16:01:10+00:00"
     },
     "openbq-org/openbb": {
-      "stars": 75667,
+      "stars": 75693,
       "updated_at": "2026-11-18T22:42:00Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:14+00:00"
+      "checked_at": "2026-11-24T16:01:11+00:00"
     },
     "openclaw/openclaw": {
-      "stars": 395085,
-      "updated_at": "2026-11-23T16:08:46Z",
+      "stars": 395148,
+      "updated_at": "2026-11-24T15:59:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:14+00:00"
+      "checked_at": "2026-11-24T16:01:11+00:00"
     },
     "opendatalab/mineru": {
-      "stars": 84205,
+      "stars": 84279,
       "updated_at": "2026-11-22T18:08:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:14+00:00"
+      "checked_at": "2026-11-24T16:01:11+00:00"
     },
     "openfilm/openfilm": {
-      "stars": 9101,
+      "stars": 9253,
       "updated_at": "2026-11-23T13:43:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:15+00:00"
+      "checked_at": "2026-11-24T16:01:12+00:00"
     },
     "outline/outline": {
-      "stars": 41347,
-      "updated_at": "2026-11-23T14:20:35Z",
+      "stars": 41365,
+      "updated_at": "2026-11-24T04:17:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:15+00:00"
+      "checked_at": "2026-11-24T16:01:12+00:00"
     },
     "paperclipai/paperclip": {
-      "stars": 116214,
-      "updated_at": "2026-11-23T16:11:20Z",
+      "stars": 116619,
+      "updated_at": "2026-11-24T10:00:34Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:15+00:00"
+      "checked_at": "2026-11-24T16:01:13+00:00"
     },
     "perplexityai/bumblebee": {
-      "stars": 5169,
+      "stars": 5171,
       "updated_at": "2026-11-18T15:13:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:16+00:00"
+      "checked_at": "2026-11-24T16:01:13+00:00"
     },
     "pis10/tracesurface": {
       "stars": 499,
@@ -2311,97 +2311,97 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:16+00:00"
+      "checked_at": "2026-11-24T16:01:13+00:00"
     },
     "postalserver/postal": {
-      "stars": 16971,
+      "stars": 16975,
       "updated_at": "2026-11-20T14:57:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:16+00:00"
+      "checked_at": "2026-11-24T16:01:14+00:00"
     },
     "postgres/postgres": {
-      "stars": 22915,
-      "updated_at": "2026-11-23T12:21:08Z",
+      "stars": 22927,
+      "updated_at": "2026-11-24T11:44:56Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:17+00:00"
+      "checked_at": "2026-11-24T16:01:14+00:00"
     },
     "poteto/noodle": {
-      "stars": 717,
+      "stars": 724,
       "updated_at": "2026-03-19T07:46:39Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:17+00:00"
+      "checked_at": "2026-11-24T16:01:14+00:00"
     },
     "practical-tutorials/project-based-learning": {
-      "stars": 290324,
+      "stars": 290385,
       "updated_at": "2026-11-23T06:41:02Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:17+00:00"
+      "checked_at": "2026-11-24T16:01:15+00:00"
     },
     "promptfoo/promptfoo": {
-      "stars": 27588,
-      "updated_at": "2026-11-23T11:46:49Z",
+      "stars": 27622,
+      "updated_at": "2026-11-24T15:15:12Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:18+00:00"
+      "checked_at": "2026-11-24T16:01:15+00:00"
     },
     "public-apis/public-apis": {
-      "stars": 500996,
+      "stars": 501165,
       "updated_at": "2026-11-22T19:57:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:18+00:00"
+      "checked_at": "2026-11-24T16:01:16+00:00"
     },
     "punkpeye/awesome-mcp-servers": {
-      "stars": 98418,
-      "updated_at": "2026-11-23T15:59:09Z",
+      "stars": 98457,
+      "updated_at": "2026-11-24T08:42:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:19+00:00"
+      "checked_at": "2026-11-24T16:01:16+00:00"
     },
     "razzant/ouroboros": {
-      "stars": 1701,
-      "updated_at": "2026-11-23T16:02:25Z",
+      "stars": 1704,
+      "updated_at": "2026-11-24T15:57:41Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:19+00:00"
+      "checked_at": "2026-11-24T16:01:16+00:00"
     },
     "remotion-dev/remotion": {
-      "stars": 75155,
-      "updated_at": "2026-11-23T14:56:05Z",
+      "stars": 75400,
+      "updated_at": "2026-11-24T15:47:00Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:19+00:00"
+      "checked_at": "2026-11-24T16:01:17+00:00"
     },
     "renkagod/osint-toolbox-mcp": {
       "stars": 3,
@@ -2411,187 +2411,187 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:20+00:00"
+      "checked_at": "2026-11-24T16:01:17+00:00"
     },
     "restatedev/restate": {
-      "stars": 4736,
-      "updated_at": "2026-11-23T16:01:49Z",
+      "stars": 4739,
+      "updated_at": "2026-11-24T15:54:23Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:20+00:00"
+      "checked_at": "2026-11-24T16:01:18+00:00"
     },
     "run-llama/llama_index": {
-      "stars": 52987,
+      "stars": 52994,
       "updated_at": "2026-11-20T00:46:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:20+00:00"
+      "checked_at": "2026-11-24T16:01:18+00:00"
     },
     "s0ld13rr/pentestcode": {
-      "stars": 1229,
+      "stars": 1236,
       "updated_at": "2026-11-05T14:57:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:21+00:00"
+      "checked_at": "2026-11-24T16:01:18+00:00"
     },
     "sherlock-project/sherlock": {
-      "stars": 116176,
-      "updated_at": "2026-11-23T05:15:35Z",
+      "stars": 116860,
+      "updated_at": "2026-11-24T05:14:19Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:21+00:00"
+      "checked_at": "2026-11-24T16:01:19+00:00"
     },
     "skylot/jadx": {
-      "stars": 51967,
-      "updated_at": "2026-11-20T22:40:54Z",
+      "stars": 51982,
+      "updated_at": "2026-11-23T23:51:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:21+00:00"
+      "checked_at": "2026-11-24T16:01:19+00:00"
     },
     "smicallef/spiderfoot": {
-      "stars": 24876,
+      "stars": 24915,
       "updated_at": "2026-04-13T19:43:06Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:22+00:00"
+      "checked_at": "2026-11-24T16:01:19+00:00"
     },
     "soxoj/maigret": {
-      "stars": 41202,
-      "updated_at": "2026-11-22T06:14:07Z",
+      "stars": 41227,
+      "updated_at": "2026-11-24T15:53:39Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:22+00:00"
+      "checked_at": "2026-11-24T16:01:20+00:00"
     },
     "sqwu/rea-gems": {
       "stars": 62,
-      "updated_at": "2026-11-23T12:38:38Z",
+      "updated_at": "2026-11-24T13:42:28Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:23+00:00"
+      "checked_at": "2026-11-24T16:01:20+00:00"
     },
     "stanford-oval/storm": {
-      "stars": 31934,
+      "stars": 31944,
       "updated_at": "2025-09-30T18:07:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:23+00:00"
+      "checked_at": "2026-11-24T16:01:21+00:00"
     },
     "stanfordnlp/dspy": {
-      "stars": 39194,
-      "updated_at": "2026-11-21T14:14:20Z",
+      "stars": 39208,
+      "updated_at": "2026-11-24T14:14:45Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:23+00:00"
+      "checked_at": "2026-11-24T16:01:21+00:00"
     },
     "supermemoryai/supermemory": {
-      "stars": 31693,
-      "updated_at": "2026-11-22T18:54:26Z",
+      "stars": 31703,
+      "updated_at": "2026-11-24T15:17:10Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:24+00:00"
+      "checked_at": "2026-11-24T16:01:22+00:00"
     },
     "taskforcesh/bullmq": {
-      "stars": 9625,
-      "updated_at": "2026-11-23T12:51:59Z",
+      "stars": 9629,
+      "updated_at": "2026-11-24T13:37:51Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:24+00:00"
+      "checked_at": "2026-11-24T16:01:22+00:00"
     },
     "thedotmack/claude-mem": {
-      "stars": 119251,
-      "updated_at": "2026-11-23T14:30:00Z",
+      "stars": 119472,
+      "updated_at": "2026-11-24T07:45:22Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:24+00:00"
+      "checked_at": "2026-11-24T16:01:23+00:00"
     },
     "topoteretes/cognee": {
-      "stars": 33510,
-      "updated_at": "2026-11-23T16:01:35Z",
+      "stars": 33550,
+      "updated_at": "2026-11-24T14:14:26Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:25+00:00"
+      "checked_at": "2026-11-24T16:01:23+00:00"
     },
     "trekhleb/javascript-algorithms": {
-      "stars": 196765,
+      "stars": 196767,
       "updated_at": "2026-07-26T02:43:08Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:25+00:00"
+      "checked_at": "2026-11-24T16:01:23+00:00"
     },
     "triggerdotdev/trigger.dev": {
-      "stars": 16807,
-      "updated_at": "2026-11-23T12:37:16Z",
+      "stars": 16815,
+      "updated_at": "2026-11-24T15:49:09Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:25+00:00"
+      "checked_at": "2026-11-24T16:01:24+00:00"
     },
     "trimstray/the-book-of-secret-knowledge": {
-      "stars": 260741,
+      "stars": 261002,
       "updated_at": "2024-11-19T14:00:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:26+00:00"
+      "checked_at": "2026-11-24T16:01:24+00:00"
     },
     "truera/trulens": {
-      "stars": 3668,
+      "stars": 3669,
       "updated_at": "2026-11-23T15:36:38Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:26+00:00"
+      "checked_at": "2026-11-24T16:01:25+00:00"
     },
     "tyrasd/overpass-turbo": {
       "stars": 1270,
@@ -2601,127 +2601,127 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:26+00:00"
+      "checked_at": "2026-11-24T16:01:25+00:00"
     },
     "unclecode/crawl4ai": {
-      "stars": 87717,
+      "stars": 87746,
       "updated_at": "2026-11-23T06:00:27Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:27+00:00"
+      "checked_at": "2026-11-24T16:01:25+00:00"
     },
     "undefined-ui/second-brain-os": {
-      "stars": 1596,
+      "stars": 1602,
       "updated_at": "2026-11-03T21:52:55Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:27+00:00"
+      "checked_at": "2026-11-24T16:01:26+00:00"
     },
     "unslothai/unsloth": {
-      "stars": 80065,
-      "updated_at": "2026-11-23T16:13:25Z",
+      "stars": 80151,
+      "updated_at": "2026-11-24T16:00:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:28+00:00"
+      "checked_at": "2026-11-24T16:01:26+00:00"
     },
     "upstash/context7": {
-      "stars": 65333,
-      "updated_at": "2026-11-23T13:55:48Z",
+      "stars": 65389,
+      "updated_at": "2026-11-24T15:16:36Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:28+00:00"
+      "checked_at": "2026-11-24T16:01:26+00:00"
     },
     "usestrix/strix": {
-      "stars": 77218,
-      "updated_at": "2026-11-22T23:07:26Z",
+      "stars": 77387,
+      "updated_at": "2026-11-24T14:28:46Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:28+00:00"
+      "checked_at": "2026-11-24T16:01:27+00:00"
     },
     "valkey-io/valkey": {
-      "stars": 27840,
-      "updated_at": "2026-11-23T15:02:08Z",
+      "stars": 27852,
+      "updated_at": "2026-11-24T12:55:21Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "BSD-3-Clause",
-      "checked_at": "2026-11-23T16:13:29+00:00"
+      "checked_at": "2026-11-24T16:01:27+00:00"
     },
     "vercel-labs/agent-skills": {
-      "stars": 34791,
+      "stars": 34851,
       "updated_at": "2026-11-20T19:20:13Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:29+00:00"
+      "checked_at": "2026-11-24T16:01:28+00:00"
     },
     "vercel-labs/skills": {
-      "stars": 40588,
+      "stars": 40728,
       "updated_at": "2026-11-17T00:58:04Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:29+00:00"
+      "checked_at": "2026-11-24T16:01:28+00:00"
     },
     "vibrantlabsai/ragas": {
-      "stars": 16406,
+      "stars": 16417,
       "updated_at": "2026-11-14T03:06:20Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:30+00:00"
+      "checked_at": "2026-11-24T16:01:29+00:00"
     },
     "vllm-project/vllm": {
-      "stars": 97406,
-      "updated_at": "2026-11-23T15:48:50Z",
+      "stars": 97482,
+      "updated_at": "2026-11-24T15:44:20Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "Apache-2.0",
-      "checked_at": "2026-11-23T16:13:30+00:00"
+      "checked_at": "2026-11-24T16:01:29+00:00"
     },
     "vxcontrol/pentagi": {
-      "stars": 34856,
+      "stars": 34934,
       "updated_at": "2026-11-13T23:40:49Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:30+00:00"
+      "checked_at": "2026-11-24T16:01:29+00:00"
     },
     "wader/fq": {
       "stars": 10638,
-      "updated_at": "2026-11-21T10:58:20Z",
+      "updated_at": "2026-11-24T13:22:01Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:31+00:00"
+      "checked_at": "2026-11-24T16:01:30+00:00"
     },
     "whaleyxbt/patchright-enhanced": {
       "stars": 519,
@@ -2731,77 +2731,77 @@
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:31+00:00"
+      "checked_at": "2026-11-24T16:01:30+00:00"
     },
     "windmill-labs/windmill": {
-      "stars": 18696,
-      "updated_at": "2026-11-23T16:10:49Z",
+      "stars": 18712,
+      "updated_at": "2026-11-24T15:55:35Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:31+00:00"
+      "checked_at": "2026-11-24T16:01:30+00:00"
     },
     "wshobson/agents": {
-      "stars": 42834,
-      "updated_at": "2026-11-23T12:49:14Z",
+      "stars": 42863,
+      "updated_at": "2026-11-24T14:32:25Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:32+00:00"
+      "checked_at": "2026-11-24T16:01:31+00:00"
     },
     "x1xhlol/system-prompts-and-models-of-ai-tools": {
-      "stars": 144825,
+      "stars": 144839,
       "updated_at": "2026-10-12T15:19:01Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "GPL-3.0",
-      "checked_at": "2026-11-23T16:13:32+00:00"
+      "checked_at": "2026-11-24T16:01:31+00:00"
     },
     "x64dbg/x64dbg": {
-      "stars": 50373,
+      "stars": 50383,
       "updated_at": "2026-11-22T15:39:51Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": null,
-      "checked_at": "2026-11-23T16:13:33+00:00"
+      "checked_at": "2026-11-24T16:01:32+00:00"
     },
     "yangshun/tech-interview-handbook": {
-      "stars": 143619,
+      "stars": 143639,
       "updated_at": "2026-08-07T12:06:42Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:33+00:00"
+      "checked_at": "2026-11-24T16:01:32+00:00"
     },
     "yl4579/styletts2": {
-      "stars": 6383,
+      "stars": 6385,
       "updated_at": "2024-08-10T00:48:18Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:33+00:00"
+      "checked_at": "2026-11-24T16:01:32+00:00"
     },
     "ysunyang4/nexus": {
-      "stars": 496,
-      "updated_at": "2026-11-22T09:40:44Z",
+      "stars": 502,
+      "updated_at": "2026-11-24T12:47:12Z",
       "archived": false,
       "disabled": false,
       "visibility": "public",
       "status": "available",
       "license": "AGPL-3.0",
-      "checked_at": "2026-11-23T16:13:33+00:00"
+      "checked_at": "2026-11-24T16:01:33+00:00"
     },
     "zou-group/textgrad": {
       "stars": 3804,
@@ -2811,7 +2811,7 @@
       "visibility": "public",
       "status": "available",
       "license": "MIT",
-      "checked_at": "2026-11-23T16:13:34+00:00"
+      "checked_at": "2026-11-24T16:01:33+00:00"
     }
   }
 }
