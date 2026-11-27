@@ -2,14 +2,190 @@
   "schema_version": 1,
   "stage": "shadow_snapshot_not_rendered",
   "source": {
-    "branch": "feat/open-space-lab-20261122",
-    "commit": "af61d1aab0d8a58be8358dfbb798b140bfedd5da",
+    "branch": "content/agent-infrastructure-20261127",
+    "commit": "bd7a40ea96011fa40b8df98d9fb89ed3c4459ce7",
     "file": "index.html",
     "data_array": "resourcesData"
   },
-  "resource_count": 391,
+  "resource_count": 395,
   "field_policy": "Unverified or unavailable attributes are null; this export does not replace RESOURCE_METADATA or live GitHub metadata.",
   "resources": [
+    {
+      "id": "https://github.com/tinyhumansai/openhuman",
+      "title": "OpenHuman — Entorno local para agentes de IA",
+      "canonical_url": "https://github.com/tinyhumansai/openhuman",
+      "source_url": "https://github.com/tinyhumansai/openhuman",
+      "source_type": "github_repository",
+      "category": "ai",
+      "tags": [
+        "Agentes / Autoalojamiento"
+      ],
+      "description": "Aplicación de escritorio y biblioteca Rust para ejecutar y coordinar agentes de IA, con opciones de despliegue propio; el procesamiento externo depende del proveedor de modelos y la configuración.",
+      "capabilities": [
+        "Aplicación de escritorio",
+        "Biblioteca Rust para agentes",
+        "Despliegue propio"
+      ],
+      "use_cases": [
+        "Automatización personal",
+        "Prototipos de agentes"
+      ],
+      "prerequisites": [
+        "Sistema compatible o entorno Rust",
+        "Configuración de proveedor de modelos"
+      ],
+      "technical_level": "Intermedio",
+      "language": null,
+      "access_model": "Código abierto; servicios de modelos pueden tener costo",
+      "license": "GPL-3.0",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": "2026-11-27T14:42:00+00:00",
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/tinyhumansai/openhuman",
+        "https://github.com/tinyhumansai/openhuman/blob/main/README.md",
+        "https://github.com/tinyhumansai/openhuman/blob/main/LICENSE"
+      ],
+      "limitations": "Proyecto en beta. Revisar scripts, permisos, proveedores de modelos y flujos de datos; autoalojar la aplicación no garantiza inferencia sin conexión.",
+      "usage_notice": "Proyecto en beta. Revisar scripts, permisos, proveedores de modelos y flujos de datos; autoalojar la aplicación no garantiza inferencia sin conexión.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-robot"
+      }
+    },
+    {
+      "id": "https://github.com/HKUDS/CLI-Anything",
+      "title": "CLI-Anything — Interfaces de software para agentes",
+      "canonical_url": "https://github.com/HKUDS/CLI-Anything",
+      "source_url": "https://github.com/HKUDS/CLI-Anything",
+      "source_type": "github_repository",
+      "category": "agentskills",
+      "tags": [
+        "CLI / Integración de herramientas"
+      ],
+      "description": "Marco para construir interfaces CLI invocables por agentes a partir de aplicaciones existentes, con un catálogo comunitario de integraciones, salidas estructuradas y pruebas.",
+      "capabilities": [
+        "Generación de interfaces CLI",
+        "Catálogo comunitario",
+        "Salidas estructuradas"
+      ],
+      "use_cases": [
+        "Integrar aplicaciones en flujos de agentes",
+        "Automatizar tareas de desarrollo"
+      ],
+      "prerequisites": [
+        "Python 3.10 o posterior",
+        "Aplicaciones y dependencias de cada integración"
+      ],
+      "technical_level": "Avanzado",
+      "language": null,
+      "access_model": "Código abierto; aplicaciones integradas pueden tener condiciones propias",
+      "license": "Apache-2.0",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": "2026-11-27T14:42:00+00:00",
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/HKUDS/CLI-Anything",
+        "https://github.com/HKUDS/CLI-Anything/blob/main/README.md",
+        "https://github.com/HKUDS/CLI-Anything/blob/main/LICENSE"
+      ],
+      "limitations": "No garantiza compatibilidad universal; verificar cada integración, sus dependencias, permisos, licencias y resultados antes de automatizar.",
+      "usage_notice": "No garantiza compatibilidad universal; verificar cada integración, sus dependencias, permisos, licencias y resultados antes de automatizar.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-terminal"
+      }
+    },
+    {
+      "id": "https://github.com/Imbad0202/academic-research-skills",
+      "title": "Academic Research Skills — Investigación académica asistida",
+      "canonical_url": "https://github.com/Imbad0202/academic-research-skills",
+      "source_url": "https://github.com/Imbad0202/academic-research-skills",
+      "source_type": "github_repository",
+      "category": "agentskills",
+      "tags": [
+        "Investigación / Escritura académica"
+      ],
+      "description": "Paquete de habilidades para Claude Code que estructura investigación, redacción, revisión, corrección y preparación de manuscritos con confirmación humana en cada etapa.",
+      "capabilities": [
+        "Planificación de artículos",
+        "Apoyo a búsqueda y citas",
+        "Revisión y corrección"
+      ],
+      "use_cases": [
+        "Organizar literatura",
+        "Preparar manuscritos académicos"
+      ],
+      "prerequisites": [
+        "Claude Code o entorno compatible",
+        "Acceso a fuentes y revisión del investigador"
+      ],
+      "technical_level": "Intermedio",
+      "language": null,
+      "access_model": "Repositorio público; reutilización bajo condiciones no comerciales",
+      "license": "CC-BY-NC-4.0",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": "2026-11-27T14:42:00+00:00",
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/Imbad0202/academic-research-skills",
+        "https://github.com/Imbad0202/academic-research-skills/blob/main/README.md",
+        "https://github.com/Imbad0202/academic-research-skills/blob/main/LICENSE"
+      ],
+      "limitations": "Licencia no comercial; revisar permisos antes de uso comercial. Verificar fuentes, datos, citas, autoría y políticas editoriales; no sustituye revisión científica.",
+      "usage_notice": "Licencia no comercial; revisar permisos antes de uso comercial. Verificar fuentes, datos, citas, autoría y políticas editoriales; no sustituye revisión científica.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-book-open"
+      }
+    },
+    {
+      "id": "https://github.com/rohitg00/agentmemory",
+      "title": "AgentMemory — Memoria persistente para agentes de código",
+      "canonical_url": "https://github.com/rohitg00/agentmemory",
+      "source_url": "https://github.com/rohitg00/agentmemory",
+      "source_type": "github_repository",
+      "category": "ai",
+      "tags": [
+        "Memoria persistente / MCP"
+      ],
+      "description": "Infraestructura para conservar y recuperar contexto, decisiones y sesiones entre agentes de programación, con búsqueda y compatibilidad MCP.",
+      "capabilities": [
+        "Persistencia entre sesiones",
+        "Búsqueda de contexto",
+        "Integración MCP"
+      ],
+      "use_cases": [
+        "Continuidad de proyectos de código",
+        "Recuperar decisiones técnicas"
+      ],
+      "prerequisites": [
+        "Agente de código compatible o cliente MCP",
+        "Configuración de almacenamiento y permisos"
+      ],
+      "technical_level": "Intermedio",
+      "language": null,
+      "access_model": "Código abierto",
+      "license": "Apache-2.0",
+      "repository_status": "not_archived_at_review",
+      "first_seen_at": "2026-11-27T14:42:00+00:00",
+      "last_verified_at": null,
+      "evidence_urls": [
+        "https://github.com/rohitg00/agentmemory",
+        "https://github.com/rohitg00/agentmemory/blob/main/README.md",
+        "https://github.com/rohitg00/agentmemory/blob/main/LICENSE"
+      ],
+      "limitations": "La recuperación puede ser incompleta o incorrecta. Revisar almacenamiento, acceso, retención y exclusión de secretos antes de registrar sesiones.",
+      "usage_notice": "La recuperación puede ser incompleta o incorrecta. Revisar almacenamiento, acceso, retención y exclusión de secretos antes de registrar sesiones.",
+      "related_resource_ids": [],
+      "verification_status": "pending_review",
+      "legacy_ui": {
+        "icon": "fa-brain"
+      }
+    },
     {
       "id": "https://github.com/diggerhq/opencomputer",
       "title": "OpenComputer — Agente de desarrollo en computadoras aisladas",
@@ -684,15 +860,18 @@
       "capabilities": null,
       "use_cases": null,
       "prerequisites": null,
-      "technical_level": null,
+      "technical_level": "Intermedio",
       "language": null,
       "access_model": null,
-      "license": null,
-      "repository_status": null,
+      "license": "MIT",
+      "repository_status": "not_archived_at_review",
       "first_seen_at": null,
       "last_verified_at": null,
-      "evidence_urls": [],
-      "limitations": null,
+      "evidence_urls": [
+        "https://github.com/obra/superpowers",
+        "https://github.com/obra/superpowers/blob/main/LICENSE"
+      ],
+      "limitations": "La metodología no sustituye revisión humana, pruebas del proyecto ni autorización de herramientas.",
       "usage_notice": null,
       "related_resource_ids": [],
       "verification_status": "pending_review",
